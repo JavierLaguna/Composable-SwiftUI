@@ -1,0 +1,45 @@
+// Commons
+"commons.retry" = "Retry";
+
+// TabBar
+"tabBar.details" = "Details";
+"tabBar.beerBuddy" = "Beer buddy";
+
+// CharacterStatus
+"characterStatus.alive" = "Alive";
+"characterStatus.dead" = "Dead";
+"characterStatus.unknown" = "unknown";
+
+// CharacterGender
+"characterGender.female" = "Female";
+"characterGender.male" = "Male";
+"characterGender.genderless" = "Genderless";
+"characterGender.unknown" = "unknown";
+
+// CharactersList
+"charactersList.search" = "Search...";
+"charactersList.noResults" = "No results found";
+
+// CharacterDetail
+"characterDetail.status" = "Status";
+"characterDetail.species" = "Species";
+"characterDetail.type" = "Type";
+"characterDetail.gender" = "Gender";
+"characterDetail.origin" = "Origin";
+"characterDetail.location" = "Location";
+"characterDetail.locationResidents" = "Location residents";
+"characterDetail.numberOfEpisodes" = "Number of episodes";
+
+// MatchBuddy
+"matchBuddy.location" = "Location";
+"matchBuddy.episodesTogether" = "Episodes together";
+"matchBuddy.firstTimeTogether" = "First time together";
+"matchBuddy.lastTimeTogether" = "Last time together";
+"matchBuddy.notFound" = "Beer buddy not found";
+
+// MatchBuddyInfo
+"matchBuddyInfo.paragraph1" = "- The Ricks Council has decreed perimeter confinement of planets, so actors will only be able to date actors that are in the same location.";
+"matchBuddyInfo.paragraph2" = "- In order for them to have enough anecdotes to tell while getting drunk, priority will be given to the characters who have shared more times filming set, for this purpose the number of chapters in which they have coincided will be bought.";
+"matchBuddyInfo.paragraph3" = "- In case two possible matches have shared the same number of chapters with the selected character, preference will be given to those who have known each other the longest, using the date of the first chapter in which they appeared together.";
+"matchBuddyInfo.paragraph4" = "- If they have participated in the same number of chapters, and they met on the same day, priority will be given to the candidate who has not seen the selected character for the longest time, using the date of the last chapter in which they both appeared.";
+"matchBuddyInfo.paragraph5" = "- Finally, in case there is more than one candidate that meets all the criteria, they will be ordered by ID.";
