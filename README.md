@@ -28,7 +28,15 @@ Show the character details and the Beer Buddy of all characters.
 
 ## 🚩 Instructions
 
-1. Get dependencies ➡️ Open Xcode and SPM will autoinstall the dependencies.
+1. ⬇️ Get dependencies
+
+    1. Install rswift with Homebrew
+
+        ```bash
+        brew install rswift
+        ```
+
+    1.  Open Xcode and SPM will autoinstall the dependencies.
 
 ## 🚧 Application Architecture
 
