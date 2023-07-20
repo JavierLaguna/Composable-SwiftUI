@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49015F6128536B580020DC8A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49015F6028536B580020DC8A /* R.generated.swift */; };
 		491A398F2850948900D17719 /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A398E2850948900D17719 /* CharacterTests.swift */; };
 		491A3991285097B900D17719 /* LocationRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A3990285097B900D17719 /* LocationRepositoryMock.swift */; };
 		491A39932850986B00D17719 /* EpisodesRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A39922850986B00D17719 /* EpisodesRepositoryMock.swift */; };
@@ -16,6 +15,7 @@
 		491A399A28533EBA00D17719 /* Resolver+Datasources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399928533EBA00D17719 /* Resolver+Datasources.swift */; };
 		491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399B28533F6000D17719 /* EpisodesRemoteDatasource.swift */; };
 		491A399E28533FF000D17719 /* LocationRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399D28533FF000D17719 /* LocationRemoteDatasource.swift */; };
+		493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 493A4B162A698A19006E250D /* RswiftLibrary */; };
 		493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF0302834298700ECC3A3 /* CharacterStatus.swift */; };
 		493BF03328342D1900ECC3A3 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF03228342D1900ECC3A3 /* String+URL.swift */; };
 		494E3458283A2E4700445B79 /* StateLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E3457283A2E4700445B79 /* StateLoadable.swift */; };
@@ -28,7 +28,6 @@
 		494E346A283AAF2A00445B79 /* MatchBuddyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E3469283AAF2A00445B79 /* MatchBuddyAction.swift */; };
 		494E346C283AAF3500445B79 /* MatchBuddyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E346B283AAF3500445B79 /* MatchBuddyEnvironment.swift */; };
 		494E346E283AAF3F00445B79 /* MatchBuddyReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E346D283AAF3F00445B79 /* MatchBuddyReducer.swift */; };
-		495C9159282FB52B00B841ED /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 495C9158282FB52B00B841ED /* Rswift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
 		498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */; };
@@ -140,7 +139,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		49015F6028536B580020DC8A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		491A398E2850948900D17719 /* CharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
 		491A3990285097B900D17719 /* LocationRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryMock.swift; sourceTree = "<group>"; };
 		491A39922850986B00D17719 /* EpisodesRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRepositoryMock.swift; sourceTree = "<group>"; };
@@ -257,10 +255,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				494E345B283A40FE00445B79 /* SkeletonUI in Frameworks */,
+				493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */,
 				49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */,
 				49A4A67C282FA32E00D43FB3 /* Kingfisher in Frameworks */,
 				49E4F81B28491F740037FD72 /* Stinsen in Frameworks */,
-				495C9159282FB52B00B841ED /* Rswift in Frameworks */,
 				49A4A652282F958B00D43FB3 /* Resolver in Frameworks */,
 				49A4A64C282F952700D43FB3 /* ComposableArchitecture in Frameworks */,
 				49E4F812283D54770037FD72 /* ScalingHeaderScrollView in Frameworks */,
@@ -393,7 +391,6 @@
 				494E3464283AAA2C00445B79 /* Localizable.strings */,
 				49A4A624282F949100D43FB3 /* Assets.xcassets */,
 				49A4A67D282FB18800D43FB3 /* Colors.xcassets */,
-				49015F6028536B580020DC8A /* R.generated.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -814,7 +811,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49A4A641282F949200D43FB3 /* Build configuration list for PBXNativeTarget "Composable SwiftUI" */;
 			buildPhases = (
-				49E88CDC282FBFA000058486 /* Generate R.generated.swift file */,
 				49A4A619282F948C00D43FB3 /* Sources */,
 				49A4A61A282F948C00D43FB3 /* Frameworks */,
 				49A4A61B282F948C00D43FB3 /* Resources */,
@@ -822,17 +818,18 @@
 			buildRules = (
 			);
 			dependencies = (
+				493A4B132A698996006E250D /* PBXTargetDependency */,
 			);
 			name = "Composable SwiftUI";
 			packageProductDependencies = (
 				49A4A64B282F952700D43FB3 /* ComposableArchitecture */,
 				49A4A651282F958B00D43FB3 /* Resolver */,
 				49A4A67B282FA32E00D43FB3 /* Kingfisher */,
-				495C9158282FB52B00B841ED /* Rswift */,
 				494E345A283A40FE00445B79 /* SkeletonUI */,
 				49E4F811283D54770037FD72 /* ScalingHeaderScrollView */,
 				49E4F81A28491F740037FD72 /* Stinsen */,
 				49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */,
+				493A4B162A698A19006E250D /* RswiftLibrary */,
 			);
 			productName = "Composable SwiftUI";
 			productReference = 49A4A61D282F948C00D43FB3 /* Composable SwiftUI.app */;
@@ -911,11 +908,11 @@
 				49A4A64A282F952700D43FB3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				49A4A650282F958B00D43FB3 /* XCRemoteSwiftPackageReference "Resolver" */,
 				49A4A67A282FA32E00D43FB3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				495C9157282FB52B00B841ED /* XCRemoteSwiftPackageReference "R.swift" */,
 				494E3459283A40FE00445B79 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
 				49E4F810283D54770037FD72 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
 				49E4F81928491F730037FD72 /* XCRemoteSwiftPackageReference "stinsen" */,
 				49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */,
 			);
 			productRefGroup = 49A4A61E282F948C00D43FB3 /* Products */;
 			projectDirPath = "";
@@ -956,29 +953,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		49E88CDC282FBFA000058486 /* Generate R.generated.swift file */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
-			);
-			name = "Generate R.generated.swift file";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$SRCROOT/$TARGET_NAME/Resources/R.generated.swift,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ $ACTION != \"indexbuild\" ]; then\n  \"rswift\" generate \"$SRCROOT/$TARGET_NAME/Resources/R.generated.swift\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		49A4A619282F948C00D43FB3 /* Sources */ = {
@@ -1032,7 +1006,6 @@
 				49E88D232830F21400058486 /* CharacterService.swift in Sources */,
 				49EDA8CA283BFC3D002C9C80 /* BeerBuddy.swift in Sources */,
 				494E346C283AAF3500445B79 /* MatchBuddyEnvironment.swift in Sources */,
-				49015F6128536B580020DC8A /* R.generated.swift in Sources */,
 				49A4A66C282F9A9B00D43FB3 /* CharactersListAction.swift in Sources */,
 				49E88D202830F13500058486 /* HttpClient.swift in Sources */,
 				49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */,
@@ -1105,6 +1078,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		493A4B132A698996006E250D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 493A4B122A698996006E250D /* RswiftGenerateInternalResources */;
+		};
 		49A4A62F282F949200D43FB3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 49A4A61C282F948C00D43FB3 /* Composable SwiftUI */;
@@ -1436,20 +1413,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		494E3459283A40FE00445B79 /* XCRemoteSwiftPackageReference "SkeletonUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CSolanaM/SkeletonUI.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
-			};
-		};
-		495C9157282FB52B00B841ED /* XCRemoteSwiftPackageReference "R.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
 			};
 		};
 		49A4A64A282F952700D43FB3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
@@ -1503,15 +1480,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		493A4B122A698996006E250D /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		493A4B162A698A19006E250D /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = RswiftLibrary;
+		};
 		494E345A283A40FE00445B79 /* SkeletonUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 494E3459283A40FE00445B79 /* XCRemoteSwiftPackageReference "SkeletonUI" */;
 			productName = SkeletonUI;
-		};
-		495C9158282FB52B00B841ED /* Rswift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 495C9157282FB52B00B841ED /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = Rswift;
 		};
 		49A4A64B282F952700D43FB3 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;

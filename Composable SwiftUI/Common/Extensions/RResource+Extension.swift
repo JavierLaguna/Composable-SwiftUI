@@ -1,5 +1,5 @@
-import Rswift
 import SwiftUI
+import RswiftResources
 
 // MARK: - ImageResource
 extension ImageResource {
@@ -18,7 +18,7 @@ extension ColorResource {
 // MARK: - FontResource
 extension FontResource {
     func font(size: CGFloat) -> Font {
-        Font.custom(fontName, size: size)
+        Font.custom(name, size: size)
     }
 }
 
