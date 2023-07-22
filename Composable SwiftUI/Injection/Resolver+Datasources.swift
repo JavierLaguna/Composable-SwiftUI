@@ -10,5 +10,8 @@ extension Resolver {
         register { CharacterService() }.implements(CharacterRemoteDatasource.self)
         register { EpisodesService() }.implements(EpisodesRemoteDatasource.self)
         register { LocationService() }.implements(LocationRemoteDatasource.self)
+        register(LocationRemoteDatasource.self, name: "async") { _ in
+            LocationServiceAsync()
+        }
     }
 }
