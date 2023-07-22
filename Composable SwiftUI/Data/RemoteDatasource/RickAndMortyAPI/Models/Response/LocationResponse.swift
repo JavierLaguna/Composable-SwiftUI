@@ -1,13 +1,17 @@
 struct LocationResponse: Codable {
+    let id: Int
     let name: String
-    let url: String
-    let residents: [String]?
+    let type: String
+    let dimension: String
+    let residents: [String]
     
-    func toDomain() -> CharacterLocation {
-        return CharacterLocation(
-            id: self.url.getIdFromUrl() ?? 0,
+    func toDomain() -> Location {
+        return Location(
+            id: self.id,
             name: self.name,
-            residents: self.residents?.compactMap { $0.getIdFromUrl() } ?? []
+            type: LocationType(rawValue: self.type) ?? .unknown,
+            dimension: self.dimension,
+            residents: self.residents.compactMap { $0.getIdFromUrl() }
         )
     }
 }

@@ -33,6 +33,7 @@
 		4987ED252A6A692700AA7839 /* AsyncHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */; };
 		4987ED282A6A75BC00AA7839 /* HttpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED272A6A75BC00AA7839 /* HttpConstants.swift */; };
 		4987ED2B2A6A855E00AA7839 /* CharacterLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED2A2A6A855E00AA7839 /* CharacterLocationResponse.swift */; };
+		4987ED312A6A890700AA7839 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED302A6A890700AA7839 /* Location.swift */; };
 		498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */; };
 		498BEF7828534F58003A3131 /* CharacterRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */; };
 		498BEF7A28535174003A3131 /* Resolver+Datasources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7928535174003A3131 /* Resolver+Datasources.swift */; };
@@ -310,6 +311,14 @@
 			path = MatchBuddy;
 			sourceTree = "<group>";
 		};
+		4987ED342A6A973A00AA7839 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4987ED362A6A976400AA7839 /* GetLocationInfoInteractor.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		498BEF7628534F46003A3131 /* Datasources */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +488,7 @@
 				497781D42836B7520033BC22 /* CharacterLocation.swift */,
 				493BF0302834298700ECC3A3 /* CharacterStatus.swift */,
 				49EDA8CB283BFC7C002C9C80 /* Episode.swift */,
+				4987ED302A6A890700AA7839 /* Location.swift */,
 				49EDA8CD283CB74A002C9C80 /* MatchedEpisodes.swift */,
 				49E4F813283E89FB0037FD72 /* CharacterGender.swift */,
 			);
@@ -755,6 +765,7 @@
 			children = (
 				49E88D2C2830F42F00058486 /* Character */,
 				49E88D3C28310EA200058486 /* InteractorError.swift */,
+				4987ED342A6A973A00AA7839 /* Location */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1002,6 +1013,7 @@
 				494E345F283AA68B00445B79 /* ButtonView.swift in Sources */,
 				49E88D2E2830F43E00058486 /* GetCharactersInteractor.swift in Sources */,
 				49E4F824284928EF0037FD72 /* CharacterHomeCoordinator.swift in Sources */,
+				4987ED312A6A890700AA7839 /* Location.swift in Sources */,
 				494E345D283A9E8A00445B79 /* BusinessConstants.swift in Sources */,
 				49A4A667282F99F300D43FB3 /* Character.swift in Sources */,
 				49A4A65E282F991800D43FB3 /* MainState.swift in Sources */,
