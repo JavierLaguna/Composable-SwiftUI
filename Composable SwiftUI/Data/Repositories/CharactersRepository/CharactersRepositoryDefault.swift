@@ -4,6 +4,7 @@ import Resolver
 final class CharactersRepositoryDefault: CharactersRepository {
     
     @Injected private var service: CharacterRemoteDatasource
+    @Injected(name: "async") private var serviceAsync: CharacterRemoteDatasource
 
     private(set) var nextPage: Int?
     private(set) var totalPages: Int?
@@ -38,5 +39,10 @@ final class CharactersRepositoryDefault: CharactersRepository {
         return service.getCharacters(by: characterIds)
             .map { $0.map { $0.toDomain() } }
             .eraseToAnyPublisher()
+    }
+    
+    func getCharacters(characterIds: [Int]) async throws -> [Character] {
+        try await serviceAsync.getCharacters(by: characterIds)
+            .map { $0.toDomain() }
     }
 }
