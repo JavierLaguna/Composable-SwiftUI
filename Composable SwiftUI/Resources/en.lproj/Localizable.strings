@@ -27,7 +27,6 @@
 "characterDetail.gender" = "Gender";
 "characterDetail.origin" = "Origin";
 "characterDetail.location" = "Location";
-"characterDetail.locationResidents" = "Location residents";
 "characterDetail.numberOfEpisodes" = "Number of episodes";
 
 // MatchBuddy

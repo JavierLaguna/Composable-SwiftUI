@@ -5,8 +5,8 @@ struct CharacterResponse: Codable {
     let species: String
     let type: String
     let gender: String
-    let origin: LocationResponse
-    let location: LocationResponse
+    let origin: CharacterLocationResponse
+    let location: CharacterLocationResponse
     let image: String
     let episode: [String]
     

@@ -33,8 +33,6 @@ struct CharacterDetailView: View {
                 
                 infoView(title: R.string.localizable.characterDetailLocation(), value: character.location.name)
                 
-                infoView(title: R.string.localizable.characterDetailLocationResidents(), value: String(character.location.residents.count))
-                
                 infoView(title: R.string.localizable.characterDetailNumberOfEpisodes(), value: String(character.episodes.count))
                 
                 Color.clear.frame(height: 100)
@@ -127,7 +125,7 @@ struct CharacterDetailView: View {
 
 struct CharacterDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
         
         CharacterDetailView(character: character)
