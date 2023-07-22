@@ -1,16 +1,20 @@
 import Combine
 import Resolver
 
-final class LocationRepositoryDefault: LocationRepository {
+struct LocationRepositoryDefault: LocationRepository {
     
     @Injected private var service: LocationRemoteDatasource
-
+    @Injected(name: "async") private var serviceAsync: LocationRemoteDatasource
+    
     func getCharacterIdsFromLocation(locationId: Int) -> AnyPublisher<[Int], RepositoryError> {
-        
-        return service.getLocation(locationId: locationId)
+        service.getLocation(locationId: locationId)
             .map { response -> [Int] in
-                response.residents?.compactMap { $0.getIdFromUrl() } ?? []
+                response.toDomain().residents
             }
             .eraseToAnyPublisher()
+    }
+    
+    func getLocation(locationId: Int) async throws -> Location {
+        try await serviceAsync.getLocation(locationId: locationId).toDomain()
     }
 }
