@@ -30,6 +30,8 @@
 		494E346E283AAF3F00445B79 /* MatchBuddyReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E346D283AAF3F00445B79 /* MatchBuddyReducer.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
+		4987ED252A6A692700AA7839 /* AsyncHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */; };
+		4987ED282A6A75BC00AA7839 /* HttpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED272A6A75BC00AA7839 /* HttpConstants.swift */; };
 		498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */; };
 		498BEF7828534F58003A3131 /* CharacterRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */; };
 		498BEF7A28535174003A3131 /* Resolver+Datasources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7928535174003A3131 /* Resolver+Datasources.swift */; };
@@ -161,6 +163,8 @@
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
+		4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncHttpClient.swift; sourceTree = "<group>"; };
+		4987ED272A6A75BC00AA7839 /* HttpConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpConstants.swift; sourceTree = "<group>"; };
 		498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryCharactersRepositoryDefaultTests.swift; sourceTree = "<group>"; };
 		498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498BEF7928535174003A3131 /* Resolver+Datasources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver+Datasources.swift"; sourceTree = "<group>"; };
@@ -680,7 +684,9 @@
 		49E88D1E2830F11B00058486 /* HttpClient */ = {
 			isa = PBXGroup;
 			children = (
+				4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */,
 				49E88D1F2830F13500058486 /* HttpClient.swift */,
+				4987ED272A6A75BC00AA7839 /* HttpConstants.swift */,
 			);
 			path = HttpClient;
 			sourceTree = "<group>";
@@ -982,6 +988,7 @@
 				49EDA8BD283BECA3002C9C80 /* Resolver+MatchBuddyModule.swift in Sources */,
 				49E88D35283103F400058486 /* CharactersRepository.swift in Sources */,
 				49E4F82628492CDE0037FD72 /* MatchBuddyCoordinator.swift in Sources */,
+				4987ED252A6A692700AA7839 /* AsyncHttpClient.swift in Sources */,
 				49E88D302830F8DA00058486 /* GetCharactersResponse.swift in Sources */,
 				49E88D262830F23800058486 /* RickAndMortyAPI.swift in Sources */,
 				49E4F831284A94930037FD72 /* NavigationBarAppearance.swift in Sources */,
@@ -1011,6 +1018,7 @@
 				49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */,
 				49E4F80F283D53540037FD72 /* CharacterDetailView.swift in Sources */,
 				49E88D322831019D00058486 /* Resolver+Interactors.swift in Sources */,
+				4987ED282A6A75BC00AA7839 /* HttpConstants.swift in Sources */,
 				494E346A283AAF2A00445B79 /* MatchBuddyAction.swift in Sources */,
 				49EDA8C6283BEFBB002C9C80 /* LocationService.swift in Sources */,
 				49A4A670282F9AB300D43FB3 /* CharactersListReducer.swift in Sources */,
