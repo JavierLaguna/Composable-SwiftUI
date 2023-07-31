@@ -15,7 +15,10 @@ struct CharacterNeighborsView: View {
             VStack {
                 switch(viewStore.locationDetail.state) {
                 case .loading:
-                    Text("LOADING")
+                    VStack {
+                        LoadingView()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
                 case .error(let error):
                     VStack {
@@ -54,7 +57,9 @@ struct CharacterNeighborsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             CharacterNeighborsView(store: Store(
-                initialState: .init(),
+                initialState: .init(
+                    locationDetail: .init(state: .loading)
+                ),
                 reducer: CharacterNeighborsReducer(locationId: 1)
             ))
         }

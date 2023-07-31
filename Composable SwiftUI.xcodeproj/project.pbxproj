@@ -30,6 +30,7 @@
 		494E346E283AAF3F00445B79 /* MatchBuddyReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E346D283AAF3F00445B79 /* MatchBuddyReducer.swift */; };
 		49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C992A783B7B002F7594 /* NeighborsCellView.swift */; };
 		49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C9F2A783EC4002F7594 /* NeighborsListView.swift */; };
+		49529CA42A784058002F7594 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA32A784058002F7594 /* LoadingView.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
 		4987ED252A6A692700AA7839 /* AsyncHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */; };
@@ -172,6 +173,7 @@
 		494E346D283AAF3F00445B79 /* MatchBuddyReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyReducer.swift; sourceTree = "<group>"; };
 		49529C992A783B7B002F7594 /* NeighborsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsCellView.swift; sourceTree = "<group>"; };
 		49529C9F2A783EC4002F7594 /* NeighborsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsListView.swift; sourceTree = "<group>"; };
+		49529CA32A784058002F7594 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				494E345E283AA68B00445B79 /* ButtonView.swift */,
 				49A4A678282FA21200D43FB3 /* CharacterCellView.swift */,
 				494E3465283AAA8500445B79 /* ErrorView.swift */,
+				49529CA32A784058002F7594 /* LoadingView.swift */,
 				49529C992A783B7B002F7594 /* NeighborsCellView.swift */,
 			);
 			path = Components;
@@ -1054,6 +1057,7 @@
 				49EDA8BF283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift in Sources */,
 				49E88D3D28310EA200058486 /* InteractorError.swift in Sources */,
 				4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */,
+				49529CA42A784058002F7594 /* LoadingView.swift in Sources */,
 				49E4F816283E97ED0037FD72 /* View+CornerRadius.swift in Sources */,
 				49A4A664282F993B00D43FB3 /* MainReducer.swift in Sources */,
 				49A4A672282F9C9000D43FB3 /* Resolver.swift in Sources */,
