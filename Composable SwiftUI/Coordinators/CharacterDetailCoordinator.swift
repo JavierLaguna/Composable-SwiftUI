@@ -13,7 +13,7 @@ final class CharacterDetailCoordinator: NavigationCoordinatable {
     }
     
     deinit {
-        print("Deinit HomeCoordinator")
+        print("Deinit CharacterDetailCoordinator")
     }
 }
 
