@@ -18,4 +18,8 @@ struct LocationRepositoryMock: LocationRepository {
             .setFailureType(to: RepositoryError.self)
             .eraseToAnyPublisher()
     }
+    
+    func getLocation(locationId: Int) async throws -> Location { // TODO: JLI
+        Location(id: 1, name: "Eartch", type: .planet, dimension: "dim", residents: [1, 4])
+    }
 }

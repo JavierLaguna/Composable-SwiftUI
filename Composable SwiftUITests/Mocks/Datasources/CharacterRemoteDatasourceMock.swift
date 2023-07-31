@@ -50,4 +50,12 @@ struct CharacterRemoteDatasourceMock: CharacterRemoteDatasource {
             .setFailureType(to: RepositoryError.self)
             .eraseToAnyPublisher()
     }
+    
+    func getCharacter(by id: Int) async throws -> CharacterResponse {
+        expectedResponseByIds.first!
+    }
+    
+    func getCharacters(by characterIds: [Int]) async throws -> [CharacterResponse] {
+        expectedResponseByIds
+    }
 }
