@@ -28,6 +28,8 @@
 		494E346A283AAF2A00445B79 /* MatchBuddyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E3469283AAF2A00445B79 /* MatchBuddyAction.swift */; };
 		494E346C283AAF3500445B79 /* MatchBuddyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E346B283AAF3500445B79 /* MatchBuddyEnvironment.swift */; };
 		494E346E283AAF3F00445B79 /* MatchBuddyReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E346D283AAF3F00445B79 /* MatchBuddyReducer.swift */; };
+		49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C992A783B7B002F7594 /* NeighborsCellView.swift */; };
+		49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C9F2A783EC4002F7594 /* NeighborsListView.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
 		4987ED252A6A692700AA7839 /* AsyncHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */; };
@@ -168,6 +170,8 @@
 		494E3469283AAF2A00445B79 /* MatchBuddyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyAction.swift; sourceTree = "<group>"; };
 		494E346B283AAF3500445B79 /* MatchBuddyEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyEnvironment.swift; sourceTree = "<group>"; };
 		494E346D283AAF3F00445B79 /* MatchBuddyReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyReducer.swift; sourceTree = "<group>"; };
+		49529C992A783B7B002F7594 /* NeighborsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsCellView.swift; sourceTree = "<group>"; };
+		49529C9F2A783EC4002F7594 /* NeighborsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsListView.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
@@ -337,6 +341,7 @@
 			children = (
 				4987ED3D2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift */,
 				4987ED3B2A6AAB2D00AA7839 /* CharacterNeighborsView.swift */,
+				49529C9F2A783EC4002F7594 /* NeighborsListView.swift */,
 			);
 			path = CharacterNeighbors;
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 				494E345E283AA68B00445B79 /* ButtonView.swift */,
 				49A4A678282FA21200D43FB3 /* CharacterCellView.swift */,
 				494E3465283AAA8500445B79 /* ErrorView.swift */,
+				49529C992A783B7B002F7594 /* NeighborsCellView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1080,6 +1086,7 @@
 				494E3468283AAF1F00445B79 /* MatchBuddyState.swift in Sources */,
 				49EDA8D0283CEB81002C9C80 /* EpisodesRepository.swift in Sources */,
 				49E88D232830F21400058486 /* CharacterService.swift in Sources */,
+				49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */,
 				49EDA8CA283BFC3D002C9C80 /* BeerBuddy.swift in Sources */,
 				494E346C283AAF3500445B79 /* MatchBuddyEnvironment.swift in Sources */,
 				49A4A66C282F9A9B00D43FB3 /* CharactersListAction.swift in Sources */,
@@ -1112,6 +1119,7 @@
 				49A4A662282F992F00D43FB3 /* MainEnvironment.swift in Sources */,
 				49E4F8222849226E0037FD72 /* CharacterDetailCoordinator.swift in Sources */,
 				49EDA8CE283CB74A002C9C80 /* MatchedEpisodes.swift in Sources */,
+				49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
