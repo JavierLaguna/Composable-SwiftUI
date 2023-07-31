@@ -8,12 +8,12 @@ struct CharacterRemoteDatasourceMock: CharacterRemoteDatasource {
     var expectedResponseByPage: GetCharactersResponse = GetCharactersResponse(
         info: GetCharactersResponse.InfoResponse(pages: 12),
         results: [
-            CharacterResponse(id: 1, name: "Rick", status: "alive", species: "", type: "", gender: "male", origin: LocationResponse(name: "earth", url: "url", residents: []), location: LocationResponse(name: "earth", url: "url", residents: []), image: "image", episode: ["url/1", "url/2"])
+            CharacterResponse(id: 1, name: "Rick", status: "alive", species: "", type: "", gender: "male", origin: CharacterLocationResponse(name: "earth", url: "urlLocation"), location: CharacterLocationResponse(name: "earth", url: "urlLocation"), image: "image", episode: ["url/1", "url/2"])
         ]
     )
     var expectedResponseByIds: [CharacterResponse] = [
-        CharacterResponse(id: 1, name: "Rick", status: "alive", species: "", type: "", gender: "male", origin: LocationResponse(name: "earth", url: "url", residents: []), location: LocationResponse(name: "earth", url: "url", residents: []), image: "image", episode: ["url/1", "url/2"]),
-        CharacterResponse(id: 2, name: "Morty", status: "alive", species: "", type: "", gender: "male", origin: LocationResponse(name: "earth", url: "url", residents: []), location: LocationResponse(name: "earth", url: "url", residents: []), image: "image", episode: ["url/1", "url/2"])
+        CharacterResponse(id: 1, name: "Rick", status: "alive", species: "", type: "", gender: "male", origin: CharacterLocationResponse(name: "earth", url: "urlLocation"), location: CharacterLocationResponse(name: "earth", url: "urlLocation"), image: "image", episode: ["url/1", "url/2"]),
+        CharacterResponse(id: 2, name: "Morty", status: "alive", species: "", type: "", gender: "male", origin: CharacterLocationResponse(name: "earth", url: "urlLocation"), location: CharacterLocationResponse(name: "earth", url: "urlLocation"), image: "image", episode: ["url/1", "url/2"])
     ]
     var expectedError: RepositoryError = .invalidUrl
     

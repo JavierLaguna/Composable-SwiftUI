@@ -23,14 +23,18 @@ final class ResponseMapperTests: XCTestCase {
     
     func testLocationResponseToDomain() throws {
         let response = LocationResponse(
+            id: 1,
             name: "Earth",
-            url: "url/id/1",
+            type: "Spacecraft",
+            dimension: "dimension",
             residents: ["url/1", "url/3"]
         )
         
-        let domainDto = CharacterLocation (
+        let domainDto = Location (
             id: 1,
             name: "Earth",
+            type: .spacecraft,
+            dimension: "dimension",
             residents: [1, 3]
         )
         
@@ -38,10 +42,9 @@ final class ResponseMapperTests: XCTestCase {
     }
     
     func testCharacterResponseToDomain() throws {
-        let locationResponse = LocationResponse(
+        let locationResponse = CharacterLocationResponse(
             name: "Earth",
-            url: "url/id/1",
-            residents: ["url/1", "url/3"]
+            url: "url/1"
         )
         
         let response = CharacterResponse(

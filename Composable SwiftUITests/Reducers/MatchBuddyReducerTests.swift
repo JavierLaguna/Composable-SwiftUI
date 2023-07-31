@@ -22,7 +22,7 @@ final class MatchBuddyReducerTests: XCTestCase {
         let interactor = GetBeerBuddyInteractorMock()
         Resolver.test.register { interactor as GetBeerBuddyInteractor }
         
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
         
         let store = TestStore(
@@ -43,7 +43,7 @@ final class MatchBuddyReducerTests: XCTestCase {
         let interactor = GetBeerBuddyInteractorMock(success: true, expectedResponse: nil)
         Resolver.test.register { interactor as GetBeerBuddyInteractor }
         
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
         
         let store = TestStore(
@@ -63,7 +63,7 @@ final class MatchBuddyReducerTests: XCTestCase {
     func testGetBeerBuddyFail() {
         Resolver.test.register { GetBeerBuddyInteractorMock(success: false) as GetBeerBuddyInteractor }
         
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
         
         let store = TestStore(
