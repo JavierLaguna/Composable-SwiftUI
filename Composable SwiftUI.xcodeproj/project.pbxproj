@@ -31,6 +31,7 @@
 		49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C992A783B7B002F7594 /* NeighborsCellView.swift */; };
 		49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C9F2A783EC4002F7594 /* NeighborsListView.swift */; };
 		49529CA42A784058002F7594 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA32A784058002F7594 /* LoadingView.swift */; };
+		49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */; };
 		49529CAB2A792F51002F7594 /* ReducerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CAA2A792F51002F7594 /* ReducerTestCase.swift */; };
 		4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
@@ -176,6 +177,7 @@
 		49529C992A783B7B002F7594 /* NeighborsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsCellView.swift; sourceTree = "<group>"; };
 		49529C9F2A783EC4002F7594 /* NeighborsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsListView.swift; sourceTree = "<group>"; };
 		49529CA32A784058002F7594 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducerTests.swift; sourceTree = "<group>"; };
 		49529CAA2A792F51002F7594 /* ReducerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerTestCase.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInfoInteractorMock.swift; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 			children = (
 				49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */,
 				49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */,
+				49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */,
 				49529CAA2A792F51002F7594 /* ReducerTestCase.swift */,
 			);
 			path = Reducers;
@@ -1154,6 +1157,7 @@
 				49E4F83C284AA0F40037FD72 /* Resolver+Environments.swift in Sources */,
 				49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */,
 				49E4F845284AA46F0037FD72 /* CharactersListReducerTests.swift in Sources */,
+				49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */,
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
 				49E4F843284AA23A0037FD72 /* GetCharactersInteractorMock.swift in Sources */,
 				491A39932850986B00D17719 /* EpisodesRepositoryMock.swift in Sources */,
