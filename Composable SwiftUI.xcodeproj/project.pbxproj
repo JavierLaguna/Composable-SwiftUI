@@ -32,6 +32,7 @@
 		49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C9F2A783EC4002F7594 /* NeighborsListView.swift */; };
 		49529CA42A784058002F7594 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA32A784058002F7594 /* LoadingView.swift */; };
 		49529CAB2A792F51002F7594 /* ReducerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CAA2A792F51002F7594 /* ReducerTestCase.swift */; };
+		4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
 		4987ED252A6A692700AA7839 /* AsyncHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */; };
@@ -175,7 +176,9 @@
 		49529C992A783B7B002F7594 /* NeighborsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsCellView.swift; sourceTree = "<group>"; };
 		49529C9F2A783EC4002F7594 /* NeighborsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsListView.swift; sourceTree = "<group>"; };
 		49529CA32A784058002F7594 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		49529CAA2A792F51002F7594 /* ReducerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerTestCase.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInfoInteractorMock.swift; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
 		4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncHttpClient.swift; sourceTree = "<group>"; };
@@ -672,8 +675,9 @@
 		49E4F841284AA2230037FD72 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */,
 				49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */,
+				49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */,
+				4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1156,6 +1160,7 @@
 				49E4F85A284FCFBE0037FD72 /* Resolver+Repositories.swift in Sources */,
 				491A398F2850948900D17719 /* CharacterTests.swift in Sources */,
 				498BEF7E2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift in Sources */,
+				4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */,
 				498BEF7828534F58003A3131 /* CharacterRemoteDatasourceMock.swift in Sources */,
 				498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */,
 			);
