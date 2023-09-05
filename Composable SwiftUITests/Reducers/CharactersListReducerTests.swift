@@ -52,7 +52,7 @@ final class CharactersListReducerTests: XCTestCase {
         let interactor = GetCharactersInteractorMock()
         Resolver.test.register { interactor as GetCharactersInteractor }
         
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         let initialCharacters: [Character] = [
             Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: []),
             Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: [])

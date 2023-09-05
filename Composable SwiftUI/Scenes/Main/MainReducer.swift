@@ -2,9 +2,6 @@ import ComposableArchitecture
 import Resolver
 
 let mainReducer = Reducer<MainState, MainAction, MainEnvironment>.combine(
-    .init { _, _, _ in
-        return .none
-    },
     charactersListReducer.pullback(
         state: \.charactersList,
         action: /MainAction.charactersList,
@@ -18,5 +15,8 @@ let mainReducer = Reducer<MainState, MainAction, MainEnvironment>.combine(
         environment: { _ in
             Resolver.resolve()
         }
-    )
+    ),
+    .init { _, _, _ in
+        return .none
+    }
 )

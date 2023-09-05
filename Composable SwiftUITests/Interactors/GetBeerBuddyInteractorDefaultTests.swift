@@ -19,7 +19,7 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
     }
     
     func testExecuteSuccess() throws {
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
         
@@ -50,7 +50,7 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
     }
     
     func testExecuteBeerBuddyNotFoundMsgError() throws {
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
         
@@ -70,7 +70,7 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
     }
     
     func testExecuteLocationRepositoryFail() throws {
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
         
@@ -100,7 +100,7 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
     }
     
     func testExecuteCharacterRepositoryFail() throws {
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
         
@@ -126,7 +126,7 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
     }
     
     func testExecuteEpisodesRepositoryFail() throws {
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
         

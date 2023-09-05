@@ -28,8 +28,24 @@
 		494E346A283AAF2A00445B79 /* MatchBuddyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E3469283AAF2A00445B79 /* MatchBuddyAction.swift */; };
 		494E346C283AAF3500445B79 /* MatchBuddyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E346B283AAF3500445B79 /* MatchBuddyEnvironment.swift */; };
 		494E346E283AAF3F00445B79 /* MatchBuddyReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E346D283AAF3F00445B79 /* MatchBuddyReducer.swift */; };
+		49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C992A783B7B002F7594 /* NeighborsCellView.swift */; };
+		49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C9F2A783EC4002F7594 /* NeighborsListView.swift */; };
+		49529CA42A784058002F7594 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA32A784058002F7594 /* LoadingView.swift */; };
+		49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */; };
+		49529CAB2A792F51002F7594 /* ReducerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CAA2A792F51002F7594 /* ReducerTestCase.swift */; };
+		4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
+		4987ED252A6A692700AA7839 /* AsyncHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */; };
+		4987ED282A6A75BC00AA7839 /* HttpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED272A6A75BC00AA7839 /* HttpConstants.swift */; };
+		4987ED2B2A6A855E00AA7839 /* CharacterLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED2A2A6A855E00AA7839 /* CharacterLocationResponse.swift */; };
+		4987ED312A6A890700AA7839 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED302A6A890700AA7839 /* Location.swift */; };
+		4987ED372A6A976400AA7839 /* GetLocationInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED362A6A976400AA7839 /* GetLocationInfoInteractor.swift */; };
+		4987ED3C2A6AAB2D00AA7839 /* CharacterNeighborsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED3B2A6AAB2D00AA7839 /* CharacterNeighborsView.swift */; };
+		4987ED3E2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED3D2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift */; };
+		4987ED402A6BBB5300AA7839 /* CharacterNeighborsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED3F2A6BBB5300AA7839 /* CharacterNeighborsCoordinator.swift */; };
+		4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED422A6BD8E700AA7839 /* LocationDetail.swift */; };
+		4987ED462A6BD91E00AA7839 /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED452A6BD91E00AA7839 /* LocationType.swift */; };
 		498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */; };
 		498BEF7828534F58003A3131 /* CharacterRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */; };
 		498BEF7A28535174003A3131 /* Resolver+Datasources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7928535174003A3131 /* Resolver+Datasources.swift */; };
@@ -158,9 +174,25 @@
 		494E3469283AAF2A00445B79 /* MatchBuddyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyAction.swift; sourceTree = "<group>"; };
 		494E346B283AAF3500445B79 /* MatchBuddyEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyEnvironment.swift; sourceTree = "<group>"; };
 		494E346D283AAF3F00445B79 /* MatchBuddyReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyReducer.swift; sourceTree = "<group>"; };
+		49529C992A783B7B002F7594 /* NeighborsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsCellView.swift; sourceTree = "<group>"; };
+		49529C9F2A783EC4002F7594 /* NeighborsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsListView.swift; sourceTree = "<group>"; };
+		49529CA32A784058002F7594 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducerTests.swift; sourceTree = "<group>"; };
+		49529CAA2A792F51002F7594 /* ReducerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerTestCase.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInfoInteractorMock.swift; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
+		4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncHttpClient.swift; sourceTree = "<group>"; };
+		4987ED272A6A75BC00AA7839 /* HttpConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpConstants.swift; sourceTree = "<group>"; };
+		4987ED2A2A6A855E00AA7839 /* CharacterLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocationResponse.swift; sourceTree = "<group>"; };
+		4987ED302A6A890700AA7839 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		4987ED362A6A976400AA7839 /* GetLocationInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInfoInteractor.swift; sourceTree = "<group>"; };
+		4987ED3B2A6AAB2D00AA7839 /* CharacterNeighborsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsView.swift; sourceTree = "<group>"; };
+		4987ED3D2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducer.swift; sourceTree = "<group>"; };
+		4987ED3F2A6BBB5300AA7839 /* CharacterNeighborsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsCoordinator.swift; sourceTree = "<group>"; };
+		4987ED422A6BD8E700AA7839 /* LocationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetail.swift; sourceTree = "<group>"; };
+		4987ED452A6BD91E00AA7839 /* LocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
 		498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryCharactersRepositoryDefaultTests.swift; sourceTree = "<group>"; };
 		498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498BEF7928535174003A3131 /* Resolver+Datasources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver+Datasources.swift"; sourceTree = "<group>"; };
@@ -304,6 +336,55 @@
 			path = MatchBuddy;
 			sourceTree = "<group>";
 		};
+		4987ED342A6A973A00AA7839 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4987ED362A6A976400AA7839 /* GetLocationInfoInteractor.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		4987ED392A6AAB1C00AA7839 /* CharacterNeighbors */ = {
+			isa = PBXGroup;
+			children = (
+				4987ED3D2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift */,
+				4987ED3B2A6AAB2D00AA7839 /* CharacterNeighborsView.swift */,
+				49529C9F2A783EC4002F7594 /* NeighborsListView.swift */,
+			);
+			path = CharacterNeighbors;
+			sourceTree = "<group>";
+		};
+		4987ED482A6BD92E00AA7839 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				49EDA8C9283BFC3D002C9C80 /* BeerBuddy.swift */,
+				49A4A666282F99F300D43FB3 /* Character.swift */,
+				49E4F813283E89FB0037FD72 /* CharacterGender.swift */,
+				497781D42836B7520033BC22 /* CharacterLocation.swift */,
+				493BF0302834298700ECC3A3 /* CharacterStatus.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		4987ED492A6BD93900AA7839 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4987ED302A6A890700AA7839 /* Location.swift */,
+				4987ED422A6BD8E700AA7839 /* LocationDetail.swift */,
+				4987ED452A6BD91E00AA7839 /* LocationType.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		4987ED4A2A6BD94D00AA7839 /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				49EDA8CB283BFC7C002C9C80 /* Episode.swift */,
+				49EDA8CD283CB74A002C9C80 /* MatchedEpisodes.swift */,
+			);
+			path = Episode;
+			sourceTree = "<group>";
+		};
 		498BEF7628534F46003A3131 /* Datasources */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +495,7 @@
 			children = (
 				49E88D33283103E000058486 /* Repositories */,
 				49E88D2B2830F41C00058486 /* Interactors */,
+				49E88D3C28310EA200058486 /* InteractorError.swift */,
 				49A4A665282F99DF00D43FB3 /* Entities */,
 				494E345C283A9E8A00445B79 /* BusinessConstants.swift */,
 			);
@@ -445,9 +527,10 @@
 		49A4A65A282F974E00D43FB3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				49A4A65C282F990900D43FB3 /* Main */,
 				49E4F80D283D533E0037FD72 /* CharacterDetail */,
+				4987ED392A6AAB1C00AA7839 /* CharacterNeighbors */,
 				49A4A668282F9A5B00D43FB3 /* CharactersList */,
+				49A4A65C282F990900D43FB3 /* Main */,
 				497781D62836BB6F0033BC22 /* MatchBuddy */,
 				49E4F8272849314A0037FD72 /* MatchBuddyInfo */,
 			);
@@ -468,13 +551,9 @@
 		49A4A665282F99DF00D43FB3 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				49EDA8C9283BFC3D002C9C80 /* BeerBuddy.swift */,
-				49A4A666282F99F300D43FB3 /* Character.swift */,
-				497781D42836B7520033BC22 /* CharacterLocation.swift */,
-				493BF0302834298700ECC3A3 /* CharacterStatus.swift */,
-				49EDA8CB283BFC7C002C9C80 /* Episode.swift */,
-				49EDA8CD283CB74A002C9C80 /* MatchedEpisodes.swift */,
-				49E4F813283E89FB0037FD72 /* CharacterGender.swift */,
+				4987ED482A6BD92E00AA7839 /* Character */,
+				4987ED4A2A6BD94D00AA7839 /* Episode */,
+				4987ED492A6BD93900AA7839 /* Location */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -497,6 +576,8 @@
 				494E345E283AA68B00445B79 /* ButtonView.swift */,
 				49A4A678282FA21200D43FB3 /* CharacterCellView.swift */,
 				494E3465283AAA8500445B79 /* ErrorView.swift */,
+				49529CA32A784058002F7594 /* LoadingView.swift */,
+				49529C992A783B7B002F7594 /* NeighborsCellView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -548,6 +629,7 @@
 				49E4F823284928EF0037FD72 /* CharacterHomeCoordinator.swift */,
 				49E4F8212849226E0037FD72 /* CharacterDetailCoordinator.swift */,
 				49E4F82528492CDE0037FD72 /* MatchBuddyCoordinator.swift */,
+				4987ED3F2A6BBB5300AA7839 /* CharacterNeighborsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -587,6 +669,8 @@
 			children = (
 				49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */,
 				49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */,
+				49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */,
+				49529CAA2A792F51002F7594 /* ReducerTestCase.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -594,8 +678,9 @@
 		49E4F841284AA2230037FD72 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */,
 				49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */,
+				49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */,
+				4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -680,7 +765,9 @@
 		49E88D1E2830F11B00058486 /* HttpClient */ = {
 			isa = PBXGroup;
 			children = (
+				4987ED242A6A692700AA7839 /* AsyncHttpClient.swift */,
 				49E88D1F2830F13500058486 /* HttpClient.swift */,
+				4987ED272A6A75BC00AA7839 /* HttpConstants.swift */,
 			);
 			path = HttpClient;
 			sourceTree = "<group>";
@@ -727,6 +814,7 @@
 				49E88D2F2830F8DA00058486 /* GetCharactersResponse.swift */,
 				49EDA8C7283BF04B002C9C80 /* LocationResponse.swift */,
 				49E4F808283D3F9E0037FD72 /* CharacterResponse.swift */,
+				4987ED2A2A6A855E00AA7839 /* CharacterLocationResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -745,7 +833,7 @@
 			isa = PBXGroup;
 			children = (
 				49E88D2C2830F42F00058486 /* Character */,
-				49E88D3C28310EA200058486 /* InteractorError.swift */,
+				4987ED342A6A973A00AA7839 /* Location */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -961,9 +1049,11 @@
 			files = (
 				49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */,
 				49E4F829284931640037FD72 /* MatchBuddyInfoView.swift in Sources */,
+				4987ED462A6BD91E00AA7839 /* LocationType.swift in Sources */,
 				491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */,
 				493BF03328342D1900ECC3A3 /* String+URL.swift in Sources */,
 				49A4A679282FA21200D43FB3 /* CharacterCellView.swift in Sources */,
+				4987ED402A6BBB5300AA7839 /* CharacterNeighborsCoordinator.swift in Sources */,
 				49E4F818283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift in Sources */,
 				49E4F814283E89FB0037FD72 /* CharacterGender.swift in Sources */,
 				49E4F820284920180037FD72 /* CharactersListCoordinator.swift in Sources */,
@@ -971,9 +1061,12 @@
 				491A399A28533EBA00D17719 /* Resolver+Datasources.swift in Sources */,
 				49A4A66A282F9A8C00D43FB3 /* CharactersListState.swift in Sources */,
 				491A399828533DB200D17719 /* CharacterRemoteDatasource.swift in Sources */,
+				4987ED372A6A976400AA7839 /* GetLocationInfoInteractor.swift in Sources */,
 				49E4F82B284A11D80037FD72 /* UIScreen+Sizes.swift in Sources */,
 				49EDA8BF283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift in Sources */,
 				49E88D3D28310EA200058486 /* InteractorError.swift in Sources */,
+				4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */,
+				49529CA42A784058002F7594 /* LoadingView.swift in Sources */,
 				49E4F816283E97ED0037FD72 /* View+CornerRadius.swift in Sources */,
 				49A4A664282F993B00D43FB3 /* MainReducer.swift in Sources */,
 				49A4A672282F9C9000D43FB3 /* Resolver.swift in Sources */,
@@ -982,6 +1075,7 @@
 				49EDA8BD283BECA3002C9C80 /* Resolver+MatchBuddyModule.swift in Sources */,
 				49E88D35283103F400058486 /* CharactersRepository.swift in Sources */,
 				49E4F82628492CDE0037FD72 /* MatchBuddyCoordinator.swift in Sources */,
+				4987ED252A6A692700AA7839 /* AsyncHttpClient.swift in Sources */,
 				49E88D302830F8DA00058486 /* GetCharactersResponse.swift in Sources */,
 				49E88D262830F23800058486 /* RickAndMortyAPI.swift in Sources */,
 				49E4F831284A94930037FD72 /* NavigationBarAppearance.swift in Sources */,
@@ -992,6 +1086,7 @@
 				494E345F283AA68B00445B79 /* ButtonView.swift in Sources */,
 				49E88D2E2830F43E00058486 /* GetCharactersInteractor.swift in Sources */,
 				49E4F824284928EF0037FD72 /* CharacterHomeCoordinator.swift in Sources */,
+				4987ED312A6A890700AA7839 /* Location.swift in Sources */,
 				494E345D283A9E8A00445B79 /* BusinessConstants.swift in Sources */,
 				49A4A667282F99F300D43FB3 /* Character.swift in Sources */,
 				49A4A65E282F991800D43FB3 /* MainState.swift in Sources */,
@@ -1004,21 +1099,26 @@
 				494E3468283AAF1F00445B79 /* MatchBuddyState.swift in Sources */,
 				49EDA8D0283CEB81002C9C80 /* EpisodesRepository.swift in Sources */,
 				49E88D232830F21400058486 /* CharacterService.swift in Sources */,
+				49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */,
 				49EDA8CA283BFC3D002C9C80 /* BeerBuddy.swift in Sources */,
 				494E346C283AAF3500445B79 /* MatchBuddyEnvironment.swift in Sources */,
 				49A4A66C282F9A9B00D43FB3 /* CharactersListAction.swift in Sources */,
 				49E88D202830F13500058486 /* HttpClient.swift in Sources */,
+				4987ED3C2A6AAB2D00AA7839 /* CharacterNeighborsView.swift in Sources */,
 				49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */,
 				49E4F80F283D53540037FD72 /* CharacterDetailView.swift in Sources */,
 				49E88D322831019D00058486 /* Resolver+Interactors.swift in Sources */,
+				4987ED282A6A75BC00AA7839 /* HttpConstants.swift in Sources */,
 				494E346A283AAF2A00445B79 /* MatchBuddyAction.swift in Sources */,
 				49EDA8C6283BEFBB002C9C80 /* LocationService.swift in Sources */,
 				49A4A670282F9AB300D43FB3 /* CharactersListReducer.swift in Sources */,
 				49E4F807283D393B0037FD72 /* EpisodeResponse.swift in Sources */,
 				49E88D37283104FB00058486 /* Resolver+Repositories.swift in Sources */,
+				4987ED2B2A6A855E00AA7839 /* CharacterLocationResponse.swift in Sources */,
 				49A4A676282F9CD400D43FB3 /* Resolver+CharactersListModule.swift in Sources */,
 				49E88D3A2831056C00058486 /* CharactersRepositoryDefault.swift in Sources */,
 				49EDA8D5283CEC2C002C9C80 /* EpisodesService.swift in Sources */,
+				4987ED3E2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift in Sources */,
 				491A399E28533FF000D17719 /* LocationRemoteDatasource.swift in Sources */,
 				49E4F81E28491FDE0037FD72 /* MainCoordinator.swift in Sources */,
 				49A4A660282F992100D43FB3 /* MainAction.swift in Sources */,
@@ -1032,6 +1132,7 @@
 				49A4A662282F992F00D43FB3 /* MainEnvironment.swift in Sources */,
 				49E4F8222849226E0037FD72 /* CharacterDetailCoordinator.swift in Sources */,
 				49EDA8CE283CB74A002C9C80 /* MatchedEpisodes.swift in Sources */,
+				49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,6 +1140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49529CAB2A792F51002F7594 /* ReducerTestCase.swift in Sources */,
 				49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */,
 				49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */,
 				491A3991285097B900D17719 /* LocationRepositoryMock.swift in Sources */,
@@ -1055,12 +1157,14 @@
 				49E4F83C284AA0F40037FD72 /* Resolver+Environments.swift in Sources */,
 				49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */,
 				49E4F845284AA46F0037FD72 /* CharactersListReducerTests.swift in Sources */,
+				49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */,
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
 				49E4F843284AA23A0037FD72 /* GetCharactersInteractorMock.swift in Sources */,
 				491A39932850986B00D17719 /* EpisodesRepositoryMock.swift in Sources */,
 				49E4F85A284FCFBE0037FD72 /* Resolver+Repositories.swift in Sources */,
 				491A398F2850948900D17719 /* CharacterTests.swift in Sources */,
 				498BEF7E2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift in Sources */,
+				4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */,
 				498BEF7828534F58003A3131 /* CharacterRemoteDatasourceMock.swift in Sources */,
 				498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */,
 			);
@@ -1437,8 +1541,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
+				kind = exactVersion;
+				version = 0.56.0;
 			};
 		};
 		49A4A650282F958B00D43FB3 /* XCRemoteSwiftPackageReference "Resolver" */ = {

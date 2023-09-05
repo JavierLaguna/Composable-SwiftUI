@@ -154,7 +154,7 @@ struct MatchBuddyView: View {
 
 struct MatchBuddyView_Previews: PreviewProvider {
     static var previews: some View {
-        let location = CharacterLocation(id: 1, name: "Earth", residents: [])
+        let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
         
         MatchBuddyView(character: character)
