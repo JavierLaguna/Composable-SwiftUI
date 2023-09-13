@@ -4,12 +4,12 @@ import Resolver
 
 struct CharactersListView: View {
     
-    @Injected(name: "scoped") var store: Store<CharactersListState, CharactersListAction>
+    @Injected(name: "scoped") var store: CharactersListStore
     
     @EnvironmentObject private var charactersListRouter: CharactersListCoordinator.Router
     
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
                 
                 if viewStore.characters.error == nil {
@@ -18,7 +18,7 @@ struct CharactersListView: View {
                             Image(systemName: "magnifyingglass")
                                 .foregroundColor(Theme.Colors.primary)
                             
-                            TextField(R.string.localizable.charactersListSearch(), text: viewStore.binding(\.$searchText))
+                            TextField(R.string.localizable.charactersListSearch(), text: viewStore.$searchText)
                                 .foregroundColor(Theme.Colors.primary)
                         }
                         .padding()

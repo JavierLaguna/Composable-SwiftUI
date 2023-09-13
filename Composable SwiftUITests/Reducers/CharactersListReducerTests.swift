@@ -4,6 +4,7 @@ import Resolver
 
 @testable import Composable_SwiftUI
 
+@MainActor
 final class CharactersListReducerTests: XCTestCase {
     
     override func setUp() {
@@ -18,40 +19,43 @@ final class CharactersListReducerTests: XCTestCase {
         Resolver.tearDown()
     }
     
-    func testBindingSearchText() {
+    func testBindingSearchText() async {
         let store = TestStore(
-            initialState: CharactersListState(),
-            reducer: charactersListReducer,
-            environment: Resolver.resolve()
+            initialState: CharactersListReducer.State(),
+            reducer: {
+                CharactersListReducer()
+            }
         )
         
-        store.send(.set(\.$searchText, "test text")) {
+        await store.send(.set(\.$searchText, "test text")) {
             $0.searchText = "test text"
         }
     }
-    
-    func testGetCharactersSuccess() {
+     
+    func testGetCharactersSuccess() async {
         let interactor = GetCharactersInteractorMock()
         Resolver.test.register { interactor as GetCharactersInteractor }
-        
+
         let store = TestStore(
-            initialState: CharactersListState(),
-            reducer: charactersListReducer,
-            environment: Resolver.resolve()
+            initialState: CharactersListReducer.State(),
+            reducer: {
+                CharactersListReducer()
+            }
         )
-        
-        store.send(.getCharacters) {
+
+        await store.send(.getCharacters) {
             $0.characters.state = .loading
         }
-        store.receive(.onGetCharacters(.success(interactor.expectedResponse))) {
+        
+        await store.receive(.onGetCharacters(.success(interactor.expectedResponse))) {
             $0.characters.state = .populated(data: interactor.expectedResponse)
         }
     }
-    
-    func testGetCharactersSuccessAndMoreCharacters() {
+
+    func testGetCharactersSuccessAndMoreCharacters() async {
         let interactor = GetCharactersInteractorMock()
         Resolver.test.register { interactor as GetCharactersInteractor }
-        
+
         let location = CharacterLocation(id: 1, name: "Earth")
         let initialCharacters: [Character] = [
             Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: []),
@@ -59,36 +63,40 @@ final class CharactersListReducerTests: XCTestCase {
         ]
         
         let store = TestStore(
-            initialState: CharactersListState(
+            initialState: CharactersListReducer.State(
                 characters: StateLoadable(state: .populated(data: initialCharacters))
             ),
-            reducer: charactersListReducer,
-            environment: Resolver.resolve()
+            reducer: {
+                CharactersListReducer()
+            }
         )
-        
-        store.send(.getCharacters) {
+
+        await store.send(.getCharacters) {
             $0.characters.state = .loading
         }
-        store.receive(.onGetCharacters(.success(interactor.expectedResponse))) {
+        
+        await store.receive(.onGetCharacters(.success(interactor.expectedResponse))) {
             var newData = initialCharacters
             newData.append(contentsOf: interactor.expectedResponse)
             $0.characters.state = .populated(data: newData)
         }
     }
-    
-    func testGetCharactersFail() {
+
+    func testGetCharactersFail() async {
         Resolver.test.register { GetCharactersInteractorMock(success: false) as GetCharactersInteractor }
-        
+
         let store = TestStore(
-            initialState: CharactersListState(),
-            reducer: charactersListReducer,
-            environment: Resolver.resolve()
+            initialState: CharactersListReducer.State(),
+            reducer: {
+                CharactersListReducer()
+            }
         )
-        
-        store.send(.getCharacters) {
+
+        await store.send(.getCharacters) {
             $0.characters.state = .loading
         }
-        store.receive(.onGetCharacters(.failure(.generic(message: "mock error")))) {
+        
+        await store.receive(.onGetCharacters(.failure(InteractorError.generic(message: "mock error")))) {
             $0.characters.state = .error(InteractorError.generic(message: "mock error"))
         }
     }

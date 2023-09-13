@@ -16,7 +16,7 @@ final class CharactersListStateTests: XCTestCase {
             Character(id: 4, name: "Morty rick", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar4.jpeg", episodes: [])
         ]
         
-        var state = CharactersListState()
+        var state = CharactersListReducer.State()
         XCTAssertNil(state.filteredCharacters)
         
         state.characters.state = .populated(data: characters)

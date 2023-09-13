@@ -1,48 +1,33 @@
-import Combine
 import Resolver
 
 final class CharactersRepositoryDefault: CharactersRepository {
     
     @Injected private var service: CharacterRemoteDatasource
-    @Injected(name: "async") private var serviceAsync: CharacterRemoteDatasource
 
     private(set) var nextPage: Int?
     private(set) var totalPages: Int?
     
-    func getCharacters() -> AnyPublisher<[Character], RepositoryError> {
+    func getCharacters() async throws -> [Character] {
         
-        if let nextPage = nextPage,
-           let totalPages = totalPages,
-           nextPage > totalPages {
-            return Just([])
-                .setFailureType(to: RepositoryError.self)
-                .eraseToAnyPublisher()
+        if let nextPage, let totalPages, nextPage > totalPages {
+            return []
         }
         
-        return service.getCharacters(page: nextPage)
-            .map { [weak self] response in
-                if let nextPage = self?.nextPage {
-                    self?.nextPage = nextPage + 1
-                } else {
-                    self?.nextPage = 2
-                }
-                
-                self?.totalPages = response.info.pages
-                
-                return response.results.map{ $0.toDomain() }
-            }
-            .eraseToAnyPublisher()
-    }
-    
-    func getCharacters(characterIds: [Int]) -> AnyPublisher<[Character], RepositoryError> {
+        let response = try await service.getCharacters(page: nextPage)
         
-        return service.getCharacters(by: characterIds)
-            .map { $0.map { $0.toDomain() } }
-            .eraseToAnyPublisher()
+        if let nextPage {
+            self.nextPage = nextPage + 1
+        } else {
+            nextPage = 2
+        }
+        
+        totalPages = response.info.pages
+        
+        return response.results.map{ $0.toDomain() }
     }
     
     func getCharacters(characterIds: [Int]) async throws -> [Character] {
-        try await serviceAsync.getCharacters(by: characterIds)
+        try await service.getCharacters(by: characterIds)
             .map { $0.toDomain() }
     }
 }

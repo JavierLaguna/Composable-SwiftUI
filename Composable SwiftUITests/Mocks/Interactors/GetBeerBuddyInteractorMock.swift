@@ -1,9 +1,8 @@
-import Combine
 
 @testable import Composable_SwiftUI
 
 struct GetBeerBuddyInteractorMock: GetBeerBuddyInteractor {
-
+    
     var success: Bool = true
     var expectedResponse: BeerBuddy? = BeerBuddy(
         count: 1,
@@ -13,14 +12,11 @@ struct GetBeerBuddyInteractorMock: GetBeerBuddyInteractor {
         lastEpisode: Episode(id: 1, name: "First Episode", date: "11-11-2011")
     )
     
-    func execute(character: Character) -> AnyPublisher<BeerBuddy?, InteractorError> {
-        guard success else {
-            return Fail(error: .generic(message: "mock error"))
-                .eraseToAnyPublisher()
+    func execute(character: Character) async throws -> BeerBuddy? {
+        if success {
+            return expectedResponse
+        } else {
+            throw InteractorError.generic(message: "mock error")
         }
-        
-        return Just(expectedResponse)
-            .setFailureType(to: InteractorError.self)
-            .eraseToAnyPublisher()
     }
 }

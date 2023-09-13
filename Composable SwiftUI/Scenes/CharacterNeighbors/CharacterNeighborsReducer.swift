@@ -1,7 +1,9 @@
 import ComposableArchitecture
 import Resolver
 
-struct CharacterNeighborsReducer: ReducerProtocol {
+typealias CharacterNeighborsStore = Store<CharacterNeighborsReducer.State, CharacterNeighborsReducer.Action>
+
+struct CharacterNeighborsReducer: Reducer {
     
     @Injected private var getLocationInfoInteractor: GetLocationInfoInteractor
     
@@ -20,7 +22,7 @@ struct CharacterNeighborsReducer: ReducerProtocol {
         case onGetLocationInfo(TaskResult<LocationDetail>)
     }
     
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .getLocationInfo:
             state.locationDetail.state = .loading

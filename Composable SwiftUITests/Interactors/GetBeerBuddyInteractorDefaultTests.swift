@@ -18,7 +18,7 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
         Resolver.tearDown()
     }
     
-    func testExecuteSuccess() throws {
+    func testExecuteSuccess() async {
         let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -40,16 +40,22 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
         Resolver.test.register { episodesRepository as EpisodesRepository }
         
         let interactor = GetBeerBuddyInteractorDefault()
-        let result = try awaitPublisher(interactor.execute(character: rick))
         
-        XCTAssertEqual(result?.character, rick)
-        XCTAssertEqual(result?.buddy, morty)
-        XCTAssertEqual(result?.firstEpisode, Episode(id: 1, name: "episode1", date: "10-10-2010"))
-        XCTAssertEqual(result?.lastEpisode, Episode(id: 301, name: "episode301", date: "12-12-2012"))
-        XCTAssertEqual(result?.count, 5)
+        do {
+            let result = try await interactor.execute(character: rick)
+            
+            XCTAssertEqual(result?.character, rick)
+            XCTAssertEqual(result?.buddy, morty)
+            XCTAssertEqual(result?.firstEpisode, Episode(id: 1, name: "episode1", date: "10-10-2010"))
+            XCTAssertEqual(result?.lastEpisode, Episode(id: 301, name: "episode301", date: "12-12-2012"))
+            XCTAssertEqual(result?.count, 5)
+            
+        } catch {
+            XCTFail("Test Fail")
+        }
     }
     
-    func testExecuteBeerBuddyNotFoundMsgError() throws {
+    func testExecuteBeerBuddyNotFoundMsgError() async {
         let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -64,12 +70,18 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
         Resolver.test.register { episodesRepository as EpisodesRepository }
         
         let interactor = GetBeerBuddyInteractorDefault()
-        let result = try awaitPublisher(interactor.execute(character: rick))
         
-        XCTAssertNil(result)
+        do {
+            let result = try await interactor.execute(character: rick)
+            
+            XCTAssertNil(result)
+            
+        } catch {
+            XCTFail("Test Fail")
+        }
     }
     
-    func testExecuteLocationRepositoryFail() throws {
+    func testExecuteLocationRepositoryFail() async {
         let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -92,14 +104,17 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
         
         let interactor = GetBeerBuddyInteractorDefault()
         
-        XCTAssertThrowsError(try awaitPublisher(interactor.execute(character: rick))) { error in
-            XCTAssertEqual(error as? InteractorError,
-                           .repositoryFail(error: .invalidUrl)
-            )
+        do {
+            _ = try await interactor.execute(character: rick)
+            
+            XCTFail("Test Fail")
+            
+        } catch {
+            XCTAssertEqual(error as? InteractorError, .repositoryFail(error: .invalidUrl))
         }
     }
     
-    func testExecuteCharacterRepositoryFail() throws {
+    func testExecuteCharacterRepositoryFail() async {
         let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -118,14 +133,17 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
         
         let interactor = GetBeerBuddyInteractorDefault()
         
-        XCTAssertThrowsError(try awaitPublisher(interactor.execute(character: rick))) { error in
-            XCTAssertEqual(error as? InteractorError,
-                           .repositoryFail(error: .invalidUrl)
-            )
+        do {
+            _ = try await interactor.execute(character: rick)
+            
+            XCTFail("Test Fail")
+            
+        } catch {
+            XCTAssertEqual(error as? InteractorError, .repositoryFail(error: .invalidUrl))
         }
     }
     
-    func testExecuteEpisodesRepositoryFail() throws {
+    func testExecuteEpisodesRepositoryFail() async {
         let location = CharacterLocation(id: 1, name: "Earth")
         
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -145,10 +163,13 @@ final class GetBeerBuddyInteractorDefaultTests: XCTestCase {
         
         let interactor = GetBeerBuddyInteractorDefault()
         
-        XCTAssertThrowsError(try awaitPublisher(interactor.execute(character: rick))) { error in
-            XCTAssertEqual(error as? InteractorError,
-                           .repositoryFail(error: .invalidUrl)
-            )
+        do {
+            _ = try await interactor.execute(character: rick)
+            
+            XCTFail("Test Fail")
+            
+        } catch {
+            XCTAssertEqual(error as? InteractorError, .repositoryFail(error: .invalidUrl))
         }
     }
 }

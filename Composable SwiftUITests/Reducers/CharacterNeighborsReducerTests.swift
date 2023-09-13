@@ -12,10 +12,11 @@ final class CharacterNeighborsReducerTests: ReducerTestCase {
         Resolver.test.register { interactor as GetLocationInfoInteractor }
         
         let store = TestStore(
-            initialState: CharacterNeighborsReducer.State()
-        ) {
-            CharacterNeighborsReducer(locationId: 1)
-        }
+            initialState: CharacterNeighborsReducer.State(),
+            reducer: {
+                CharacterNeighborsReducer(locationId: 1)
+            }
+        )
         
         await store.send(.getLocationInfo) {
             $0.locationDetail.state = .loading
@@ -31,10 +32,11 @@ final class CharacterNeighborsReducerTests: ReducerTestCase {
         Resolver.test.register { interactor as GetLocationInfoInteractor }
         
         let store = TestStore(
-            initialState: CharacterNeighborsReducer.State()
-        ) {
-            CharacterNeighborsReducer(locationId: 1)
-        }
+            initialState: CharacterNeighborsReducer.State(),
+            reducer: {
+                CharacterNeighborsReducer(locationId: 1)
+            }
+        )
         
         await store.send(.getLocationInfo) {
             $0.locationDetail.state = .loading

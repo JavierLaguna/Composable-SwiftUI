@@ -1,27 +1,44 @@
 import ComposableArchitecture
+import Resolver
 
-let matchBuddyReducer: Reducer<MatchBuddyState, MatchBuddyAction, MatchBuddyEnvironment> = .init { state, action, environment in
-    switch action {
-    case .getBeerBuddy(let character):
-        state.beerBuddy.state = .loading
+typealias MatchBuddyStore = Store<MatchBuddyReducer.State, MatchBuddyReducer.Action>
 
-        return environment.getBeerBuddyInteractor
-            .execute(character: character)
-            .eraseToEffect()
-            .catchToEffect()
-            .map(MatchBuddyAction.onGetBeerBuddy)
-
-    case let .onGetBeerBuddy(.success(response)):
-        if let beerBuddy = response {
-            state.beerBuddy.state = .populated(data: beerBuddy)
-        } else {
-            state.beerBuddy.state = .empty
+struct MatchBuddyReducer: Reducer {
+    
+    @Injected var getBeerBuddyInteractor: GetBeerBuddyInteractor
+    
+    struct State: Equatable {
+        var beerBuddy: StateLoadable<BeerBuddy> = StateLoadable()
+    }
+    
+    enum Action: Equatable {
+        case getBeerBuddy(of: Character)
+        case onGetBeerBuddy(TaskResult<BeerBuddy?>)
+    }
+    
+    func reduce(into state: inout State, action: Action) -> Effect<Action> {
+        switch action {
+        case .getBeerBuddy(let character):
+            state.beerBuddy.state = .loading
+            
+            return .run { send in
+                await send(.onGetBeerBuddy(TaskResult {
+                    try await getBeerBuddyInteractor.execute(character: character)
+                }))
+            }
+            
+        case let .onGetBeerBuddy(.success(response)):
+            if let beerBuddy = response {
+                state.beerBuddy.state = .populated(data: beerBuddy)
+            } else {
+                state.beerBuddy.state = .empty
+            }
+            
+            return .none
+            
+        case let .onGetBeerBuddy(.failure(error)):
+            state.beerBuddy.state = .error(error)
+            return .none
         }
-        
-        return .none
-
-    case let .onGetBeerBuddy(.failure(error)):
-        state.beerBuddy.state = .error(error)
-        return .none
     }
 }

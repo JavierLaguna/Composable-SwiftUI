@@ -17,8 +17,6 @@ extension Resolver {
         registerMockDatasources()
         registerMockRepositories()
         registerMockInteractors()
-        
-        registerTestEnvironments()
     }
 
     static func tearDown() {

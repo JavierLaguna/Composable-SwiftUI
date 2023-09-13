@@ -1,9 +1,8 @@
-import Combine
 
 @testable import Composable_SwiftUI
 
 struct EpisodesRepositoryMock: EpisodesRepository {
-   
+    
     var success: Bool = true
     var expectedResponse: [Episode] = [
         Episode(id: 1, name: "episode1", date: "11-11-2011"),
@@ -11,14 +10,11 @@ struct EpisodesRepositoryMock: EpisodesRepository {
     ]
     var expectedError: RepositoryError = .invalidUrl
     
-    func getEpisodesFromList(ids: [Int]) -> AnyPublisher<[Episode], RepositoryError> {
-        guard success else {
-            return Fail(error: expectedError)
-                .eraseToAnyPublisher()
+    func getEpisodesFromList(ids: [Int]) async throws -> [Episode] {
+        if success {
+            return expectedResponse
+        } else {
+            throw expectedError
         }
-        
-        return Just(expectedResponse)
-            .setFailureType(to: RepositoryError.self)
-            .eraseToAnyPublisher()
     }
 }

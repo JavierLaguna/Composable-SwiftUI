@@ -18,23 +18,34 @@ final class LocationRepositoryDefaultTests: XCTestCase {
         Resolver.tearDown()
     }
     
-    func testGetCharacterIdsFromLocationSuccess() throws {
+    func testGetCharacterIdsFromLocationSuccess() async {
         let datasource = LocationRemoteDatasourceMock()
         Resolver.test.register { datasource as LocationRemoteDatasource }
         
         let repository = LocationRepositoryDefault()
-        let result = try awaitPublisher(repository.getCharacterIdsFromLocation(locationId: 1))
         
-        XCTAssertEqual(result, [1, 2])
+        do {
+            let result = try await repository.getCharacterIdsFromLocation(locationId: 1)
+            
+            XCTAssertEqual(result, [1, 2])
+            
+        } catch {
+            XCTFail("Test Fail")
+        }
     }
     
-    func testGetCharacterIdsFromLocationFail() throws {
+    func testGetCharacterIdsFromLocationFail() async {
         let datasource = LocationRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as LocationRemoteDatasource }
         
         let repository = LocationRepositoryDefault()
-
-        XCTAssertThrowsError(try awaitPublisher(repository.getCharacterIdsFromLocation(locationId: 1))) { error in
+        
+        do {
+            _ = try await repository.getCharacterIdsFromLocation(locationId: 1)
+            
+            XCTFail("Test Fail")
+            
+        } catch {
             XCTAssertEqual(error as? RepositoryError, .invalidUrl)
         }
     }

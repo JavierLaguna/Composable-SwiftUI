@@ -18,7 +18,7 @@ final class CharactersRepositoryDefaultTests: XCTestCase {
         Resolver.tearDown()
     }
     
-    func testGetCharactersSuccess() throws {
+    func testGetCharactersSuccess() async {
         let datasource = CharacterRemoteDatasourceMock()
         Resolver.test.register { datasource as CharacterRemoteDatasource }
         
@@ -27,26 +27,36 @@ final class CharactersRepositoryDefaultTests: XCTestCase {
         XCTAssertNil(repository.nextPage)
         XCTAssertNil(repository.totalPages)
         
-        let result = try awaitPublisher(repository.getCharacters())
-        
-        XCTAssertEqual(repository.nextPage, 2)
-        XCTAssertEqual(repository.totalPages, 12)
-        XCTAssertEqual(result.count, datasource.expectedResponseByPage.results.count)
-        XCTAssertEqual(result, datasource.expectedResponseByPage.results.map { $0.toDomain() })
+        do {
+            let result = try await repository.getCharacters()
+            
+            XCTAssertEqual(repository.nextPage, 2)
+            XCTAssertEqual(repository.totalPages, 12)
+            XCTAssertEqual(result.count, datasource.expectedResponseByPage.results.count)
+            XCTAssertEqual(result, datasource.expectedResponseByPage.results.map { $0.toDomain() })
+            
+        } catch {
+            XCTFail("Test Fail")
+        }
     }
     
-    func testGetCharactersFail() throws {
+    func testGetCharactersFail() async {
         let datasource = CharacterRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as CharacterRemoteDatasource }
         
         let repository = CharactersRepositoryDefault()
         
-        XCTAssertThrowsError(try awaitPublisher(repository.getCharacters())) { error in
+        do {
+            _ = try await repository.getCharacters()
+            
+            XCTFail("Test Fail")
+            
+        } catch {
             XCTAssertEqual(error as? RepositoryError, .invalidUrl)
         }
     }
     
-    func testGetCharactersByIdSuccess() throws {
+    func testGetCharactersByIdSuccess() async {
         let datasource = CharacterRemoteDatasourceMock()
         Resolver.test.register { datasource as CharacterRemoteDatasource }
         
@@ -55,19 +65,29 @@ final class CharactersRepositoryDefaultTests: XCTestCase {
         XCTAssertNil(repository.nextPage)
         XCTAssertNil(repository.totalPages)
         
-        let result = try awaitPublisher(repository.getCharacters(characterIds: [1, 2]))
-        
-        XCTAssertEqual(result.count, datasource.expectedResponseByIds.count)
-        XCTAssertEqual(result, datasource.expectedResponseByIds.map { $0.toDomain() })
+        do {
+            let result = try await repository.getCharacters(characterIds: [1, 2])
+            
+            XCTAssertEqual(result.count, datasource.expectedResponseByIds.count)
+            XCTAssertEqual(result, datasource.expectedResponseByIds.map { $0.toDomain() })
+            
+        } catch {
+            XCTFail("Test Fail")
+        }
     }
     
-    func testGetCharactersByIdFail() throws {
+    func testGetCharactersByIdFail() async {
         let datasource = CharacterRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as CharacterRemoteDatasource }
         
         let repository = CharactersRepositoryDefault()
         
-        XCTAssertThrowsError(try awaitPublisher(repository.getCharacters(characterIds: [1, 2]))) { error in
+        do {
+            _ = try await repository.getCharacters(characterIds: [1, 2])
+            
+            XCTFail("Test Fail")
+            
+        } catch {
             XCTAssertEqual(error as? RepositoryError, .invalidUrl)
         }
     }

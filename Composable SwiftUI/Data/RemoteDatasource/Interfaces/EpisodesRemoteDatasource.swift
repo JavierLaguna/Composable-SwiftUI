@@ -1,5 +1,4 @@
-import Combine
 
 protocol EpisodesRemoteDatasource {
-    func getEpisodesList(ids: [Int]) -> AnyPublisher<[EpisodeResponse], RepositoryError>
+    func getEpisodesList(ids: [Int]) async throws -> [EpisodeResponse]
 }

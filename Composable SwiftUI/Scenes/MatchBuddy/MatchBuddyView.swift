@@ -5,7 +5,7 @@ import Kingfisher
 
 struct MatchBuddyView: View {
     
-    @Injected(name: "scoped") var store: Store<MatchBuddyState, MatchBuddyAction>
+    @Injected(name: "scoped") var store: MatchBuddyStore
     
     @EnvironmentObject private var matchBuddyRouter: MatchBuddyCoordinator.Router
     
@@ -48,7 +48,7 @@ struct MatchBuddyView: View {
     }
     
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(store, observe: { $0 }) { viewStore in
             VStack(spacing: 0) {
                 
                 HStack(alignment: .top) {

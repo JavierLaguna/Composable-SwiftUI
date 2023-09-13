@@ -1,22 +1,37 @@
-import Combine
 import Resolver
 
 protocol GetCharactersInteractor {
-    func execute() -> AnyPublisher<[Character], InteractorError>
+    func execute() async throws -> [Character]
 }
 
-final class GetCharactersInteractorDefault: GetCharactersInteractor {
+final class GetCharactersInteractorDefault: GetCharactersInteractor, ManagedErrorInteractor {
     
     @Injected private var repository: CharactersRepository
     
-    func execute() -> AnyPublisher<[Character], InteractorError> {
+    func execute() async throws -> [Character] {
+        do {
+            let response = try await repository.getCharacters()
+            return response
+            
+        } catch {
+            throw manageError(error: error)
+        }
+    }
+}
+
+
+// TODO: JLI
+protocol ManagedErrorInteractor {
+    func manageError(error: Error) -> Error
+}
+
+extension ManagedErrorInteractor {
     
-        return repository
-            .getCharacters()
-            .catch { error -> AnyPublisher<[Character], InteractorError> in
-                return Fail<[Character], InteractorError>(error: .repositoryFail(error: error))
-                    .eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
+    func manageError(error: Error) -> Error {
+        guard let repositoryError = error as? RepositoryError else {
+            return error
+        }
+        
+        return InteractorError.repositoryFail(error: repositoryError)
     }
 }

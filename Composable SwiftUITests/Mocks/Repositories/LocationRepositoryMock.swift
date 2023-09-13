@@ -1,25 +1,25 @@
-import Combine
 
 @testable import Composable_SwiftUI
 
 struct LocationRepositoryMock: LocationRepository {
-   
+    
     var success: Bool = true
     var expectedResponse: [Int] = [1, 2, 3]
     var expectedError: RepositoryError = .invalidUrl
     
-    func getCharacterIdsFromLocation(locationId: Int) -> AnyPublisher<[Int], RepositoryError> {
-        guard success else {
-            return Fail(error: expectedError)
-                .eraseToAnyPublisher()
+    func getCharacterIdsFromLocation(locationId: Int) async throws -> [Int] {
+        if success {
+            return expectedResponse
+        } else {
+            throw expectedError
         }
-        
-        return Just(expectedResponse)
-            .setFailureType(to: RepositoryError.self)
-            .eraseToAnyPublisher()
     }
     
-    func getLocation(locationId: Int) async throws -> Location { // TODO: JLI
-        Location(id: 1, name: "Eartch", type: .planet, dimension: "dim", residents: [1, 4])
+    func getLocation(locationId: Int) async throws -> Location {
+        if success {
+            return Location(id: 1, name: "Eartch", type: .planet, dimension: "dim", residents: [1, 4])
+        } else {
+            throw expectedError
+        }
     }
 }
