@@ -12,7 +12,7 @@ final class CharactersRepositoryDefault: CharactersRepository {
         if let nextPage, let totalPages, nextPage > totalPages {
             return []
         }
-        
+
         let response = try await service.getCharacters(page: nextPage)
         
         if let nextPage {

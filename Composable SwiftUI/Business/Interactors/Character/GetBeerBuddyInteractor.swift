@@ -15,22 +15,17 @@ final class GetBeerBuddyInteractorDefault: GetBeerBuddyInteractor, ManagedErrorI
             let response = try await locationRepository.getCharacterIdsFromLocation(locationId: character.location.id)
             let characterIds = response.filter({ $0 != character.id })
             
-            // TODO: JLI improve read code
-            if characterIds.isEmpty {
+            guard !characterIds.isEmpty else {
                 return nil
             }
             
-            let characters = try await getCharactersFromIds(characterIds: characterIds)
+            let characters = try await charactersRepository.getCharacters(characterIds: characterIds)
             
             return try await getBestBuddyBeer(selectedCharacter: character, buddiesFromLocation: characters)
             
         } catch {
             throw manageError(error: error)
         }
-    }
-    
-    private func getCharactersFromIds(characterIds: [Int]) async throws -> [Character] {
-        try await charactersRepository.getCharacters(characterIds: characterIds)
     }
     
     private func getBestBuddyBeer(

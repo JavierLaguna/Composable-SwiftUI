@@ -6,7 +6,6 @@ final class EpisodesService: HttpClient, EpisodesRemoteDatasource {
     private let path = "/episode"
 
     func getEpisodesList(ids: [Int]) async throws -> [EpisodeResponse] {
-        
         let idsParam = ids.map { "\($0)" }.joined(separator: ",")
         let urlComponents = URLComponents(
             url: baseURL.appendingPathComponent("\(path)/\(idsParam)"),
@@ -17,10 +16,8 @@ final class EpisodesService: HttpClient, EpisodesRemoteDatasource {
             throw RepositoryError.invalidUrl
         }
 
-        // TODO: JLI
         do {
             return try await get(from: url)
-            
         } catch {
             throw RepositoryError.serviceFail(error: error)
         }

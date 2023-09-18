@@ -15,6 +15,10 @@ final class LocationService: HttpClient, LocationRemoteDatasource {
             throw RepositoryError.invalidUrl
         }
         
-        return try await get(from: url)
+        do {
+            return try await get(from: url)
+        } catch {
+            throw RepositoryError.serviceFail(error: error)
+        }
     }
 }

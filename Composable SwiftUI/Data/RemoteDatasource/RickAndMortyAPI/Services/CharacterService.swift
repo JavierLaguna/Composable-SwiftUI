@@ -20,7 +20,11 @@ final class CharacterService: HttpClient, CharacterRemoteDatasource {
             throw RepositoryError.invalidUrl
         }
         
-        return try await get(from: url)
+        do {
+            return try await get(from: url)
+        } catch {
+            throw RepositoryError.serviceFail(error: error)
+        }
     }
     
     func getCharacter(by id: Int) async throws -> CharacterResponse {
@@ -33,7 +37,11 @@ final class CharacterService: HttpClient, CharacterRemoteDatasource {
             throw RepositoryError.invalidUrl
         }
         
-        return try await get(from: url)
+        do {
+            return try await get(from: url)
+        } catch {
+            throw RepositoryError.serviceFail(error: error)
+        }
     }
     
     func getCharacters(by characterIds: [Int]) async throws -> [CharacterResponse] {
@@ -56,6 +64,10 @@ final class CharacterService: HttpClient, CharacterRemoteDatasource {
             throw RepositoryError.invalidUrl
         }
         
-        return try await get(from: url)
+        do {
+            return try await get(from: url)
+        } catch {
+            throw RepositoryError.serviceFail(error: error)
+        }
     }
 }
