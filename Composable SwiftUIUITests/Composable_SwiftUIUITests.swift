@@ -1,13 +1,7 @@
-//
-//  Composable_SwiftUIUITests.swift
-//  Composable SwiftUIUITests
-//
-//  Created by Javier Laguna on 14/5/22.
-//
 
 import XCTest
 
-class Composable_SwiftUIUITests: XCTestCase {
+final class Composable_SwiftUIUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

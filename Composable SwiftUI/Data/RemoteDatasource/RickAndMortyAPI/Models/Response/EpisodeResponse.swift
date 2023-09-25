@@ -10,7 +10,7 @@ struct EpisodeResponse: Codable {
     }
 
     func toDomain() -> Episode {
-        return Episode(
+        Episode(
             id: self.id,
             name: self.name,
             date: self.date
