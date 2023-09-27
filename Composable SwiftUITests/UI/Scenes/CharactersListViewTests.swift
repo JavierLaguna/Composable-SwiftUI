@@ -8,6 +8,12 @@ import Resolver
 
 final class CharactersListViewTests: XCTestCase {
      
+    private let error = InteractorError.generic(message: "")
+    private let characters = [
+        Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: CharacterLocation(id: 1, name: "Earth"), location: CharacterLocation(id: 1, name: "Earth"), image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: []),
+        Character(id: 2, name: "Morty", status: .alive, species: "Human", type: "", gender: .male, origin: CharacterLocation(id: 1, name: "Earth"), location: CharacterLocation(id: 1, name: "Earth"), image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [])
+    ]
+    
     override func setUp() {
         super.setUp()
         
@@ -25,15 +31,44 @@ final class CharactersListViewTests: XCTestCase {
         
         Resolver.tearDown()
     }
-    // TODO: LOADING WITH DATA
+
     func test_charactersListView_loadingState_13MiniLight_snapshot() {
-        let store = CharactersListStore(
-            initialState: CharactersListReducer.State(
-                characters: .init(state: .loading)
-            ),
-            reducer: { }
+        let state = CharactersListReducer.State(
+            characters: .init(state: .loading)
         )
-        Resolver.test.register(name: "scoped") { store as CharactersListStore }
+        configureStore(with: state)
+        
+        assertSnapshot(
+            matching: CharactersListView(),
+            as: .image(
+                perceptualPrecision: 0.98, 
+                layout: .device(config: .iPhone13Mini),
+                traits: .init(userInterfaceStyle: .light)
+            )
+        )
+    }
+    
+    func test_charactersListView_loadingState_13MiniDark_snapshot() {
+        let state = CharactersListReducer.State(
+            characters: .init(state: .loading)
+        )
+        configureStore(with: state)
+        
+        assertSnapshot(
+            matching: CharactersListView(),
+            as: .image(
+                layout: .device(config: .iPhone13Mini),
+                traits: .init(userInterfaceStyle: .dark)
+            )
+        )
+    }
+    
+    func test_charactersListView_loadingStateWithData_13MiniLight_snapshot() {
+        var state = CharactersListReducer.State(
+            characters: .init(state: .populated(data: characters))
+        )
+        state.characters.state = .loading
+        configureStore(with: state)
         
         assertSnapshot(
             matching: CharactersListView(),
@@ -44,14 +79,12 @@ final class CharactersListViewTests: XCTestCase {
         )
     }
     
-    func test_charactersListView_loadingState_13MiniDark_snapshot() {
-        let store = CharactersListStore(
-            initialState: CharactersListReducer.State(
-                characters: .init(state: .loading)
-            ),
-            reducer: { }
+    func test_charactersListView_loadingStateWithData_13MiniDark_snapshot() {
+        var state = CharactersListReducer.State(
+            characters: .init(state: .populated(data: characters))
         )
-        Resolver.test.register(name: "scoped") { store as CharactersListStore }
+        state.characters.state = .loading
+        configureStore(with: state)
         
         assertSnapshot(
             matching: CharactersListView(),
@@ -63,17 +96,10 @@ final class CharactersListViewTests: XCTestCase {
     }
     
     func test_charactersListView_populatedState_13MiniLight_snapshot() {
-        let characters = [
-            Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: CharacterLocation(id: 1, name: "Earth"), location: CharacterLocation(id: 1, name: "Earth"), image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: []),
-            Character(id: 2, name: "Morty", status: .alive, species: "Human", type: "", gender: .male, origin: CharacterLocation(id: 1, name: "Earth"), location: CharacterLocation(id: 1, name: "Earth"), image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [])
-        ]
-        let store = CharactersListStore(
-            initialState: CharactersListReducer.State(
-                characters: .init(state: .populated(data: characters))
-            ),
-            reducer: { }
+        let state = CharactersListReducer.State(
+            characters: .init(state: .populated(data: characters))
         )
-        Resolver.test.register(name: "scoped") { store as CharactersListStore }
+        configureStore(with: state)
         
         assertSnapshot(
             matching: CharactersListView(),
@@ -85,17 +111,10 @@ final class CharactersListViewTests: XCTestCase {
     }
     
     func test_charactersListView_populatedState_13MiniDark_snapshot() {
-        let characters = [
-            Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: CharacterLocation(id: 1, name: "Earth"), location: CharacterLocation(id: 1, name: "Earth"), image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: []),
-            Character(id: 2, name: "Morty", status: .alive, species: "Human", type: "", gender: .male, origin: CharacterLocation(id: 1, name: "Earth"), location: CharacterLocation(id: 1, name: "Earth"), image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [])
-        ]
-        let store = CharactersListStore(
-            initialState: CharactersListReducer.State(
-                characters: .init(state: .populated(data: characters))
-            ),
-            reducer: { }
+        let state = CharactersListReducer.State(
+            characters: .init(state: .populated(data: characters))
         )
-        Resolver.test.register(name: "scoped") { store as CharactersListStore }
+        configureStore(with: state)
         
         assertSnapshot(
             matching: CharactersListView(),
@@ -107,14 +126,10 @@ final class CharactersListViewTests: XCTestCase {
     }
 
     func test_charactersListView_errorState_13MiniLight_snapshot() {
-        let error = InteractorError.generic(message: "")
-        let store = CharactersListStore(
-            initialState: CharactersListReducer.State(
-                characters: .init(state: .error(error))
-            ),
-            reducer: { }
+        let state = CharactersListReducer.State(
+            characters: .init(state: .error(error))
         )
-        Resolver.test.register(name: "scoped") { store as CharactersListStore }
+        configureStore(with: state)
         
         assertSnapshot(
             matching: CharactersListView(),
@@ -126,14 +141,10 @@ final class CharactersListViewTests: XCTestCase {
     }
     
     func test_charactersListView_errorState_13MiniDark_snapshot() {
-        let error = InteractorError.generic(message: "")
-        let store = CharactersListStore(
-            initialState: CharactersListReducer.State(
-                characters: .init(state: .error(error))
-            ),
-            reducer: { }
+        let state = CharactersListReducer.State(
+            characters: .init(state: .error(error))
         )
-        Resolver.test.register(name: "scoped") { store as CharactersListStore }
+        configureStore(with: state)
         
         assertSnapshot(
             matching: CharactersListView(),
@@ -142,5 +153,17 @@ final class CharactersListViewTests: XCTestCase {
                 traits: .init(userInterfaceStyle: .dark)
             )
         )
+    }
+}
+
+// MARK: Private methods
+private extension CharactersListViewTests {
+    
+    func configureStore(with state: CharactersListReducer.State) {
+        let store = CharactersListStore(
+            initialState: state,
+            reducer: { }
+        )
+        Resolver.test.register(name: "scoped") { store as CharactersListStore }
     }
 }
