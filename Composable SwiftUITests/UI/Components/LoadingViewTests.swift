@@ -5,12 +5,14 @@ import SnapshotTesting
 
 @testable import Composable_SwiftUI
 
-final class LoadingViewTests: XCTestCase {
+final class LoadingViewTests: XCTestCase, SnapshotUITest {
     
     // TODO: JLI
     // .background(.ultraThinMaterial)
     // ???
-        
+    
+    private let view = LoadingView()
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
 
@@ -25,22 +27,18 @@ final class LoadingViewTests: XCTestCase {
     }
     
     func test_LoadingView_iPhone13MiniLight_returnsSnapshot() {
-        assertSnapshot(
-            matching: LoadingView(),
-            as: .image(
-                layout: .device(config: .iPhone13Mini),
-                traits: .init(userInterfaceStyle: .light)
-            )
-        )
+        testSutViewOnSmallDeviceLight(view: view)
+        
+//        assertSnapshot(
+//            matching: view,
+//            as: .image(
+//                layout: .device(config: smallDevice),
+//                traits: .init(userInterfaceStyle: .light)
+//            )
+//        )
     }
     
-    func test_ErrorView_iPhone13MiniDark_returnsSnapshot() {
-        assertSnapshot(
-            matching: LoadingView(),
-            as: .image(
-                layout: .device(config: .iPhone13Mini),
-                traits: .init(userInterfaceStyle: .dark)
-            )
-        )
+    func test_LoadingView_iPhone13MiniDark_returnsSnapshot() {
+        testSutViewOnSmallDeviceDark(view: view)
     }
 }

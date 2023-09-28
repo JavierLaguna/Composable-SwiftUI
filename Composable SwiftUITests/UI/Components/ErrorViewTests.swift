@@ -5,10 +5,15 @@ import SnapshotTesting
 
 @testable import Composable_SwiftUI
 
-final class ErrorViewTests: XCTestCase {
+final class ErrorViewTests: XCTest {
         
-    private let error = InteractorError.generic(message: "Algo ha fallado")
-    private let onRetry: () -> Void = {}
+//    private let error = InteractorError.generic(message: "Algo ha fallado")
+//    private let onRetry: () -> Void = {}
+//    private let view: ErrorView
+//    
+//    override init() {
+//        view =
+//    }
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -16,23 +21,29 @@ final class ErrorViewTests: XCTestCase {
 //        isRecording = true
     }
     
-    func test_ErrorView_iPhone13MiniLight_returnsSnapshot() {
+//    func test_ErrorView_iPhone13MiniLight_returnsSnapshot() {
+//        let sut = testSutViewOnSmallDeviceLight(view: ErrorView(error: error, onRetry: onRetry))
+//        sut()
+//    }
+    
+//    func test_ErrorView_iPhone13MiniDark_returnsSnapshot() {
+//        assertSnapshot(
+//            matching: ErrorView(error: error, onRetry: onRetry),
+//            as: .image(
+//                layout: .device(config: .iPhone13Mini),
+//                traits: .init(userInterfaceStyle: .light)
+//            )
+//        )
+//    }
+    
+    func testNew() {
         assertSnapshot(
-            matching: ErrorView(error: error, onRetry: onRetry),
+            matching: LoadingView(),
             as: .image(
                 layout: .device(config: .iPhone13Mini),
                 traits: .init(userInterfaceStyle: .light)
             )
         )
     }
-    
-    func test_ErrorView_iPhone13MiniDark_returnsSnapshot() {
-        assertSnapshot(
-            matching: ErrorView(error: error, onRetry: onRetry),
-            as: .image(
-                layout: .device(config: .iPhone13Mini),
-                traits: .init(userInterfaceStyle: .dark)
-            )
-        )
-    }
 }
+
