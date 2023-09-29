@@ -4,14 +4,14 @@ import Kingfisher
 
 struct CharacterNeighborsView: View {
     
-    private let store: Store<CharacterNeighborsReducer.State, CharacterNeighborsReducer.Action>
+    private let store: CharacterNeighborsStore
     
-    init(store: Store<CharacterNeighborsReducer.State, CharacterNeighborsReducer.Action>) {
+    init(store: CharacterNeighborsStore) {
         self.store = store
     }
     
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
                 switch(viewStore.locationDetail.state) {
                 case .loading:
@@ -60,7 +60,9 @@ struct CharacterNeighborsView_Previews: PreviewProvider {
                 initialState: .init(
                     locationDetail: .init(state: .loading)
                 ),
-                reducer: CharacterNeighborsReducer(locationId: 1)
+                reducer: {
+                    CharacterNeighborsReducer(locationId: 1)
+                }
             ))
         }
     }

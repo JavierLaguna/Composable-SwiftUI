@@ -24,7 +24,9 @@ extension CharacterNeighborsCoordinator {
         CharacterNeighborsView(
             store: Store(
                 initialState: .init(),
-                reducer: CharacterNeighborsReducer(locationId: character.location.id)
+                reducer: {
+                    CharacterNeighborsReducer(locationId: character.location.id)
+                }
             )
         )
     }

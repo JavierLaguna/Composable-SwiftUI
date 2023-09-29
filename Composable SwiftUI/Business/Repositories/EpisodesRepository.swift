@@ -1,5 +1,4 @@
-import Combine
 
 protocol EpisodesRepository {
-    func getEpisodesFromList(ids: [Int]) -> AnyPublisher<[Episode], RepositoryError>
+    func getEpisodesFromList(ids: [Int]) async throws -> [Episode]
 }

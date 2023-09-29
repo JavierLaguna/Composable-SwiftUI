@@ -4,15 +4,17 @@ import Resolver
 extension Resolver {
     
     static func registerMainModule() {
-        register { MainEnvironment() }
-        register { MainState() }
-
+        register { MainReducer.State() }
+            .scope(.application)
+        
         register {
-            Store<MainState, MainAction>(
+            Store<MainReducer.State, MainReducer.Action>(
                 initialState: resolve(),
-                reducer: mainReducer,
-                environment: resolve()
+                reducer: {
+                    MainReducer()
+                }
             )
         }
+        .scope(.application)
     }
 }

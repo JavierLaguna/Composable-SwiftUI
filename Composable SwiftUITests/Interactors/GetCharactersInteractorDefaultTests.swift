@@ -18,24 +18,36 @@ final class GetCharactersInteractorDefaultTests: XCTestCase {
         Resolver.tearDown()
     }
     
-    func testExecuteSuccess() throws {
+    func testExecuteSuccess() async {
         let repository = CharactersRepositoryMock()
         Resolver.test.register { repository as CharactersRepository }
         
         let interactor = GetCharactersInteractorDefault()
-        let result = try awaitPublisher(interactor.execute())
         
-        XCTAssertEqual(result.count, repository.expectedResponse.count)
-        XCTAssertEqual(result, repository.expectedResponse)
+        do {
+            let result = try await interactor.execute()
+            
+            XCTAssertEqual(result.count, repository.expectedResponse.count)
+            XCTAssertEqual(result, repository.expectedResponse)
+            
+        } catch {
+            XCTFail("Test Fail")
+        }
     }
     
-    func testExecuteFail() throws {
+    func testExecuteFail() async {
         let repository = CharactersRepositoryMock(success: false)
         Resolver.test.register { repository as CharactersRepository }
         
         let interactor = GetCharactersInteractorDefault()
         
-        XCTAssertThrowsError(try awaitPublisher(interactor.execute())) { error in
+        do {
+            _ = try await interactor.execute()
+            
+            XCTFail("Test Fail")
+            
+        } catch {
+            
             XCTAssertEqual(error as? InteractorError,
                            .repositoryFail(error: .invalidUrl)
             )

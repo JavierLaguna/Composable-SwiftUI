@@ -1,4 +1,3 @@
-import Combine
 
 @testable import Composable_SwiftUI
 
@@ -17,45 +16,27 @@ struct CharacterRemoteDatasourceMock: CharacterRemoteDatasource {
     ]
     var expectedError: RepositoryError = .invalidUrl
     
-    
-    func getCharacters(page: Int?) -> AnyPublisher<GetCharactersResponse, RepositoryError> {
-        guard success else {
-            return Fail(error: expectedError)
-                .eraseToAnyPublisher()
+    func getCharacters(page: Int?) async throws -> Composable_SwiftUI.GetCharactersResponse {
+        if success {
+            return expectedResponseByPage
+        } else {
+            throw expectedError
         }
-        
-        return Just(expectedResponseByPage)
-            .setFailureType(to: RepositoryError.self)
-            .eraseToAnyPublisher()
-    }
-    
-    func getCharacter(by id: Int) -> AnyPublisher<CharacterResponse, RepositoryError> {
-        guard success else {
-            return Fail(error: expectedError)
-                .eraseToAnyPublisher()
-        }
-        
-        return Just(expectedResponseByIds.first!)
-            .setFailureType(to: RepositoryError.self)
-            .eraseToAnyPublisher()
-    }
-    
-    func getCharacters(by characterIds: [Int]) -> AnyPublisher<[CharacterResponse], RepositoryError> {
-        guard success else {
-            return Fail(error: expectedError)
-                .eraseToAnyPublisher()
-        }
-        
-        return Just(expectedResponseByIds)
-            .setFailureType(to: RepositoryError.self)
-            .eraseToAnyPublisher()
     }
     
     func getCharacter(by id: Int) async throws -> CharacterResponse {
-        expectedResponseByIds.first!
+        if success {
+            return expectedResponseByIds.first!
+        } else {
+            throw expectedError
+        }
     }
     
     func getCharacters(by characterIds: [Int]) async throws -> [CharacterResponse] {
-        expectedResponseByIds
+        if success {
+            return expectedResponseByIds
+        } else {
+            throw expectedError
+        }
     }
 }

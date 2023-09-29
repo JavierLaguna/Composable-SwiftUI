@@ -1,22 +1,28 @@
 import ComposableArchitecture
-import Resolver
 
-let mainReducer = Reducer<MainState, MainAction, MainEnvironment>.combine(
-    charactersListReducer.pullback(
-        state: \.charactersList,
-        action: /MainAction.charactersList,
-        environment: { _ in
-            Resolver.resolve()
-        }
-    ),
-    matchBuddyReducer.pullback(
-        state: \.matchBuddyState,
-        action: /MainAction.matchBuddy,
-        environment: { _ in
-            Resolver.resolve()
-        }
-    ),
-    .init { _, _, _ in
-        return .none
+typealias MainStore = Store<MainReducer.State, MainReducer.Action>
+
+struct MainReducer: Reducer {
+    
+    struct State: Equatable {
+        var charactersListState = CharactersListReducer.State()
+        var matchBuddyState = MatchBuddyReducer.State()
     }
-)
+    
+    enum Action: Equatable {
+        case charactersListActions(CharactersListReducer.Action)
+        case matchBuddyActions(MatchBuddyReducer.Action)
+    }
+    
+    var body: some Reducer<State, Action> {
+        Scope(state: \.charactersListState, action: /Action.charactersListActions) {
+            CharactersListReducer()
+        }
+        Scope(state: \.matchBuddyState, action: /Action.matchBuddyActions) {
+            MatchBuddyReducer()
+        }
+        Reduce { state, action in
+            return .none
+        }
+      }
+}

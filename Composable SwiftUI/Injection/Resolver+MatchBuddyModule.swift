@@ -4,15 +4,10 @@ import Resolver
 extension Resolver {
     
     static func registerMatchBuddyModule() {
-        register {
-            MatchBuddyEnvironment()
-        }
-        .scope(.cached)
-
-        register(Store<MatchBuddyState, MatchBuddyAction>.self, name: "scoped") { _ in
-            let mainStore: Store<MainState, MainAction> = resolve()
-
-            return mainStore.scope(state: \.matchBuddyState, action: MainAction.matchBuddy)
+        register(MatchBuddyStore.self, name: "scoped") { _ in
+            let mainStore: MainStore = resolve()
+            
+            return mainStore.scope(state: \.matchBuddyState, action: MainReducer.Action.matchBuddyActions)
         }
     }
 }

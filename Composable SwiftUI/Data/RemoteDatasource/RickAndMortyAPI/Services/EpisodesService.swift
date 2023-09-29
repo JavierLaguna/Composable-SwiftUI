@@ -1,13 +1,11 @@
-import Combine
 import Foundation
 
-class EpisodesService: HttpClient, EpisodesRemoteDatasource {
+final class EpisodesService: HttpClient, EpisodesRemoteDatasource {
     
     private let baseURL = RickAndMortyAPI.apiBaseUrl
     private let path = "/episode"
 
-    func getEpisodesList(ids: [Int]) -> AnyPublisher<[EpisodeResponse], RepositoryError> {
-        
+    func getEpisodesList(ids: [Int]) async throws -> [EpisodeResponse] {
         let idsParam = ids.map { "\($0)" }.joined(separator: ",")
         let urlComponents = URLComponents(
             url: baseURL.appendingPathComponent("\(path)/\(idsParam)"),
@@ -15,12 +13,13 @@ class EpisodesService: HttpClient, EpisodesRemoteDatasource {
         )
         
         guard let url = urlComponents?.url else {
-            return Fail<[EpisodeResponse], RepositoryError>(error: .invalidUrl)
-                .eraseToAnyPublisher()
+            throw RepositoryError.invalidUrl
         }
-        
-        return get(from: url)
-            .mapError { error -> RepositoryError in .serviceFail(error: error)}
-            .eraseToAnyPublisher()
+
+        do {
+            return try await get(from: url)
+        } catch {
+            throw RepositoryError.serviceFail(error: error)
+        }
     }
 }
