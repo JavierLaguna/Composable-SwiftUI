@@ -1,12 +1,30 @@
 {
   "pins" : [
     {
+      "identity" : "collectionconcurrencykit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/CollectionConcurrencyKit.git",
+      "state" : {
+        "revision" : "b4f23e24b5a1bff301efc5e70871083ca029ff95",
+        "version" : "0.2.0"
+      }
+    },
+    {
       "identity" : "combine-schedulers",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/combine-schedulers",
       "state" : {
         "revision" : "9dc9cbe4bc45c65164fa653a563d8d8db61b09bb",
         "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "state" : {
+        "revision" : "32f641cf24fc7abc1c591a2025e9f2f572648b0f",
+        "version" : "1.7.2"
       }
     },
     {
@@ -61,6 +79,15 @@
       "state" : {
         "revision" : "e3cf87cb96a10562bc660c9d48418a395d8385ed",
         "version" : "1.0.11"
+      }
+    },
+    {
+      "identity" : "sourcekitten",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jpsim/SourceKitten.git",
+      "state" : {
+        "revision" : "b6dc09ee51dfb0c66e042d2328c017483a1a5d56",
+        "version" : "0.34.1"
       }
     },
     {
@@ -172,6 +199,15 @@
       }
     },
     {
+      "identity" : "swiftlint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/SwiftLint",
+      "state" : {
+        "revision" : "6d2e58271ebc14c37bf76d7c9f4082cc15bad718",
+        "version" : "0.53.0"
+      }
+    },
+    {
       "identity" : "swiftui-introspect",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
@@ -190,6 +226,24 @@
       }
     },
     {
+      "identity" : "swiftytexttable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scottrhoyt/SwiftyTextTable.git",
+      "state" : {
+        "revision" : "c6df6cf533d120716bff38f8ff9885e1ce2a4ac3",
+        "version" : "0.9.0"
+      }
+    },
+    {
+      "identity" : "swxmlhash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/drmohundro/SWXMLHash.git",
+      "state" : {
+        "revision" : "a853604c9e9a83ad9954c7e3d2a565273982471f",
+        "version" : "7.0.2"
+      }
+    },
+    {
       "identity" : "xcodeedit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tomlokhorst/XcodeEdit",
@@ -205,6 +259,15 @@
       "state" : {
         "revision" : "23cbf2294e350076ea4dbd7d5d047c1e76b03631",
         "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "yams",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jpsim/Yams.git",
+      "state" : {
+        "revision" : "0d9ee7ea8c4ebd4a489ad7a73d5c6cad55d6fed3",
+        "version" : "5.0.6"
       }
     }
   ],

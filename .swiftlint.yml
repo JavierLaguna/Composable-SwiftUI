@@ -1,0 +1,35 @@
+# .swiftlint.yml
+
+# Coding Style Rules
+line_length: # Line length limit.
+  warning: 100
+  error: 120
+
+trailing_whitespace: error # Trailing whitespace at the end of lines.
+indentation: # Type of indentation.
+  spaces: 4
+
+# Naming Conventions
+type_name: # Type name conventions.
+  min_length: 3
+  max_length: 40
+  allowed_symbols: []
+variable_name: # Variable name conventions.
+  min_length: 3
+  max_length: 40
+  allowed_symbols: []
+
+# Control Flow Rules
+cyclomatic_complexity: # Maximum allowed cyclomatic complexity.
+  warning: 15
+  error: 20
+nesting: error # Maximum allowed nesting in code blocks.
+
+# Security Rules
+force_cast: warning # Avoid forced casts.
+force_try: error # Avoid using try!.
+force_unwrapping: warning # Avoid forced unwrapping.
+
+# Automatic Cleanup Rules
+linebreak_at_end_of_file: error # Require a blank line at the end of the file.
+trailing_newline: error # Require a trailing newline at the end of the file.
