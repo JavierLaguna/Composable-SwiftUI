@@ -6,22 +6,22 @@ final class CharactersListCoordinator: NavigationCoordinatable {
 
     @Root var start = makeStart
     @Route(.push) var character = makeCharacter
-    
+
     init() {
-        
+
     }
-    
+
     deinit {
         print("Deinit HomeCoordinator")
     }
 }
 
 extension CharactersListCoordinator {
-    
+
     @ViewBuilder func makeStart() -> some View {
         CharactersListView()
     }
-    
+
     func makeCharacter(character: Character) -> CharacterHomeCoordinator {
         return CharacterHomeCoordinator(character: character)
     }

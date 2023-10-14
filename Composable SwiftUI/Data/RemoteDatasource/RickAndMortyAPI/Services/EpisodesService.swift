@@ -1,7 +1,7 @@
 import Foundation
 
 final class EpisodesService: HttpClient, EpisodesRemoteDatasource {
-    
+
     private let baseURL = RickAndMortyAPI.apiBaseUrl
     private let path = "/episode"
 
@@ -11,7 +11,7 @@ final class EpisodesService: HttpClient, EpisodesRemoteDatasource {
             url: baseURL.appendingPathComponent("\(path)/\(idsParam)"),
             resolvingAgainstBaseURL: false
         )
-        
+
         guard let url = urlComponents?.url else {
             throw RepositoryError.invalidUrl
         }

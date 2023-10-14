@@ -3,7 +3,7 @@ import SwiftUI
 struct ErrorView: View {
     var error: Error
     var onRetry: () -> Void
-    
+
     var body: some View {
         VStack(spacing: Theme.Space.xxl) {
             R.image.error_404.image
@@ -11,12 +11,12 @@ struct ErrorView: View {
                 .scaledToFit()
                 .frame(height: 300)
                 .cornerRadius(Theme.Radius.xl)
-            
-            Text(error.localizedDescription) 
+
+            Text(error.localizedDescription)
                 .font(Theme.Fonts.title2)
                 .foregroundColor(Theme.Colors.text)
                 .multilineTextAlignment(.center)
-            
+
             ButtonView(title: R.string.localizable.commonsRetry()) {
                 onRetry()
             }
@@ -28,9 +28,7 @@ struct ErrorView: View {
     }
 }
 
-struct ErrorView_Previews: PreviewProvider {
-    static var previews: some View {
-        let error = InteractorError.generic(message: "Algo ha fallado")
-        ErrorView(error: error, onRetry: {})
-    }
+#Preview {
+    let error = InteractorError.generic(message: "Algo ha fallado")
+    return ErrorView(error: error, onRetry: {})
 }

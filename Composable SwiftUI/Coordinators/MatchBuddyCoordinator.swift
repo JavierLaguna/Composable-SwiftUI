@@ -12,18 +12,18 @@ final class MatchBuddyCoordinator: NavigationCoordinatable {
     init(character: Character) {
         self.character = character
     }
-    
+
     deinit {
         print("Deinit HomeCoordinator")
     }
 }
 
 extension MatchBuddyCoordinator {
-    
+
     @ViewBuilder func makeStart() -> some View {
         MatchBuddyView(character: character)
     }
-    
+
     @ViewBuilder func makeInfo() -> some View {
         MatchBuddyInfoView()
     }

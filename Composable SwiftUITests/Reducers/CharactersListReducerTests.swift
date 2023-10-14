@@ -6,19 +6,19 @@ import Resolver
 
 @MainActor
 final class CharactersListReducerTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
-        
+
         Resolver.resetUnitTestRegistrations()
     }
-    
+
     override func tearDown() {
         super.tearDown()
-        
+
         Resolver.tearDown()
     }
-    
+
     func testBindingSearchText() async {
         let store = TestStore(
             initialState: CharactersListReducer.State(),
@@ -26,12 +26,12 @@ final class CharactersListReducerTests: XCTestCase {
                 CharactersListReducer()
             }
         )
-        
+
         await store.send(.set(\.$searchText, "test text")) {
             $0.searchText = "test text"
         }
     }
-     
+
     func testGetCharactersSuccess() async {
         let interactor = GetCharactersInteractorMock()
         Resolver.test.register { interactor as GetCharactersInteractor }
@@ -46,7 +46,7 @@ final class CharactersListReducerTests: XCTestCase {
         await store.send(.getCharacters) {
             $0.characters.state = .loading
         }
-        
+
         await store.receive(.onGetCharacters(.success(interactor.expectedResponse))) {
             $0.characters.state = .populated(data: interactor.expectedResponse)
         }
@@ -61,7 +61,7 @@ final class CharactersListReducerTests: XCTestCase {
             Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: []),
             Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: [])
         ]
-        
+
         let store = TestStore(
             initialState: CharactersListReducer.State(
                 characters: StateLoadable(state: .populated(data: initialCharacters))
@@ -74,7 +74,7 @@ final class CharactersListReducerTests: XCTestCase {
         await store.send(.getCharacters) {
             $0.characters.state = .loading
         }
-        
+
         await store.receive(.onGetCharacters(.success(interactor.expectedResponse))) {
             var newData = initialCharacters
             newData.append(contentsOf: interactor.expectedResponse)
@@ -95,7 +95,7 @@ final class CharactersListReducerTests: XCTestCase {
         await store.send(.getCharacters) {
             $0.characters.state = .loading
         }
-        
+
         await store.receive(.onGetCharacters(.failure(InteractorError.generic(message: "mock error")))) {
             $0.characters.state = .error(InteractorError.generic(message: "mock error"))
         }

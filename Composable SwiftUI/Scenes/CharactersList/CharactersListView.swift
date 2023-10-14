@@ -3,21 +3,21 @@ import ComposableArchitecture
 import Resolver
 
 struct CharactersListView: View {
-    
+
     @Injected(name: "scoped") var store: CharactersListStore
-    
+
     @EnvironmentObject private var charactersListRouter: CharactersListCoordinator.Router
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
-                
+
                 if viewStore.characters.error == nil {
                     VStack {
                         HStack {
                             Image(systemName: "magnifyingglass")
                                 .foregroundColor(Theme.Colors.primary)
-                            
+
                             TextField(R.string.localizable.charactersListSearch(), text: viewStore.$searchText)
                                 .foregroundColor(Theme.Colors.primary)
                         }
@@ -30,9 +30,9 @@ struct CharactersListView: View {
                     }
                     .background(Theme.Colors.background)
                 }
-                
+
                 if let characters = viewStore.filteredCharacters {
-                    
+
                     if characters.isEmpty {
                         VStack {
                             Text(R.string.localizable.charactersListNoResults())
@@ -45,9 +45,9 @@ struct CharactersListView: View {
                             alignment: .top
                         )
                         .padding(.top, Theme.Space.xl)
-                        
+
                     } else {
-                        
+
                         CharactersList(
                             characters: characters,
                             showLoadingMoreCharacters: viewStore.characters.isLoading,
@@ -60,7 +60,7 @@ struct CharactersListView: View {
                         )
                     }
                 }
-                
+
                 switch viewStore.characters.state {
                 case .loading:
                     if viewStore.characters.data == nil {
@@ -69,7 +69,7 @@ struct CharactersListView: View {
                         }
                         .listStyle(.plain)
                     }
-                    
+
                 case .error(let error):
                     VStack {
                         ErrorView(
@@ -79,7 +79,7 @@ struct CharactersListView: View {
                             })
                     }
                     .padding(.horizontal, Theme.Space.xxl)
-                    
+
                 default:
                     EmptyView()
                 }
@@ -103,11 +103,11 @@ private struct CharactersList: View {
     let showLoadingMoreCharacters: Bool
     let onEndReached: () -> Void
     let onTapCharacter: (Character) -> Void
-    
+
     var body: some View {
         List {
             ForEach(characters) { character in
-                
+
                 CharacterCellView(character: character)
                     .onAppear {
                         if characters.last == character {
@@ -117,12 +117,12 @@ private struct CharactersList: View {
                     .onTapGesture {
                         onTapCharacter(character)
                     }
-                
+
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets(vertical: Theme.Space.xxl, horizontal: Theme.Space.xl))
-            
+
             if showLoadingMoreCharacters {
                 SkeletonRows(numberOfRows: BusinessConstants.skeletonRowWithData)
             }
@@ -133,7 +133,7 @@ private struct CharactersList: View {
 
 private struct SkeletonRows: View {
     let numberOfRows: Int
-    
+
     var body: some View {
         ForEach((1...numberOfRows), id: \.self) { _ in
             CharacterCellView(character: nil)
@@ -145,7 +145,7 @@ private struct SkeletonRows: View {
 }
 
 struct CharactersListView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
         CharactersListView()
     }

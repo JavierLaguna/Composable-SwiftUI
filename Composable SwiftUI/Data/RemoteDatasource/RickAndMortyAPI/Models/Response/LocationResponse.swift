@@ -4,7 +4,7 @@ struct LocationResponse: Codable {
     let type: String
     let dimension: String
     let residents: [String]
-    
+
     func toDomain() -> Location {
         return Location(
             id: self.id,

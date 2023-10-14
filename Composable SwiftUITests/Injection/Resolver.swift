@@ -13,7 +13,7 @@ extension Resolver {
         Resolver.test.register(AnySchedulerOf<DispatchQueue>.self, name: "main") { _ in
             .immediate
         }
-        
+
         registerMockDatasources()
         registerMockRepositories()
         registerMockInteractors()

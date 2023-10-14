@@ -1,8 +1,7 @@
-
 @testable import Composable_SwiftUI
 
 struct GetLocationInfoInteractorMock: GetLocationInfoInteractor {
-    
+
     var success: Bool = true
     var expectedResponse = LocationDetail(
         id: 1,
@@ -25,12 +24,12 @@ struct GetLocationInfoInteractorMock: GetLocationInfoInteractor {
         ]
     )
     var expectedError: InteractorError = .generic(message: "mock error")
-    
+
     func execute(locationId: Int) async throws -> LocationDetail {
         guard success else {
             throw expectedError
         }
-        
+
         return expectedResponse
     }
 }

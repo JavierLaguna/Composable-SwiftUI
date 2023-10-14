@@ -1,4 +1,3 @@
-
 protocol CharacterRemoteDatasource {
     func getCharacters(page: Int?) async throws -> GetCharactersResponse
     func getCharacter(by id: Int) async throws -> CharacterResponse

@@ -1,8 +1,7 @@
-
 @testable import Composable_SwiftUI
 
 struct CharacterRemoteDatasourceMock: CharacterRemoteDatasource {
-    
+
     var success: Bool = true
     var expectedResponseByPage: GetCharactersResponse = GetCharactersResponse(
         info: GetCharactersResponse.InfoResponse(pages: 12),
@@ -15,7 +14,7 @@ struct CharacterRemoteDatasourceMock: CharacterRemoteDatasource {
         CharacterResponse(id: 2, name: "Morty", status: "alive", species: "", type: "", gender: "male", origin: CharacterLocationResponse(name: "earth", url: "urlLocation"), location: CharacterLocationResponse(name: "earth", url: "urlLocation"), image: "image", episode: ["url/1", "url/2"])
     ]
     var expectedError: RepositoryError = .invalidUrl
-    
+
     func getCharacters(page: Int?) async throws -> Composable_SwiftUI.GetCharactersResponse {
         if success {
             return expectedResponseByPage
@@ -23,7 +22,7 @@ struct CharacterRemoteDatasourceMock: CharacterRemoteDatasource {
             throw expectedError
         }
     }
-    
+
     func getCharacter(by id: Int) async throws -> CharacterResponse {
         if success {
             return expectedResponseByIds.first!
@@ -31,7 +30,7 @@ struct CharacterRemoteDatasourceMock: CharacterRemoteDatasource {
             throw expectedError
         }
     }
-    
+
     func getCharacters(by characterIds: [Int]) async throws -> [CharacterResponse] {
         if success {
             return expectedResponseByIds
