@@ -2,7 +2,7 @@ enum CharacterStatus: String, Equatable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
-    
+
     var localizedDescription: String {
         switch self {
         case .alive:

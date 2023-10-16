@@ -9,17 +9,17 @@ struct Character: Equatable, Identifiable {
     let location: CharacterLocation
     let image: String
     let episodes: [Int]
-    
+
     func matchedEpisodes(with selectedCharacter: Character) -> MatchedEpisodes? {
         let filterEpisodes = self.episodes.filter {
             selectedCharacter.episodes.contains($0)
         }.sorted()
-        
+
         guard let firstEpisode = filterEpisodes.first,
               let lastEpisode = filterEpisodes.last else {
             return nil
         }
-        
+
         return MatchedEpisodes(
             character: self,
             count: filterEpisodes.count,

@@ -1,0 +1,71 @@
+disabled_rules:
+  - void_return
+  - xctfail_message
+  - nesting
+  - multiple_closures_with_trailing_closure
+  - identifier_name
+  - function_body_length
+opt_in_rules: 
+  #lint
+  - overridden_super_call
+  - prohibited_super_call
+  #style
+  - attributes
+  - colon
+  - closure_end_indentation
+  - closure_parameter_position
+  - closure_spacing
+  - operator_usage_whitespace
+  - unneeded_parentheses_in_closure_argument
+  #idiomatic
+  - redundant_nil_coalescing
+  - explicit_init
+  #performance 
+  - empty_count
+  - contains_over_first_not_nil
+  - empty_string
+  - first_where
+  - sorted_first_last
+trailing_whitespace:
+  ignores_empty_lines: true
+closure_end_indentation:
+  severity: error
+force_cast: 
+  severity: error
+force_try:
+  severity: error
+cyclomatic_complexity:
+  warning: 60
+  error: 60
+type_body_length:
+  warning: 400
+  error: 500 
+line_length:
+  warning: 250
+  error: 300
+file_length:
+  warning: 700
+  error: 1000
+type_name:
+  min_length: 3
+  max_length: 40
+  severity: error
+identifier_name:
+  min_length: 3
+  max_length: 40
+  severity: error
+  excluded:
+    - id
+    - i
+    - r
+attributes:
+  always_on_same_line:
+      - "@State"
+      - "@EnvironmentObject"
+      - "@testable"
+      #Resolver
+      - "@Injected"
+      #Stinsen
+      - "@Root"
+      - "@Route"
+reporter: "xcode"

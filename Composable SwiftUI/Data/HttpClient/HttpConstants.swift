@@ -1,4 +1,3 @@
-
 struct HttpConstants {
 
     static let getMethod = "GET"

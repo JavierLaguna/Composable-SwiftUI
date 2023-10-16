@@ -1,4 +1,3 @@
-
 enum LocationType: String, Equatable {
     case planet = "Planet"
     case microverse = "Microverse"

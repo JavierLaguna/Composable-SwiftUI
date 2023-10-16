@@ -1,4 +1,3 @@
-
 struct LocationDetail: Equatable {
     let id: Int
     let name: String

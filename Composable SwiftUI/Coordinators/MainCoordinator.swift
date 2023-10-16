@@ -9,14 +9,14 @@ final class MainCoordinator: NavigationCoordinatable {
     init() {
         stack = NavigationStack(initial: \MainCoordinator.charactersList)
     }
-    
+
     deinit {
         print("Deinit MainCoordinator")
     }
 }
 
 extension MainCoordinator {
-    
+
     func makeCharactersList() -> NavigationViewCoordinator<CharactersListCoordinator> {
         return NavigationViewCoordinator(CharactersListCoordinator())
     }

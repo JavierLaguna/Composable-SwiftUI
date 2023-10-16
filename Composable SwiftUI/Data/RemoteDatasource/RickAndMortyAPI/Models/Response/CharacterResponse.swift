@@ -9,7 +9,7 @@ struct CharacterResponse: Codable {
     let location: CharacterLocationResponse
     let image: String
     let episode: [String]
-    
+
     func toDomain() -> Character {
         return Character(
             id: self.id,
@@ -25,4 +25,3 @@ struct CharacterResponse: Codable {
         )
     }
 }
-

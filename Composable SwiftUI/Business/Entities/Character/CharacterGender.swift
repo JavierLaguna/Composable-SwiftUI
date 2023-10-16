@@ -3,7 +3,7 @@ enum CharacterGender: String, Equatable {
     case male = "Male"
     case genderless = "Genderless"
     case unknown = "unknown"
-    
+
     var localizedDescription: String {
         switch self {
         case .female:

@@ -3,23 +3,23 @@ import ComposableArchitecture
 import Kingfisher
 
 struct CharacterNeighborsView: View {
-    
+
     private let store: CharacterNeighborsStore
-    
+
     init(store: CharacterNeighborsStore) {
         self.store = store
     }
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
-                switch(viewStore.locationDetail.state) {
+                switch viewStore.locationDetail.state {
                 case .loading:
                     VStack {
                         LoadingView()
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
+
                 case .error(let error):
                     VStack {
                         ErrorView(
@@ -29,14 +29,14 @@ struct CharacterNeighborsView: View {
                             })
                     }
                     .padding(.horizontal, Theme.Space.xxl)
-                    
+
                 case .populated(let locationDetail):
                     NeighborsListView(locationDetail: locationDetail)
-                    
+
                 default:
                     Color.clear
                 }
-                
+
             }
             .background {
                 R.image.ic_background.image
@@ -51,19 +51,15 @@ struct CharacterNeighborsView: View {
     }
 }
 
-
-struct CharacterNeighborsView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        NavigationView {
-            CharacterNeighborsView(store: Store(
-                initialState: .init(
-                    locationDetail: .init(state: .loading)
-                ),
-                reducer: {
-                    CharacterNeighborsReducer(locationId: 1)
-                }
-            ))
-        }
+#Preview {
+    NavigationView {
+        CharacterNeighborsView(store: Store(
+            initialState: .init(
+                locationDetail: .init(state: .loading)
+            ),
+            reducer: {
+                CharacterNeighborsReducer(locationId: 1)
+            }
+        ))
     }
 }

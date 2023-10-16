@@ -1,8 +1,7 @@
-
 @testable import Composable_SwiftUI
 
 struct GetBeerBuddyInteractorMock: GetBeerBuddyInteractor {
-    
+
     var success: Bool = true
     var expectedResponse: BeerBuddy? = BeerBuddy(
         count: 1,
@@ -11,7 +10,7 @@ struct GetBeerBuddyInteractorMock: GetBeerBuddyInteractor {
         firstEpisode: Episode(id: 1, name: "First Episode", date: "11-11-2011"),
         lastEpisode: Episode(id: 1, name: "First Episode", date: "11-11-2011")
     )
-    
+
     func execute(character: Character) async throws -> BeerBuddy? {
         if success {
             return expectedResponse
