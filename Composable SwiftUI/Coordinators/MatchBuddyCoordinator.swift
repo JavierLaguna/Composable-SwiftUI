@@ -20,11 +20,13 @@ final class MatchBuddyCoordinator: NavigationCoordinatable {
 
 extension MatchBuddyCoordinator {
 
-    @ViewBuilder func makeStart() -> some View {
+    @ViewBuilder
+    func makeStart() -> some View {
         MatchBuddyView(character: character)
     }
 
-    @ViewBuilder func makeInfo() -> some View {
+    @ViewBuilder
+    func makeInfo() -> some View {
         MatchBuddyInfoView()
     }
 }

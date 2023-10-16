@@ -20,7 +20,8 @@ final class CharacterNeighborsCoordinator: NavigationCoordinatable {
 
 extension CharacterNeighborsCoordinator {
 
-    @ViewBuilder func makeStart() -> some View {
+    @ViewBuilder
+    func makeStart() -> some View {
         CharacterNeighborsView(
             store: Store(
                 initialState: .init(),

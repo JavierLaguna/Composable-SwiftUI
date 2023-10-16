@@ -30,11 +30,20 @@ struct NeighborsListView: View {
                     .tint(Theme.Colors.primary)
                     .padding(.vertical, Theme.Space.l)
 
-                headerItem(image: "globe.europe.africa", text: locationDetail.type.rawValue)
+                headerItem(
+                    image: "globe.europe.africa",
+                    text: locationDetail.type.rawValue
+                )
 
-                headerItem(image: "antenna.radiowaves.left.and.right.circle.fill", text: locationDetail.dimension)
+                headerItem(
+                    image: "antenna.radiowaves.left.and.right.circle.fill",
+                    text: locationDetail.dimension
+                )
 
-                headerItem(image: "person.3.sequence.fill", text: "\(R.string.localizable.characterNeighborsResidents()) \(locationDetail.residents.count)")
+                headerItem(
+                    image: "person.3.sequence.fill",
+                    text: "\(R.string.localizable.characterNeighborsResidents()) \(locationDetail.residents.count)"
+                )
             }
             .font(Theme.Fonts.subtitle)
             .foregroundColor(Theme.Colors.primary)

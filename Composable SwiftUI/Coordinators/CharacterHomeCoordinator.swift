@@ -44,7 +44,8 @@ extension CharacterHomeCoordinator {
         return CharacterDetailCoordinator(character: character)
     }
 
-    @ViewBuilder func makeCharacterDetailTab(isActive: Bool) -> some View {
+    @ViewBuilder
+    func makeCharacterDetailTab(isActive: Bool) -> some View {
         Label(
             R.string.localizable.tabBarDetails(),
             systemImage: "figure.walk.diamond.fill"
@@ -55,7 +56,8 @@ extension CharacterHomeCoordinator {
         CharacterNeighborsCoordinator(character: character)
     }
 
-    @ViewBuilder func makeCharacterNeighborsTab(isActive: Bool) -> some View {
+    @ViewBuilder
+    func makeCharacterNeighborsTab(isActive: Bool) -> some View {
         Label(
             R.string.localizable.tabBarNeighbors(),
             systemImage: "person.3.fill"
@@ -66,7 +68,8 @@ extension CharacterHomeCoordinator {
         return MatchBuddyCoordinator(character: character)
     }
 
-    @ViewBuilder func makeMatchBuddyTab(isActive: Bool) -> some View {
+    @ViewBuilder
+    func makeMatchBuddyTab(isActive: Bool) -> some View {
         Label(
             R.string.localizable.tabBarBeerBuddy(),
             systemImage: "takeoutbag.and.cup.and.straw.fill"

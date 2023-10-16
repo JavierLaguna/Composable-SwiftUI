@@ -19,7 +19,8 @@ final class CharacterDetailCoordinator: NavigationCoordinatable {
 
 extension CharacterDetailCoordinator {
 
-    @ViewBuilder func makeStart() -> some View {
+    @ViewBuilder
+    func makeStart() -> some View {
         CharacterDetailView(character: character)
     }
 }

@@ -18,7 +18,8 @@ final class CharactersListCoordinator: NavigationCoordinatable {
 
 extension CharactersListCoordinator {
 
-    @ViewBuilder func makeStart() -> some View {
+    @ViewBuilder
+    func makeStart() -> some View {
         CharactersListView()
     }
 
