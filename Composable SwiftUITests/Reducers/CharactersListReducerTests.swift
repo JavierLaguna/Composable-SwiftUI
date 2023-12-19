@@ -47,7 +47,7 @@ final class CharactersListReducerTests: XCTestCase {
             $0.characters.state = .loading
         }
 
-        await store.receive(.onGetCharacters(.success(interactor.expectedResponse))) {
+        await store.receive(\.onGetCharacters.success) {
             $0.characters.state = .populated(data: interactor.expectedResponse)
         }
     }
@@ -75,7 +75,7 @@ final class CharactersListReducerTests: XCTestCase {
             $0.characters.state = .loading
         }
 
-        await store.receive(.onGetCharacters(.success(interactor.expectedResponse))) {
+        await store.receive(\.onGetCharacters.success) {
             var newData = initialCharacters
             newData.append(contentsOf: interactor.expectedResponse)
             $0.characters.state = .populated(data: newData)
@@ -96,7 +96,7 @@ final class CharactersListReducerTests: XCTestCase {
             $0.characters.state = .loading
         }
 
-        await store.receive(.onGetCharacters(.failure(InteractorError.generic(message: "mock error")))) {
+        await store.receive(\.onGetCharacters.failure) {
             $0.characters.state = .error(InteractorError.generic(message: "mock error"))
         }
     }

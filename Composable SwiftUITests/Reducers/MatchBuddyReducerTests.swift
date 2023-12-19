@@ -37,7 +37,7 @@ final class MatchBuddyReducerTests: XCTestCase {
             $0.beerBuddy.state = .loading
         }
 
-        await store.receive(.onGetBeerBuddy(.success(interactor.expectedResponse))) {
+        await store.receive(\.onGetBeerBuddy.success) {
             $0.beerBuddy.state = .populated(data: interactor.expectedResponse!)
         }
     }
@@ -60,7 +60,7 @@ final class MatchBuddyReducerTests: XCTestCase {
             $0.beerBuddy.state = .loading
         }
 
-        await store.receive(.onGetBeerBuddy(.success(interactor.expectedResponse))) {
+        await store.receive(\.onGetBeerBuddy.success) {
             $0.beerBuddy.state = .empty
         }
     }
@@ -82,7 +82,7 @@ final class MatchBuddyReducerTests: XCTestCase {
             $0.beerBuddy.state = .loading
         }
 
-        await store.receive(.onGetBeerBuddy(.failure(InteractorError.generic(message: "mock error")))) {
+        await store.receive(\.onGetBeerBuddy.failure) {
             $0.beerBuddy.state = .error(InteractorError.generic(message: "mock error"))
         }
     }

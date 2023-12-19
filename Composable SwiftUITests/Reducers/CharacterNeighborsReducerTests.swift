@@ -22,7 +22,7 @@ final class CharacterNeighborsReducerTests: ReducerTestCase {
             $0.locationDetail.state = .loading
         }
 
-        await store.receive(.onGetLocationInfo(.success(interactor.expectedResponse))) {
+        await store.receive(\.onGetLocationInfo.success) {
             $0.locationDetail.state = .populated(data: interactor.expectedResponse)
         }
     }
@@ -42,7 +42,7 @@ final class CharacterNeighborsReducerTests: ReducerTestCase {
             $0.locationDetail.state = .loading
         }
 
-        await store.receive(.onGetLocationInfo(.failure(interactor.expectedError))) {
+        await store.receive(\.onGetLocationInfo.failure) {
             $0.locationDetail.state = .error(interactor.expectedError)
         }
     }

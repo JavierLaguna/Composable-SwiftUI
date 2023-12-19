@@ -3,7 +3,8 @@ import Resolver
 
 typealias MatchBuddyStore = Store<MatchBuddyReducer.State, MatchBuddyReducer.Action>
 
-struct MatchBuddyReducer: Reducer {
+@Reducer
+struct MatchBuddyReducer {
 
     @Injected var getBeerBuddyInteractor: GetBeerBuddyInteractor
 
@@ -11,7 +12,7 @@ struct MatchBuddyReducer: Reducer {
         var beerBuddy: StateLoadable<BeerBuddy> = StateLoadable()
     }
 
-    enum Action: Equatable {
+    enum Action {
         case getBeerBuddy(of: Character)
         case onGetBeerBuddy(TaskResult<BeerBuddy?>)
     }

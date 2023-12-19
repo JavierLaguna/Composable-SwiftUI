@@ -3,16 +3,31 @@ import Resolver
 
 typealias CharactersListStore = Store<CharactersListReducer.State, CharactersListReducer.Action>
 
-struct CharactersListReducer: Reducer {
+@Reducer
+struct CharactersListReducer {
 
     @Injected var getCharactersInteractor: GetCharactersInteractor
 
     struct State: Equatable {
         @BindingState var searchText = ""
         var characters: StateLoadable<[Character]> = StateLoadable()
+
+        var filteredCharacters: [Character]? {
+            guard let characters = characters.data else {
+                return nil
+            }
+
+            guard !searchText.isEmpty else {
+                return characters
+            }
+
+            return characters.filter {
+                $0.name.lowercased().contains(searchText.lowercased())
+            }
+        }
     }
 
-    enum Action: Equatable, BindableAction {
+    enum Action: BindableAction {
         case binding(BindingAction<State>)
         case getCharacters
         case onGetCharacters(TaskResult<[Character]>)
@@ -47,24 +62,6 @@ struct CharactersListReducer: Reducer {
                 state.characters.state = .error(error)
                 return .none
             }
-        }
-    }
-}
-
-// MARK: State Computed properties
-extension CharactersListReducer.State {
-
-    var filteredCharacters: [Character]? {
-        guard let characters = characters.data else {
-            return nil
-        }
-
-        guard !searchText.isEmpty else {
-            return characters
-        }
-
-        return characters.filter {
-            $0.name.lowercased().contains(searchText.lowercased())
         }
     }
 }

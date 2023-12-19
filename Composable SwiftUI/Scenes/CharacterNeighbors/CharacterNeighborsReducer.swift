@@ -3,7 +3,8 @@ import Resolver
 
 typealias CharacterNeighborsStore = Store<CharacterNeighborsReducer.State, CharacterNeighborsReducer.Action>
 
-struct CharacterNeighborsReducer: Reducer {
+@Reducer
+struct CharacterNeighborsReducer {
 
     @Injected private var getLocationInfoInteractor: GetLocationInfoInteractor
 
@@ -17,7 +18,7 @@ struct CharacterNeighborsReducer: Reducer {
         var locationDetail: StateLoadable<LocationDetail> = .init()
     }
 
-    enum Action: Equatable {
+    enum Action {
         case getLocationInfo
         case onGetLocationInfo(TaskResult<LocationDetail>)
     }
