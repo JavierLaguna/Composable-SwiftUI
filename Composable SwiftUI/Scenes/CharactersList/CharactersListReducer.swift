@@ -1,15 +1,14 @@
 import ComposableArchitecture
 import Resolver
 
-typealias CharactersListStore = Store<CharactersListReducer.State, CharactersListReducer.Action>
-
 @Reducer
 struct CharactersListReducer {
 
     @Injected var getCharactersInteractor: GetCharactersInteractor
 
+    @ObservableState
     struct State: Equatable {
-        @BindingState var searchText = ""
+        var searchText = ""
         var characters: StateLoadable<[Character]> = StateLoadable()
 
         var filteredCharacters: [Character]? {
@@ -33,11 +32,11 @@ struct CharactersListReducer {
         case onGetCharacters(TaskResult<[Character]>)
     }
 
-    var body: some Reducer<State, Action> {
+    var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce { state, action in
             switch action {
-            case .binding(\.$searchText):
+            case .binding(\.searchText):
                 return .none
 
             case .binding:

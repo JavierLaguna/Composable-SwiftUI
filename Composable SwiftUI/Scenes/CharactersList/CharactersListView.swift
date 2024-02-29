@@ -4,96 +4,97 @@ import Resolver
 
 struct CharactersListView: View {
 
-    @Injected(name: "scoped") var store: CharactersListStore
-
     @EnvironmentObject private var charactersListRouter: CharactersListCoordinator.Router
+    @Bindable private var store: StoreOf<CharactersListReducer>
+
+    init(store: StoreOf<CharactersListReducer>) {
+        self.store = store
+    }
 
     var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
-            VStack {
+        VStack {
+            if store.characters.error == nil {
+                VStack {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
 
-                if viewStore.characters.error == nil {
+                        TextField(
+                            R.string.localizable.charactersListSearch(),
+                            text: $store.searchText
+                        )
+                    }
+                    .foregroundColor(Theme.Colors.primary)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Theme.Colors.primary, lineWidth: 2)
+                    )
+                    .padding()
+                }
+                .background(Theme.Colors.background)
+            }
+
+            if let characters = store.filteredCharacters {
+
+                if characters.isEmpty {
                     VStack {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(Theme.Colors.primary)
+                        Text(R.string.localizable.charactersListNoResults())
+                            .foregroundColor(Theme.Colors.secondaryText)
+                            .font(Theme.Fonts.title2)
+                    }
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .top
+                    )
+                    .padding(.top, Theme.Space.xl)
 
-                            TextField(R.string.localizable.charactersListSearch(), text: viewStore.$searchText)
-                                .foregroundColor(Theme.Colors.primary)
+                } else {
+                    CharactersList(
+                        characters: characters,
+                        showLoadingMoreCharacters: store.characters.isLoading,
+                        onEndReached: {
+                            store.send(.getCharacters)
+                        },
+                        onTapCharacter: {
+                            charactersListRouter.route(to: \.character, $0)
                         }
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Theme.Colors.primary, lineWidth: 2)
-                        )
-                        .padding()
-                    }
-                    .background(Theme.Colors.background)
-                }
-
-                if let characters = viewStore.filteredCharacters {
-
-                    if characters.isEmpty {
-                        VStack {
-                            Text(R.string.localizable.charactersListNoResults())
-                                .foregroundColor(Theme.Colors.secondaryText)
-                                .font(Theme.Fonts.title2)
-                        }
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .top
-                        )
-                        .padding(.top, Theme.Space.xl)
-
-                    } else {
-
-                        CharactersList(
-                            characters: characters,
-                            showLoadingMoreCharacters: viewStore.characters.isLoading,
-                            onEndReached: {
-                                viewStore.send(.getCharacters)
-                            },
-                            onTapCharacter: {
-                                charactersListRouter.route(to: \.character, $0)
-                            }
-                        )
-                    }
-                }
-
-                switch viewStore.characters.state {
-                case .loading:
-                    if viewStore.characters.data == nil {
-                        List {
-                            SkeletonRows(numberOfRows: BusinessConstants.skeletonRowEmptyData)
-                        }
-                        .listStyle(.plain)
-                    }
-
-                case .error(let error):
-                    VStack {
-                        ErrorView(
-                            error: error,
-                            onRetry: {
-                                viewStore.send(.getCharacters)
-                            })
-                    }
-                    .padding(.horizontal, Theme.Space.xxl)
-
-                default:
-                    EmptyView()
+                    )
                 }
             }
-            .navigationBarHidden(true)
-            .background {
-                R.image.ic_background.image
-                    .resizable()
-                    .scaledToFill()
+
+            switch store.characters.state {
+            case .loading:
+                if store.characters.data == nil {
+                    List {
+                        SkeletonRows(numberOfRows: BusinessConstants.skeletonRowEmptyData)
+                    }
+                    .listStyle(.plain)
+                }
+
+            case .error(let error):
+                VStack {
+                    ErrorView(
+                        error: error,
+                        onRetry: {
+                            store.send(.getCharacters)
+                        })
+                }
+                .padding(.horizontal, Theme.Space.xxl)
+
+            default:
+                EmptyView()
             }
-            .ignoresSafeArea(.all, edges: .bottom)
-            .task {
-                viewStore.send(.getCharacters)
-            }
+        }
+        .navigationBarHidden(true)
+        .background {
+            R.image.ic_background.image
+                .resizable()
+                .scaledToFill()
+        }
+        .ignoresSafeArea(.all, edges: .bottom)
+        .task {
+            store.send(.getCharacters)
         }
     }
 }
@@ -144,9 +145,7 @@ private struct SkeletonRows: View {
     }
 }
 
-struct CharactersListView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        CharactersListView()
-    }
+#Preview {
+    @Injected(name: "scoped") var store: StoreOf<CharactersListReducer>
+    return CharactersListView(store: store)
 }
