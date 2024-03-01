@@ -39,8 +39,6 @@ struct MatchBuddyInfoView: View {
     }
 }
 
-struct MatchBuddyInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchBuddyInfoView()
-    }
+#Preview {
+    MatchBuddyInfoView()
 }

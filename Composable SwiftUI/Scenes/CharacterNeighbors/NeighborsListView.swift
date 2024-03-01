@@ -63,9 +63,14 @@ struct NeighborsListView: View {
     }
 }
 
-struct NeighborsListView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        NeighborsListView(locationDetail: .init(id: 1, name: "name", type: .citadel, dimension: "Dimension", residents: []))
-    }
+#Preview {
+    NeighborsListView(
+        locationDetail: .init(
+            id: 1,
+            name: "name",
+            type: .citadel,
+            dimension: "Dimension",
+            residents: []
+        )
+    )
 }
