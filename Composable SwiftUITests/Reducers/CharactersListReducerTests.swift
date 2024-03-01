@@ -27,7 +27,7 @@ final class CharactersListReducerTests: XCTestCase {
             }
         )
 
-        await store.send(.set(\.$searchText, "test text")) {
+        await store.send(.set(\.searchText, "test text")) {
             $0.searchText = "test text"
         }
     }
