@@ -1,0 +1,24 @@
+name: iOS starter workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build and Test default scheme using any available iPhone simulator
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_14.0.app && /usr/bin/xcodebuild -version
+      - name: Run tests
+        run: |
+          xcrun simctl list devices 
+          xcodebuild test -scheme "Composable SwiftUI" -project "Composable SwiftUI.xcodeproj" -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' | xcpretty && exit ${PIPESTATUS[0]}
+
+    
