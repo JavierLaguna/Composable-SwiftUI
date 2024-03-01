@@ -1,8 +1,6 @@
 import ComposableArchitecture
 import Resolver
 
-typealias CharacterNeighborsStore = Store<CharacterNeighborsReducer.State, CharacterNeighborsReducer.Action>
-
 @Reducer
 struct CharacterNeighborsReducer {
 
@@ -14,6 +12,7 @@ struct CharacterNeighborsReducer {
         self.locationId = locationId
     }
 
+    @ObservableState
     struct State: Equatable {
         var locationDetail: StateLoadable<LocationDetail> = .init()
     }
@@ -23,24 +22,26 @@ struct CharacterNeighborsReducer {
         case onGetLocationInfo(TaskResult<LocationDetail>)
     }
 
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case .getLocationInfo:
-            state.locationDetail.state = .loading
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .getLocationInfo:
+                state.locationDetail.state = .loading
 
-            return .run { send in
-                await send(.onGetLocationInfo(TaskResult {
-                    try await getLocationInfoInteractor.execute(locationId: locationId)
-                }))
+                return .run { send in
+                    await send(.onGetLocationInfo(TaskResult {
+                        try await getLocationInfoInteractor.execute(locationId: locationId)
+                    }))
+                }
+
+            case .onGetLocationInfo(.success(let locationDetail)):
+                state.locationDetail.state = .populated(data: locationDetail)
+                return .none
+
+            case .onGetLocationInfo(.failure(let error)):
+                state.locationDetail.state = .error(error)
+                return .none
             }
-
-        case .onGetLocationInfo(.success(let locationDetail)):
-            state.locationDetail.state = .populated(data: locationDetail)
-            return .none
-
-        case .onGetLocationInfo(.failure(let error)):
-            state.locationDetail.state = .error(error)
-            return .none
         }
     }
 }

@@ -1,10 +1,9 @@
 import ComposableArchitecture
 
-typealias MainStore = Store<MainReducer.State, MainReducer.Action>
-
 @Reducer
 struct MainReducer {
 
+    @ObservableState
     struct State: Equatable {
         var charactersListState = CharactersListReducer.State()
         var matchBuddyState = MatchBuddyReducer.State()
@@ -15,7 +14,7 @@ struct MainReducer {
         case matchBuddyActions(MatchBuddyReducer.Action)
     }
 
-    var body: some Reducer<State, Action> {
+    var body: some ReducerOf<Self> {
         Scope(state: \.charactersListState, action: \.charactersListActions) {
             CharactersListReducer()
         }
@@ -25,5 +24,5 @@ struct MainReducer {
         Reduce { _, _ in
             return .none
         }
-      }
+    }
 }

@@ -1,26 +1,24 @@
 import SwiftUI
 import Stinsen
+import Resolver
+import ComposableArchitecture
 
 final class CharactersListCoordinator: NavigationCoordinatable {
+
     let stack = NavigationStack(initial: \CharactersListCoordinator.start)
 
     @Root var start = makeStart
     @Route(.push) var character = makeCharacter
 
-    init() {
-
-    }
-
-    deinit {
-        print("Deinit HomeCoordinator")
-    }
+    @Injected(name: "scoped") private var store: StoreOf<CharactersListReducer>
 }
 
-extension CharactersListCoordinator {
+// MARK: Private methods
+private extension CharactersListCoordinator {
 
     @ViewBuilder
     func makeStart() -> some View {
-        CharactersListView()
+        CharactersListView(store: store)
     }
 
     func makeCharacter(character: Character) -> CharacterHomeCoordinator {
