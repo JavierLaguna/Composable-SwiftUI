@@ -1,31 +1,17 @@
-
 import XCTest
 import SwiftUI
 import SnapshotTesting
 
 @testable import Composable_SwiftUI
 
+// TODO: JLI
 final class ErrorViewTests: XCTest {
-        
-//    private let error = InteractorError.generic(message: "Algo ha fallado")
-//    private let onRetry: () -> Void = {}
-//    private let view: ErrorView
-//    
-//    override init() {
-//        view =
-//    }
-    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
 
-//        isRecording = true
-    }
-    
 //    func test_ErrorView_iPhone13MiniLight_returnsSnapshot() {
 //        let sut = testSutViewOnSmallDeviceLight(view: ErrorView(error: error, onRetry: onRetry))
 //        sut()
 //    }
-    
+
 //    func test_ErrorView_iPhone13MiniDark_returnsSnapshot() {
 //        assertSnapshot(
 //            matching: ErrorView(error: error, onRetry: onRetry),
@@ -35,7 +21,7 @@ final class ErrorViewTests: XCTest {
 //            )
 //        )
 //    }
-    
+
     func testNew() {
         assertSnapshot(
             matching: LoadingView(),
@@ -46,4 +32,3 @@ final class ErrorViewTests: XCTest {
         )
     }
 }
-
