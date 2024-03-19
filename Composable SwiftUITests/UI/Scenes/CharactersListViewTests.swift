@@ -1,7 +1,6 @@
 import XCTest
 import SwiftUI
 import SnapshotTesting
-import Resolver
 import ComposableArchitecture
 import jLagunaDevMacro
 
@@ -11,6 +10,12 @@ struct VariantTest { // TODO: JLI
     let name: String
     let params: String?
     let setUp: String?
+
+    init(name: String, params: String? = nil, setUp: String? = nil) {
+        self.name = name
+        self.params = params
+        self.setUp = setUp
+    }
 }
 
 @SceneSnapshotUITest(
@@ -25,19 +30,6 @@ struct VariantTest { // TODO: JLI
 final class CharactersListViewTests: XCTestCase {
 
     private var store: StoreOf<CharactersListReducer>!
-
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-
-        Resolver.resetUnitTestRegistrations()
-        // isRecording = true
-    }
-
-    override func tearDown() {
-        super.tearDown()
-
-        Resolver.tearDown()
-    }
 }
 
 // MARK: Private methods
