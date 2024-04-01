@@ -1564,7 +1564,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JavierLaguna/jLagunaDevMacro";
 			requirement = {
-				branch = SceneSnapshotUITestMacro;
+				branch = main;
 				kind = branch;
 			};
 		};

@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JavierLaguna/jLagunaDevMacro",
       "state" : {
-        "branch" : "SceneSnapshotUITestMacro",
-        "revision" : "84dabb76e56203625c2586b507fa0dfa94e5212d"
+        "branch" : "main",
+        "revision" : "f932f5fc6093e3108baf2a1c45f7765eacf54966"
       }
     },
     {
