@@ -1,13 +1,7 @@
-//
-//  Composable_SwiftUIUITestsLaunchTests.swift
-//  Composable SwiftUIUITests
-//
-//  Created by Javier Laguna on 14/5/22.
-//
 
 import XCTest
 
-class Composable_SwiftUIUITestsLaunchTests: XCTestCase {
+final class Composable_SwiftUIUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
