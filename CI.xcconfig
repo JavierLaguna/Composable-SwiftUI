@@ -1,0 +1,7 @@
+CODE_SIGN_IDENTITY = ""
+CODE_SIGNING_REQUIRED = NO
+CODE_SIGN_ENTITLEMENTS = ""
+PROVISIONING_PROFILE_SPECIFIER = ""
+
+PRODUCT_BUNDLE_IDENTIFIER[config=Debug] = com.jlagunadev.Composable-SwiftUI
+PRODUCT_BUNDLE_IDENTIFIER[config=Release] = com.jlagunadev.Composable-SwiftUI
