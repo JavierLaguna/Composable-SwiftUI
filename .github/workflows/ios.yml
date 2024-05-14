@@ -10,7 +10,6 @@ jobs:
   build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-latest
-
     steps:
       - name: Setup Xcode version
         uses: maxim-lobanov/setup-xcode@v1.6.0
@@ -23,10 +22,6 @@ jobs:
       - name: Set Xcode to Skip Macro Validation
         run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
 
-      - name: Install SwiftLint
-        run: |
-          brew install swiftlint
-
       - name: Build and Test
         run: |
           xcodebuild -scheme "Composable SwiftUI" \
@@ -34,4 +29,5 @@ jobs:
                      -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
                      -skipPackagePluginValidation \
                      -allowProvisioningUpdates \
-                     clean build test | xcpretty
+                     CODE_SIGNING_ALLOWED=NO \
+                     test | xcpretty
