@@ -24,10 +24,9 @@ platform :ios do
       device: 'iPhone 15',
       code_coverage: true,
       result_bundle: true,
+      clean: true,
       skip_testing: ['Composable SwiftUIUITests'],
-	    clean: true,
-      skip_package_dependencies_resolution: true,
-      xcargs: "-skipPackagePluginValidation"
+      skip_package_dependencies_resolution: true
     )
   end
 
