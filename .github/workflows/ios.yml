@@ -8,14 +8,14 @@ on:
 
 jobs:
   build:
-    name: Build and Test using Fastlane
-    runs-on: macos-latest
+    name: Run test using Fastlane
+    runs-on: macos-14
 
     steps:
       - name: Setup Xcode version
         uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
-          xcode-version: latest-stable
+          xcode-version: '15.4.0'
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0 # Puedes ajustar la versión según sea necesario
+          ruby-version: 3.0
 
       - name: Install Fastlane
         run: gem install fastlane
