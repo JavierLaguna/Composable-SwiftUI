@@ -34,6 +34,9 @@ jobs:
       - name: Install dependencies
         run: bundle install
 
+      - name: Set Xcode to Skip Macro Validation
+        run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
+
       - name: Run Fastlane
         run: |
           export FASTLANE_XCODEBUILD_SETTINGS_RETRIES=10
