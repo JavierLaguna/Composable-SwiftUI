@@ -22,11 +22,12 @@ platform :ios do
     scan(
       scheme: 'Composable SwiftUITests',
       device: 'iPhone 15',
+      clean: true,
       code_coverage: true,
       result_bundle: true,
-      clean: true,
       skip_testing: ['Composable SwiftUIUITests'],
-      skip_package_dependencies_resolution: true
+      skip_package_dependencies_resolution: true,
+      xcargs: "-skipPackagePluginValidation"
     )
   end
 
