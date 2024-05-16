@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test default scheme using any available iPhone simulator
+    name: Build and Test using Fastlane
     runs-on: macos-latest
 
     steps:
@@ -20,15 +20,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0 # Puedes ajustar la versión según sea necesario
+
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install dependencies
+        run: bundle install
+
       - name: Set Xcode to Skip Macro Validation
         run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
 
-      - name: Build and Test
-        run: |
-          xcodebuild -scheme "Composable SwiftUI" \
-                     -project "Composable SwiftUI.xcodeproj" \
-                     -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
-                     -skipPackagePluginValidation \
-                     -xcconfig CI.xcconfig \
-                     CODE_SIGNING_ALLOWED=NO \
-                     test | xcpretty
+      - name: Run Fastlane
+        run: bundle exec fastlane test
