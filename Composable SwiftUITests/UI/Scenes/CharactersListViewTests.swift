@@ -30,6 +30,12 @@ struct VariantTest { // TODO: JLI
 final class CharactersListViewTests: XCTestCase {
 
     private var store: StoreOf<CharactersListReducer>!
+
+    override class func setUp() {
+        super.setUp()
+
+        isRecording = false
+    }
 }
 
 // MARK: Private methods
