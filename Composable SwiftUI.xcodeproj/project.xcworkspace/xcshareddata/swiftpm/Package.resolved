@@ -43,7 +43,7 @@
       "location" : "https://github.com/JavierLaguna/jLagunaDevMacro",
       "state" : {
         "branch" : "main",
-        "revision" : "f932f5fc6093e3108baf2a1c45f7765eacf54966"
+        "revision" : "0ce6b85fc471bda20176c9a032bd06d9cb7c3c2c"
       }
     },
     {
@@ -177,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-identified-collections",
       "state" : {
-        "revision" : "2481e39ea43e14556ca9628259fa6b377427730c",
-        "version" : "1.0.1"
+        "revision" : "d533cd18b0b456b106694a9899f917ee595f2666",
+        "version" : "1.0.2"
       }
     },
     {
