@@ -14,6 +14,5 @@ import jLagunaDevMacro
 final class ErrorViewTests: XCTest {
 
     private let error = InteractorError.generic(message: "Algo ha fallado")
-    private let onRetry: () -> Void = { }
-
+    private let onRetry: () -> Void = {}
 }

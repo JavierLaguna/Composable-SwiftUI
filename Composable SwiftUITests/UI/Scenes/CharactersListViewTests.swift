@@ -37,9 +37,42 @@ private extension CharactersListViewTests {
 
     private var characters: [Character] {
         [
-            Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: CharacterLocation(id: 1, name: "Earth"), location: CharacterLocation(id: 1, name: "Earth"), image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: []),
-            Character(id: 2, name: "Morty", status: .alive, species: "Human", type: "", gender: .male, origin: CharacterLocation(id: 1, name: "Earth"), location: CharacterLocation(id: 1, name: "Earth"), image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [])
-
+            Character(
+                id: 1,
+                name: "Rick Sanchez",
+                status: .alive,
+                species: "Human",
+                type: "",
+                gender: .male,
+                origin: CharacterLocation(
+                    id: 1,
+                    name: "Earth"
+                ),
+                location: CharacterLocation(
+                    id: 1,
+                    name: "Earth"
+                ),
+                image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+                episodes: []
+            ),
+            Character(
+                id: 2,
+                name: "Morty",
+                status: .alive,
+                species: "Human",
+                type: "",
+                gender: .male,
+                origin: CharacterLocation(
+                    id: 1,
+                    name: "Earth"
+                ),
+                location: CharacterLocation(
+                    id: 1,
+                    name: "Earth"
+                ),
+                image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+                episodes: []
+            )
         ]
     }
 
@@ -76,7 +109,7 @@ private extension CharactersListViewTests {
     func configureStore(with state: CharactersListReducer.State) {
         store = StoreOf<CharactersListReducer>(
             initialState: state,
-            reducer: { }
+            reducer: {}
         )
     }
 }
