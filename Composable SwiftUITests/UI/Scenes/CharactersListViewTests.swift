@@ -115,7 +115,9 @@ private extension CharactersListViewTests {
     func configureStore(with state: CharactersListReducer.State) {
         store = StoreOf<CharactersListReducer>(
             initialState: state,
-            reducer: {}
+            reducer: {
+                // Intentionally empty
+            }
         )
     }
 }
