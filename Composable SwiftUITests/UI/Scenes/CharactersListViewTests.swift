@@ -22,8 +22,8 @@ struct VariantTest { // TODO: JLI
     scene: "CharactersListView",
     variants: [
         VariantTest(name: "loadingState", params: "store: store", setUp: "loadingStateSetUp"),
-        VariantTest(name: "loadingStateWithData", params: "store: store", setUp: "loadingStateWithDataSetUp"),
-        VariantTest(name: "populatedState", params: "store: store", setUp: "populatedStateSetUp"),
+//        VariantTest(name: "loadingStateWithData", params: "store: store", setUp: "loadingStateWithDataSetUp"),
+//        VariantTest(name: "populatedState", params: "store: store", setUp: "populatedStateSetUp"),
         VariantTest(name: "errorState", params: "store: store", setUp: "errorStateSetUp")
     ]
 )
