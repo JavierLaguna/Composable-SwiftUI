@@ -36,6 +36,7 @@
 		4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
+		497C1ED52C2033490041297A /* PlainNavLinkModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497C1ED42C2033490041297A /* PlainNavLinkModifier.swift */; };
 		4987ED282A6A75BC00AA7839 /* HttpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED272A6A75BC00AA7839 /* HttpConstants.swift */; };
 		4987ED2B2A6A855E00AA7839 /* CharacterLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED2A2A6A855E00AA7839 /* CharacterLocationResponse.swift */; };
 		4987ED312A6A890700AA7839 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED302A6A890700AA7839 /* Location.swift */; };
@@ -84,7 +85,6 @@
 		49E4F816283E97ED0037FD72 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F815283E97ED0037FD72 /* View+CornerRadius.swift */; };
 		49E4F818283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F817283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift */; };
 		49E4F81B28491F740037FD72 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = 49E4F81A28491F740037FD72 /* Stinsen */; };
-		49E4F81E28491FDE0037FD72 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F81D28491FDE0037FD72 /* MainCoordinator.swift */; };
 		49E4F820284920180037FD72 /* CharactersListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F81F284920180037FD72 /* CharactersListCoordinator.swift */; };
 		49E4F8222849226E0037FD72 /* CharacterDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F8212849226E0037FD72 /* CharacterDetailCoordinator.swift */; };
 		49E4F824284928EF0037FD72 /* CharacterHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F823284928EF0037FD72 /* CharacterHomeCoordinator.swift */; };
@@ -179,6 +179,7 @@
 		4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInfoInteractorMock.swift; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
+		497C1ED42C2033490041297A /* PlainNavLinkModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainNavLinkModifier.swift; sourceTree = "<group>"; };
 		4987ED272A6A75BC00AA7839 /* HttpConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpConstants.swift; sourceTree = "<group>"; };
 		4987ED2A2A6A855E00AA7839 /* CharacterLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocationResponse.swift; sourceTree = "<group>"; };
 		4987ED302A6A890700AA7839 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -223,7 +224,6 @@
 		49E4F813283E89FB0037FD72 /* CharacterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGender.swift; sourceTree = "<group>"; };
 		49E4F815283E97ED0037FD72 /* View+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CornerRadius.swift"; sourceTree = "<group>"; };
 		49E4F817283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewRepresentable+VisualEffectView.swift"; sourceTree = "<group>"; };
-		49E4F81D28491FDE0037FD72 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		49E4F81F284920180037FD72 /* CharactersListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListCoordinator.swift; sourceTree = "<group>"; };
 		49E4F8212849226E0037FD72 /* CharacterDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCoordinator.swift; sourceTree = "<group>"; };
 		49E4F823284928EF0037FD72 /* CharacterHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -333,6 +333,14 @@
 				497781D72836BBA20033BC22 /* MatchBuddyView.swift */,
 			);
 			path = MatchBuddy;
+			sourceTree = "<group>";
+		};
+		497C1ED22C20333B0041297A /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				497C1ED42C2033490041297A /* PlainNavLinkModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		4987ED342A6A973A00AA7839 /* Location */ = {
@@ -539,6 +547,7 @@
 		49A4A658282F973600D43FB3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				497C1ED22C20333B0041297A /* Modifiers */,
 				49A4A677282FA1F400D43FB3 /* Components */,
 				49A4A685282FB3BE00D43FB3 /* Protocols */,
 				49A4A682282FB36400D43FB3 /* Extensions */,
@@ -652,7 +661,6 @@
 		49E4F81C28491FBC0037FD72 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				49E4F81D28491FDE0037FD72 /* MainCoordinator.swift */,
 				49E4F81F284920180037FD72 /* CharactersListCoordinator.swift */,
 				49E4F823284928EF0037FD72 /* CharacterHomeCoordinator.swift */,
 				49E4F8212849226E0037FD72 /* CharacterDetailCoordinator.swift */,
@@ -1135,6 +1143,7 @@
 				49EDA8D0283CEB81002C9C80 /* EpisodesRepository.swift in Sources */,
 				49E88D232830F21400058486 /* CharacterService.swift in Sources */,
 				49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */,
+				497C1ED52C2033490041297A /* PlainNavLinkModifier.swift in Sources */,
 				49EDA8CA283BFC3D002C9C80 /* BeerBuddy.swift in Sources */,
 				49E88D202830F13500058486 /* HttpClient.swift in Sources */,
 				4987ED3C2A6AAB2D00AA7839 /* CharacterNeighborsView.swift in Sources */,
@@ -1152,7 +1161,6 @@
 				49EDA8D5283CEC2C002C9C80 /* EpisodesService.swift in Sources */,
 				4987ED3E2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift in Sources */,
 				491A399E28533FF000D17719 /* LocationRemoteDatasource.swift in Sources */,
-				49E4F81E28491FDE0037FD72 /* MainCoordinator.swift in Sources */,
 				49A4A674282F9CAC00D43FB3 /* Resolver+MainModule.swift in Sources */,
 				49EDA8C8283BF04B002C9C80 /* LocationResponse.swift in Sources */,
 				49EDA8C4283BEF7F002C9C80 /* LocationRepositoryDefault.swift in Sources */,

@@ -1,27 +1,42 @@
 import SwiftUI
-import Stinsen
+import Observation
 import Resolver
 import ComposableArchitecture
 
-final class CharactersListCoordinator: NavigationCoordinatable {
+@Observable
+final class CharactersListCoordinator {
 
-    let stack = NavigationStack(initial: \CharactersListCoordinator.start)
-
-    @Root var start = makeStart
-    @Route(.push) var character = makeCharacter
-
-    @Injected(name: "scoped") private var store: StoreOf<CharactersListReducer>
-}
-
-// MARK: Private methods
-private extension CharactersListCoordinator {
-
-    @ViewBuilder
-    func makeStart() -> some View {
-        CharactersListView(store: store)
+    var path: [Routes] = []
+    var pathBinding: Binding<[Routes]> {
+        Binding(
+            get: { self.path },
+            set: { self.path = $0 }
+        )
     }
 
-    func makeCharacter(character: Character) -> CharacterHomeCoordinator {
-        return CharacterHomeCoordinator(character: character)
+    func character(character: Character) {
+        path.append(.character(character))
+    }
+}
+
+// MARK: Routes
+extension CharactersListCoordinator {
+
+    enum Routes: Hashable, View {
+        case root
+        case character(Character)
+
+        // MARK: View
+        var body: some View {
+            @Injected(name: "scoped") var store: StoreOf<CharactersListReducer>
+
+            switch self {
+            case .root:
+                CharactersListView(store: store)
+
+            case .character(let character):
+                CharacterDetailView(character: character)
+            }
+        }
     }
 }

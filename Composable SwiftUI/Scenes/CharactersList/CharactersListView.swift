@@ -4,7 +4,6 @@ import Resolver
 
 struct CharactersListView: View {
 
-    @EnvironmentObject private var charactersListRouter: CharactersListCoordinator.Router
     @Bindable private var store: StoreOf<CharactersListReducer>
 
     init(store: StoreOf<CharactersListReducer>) {
@@ -55,9 +54,6 @@ struct CharactersListView: View {
                         showLoadingMoreCharacters: store.characters.isLoading,
                         onEndReached: {
                             store.send(.getCharacters)
-                        },
-                        onTapCharacter: {
-                            charactersListRouter.route(to: \.character, $0)
                         }
                     )
                 }
@@ -103,22 +99,19 @@ private struct CharactersList: View {
     let characters: [Character]
     let showLoadingMoreCharacters: Bool
     let onEndReached: () -> Void
-    let onTapCharacter: (Character) -> Void
 
     var body: some View {
         List {
             ForEach(characters) { character in
-
-                CharacterCellView(character: character)
-                    .onAppear {
-                        if characters.last == character {
-                            onEndReached()
+                NavigationLink(value: CharactersListCoordinator.Routes.character(character)) {
+                    CharacterCellView(character: character)
+                        .onAppear {
+                            if characters.last == character {
+                                onEndReached()
+                            }
                         }
-                    }
-                    .onTapGesture {
-                        onTapCharacter(character)
-                    }
-
+                }
+                .plainNavLink
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)

@@ -1,4 +1,4 @@
-struct Character: Equatable, Identifiable {
+struct Character: Equatable, Identifiable, Hashable {
     let id: Int
     let name: String
     let status: CharacterStatus
