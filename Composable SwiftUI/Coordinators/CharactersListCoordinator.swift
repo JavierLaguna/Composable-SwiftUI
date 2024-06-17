@@ -1,10 +1,10 @@
-import SwiftUI
 import Observation
+import SwiftUI
 import Resolver
 import ComposableArchitecture
 
 @Observable
-final class CharactersListCoordinator {
+final class CharactersCoordinator {
 
     var path: [Routes] = []
     var pathBinding: Binding<[Routes]> {
@@ -14,17 +14,22 @@ final class CharactersListCoordinator {
         )
     }
 
-    func character(character: Character) {
-        path.append(.character(character))
+    func navigateToCharacterDetail(character: Character) {
+        path.append(.beerBuddy(character))
+    }
+
+    func navigateToBeerBuddy(character: Character) {
+        path.append(.beerBuddy(character))
     }
 }
 
 // MARK: Routes
-extension CharactersListCoordinator {
+extension CharactersCoordinator {
 
     enum Routes: Hashable, View {
         case root
-        case character(Character)
+        case characterDetail(Character)
+        case beerBuddy(Character)
 
         // MARK: View
         var body: some View {
@@ -34,8 +39,11 @@ extension CharactersListCoordinator {
             case .root:
                 CharactersListView(store: store)
 
-            case .character(let character):
+            case .characterDetail(let character):
                 CharacterDetailView(character: character)
+
+            case .beerBuddy(let character):
+                MatchBuddyView(character: character)
             }
         }
     }

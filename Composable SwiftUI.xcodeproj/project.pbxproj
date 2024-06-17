@@ -16,6 +16,8 @@
 		491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399B28533F6000D17719 /* EpisodesRemoteDatasource.swift */; };
 		491A399E28533FF000D17719 /* LocationRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399D28533FF000D17719 /* LocationRemoteDatasource.swift */; };
 		491C17442B98E7AC00231699 /* jLagunaDevMacro in Frameworks */ = {isa = PBXBuildFile; productRef = 491C17432B98E7AC00231699 /* jLagunaDevMacro */; };
+		49222F302C203C600026B5E8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49222F2F2C203C600026B5E8 /* MainView.swift */; };
+		49222F332C203F070026B5E8 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49222F322C203F070026B5E8 /* MainCoordinator.swift */; };
 		492B43412ABAE171005B631E /* ErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B43402ABAE171005B631E /* ErrorViewTests.swift */; };
 		492B43462ABB45A6005B631E /* CharactersListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B43452ABB45A6005B631E /* CharactersListViewTests.swift */; };
 		493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 493A4B162A698A19006E250D /* RswiftLibrary */; };
@@ -160,6 +162,8 @@
 		491A399928533EBA00D17719 /* Resolver+Datasources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver+Datasources.swift"; sourceTree = "<group>"; };
 		491A399B28533F6000D17719 /* EpisodesRemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDatasource.swift; sourceTree = "<group>"; };
 		491A399D28533FF000D17719 /* LocationRemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDatasource.swift; sourceTree = "<group>"; };
+		49222F2F2C203C600026B5E8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		49222F322C203F070026B5E8 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		492B43402ABAE171005B631E /* ErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewTests.swift; sourceTree = "<group>"; };
 		492B43452ABB45A6005B631E /* CharactersListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewTests.swift; sourceTree = "<group>"; };
 		493BF0302834298700ECC3A3 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
@@ -584,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				49A4A663282F993B00D43FB3 /* MainReducer.swift */,
+				49222F2F2C203C600026B5E8 /* MainView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -666,6 +671,7 @@
 				49E4F8212849226E0037FD72 /* CharacterDetailCoordinator.swift */,
 				49E4F82528492CDE0037FD72 /* MatchBuddyCoordinator.swift */,
 				4987ED3F2A6BBB5300AA7839 /* CharacterNeighborsCoordinator.swift */,
+				49222F322C203F070026B5E8 /* MainCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1095,6 +1101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */,
+				49222F302C203C600026B5E8 /* MainView.swift in Sources */,
 				49E4F829284931640037FD72 /* MatchBuddyInfoView.swift in Sources */,
 				4987ED462A6BD91E00AA7839 /* LocationType.swift in Sources */,
 				491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */,
@@ -1130,6 +1137,7 @@
 				493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */,
 				494E345F283AA68B00445B79 /* ButtonView.swift in Sources */,
 				49E88D2E2830F43E00058486 /* GetCharactersInteractor.swift in Sources */,
+				49222F332C203F070026B5E8 /* MainCoordinator.swift in Sources */,
 				49E4F824284928EF0037FD72 /* CharacterHomeCoordinator.swift in Sources */,
 				4987ED312A6A890700AA7839 /* Location.swift in Sources */,
 				494E345D283A9E8A00445B79 /* BusinessConstants.swift in Sources */,

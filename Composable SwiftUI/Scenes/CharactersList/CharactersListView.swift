@@ -103,7 +103,7 @@ private struct CharactersList: View {
     var body: some View {
         List {
             ForEach(characters) { character in
-                NavigationLink(value: CharactersListCoordinator.Routes.character(character)) {
+                NavigationLink(value: CharactersCoordinator.Routes.characterDetail(character)) {
                     CharacterCellView(character: character)
                         .onAppear {
                             if characters.last == character {
