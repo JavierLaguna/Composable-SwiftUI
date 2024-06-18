@@ -4,7 +4,7 @@ import SwiftUI
 @Observable
 final class MainCoordinator {
 
-    var tabSelection: Int = Tab.characters.rawValue
+    private(set) var tabSelection: Int = Tab.characters.rawValue
     var tabSelectionBinding: Binding<Int> {
         Binding(
             get: { self.tabSelection },
@@ -15,11 +15,21 @@ final class MainCoordinator {
     func navigateToCharacters() {
         tabSelection = Tab.characters.rawValue
     }
+
+    func navigateToEpisodes() {
+        tabSelection = Tab.episodes.rawValue
+    }
+
+    func navigateToLocations() {
+        tabSelection = Tab.locations.rawValue
+    }
 }
 
 extension MainCoordinator {
 
     enum Tab: Int {
         case characters = 0
+        case episodes = 1
+        case locations = 2
     }
 }

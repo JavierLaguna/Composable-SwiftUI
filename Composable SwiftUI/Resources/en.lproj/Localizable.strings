@@ -2,9 +2,9 @@
 "commons.retry" = "Retry";
 
 // TabBar
-"tabBar.details" = "Details";
-"tabBar.neighbors" = "Neighbors";
-"tabBar.beerBuddy" = "Beer buddy";
+"tabBar.characters" = "Characters";
+"tabBar.episodes" = "Episodes";
+"tabBar.locations" = "Locations";
 
 // CharacterStatus
 "characterStatus.alive" = "Alive";
