@@ -173,4 +173,5 @@ struct MatchBuddyView: View {
     )
 
     return MatchBuddyView(character: character)
+        .allEnvironmentsInjected
 }

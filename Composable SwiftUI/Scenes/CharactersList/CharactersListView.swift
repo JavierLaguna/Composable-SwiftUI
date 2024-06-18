@@ -96,6 +96,9 @@ struct CharactersListView: View {
 }
 
 private struct CharactersList: View {
+
+    @Environment(CharactersCoordinator.self) private var charactersCoordinator
+
     let characters: [Character]
     let showLoadingMoreCharacters: Bool
     let onEndReached: () -> Void
@@ -103,7 +106,9 @@ private struct CharactersList: View {
     var body: some View {
         List {
             ForEach(characters) { character in
-                NavigationLink(value: CharactersCoordinator.Routes.characterDetail(character)) {
+                Button {
+                    charactersCoordinator.navigateToCharacterDetail(character: character)
+                } label: {
                     CharacterCellView(character: character)
                         .onAppear {
                             if characters.last == character {
@@ -111,7 +116,6 @@ private struct CharactersList: View {
                             }
                         }
                 }
-                .plainNavLink
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
@@ -140,5 +144,9 @@ private struct SkeletonRows: View {
 
 #Preview {
     @Injected(name: "scoped") var store: StoreOf<CharactersListReducer>
-    return CharactersListView(store: store)
+
+    return NavigationStack {
+        CharactersListView(store: store)
+    }
+    .allEnvironmentsInjected
 }
