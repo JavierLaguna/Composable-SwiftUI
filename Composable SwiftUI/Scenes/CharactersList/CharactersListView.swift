@@ -4,7 +4,6 @@ import Resolver
 
 struct CharactersListView: View {
 
-    @EnvironmentObject private var charactersListRouter: CharactersListCoordinator.Router
     @Bindable private var store: StoreOf<CharactersListReducer>
 
     init(store: StoreOf<CharactersListReducer>) {
@@ -55,9 +54,6 @@ struct CharactersListView: View {
                         showLoadingMoreCharacters: store.characters.isLoading,
                         onEndReached: {
                             store.send(.getCharacters)
-                        },
-                        onTapCharacter: {
-                            charactersListRouter.route(to: \.character, $0)
                         }
                     )
                 }
@@ -100,25 +96,26 @@ struct CharactersListView: View {
 }
 
 private struct CharactersList: View {
+
+    @Environment(CharactersCoordinator.self) private var charactersCoordinator
+
     let characters: [Character]
     let showLoadingMoreCharacters: Bool
     let onEndReached: () -> Void
-    let onTapCharacter: (Character) -> Void
 
     var body: some View {
         List {
             ForEach(characters) { character in
-
-                CharacterCellView(character: character)
-                    .onAppear {
-                        if characters.last == character {
-                            onEndReached()
+                Button {
+                    charactersCoordinator.navigateToCharacterDetail(character: character)
+                } label: {
+                    CharacterCellView(character: character)
+                        .onAppear {
+                            if characters.last == character {
+                                onEndReached()
+                            }
                         }
-                    }
-                    .onTapGesture {
-                        onTapCharacter(character)
-                    }
-
+                }
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
@@ -147,5 +144,9 @@ private struct SkeletonRows: View {
 
 #Preview {
     @Injected(name: "scoped") var store: StoreOf<CharactersListReducer>
-    return CharactersListView(store: store)
+
+    return NavigationStack {
+        CharactersListView(store: store)
+    }
+    .allEnvironmentsInjected
 }

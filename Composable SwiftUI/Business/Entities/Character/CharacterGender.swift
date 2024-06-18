@@ -1,4 +1,4 @@
-enum CharacterGender: String, Equatable {
+enum CharacterGender: String, Equatable, Hashable {
     case female = "Female"
     case male = "Male"
     case genderless = "Genderless"

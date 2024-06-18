@@ -1,23 +1,47 @@
+import Observation
 import SwiftUI
-import Stinsen
 
-final class MainCoordinator: NavigationCoordinatable {
-    var stack: Stinsen.NavigationStack<MainCoordinator>
+@Observable
+final class MainCoordinator {
 
-    @Root var charactersList = makeCharactersList
-
-    init() {
-        stack = NavigationStack(initial: \MainCoordinator.charactersList)
+    private(set) var tabSelection: Int = Tab.characters.rawValue
+    var tabSelectionBinding: Binding<Int> {
+        Binding(
+            get: { self.tabSelection },
+            set: { self.tabSelection = $0 }
+        )
     }
 
-    deinit {
-        print("Deinit MainCoordinator")
+    func navigateToCharacters() {
+        tabSelection = Tab.characters.rawValue
+    }
+
+    func navigateToEpisodes() {
+        tabSelection = Tab.episodes.rawValue
+    }
+
+    func navigateToLocations() {
+        tabSelection = Tab.locations.rawValue
     }
 }
 
+// MARK: Tabs
 extension MainCoordinator {
 
-    func makeCharactersList() -> NavigationViewCoordinator<CharactersListCoordinator> {
-        return NavigationViewCoordinator(CharactersListCoordinator())
+    enum Tab: Int {
+        case characters = 0
+        case episodes = 1
+        case locations = 2
+    }
+}
+
+// MARK: View
+extension MainCoordinator {
+
+    struct RootView: View {
+
+        var body: some View {
+            MainView()
+        }
     }
 }

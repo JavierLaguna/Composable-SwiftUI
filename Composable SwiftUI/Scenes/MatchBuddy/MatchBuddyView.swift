@@ -6,7 +6,7 @@ import Kingfisher
 struct MatchBuddyView: View {
 
     @Injected(name: "scoped") private var store: StoreOf<MatchBuddyReducer>
-    @EnvironmentObject private var matchBuddyRouter: MatchBuddyCoordinator.Router
+    @Environment(CharactersCoordinator.self) private var charactersCoordinator
 
     private var character: Character
 
@@ -63,7 +63,8 @@ struct MatchBuddyView: View {
                 Spacer()
 
                 Button(action: {
-                    matchBuddyRouter.route(to: \.info)
+                    charactersCoordinator.showBeerBuddyInfo()
+
                 }, label: {
                     Image(systemName: "info.circle.fill")
                         .resizable()
@@ -74,19 +75,26 @@ struct MatchBuddyView: View {
 
                 Spacer()
 
-                VStack(spacing: Theme.Space.l) {
-                    KFImage(URL(string: store.beerBuddy.data?.buddy.image ?? ""))
-                        .resizable()
-                        .skeleton(with: store.beerBuddy.isLoading)
-                        .shape(type: .rectangle)
-                        .scaledToFit()
-                        .frame(width: 120, height: 120)
-                        .cornerRadius(30)
+                Button(action: {
+                    if let buddy = store.beerBuddy.data?.buddy {
+                        charactersCoordinator.showBeerBuddyCharacterDetail(character: buddy)
+                    }
 
-                    Text(store.beerBuddy.data?.buddy.name)
-                        .foregroundColor(Theme.Colors.text)
-                        .font(Theme.Fonts.body)
-                }
+                }, label: {
+                    VStack(spacing: Theme.Space.l) {
+                        KFImage(URL(string: store.beerBuddy.data?.buddy.image ?? ""))
+                            .resizable()
+                            .skeleton(with: store.beerBuddy.isLoading)
+                            .shape(type: .rectangle)
+                            .scaledToFit()
+                            .frame(width: 120, height: 120)
+                            .cornerRadius(30)
+
+                        Text(store.beerBuddy.data?.buddy.name)
+                            .foregroundColor(Theme.Colors.text)
+                            .font(Theme.Fonts.body)
+                    }
+                })
             }
             .padding(.leading, Theme.Space.xxxl)
             .padding(.trailing, Theme.Space.xxxl)
@@ -140,6 +148,9 @@ struct MatchBuddyView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
         }
+        .sheet(isPresented: charactersCoordinator.sheetIsPresented) {
+            charactersCoordinator.sheet
+        }
         .task {
             store.send(.getBeerBuddy(of: character))
         }
@@ -162,4 +173,5 @@ struct MatchBuddyView: View {
     )
 
     return MatchBuddyView(character: character)
+        .allEnvironmentsInjected
 }

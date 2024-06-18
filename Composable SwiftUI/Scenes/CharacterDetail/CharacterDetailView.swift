@@ -35,6 +35,16 @@ struct CharacterDetailView: View {
 
                 infoView(title: R.string.localizable.characterDetailNumberOfEpisodes(), value: String(character.episodes.count))
 
+                NavigationLink(
+                    "BUDDY BEER",
+                    value: CharactersCoordinator.Routes.beerBuddy(character)
+                )
+
+                NavigationLink(
+                    "neighbors",
+                    value: CharactersCoordinator.Routes.neighbors(character)
+                )
+
                 Color.clear.frame(height: 100)
             }
             .padding(.top, -110)

@@ -9,7 +9,7 @@ struct ComposableSwiftUIApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainCoordinator().view()
+            MainCoordinator.RootView()
         }
     }
 }
