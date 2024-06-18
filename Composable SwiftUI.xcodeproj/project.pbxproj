@@ -85,7 +85,6 @@
 		49E4F814283E89FB0037FD72 /* CharacterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F813283E89FB0037FD72 /* CharacterGender.swift */; };
 		49E4F816283E97ED0037FD72 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F815283E97ED0037FD72 /* View+CornerRadius.swift */; };
 		49E4F818283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F817283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift */; };
-		49E4F81B28491F740037FD72 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = 49E4F81A28491F740037FD72 /* Stinsen */; };
 		49E4F820284920180037FD72 /* CharactersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F81F284920180037FD72 /* CharactersCoordinator.swift */; };
 		49E4F829284931640037FD72 /* MatchBuddyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F828284931640037FD72 /* MatchBuddyInfoView.swift */; };
 		49E4F82B284A11D80037FD72 /* UIScreen+Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F82A284A11D70037FD72 /* UIScreen+Sizes.swift */; };
@@ -277,7 +276,6 @@
 				493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */,
 				49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */,
 				49A4A67C282FA32E00D43FB3 /* Kingfisher in Frameworks */,
-				49E4F81B28491F740037FD72 /* Stinsen in Frameworks */,
 				49A4A652282F958B00D43FB3 /* Resolver in Frameworks */,
 				49A4A64C282F952700D43FB3 /* ComposableArchitecture in Frameworks */,
 				49E4F812283D54770037FD72 /* ScalingHeaderScrollView in Frameworks */,
@@ -946,7 +944,6 @@
 				49A4A67B282FA32E00D43FB3 /* Kingfisher */,
 				494E345A283A40FE00445B79 /* SkeletonUI */,
 				49E4F811283D54770037FD72 /* ScalingHeaderScrollView */,
-				49E4F81A28491F740037FD72 /* Stinsen */,
 				49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */,
 				493A4B162A698A19006E250D /* RswiftLibrary */,
 			);
@@ -1036,7 +1033,6 @@
 				49A4A67A282FA32E00D43FB3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				494E3459283A40FE00445B79 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
 				49E4F810283D54770037FD72 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
-				49E4F81928491F730037FD72 /* XCRemoteSwiftPackageReference "stinsen" */,
 				49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */,
 				49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */,
@@ -1632,14 +1628,6 @@
 				minimumVersion = 0.0.3;
 			};
 		};
-		49E4F81928491F730037FD72 /* XCRemoteSwiftPackageReference "stinsen" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rundfunk47/stinsen";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -1704,11 +1692,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49E4F810283D54770037FD72 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
 			productName = ScalingHeaderScrollView;
-		};
-		49E4F81A28491F740037FD72 /* Stinsen */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49E4F81928491F730037FD72 /* XCRemoteSwiftPackageReference "stinsen" */;
-			productName = Stinsen;
 		};
 		49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

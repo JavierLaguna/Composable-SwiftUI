@@ -1,5 +1,5 @@
 {
-  "originHash" : "f7915406c064154112b06ec737f9e981320c395322c903f6f9584dc3f936193d",
+  "originHash" : "b88adb3a650bf9d66a946a44774232468615f72f6eaaea6a28a9e291c8e930d5",
   "pins" : [
     {
       "identity" : "collectionconcurrencykit",
@@ -101,18 +101,9 @@
       }
     },
     {
-      "identity" : "stinsen",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/rundfunk47/stinsen",
-      "state" : {
-        "revision" : "91ddedb7d86c7d3aa2d0dd281f1113ebae256324",
-        "version" : "2.0.13"
-      }
-    },
-    {
       "identity" : "swift-argument-parser",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
       "state" : {
         "revision" : "8f4d2753f0e4778c76d5f05ad16c74f707390531",
         "version" : "1.2.3"
