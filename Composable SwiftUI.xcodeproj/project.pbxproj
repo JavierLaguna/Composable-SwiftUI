@@ -453,8 +453,6 @@
 		49A4A61F282F948C00D43FB3 /* Composable SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				495C915D282FBAAE00B841ED /* Info.plist */,
-				49A4A620282F948C00D43FB3 /* ComposableSwiftUIApp.swift */,
 				49A4A656282F972000D43FB3 /* Injection */,
 				49A4A658282F973600D43FB3 /* Common */,
 				49A4A659282F973B00D43FB3 /* Data */,
@@ -463,6 +461,8 @@
 				49A4A65A282F974E00D43FB3 /* Scenes */,
 				49A4A655282F970D00D43FB3 /* Resources */,
 				49A4A626282F949100D43FB3 /* Preview Content */,
+				495C915D282FBAAE00B841ED /* Info.plist */,
+				49A4A620282F948C00D43FB3 /* ComposableSwiftUIApp.swift */,
 			);
 			path = "Composable SwiftUI";
 			sourceTree = "<group>";

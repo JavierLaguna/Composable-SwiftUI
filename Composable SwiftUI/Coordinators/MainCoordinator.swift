@@ -25,11 +25,23 @@ final class MainCoordinator {
     }
 }
 
+// MARK: Tabs
 extension MainCoordinator {
 
     enum Tab: Int {
         case characters = 0
         case episodes = 1
         case locations = 2
+    }
+}
+
+// MARK: View
+extension MainCoordinator {
+
+    struct RootView: View {
+
+        var body: some View {
+            MainView()
+        }
     }
 }
