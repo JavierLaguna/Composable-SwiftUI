@@ -21,7 +21,7 @@ platform :ios do
   lane :test do |options|
     scan(
       scheme: 'Composable SwiftUITests',
-      device: 'iPhone 15',
+      device: ENV['DEVICE'],
       clean: true,
       code_coverage: true,
       result_bundle: true,

@@ -6,7 +6,9 @@ import Kingfisher
 struct MatchBuddyView: View {
 
     @Injected(name: "scoped") private var store: StoreOf<MatchBuddyReducer>
-    @Environment(CharactersCoordinator.self) private var charactersCoordinator
+
+    @Environment(CharactersCoordinator.self)
+    private var charactersCoordinator
 
     private var character: Character
 
