@@ -97,7 +97,8 @@ struct CharactersListView: View {
 
 private struct CharactersList: View {
 
-    @Environment(CharactersCoordinator.self) private var charactersCoordinator
+    @Environment(CharactersCoordinator.self)
+    private var charactersCoordinator
 
     let characters: [Character]
     let showLoadingMoreCharacters: Bool
