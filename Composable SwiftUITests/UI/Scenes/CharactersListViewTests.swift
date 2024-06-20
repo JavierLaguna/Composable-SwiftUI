@@ -41,6 +41,10 @@ final class CharactersListViewTests: XCTestCase {
 // MARK: Private methods
 private extension CharactersListViewTests {
 
+    static private func imageUrl(id: Int) -> String {
+        "\(TestConfig.characterImageBaseUrl)/\(id).jpeg"
+    }
+
     private var characters: [Character] {
         [
             Character(
@@ -58,7 +62,7 @@ private extension CharactersListViewTests {
                     id: 1,
                     name: "Earth"
                 ),
-                image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+                image: Self.imageUrl(id: 1),
                 episodes: []
             ),
             Character(
@@ -76,7 +80,7 @@ private extension CharactersListViewTests {
                     id: 1,
                     name: "Earth"
                 ),
-                image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+                image: Self.imageUrl(id: 2),
                 episodes: []
             )
         ]
