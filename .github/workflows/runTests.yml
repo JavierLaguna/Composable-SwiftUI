@@ -9,13 +9,19 @@ on:
 jobs:
   build:
     name: Run test using Fastlane
-    runs-on: macos-14
+    runs-on: ${{ matrix.MACOS_VERSION }}
+
+    strategy:
+      matrix:
+        macos_version: [macos-14]
+        xcode_version: ['15.4.0']
+        iphone_model: ['iPhone 15']
 
     steps:
       - name: Setup Xcode version
         uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
-          xcode-version: '15.4.0'
+          xcode-version: ${{ matrix.XCODE_VERSION }}
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -38,6 +44,8 @@ jobs:
         run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
 
       - name: Run Fastlane
+        env:
+          DEVICE: ${{ matrix.IPHONE_MODEL }}
         run: |
           export FASTLANE_XCODEBUILD_SETTINGS_RETRIES=10
           bundle exec fastlane test
