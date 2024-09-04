@@ -1,10 +1,12 @@
-import XCTest
+import Testing
 
 @testable import Composable_SwiftUI
 
-final class CharacterTests: XCTestCase {
+@Suite("Character Tests")
+struct CharacterTests {
 
-    func testMatchedEpisodes() {
+    @Test
+    func matchedEpisodes() {
         let location = CharacterLocation(id: 1, name: "Earth")
 
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -13,14 +15,15 @@ final class CharacterTests: XCTestCase {
 
         let matchedEpisodes = rick.matchedEpisodes(with: morty)
 
-        XCTAssertEqual(matchedEpisodes?.character, rick)
-        XCTAssertEqual(matchedEpisodes?.count, 5)
-        XCTAssertEqual(matchedEpisodes?.diff, 300)
-        XCTAssertEqual(matchedEpisodes?.firstEpisode, 1)
-        XCTAssertEqual(matchedEpisodes?.lastEpisode, 301)
+        #expect(matchedEpisodes?.character == rick)
+        #expect(matchedEpisodes?.count == 5)
+        #expect(matchedEpisodes?.diff == 300)
+        #expect(matchedEpisodes?.firstEpisode == 1)
+        #expect(matchedEpisodes?.lastEpisode == 301)
     }
 
-    func testMatchedEpisodesReturnNil() {
+    @Test
+    func matchedEpisodesReturnNil() {
         let location = CharacterLocation(id: 1, name: "Earth")
 
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [200, 301])
@@ -29,6 +32,6 @@ final class CharacterTests: XCTestCase {
 
         let matchedEpisodes = rick.matchedEpisodes(with: morty)
 
-        XCTAssertNil(matchedEpisodes)
+        #expect(matchedEpisodes == nil)
     }
 }

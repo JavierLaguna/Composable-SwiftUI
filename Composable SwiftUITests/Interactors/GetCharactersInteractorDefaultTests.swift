@@ -1,24 +1,22 @@
-import XCTest
+import Testing
 import ComposableArchitecture
 import Resolver
 
 @testable import Composable_SwiftUI
 
-final class GetCharactersInteractorDefaultTests: XCTestCase {
+@Suite("GetCharactersInteractorDefault Tests")
+final class GetCharactersInteractorDefaultTests {
 
-    override func setUp() {
-        super.setUp()
-
+    init() {
         Resolver.resetUnitTestRegistrations()
     }
 
-    override func tearDown() {
-        super.tearDown()
-
+    deinit {
         Resolver.tearDown()
     }
 
-    func testExecuteSuccess() async {
+    @Test
+    func executeSuccess() async {
         let repository = CharactersRepositoryMock()
         Resolver.test.register { repository as CharactersRepository }
 
@@ -27,15 +25,16 @@ final class GetCharactersInteractorDefaultTests: XCTestCase {
         do {
             let result = try await interactor.execute()
 
-            XCTAssertEqual(result.count, repository.expectedResponse.count)
-            XCTAssertEqual(result, repository.expectedResponse)
+            #expect(result.count == repository.expectedResponse.count)
+            #expect(result == repository.expectedResponse)
 
         } catch {
-            XCTFail("Test Fail")
+            Issue.record("Test Fail")
         }
     }
 
-    func testExecuteFail() async {
+    @Test
+    func executeFail() async {
         let repository = CharactersRepositoryMock(success: false)
         Resolver.test.register { repository as CharactersRepository }
 
@@ -44,13 +43,10 @@ final class GetCharactersInteractorDefaultTests: XCTestCase {
         do {
             _ = try await interactor.execute()
 
-            XCTFail("Test Fail")
+            Issue.record("Test Fail")
 
         } catch {
-
-            XCTAssertEqual(error as? InteractorError,
-                           .repositoryFail(error: .invalidUrl)
-            )
+            #expect(error as? InteractorError == .repositoryFail(error: .invalidUrl))
         }
     }
 }
