@@ -15,7 +15,6 @@
 		491A399A28533EBA00D17719 /* Resolver+Datasources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399928533EBA00D17719 /* Resolver+Datasources.swift */; };
 		491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399B28533F6000D17719 /* EpisodesRemoteDatasource.swift */; };
 		491A399E28533FF000D17719 /* LocationRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399D28533FF000D17719 /* LocationRemoteDatasource.swift */; };
-		491C17442B98E7AC00231699 /* jLagunaDevMacro in Frameworks */ = {isa = PBXBuildFile; productRef = 491C17432B98E7AC00231699 /* jLagunaDevMacro */; };
 		49222F302C203C600026B5E8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49222F2F2C203C600026B5E8 /* MainView.swift */; };
 		49222F332C203F070026B5E8 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49222F322C203F070026B5E8 /* MainCoordinator.swift */; };
 		492B43412ABAE171005B631E /* ErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B43402ABAE171005B631E /* ErrorViewTests.swift */; };
@@ -292,7 +291,6 @@
 			files = (
 				49A17DCE2AB9BEBA00DAF653 /* InlineSnapshotTesting in Frameworks */,
 				49A17DD02AB9BEBA00DAF653 /* SnapshotTesting in Frameworks */,
-				491C17442B98E7AC00231699 /* jLagunaDevMacro in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,7 +972,6 @@
 			packageProductDependencies = (
 				49A17DCD2AB9BEBA00DAF653 /* InlineSnapshotTesting */,
 				49A17DCF2AB9BEBA00DAF653 /* SnapshotTesting */,
-				491C17432B98E7AC00231699 /* jLagunaDevMacro */,
 			);
 			productName = "Composable SwiftUITests";
 			productReference = 49A4A62D282F949200D43FB3 /* Composable SwiftUITests.xctest */;
@@ -1043,7 +1040,6 @@
 				493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */,
 				49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				49A17DCC2AB9BEBA00DAF653 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
-				491C17422B98E7AC00231699 /* XCRemoteSwiftPackageReference "jLagunaDevMacro" */,
 			);
 			productRefGroup = 49A4A61E282F948C00D43FB3 /* Products */;
 			projectDirPath = "";
@@ -1562,14 +1558,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		491C17422B98E7AC00231699 /* XCRemoteSwiftPackageReference "jLagunaDevMacro" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JavierLaguna/jLagunaDevMacro";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
@@ -1622,8 +1610,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.53.0;
+				branch = "swift-6";
+				kind = branch;
 			};
 		};
 		49E4F810283D54770037FD72 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */ = {
@@ -1645,11 +1633,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		491C17432B98E7AC00231699 /* jLagunaDevMacro */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 491C17422B98E7AC00231699 /* XCRemoteSwiftPackageReference "jLagunaDevMacro" */;
-			productName = jLagunaDevMacro;
-		};
 		493A4B122A698996006E250D /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "plugin:RswiftGenerateInternalResources";
