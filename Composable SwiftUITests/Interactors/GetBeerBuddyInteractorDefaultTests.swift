@@ -9,15 +9,7 @@ import Resolver
     "GetBeerBuddyInteractorDefault Tests",
     .serialized
 )
-final class GetBeerBuddyInteractorDefaultTests {
-
-    init() {
-        Resolver.resetUnitTestRegistrations()
-    }
-
-    deinit {
-        Resolver.tearDown()
-    }
+final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
     @Test
     func executeSuccess() async {

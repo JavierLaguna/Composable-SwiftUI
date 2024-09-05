@@ -1,10 +1,12 @@
-import XCTest
+import Testing
 
 @testable import Composable_SwiftUI
 
-final class CharactersListStateTests: XCTestCase {
+@Suite("CharactersListState Tests")
+struct CharactersListStateTests {
 
-    func testFilteredCharacters() throws {
+    @Test
+    func filteredCharacters() {
         let location = CharacterLocation(id: 1, name: "Earth")
         let characters: [Character] = [
             Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: []),
@@ -17,18 +19,18 @@ final class CharactersListStateTests: XCTestCase {
         ]
 
         var state = CharactersListReducer.State()
-        XCTAssertNil(state.filteredCharacters)
+        #expect(state.filteredCharacters == nil)
 
         state.characters.state = .populated(data: characters)
-        XCTAssertEqual(state.filteredCharacters?.count, 3)
-        XCTAssertEqual(state.filteredCharacters, characters)
+        #expect(state.filteredCharacters?.count == 3)
+        #expect(state.filteredCharacters == characters)
 
         state.searchText = "RICK"
-        XCTAssertEqual(state.filteredCharacters?.count, 2)
-        XCTAssertEqual(state.filteredCharacters, shouldFilteredcharacters)
+        #expect(state.filteredCharacters?.count == 2)
+        #expect(state.filteredCharacters == shouldFilteredcharacters)
 
         state.searchText = "QWERTY"
-        XCTAssertEqual(state.filteredCharacters?.count, 0)
-        XCTAssertEqual(state.filteredCharacters, [])
+        #expect(state.filteredCharacters?.count == 0)
+        #expect(state.filteredCharacters == [])
     }
 }

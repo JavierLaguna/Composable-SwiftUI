@@ -1,4 +1,4 @@
-import XCTest
+import Testing
 import SwiftUI
 import SnapshotTesting
 import ComposableArchitecture

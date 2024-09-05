@@ -12,9 +12,5 @@ extension Resolver: ResolverRegistering {
         registerMainModule()
         registerCharactersListModule()
         registerMatchBuddyModule()
-
-        register(AnySchedulerOf<DispatchQueue>.self, name: "main") { _ in
-            .main
-        }
     }
 }

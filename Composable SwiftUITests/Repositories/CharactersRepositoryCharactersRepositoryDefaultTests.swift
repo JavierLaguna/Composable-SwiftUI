@@ -1,46 +1,40 @@
-import XCTest
+import Testing
 import ComposableArchitecture
 import Resolver
 
 @testable import Composable_SwiftUI
 
-final class CharactersRepositoryDefaultTests: XCTestCase {
+@Suite(
+    "CharactersRepositoryDefault Tests",
+    .serialized
+)
+final class CharactersRepositoryDefaultTests: ResetTestDependencies {
 
-    override func setUp() {
-        super.setUp()
-
-        Resolver.resetUnitTestRegistrations()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-
-        Resolver.tearDown()
-    }
-
-    func testGetCharactersSuccess() async {
+    @Test
+    func getCharactersSuccess() async {
         let datasource = CharacterRemoteDatasourceMock()
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
         let repository = CharactersRepositoryDefault()
 
-        XCTAssertNil(repository.nextPage)
-        XCTAssertNil(repository.totalPages)
+        #expect(repository.nextPage == nil)
+        #expect(repository.totalPages == nil)
 
         do {
             let result = try await repository.getCharacters()
 
-            XCTAssertEqual(repository.nextPage, 2)
-            XCTAssertEqual(repository.totalPages, 12)
-            XCTAssertEqual(result.count, datasource.expectedResponseByPage.results.count)
-            XCTAssertEqual(result, datasource.expectedResponseByPage.results.map { $0.toDomain() })
+            #expect(repository.nextPage == 2)
+            #expect(repository.totalPages == 12)
+            #expect(result.count == datasource.expectedResponseByPage.results.count)
+            #expect(result == datasource.expectedResponseByPage.results.map { $0.toDomain() })
 
         } catch {
-            XCTFail("Test Fail")
+            Issue.record("Test Fail")
         }
     }
 
-    func testGetCharactersFail() async {
+    @Test
+    func getCharactersFail() async {
         let datasource = CharacterRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
@@ -49,34 +43,36 @@ final class CharactersRepositoryDefaultTests: XCTestCase {
         do {
             _ = try await repository.getCharacters()
 
-            XCTFail("Test Fail")
+            Issue.record("Test Fail")
 
         } catch {
-            XCTAssertEqual(error as? RepositoryError, .invalidUrl)
+            #expect(error as? RepositoryError == .invalidUrl)
         }
     }
 
-    func testGetCharactersByIdSuccess() async {
+    @Test
+    func getCharactersByIdSuccess() async {
         let datasource = CharacterRemoteDatasourceMock()
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
         let repository = CharactersRepositoryDefault()
 
-        XCTAssertNil(repository.nextPage)
-        XCTAssertNil(repository.totalPages)
+        #expect(repository.nextPage == nil)
+        #expect(repository.totalPages == nil)
 
         do {
             let result = try await repository.getCharacters(characterIds: [1, 2])
 
-            XCTAssertEqual(result.count, datasource.expectedResponseByIds.count)
-            XCTAssertEqual(result, datasource.expectedResponseByIds.map { $0.toDomain() })
+            #expect(result.count == datasource.expectedResponseByIds.count)
+            #expect(result == datasource.expectedResponseByIds.map { $0.toDomain() })
 
         } catch {
-            XCTFail("Test Fail")
+            Issue.record("Test Fail")
         }
     }
 
-    func testGetCharactersByIdFail() async {
+    @Test
+    func getCharactersByIdFail() async {
         let datasource = CharacterRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
@@ -85,10 +81,10 @@ final class CharactersRepositoryDefaultTests: XCTestCase {
         do {
             _ = try await repository.getCharacters(characterIds: [1, 2])
 
-            XCTFail("Test Fail")
+            Issue.record("Test Fail")
 
         } catch {
-            XCTAssertEqual(error as? RepositoryError, .invalidUrl)
+            #expect(error as? RepositoryError == .invalidUrl)
         }
     }
 }

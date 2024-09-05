@@ -1,25 +1,15 @@
-import XCTest
+import Testing
 import ComposableArchitecture
 import Resolver
 
 @testable import Composable_SwiftUI
 
 @MainActor
-final class MatchBuddyReducerTests: XCTestCase {
+@Suite("MatchBuddyReducer Tests")
+final class MatchBuddyReducerTests: ResetTestDependencies {
 
-    override func setUp() {
-        super.setUp()
-
-        Resolver.resetUnitTestRegistrations()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-
-        Resolver.tearDown()
-    }
-
-    func testGetBeerBuddySuccess() async {
+    @Test
+    func getBeerBuddySuccess() async {
         let interactor = GetBeerBuddyInteractorMock()
         Resolver.test.register { interactor as GetBeerBuddyInteractor }
 
@@ -42,7 +32,8 @@ final class MatchBuddyReducerTests: XCTestCase {
         }
     }
 
-    func testGetBeerBuddyNotFoundSuccess() async {
+    @Test
+    func getBeerBuddyNotFoundSuccess() async {
         let interactor = GetBeerBuddyInteractorMock(success: true, expectedResponse: nil)
         Resolver.test.register { interactor as GetBeerBuddyInteractor }
 
@@ -65,7 +56,8 @@ final class MatchBuddyReducerTests: XCTestCase {
         }
     }
 
-    func testGetBeerBuddyFail() async {
+    @Test
+    func getBeerBuddyFail() async {
         Resolver.test.register { GetBeerBuddyInteractorMock(success: false) as GetBeerBuddyInteractor }
 
         let location = CharacterLocation(id: 1, name: "Earth")

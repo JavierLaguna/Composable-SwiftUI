@@ -4,16 +4,11 @@ import Resolver
 
 @testable import Composable_SwiftUI
 
-@Suite("GetCharactersInteractorDefault Tests")
-final class GetCharactersInteractorDefaultTests {
-
-    init() {
-        Resolver.resetUnitTestRegistrations()
-    }
-
-    deinit {
-        Resolver.tearDown()
-    }
+@Suite(
+    "GetCharactersInteractorDefault Tests",
+    .serialized
+)
+final class GetCharactersInteractorDefaultTests: ResetTestDependencies {
 
     @Test
     func executeSuccess() async {
