@@ -24,13 +24,13 @@ final class GetCharactersInteractorDefaultTests: ResetTestDependencies {
     }
 
     @Test
-    func executeFail() async {
+    func executeFail() async throws {
         let repository = CharactersRepositoryMock(success: false)
         Resolver.test.register { repository as CharactersRepository }
 
         let interactor = GetCharactersInteractorDefault()
 
-        await #expect(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+        try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
             try await interactor.execute()
         }
     }

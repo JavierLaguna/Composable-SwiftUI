@@ -24,13 +24,13 @@ final class EpisodesRepositoryDefaultTests: ResetTestDependencies {
     }
 
     @Test
-    func getEpisodesFromListFail() async {
+    func getEpisodesFromListFail() async throws {
         let datasource = EpisodesRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as EpisodesRemoteDatasource }
 
         let repository = EpisodesRepositoryDefault()
 
-        await #expect(throws: RepositoryError.invalidUrl) {
+        try await #require(throws: RepositoryError.invalidUrl) {
             try await repository.getEpisodesFromList(ids: [1, 2])
         }
     }

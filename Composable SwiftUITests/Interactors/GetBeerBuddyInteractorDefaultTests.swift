@@ -67,7 +67,7 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
     }
 
     @Test
-    func executeLocationRepositoryFail() async {
+    func executeLocationRepositoryFail() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -90,13 +90,13 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetBeerBuddyInteractorDefault()
 
-        await #expect(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+        try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
             try await interactor.execute(character: rick)
         }
     }
 
     @Test
-    func executeCharacterRepositoryFail() async {
+    func executeCharacterRepositoryFail() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -115,13 +115,13 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetBeerBuddyInteractorDefault()
 
-        await #expect(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+        try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
             try await interactor.execute(character: rick)
         }
     }
 
     @Test
-    func executeEpisodesRepositoryFail() async {
+    func executeEpisodesRepositoryFail() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -141,7 +141,7 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetBeerBuddyInteractorDefault()
 
-        await #expect(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+        try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
             try await interactor.execute(character: rick)
         }
     }

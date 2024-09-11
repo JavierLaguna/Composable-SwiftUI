@@ -29,13 +29,13 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
     }
 
     @Test
-    func getCharactersFail() async {
+    func getCharactersFail() async throws {
         let datasource = CharacterRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
         let repository = CharactersRepositoryDefault()
 
-        await #expect(throws: RepositoryError.invalidUrl) {
+        try await #require(throws: RepositoryError.invalidUrl) {
             try await repository.getCharacters()
         }
     }
@@ -57,13 +57,13 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
     }
 
     @Test
-    func getCharactersByIdFail() async {
+    func getCharactersByIdFail() async throws {
         let datasource = CharacterRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
         let repository = CharactersRepositoryDefault()
 
-        await #expect(throws: RepositoryError.invalidUrl) {
+        try await #require(throws: RepositoryError.invalidUrl) {
             try await repository.getCharacters(characterIds: [1, 2])
         }
     }

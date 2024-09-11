@@ -23,13 +23,13 @@ final class LocationRepositoryDefaultTests: ResetTestDependencies {
     }
 
     @Test
-    func getCharacterIdsFromLocationFail() async {
+    func getCharacterIdsFromLocationFail() async throws {
         let datasource = LocationRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as LocationRemoteDatasource }
 
         let repository = LocationRepositoryDefault()
 
-        await #expect(throws: RepositoryError.invalidUrl) {
+        try await #require(throws: RepositoryError.invalidUrl) {
             try await repository.getCharacterIdsFromLocation(locationId: 1)
         }
     }
