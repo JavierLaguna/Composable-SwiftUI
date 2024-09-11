@@ -12,7 +12,7 @@ import Resolver
 final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
     @Test
-    func executeSuccess() async {
+    func executeSuccess() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -35,22 +35,17 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetBeerBuddyInteractorDefault()
 
-        do {
-            let result = try await interactor.execute(character: rick)
+        let result = try #require(await interactor.execute(character: rick))
 
-            #expect(result?.character == rick)
-            #expect(result?.buddy == morty)
-            #expect(result?.firstEpisode == Episode(id: 1, name: "episode1", date: "10-10-2010"))
-            #expect(result?.lastEpisode == Episode(id: 301, name: "episode301", date: "12-12-2012"))
-            #expect(result?.count == 5)
-
-        } catch {
-            Issue.record("Test Fail")
-        }
+        #expect(result.character == rick)
+        #expect(result.buddy == morty)
+        #expect(result.firstEpisode == Episode(id: 1, name: "episode1", date: "10-10-2010"))
+        #expect(result.lastEpisode == Episode(id: 301, name: "episode301", date: "12-12-2012"))
+        #expect(result.count == 5)
     }
 
     @Test
-    func executeBeerBuddyNotFoundMsgError() async {
+    func executeBeerBuddyNotFoundMsgError() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
@@ -66,14 +61,9 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetBeerBuddyInteractorDefault()
 
-        do {
-            let result = try await interactor.execute(character: rick)
+        let result = try await interactor.execute(character: rick)
 
-            #expect(result == nil)
-
-        } catch {
-            Issue.record("Test Fail")
-        }
+        #expect(result == nil)
     }
 
     @Test
@@ -100,13 +90,8 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetBeerBuddyInteractorDefault()
 
-        do {
-            _ = try await interactor.execute(character: rick)
-
-            Issue.record("Test Fail")
-
-        } catch {
-            #expect(error as? InteractorError == .repositoryFail(error: .invalidUrl))
+        await #expect(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+            try await interactor.execute(character: rick)
         }
     }
 
@@ -130,13 +115,8 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetBeerBuddyInteractorDefault()
 
-        do {
-            _ = try await interactor.execute(character: rick)
-
-            Issue.record("Test Fail")
-
-        } catch {
-            #expect(error as? InteractorError == .repositoryFail(error: .invalidUrl))
+        await #expect(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+            try await interactor.execute(character: rick)
         }
     }
 
@@ -161,13 +141,8 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetBeerBuddyInteractorDefault()
 
-        do {
-            _ = try await interactor.execute(character: rick)
-
-            Issue.record("Test Fail")
-
-        } catch {
-            #expect(error as? InteractorError == .repositoryFail(error: .invalidUrl))
+        await #expect(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+            try await interactor.execute(character: rick)
         }
     }
 }

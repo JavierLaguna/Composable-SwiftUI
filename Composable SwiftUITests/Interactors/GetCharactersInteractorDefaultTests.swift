@@ -11,21 +11,16 @@ import Resolver
 final class GetCharactersInteractorDefaultTests: ResetTestDependencies {
 
     @Test
-    func executeSuccess() async {
+    func executeSuccess() async throws {
         let repository = CharactersRepositoryMock()
         Resolver.test.register { repository as CharactersRepository }
 
         let interactor = GetCharactersInteractorDefault()
 
-        do {
-            let result = try await interactor.execute()
+        let result = try #require(await interactor.execute())
 
-            #expect(result.count == repository.expectedResponse.count)
-            #expect(result == repository.expectedResponse)
-
-        } catch {
-            Issue.record("Test Fail")
-        }
+        #expect(result.count == repository.expectedResponse.count)
+        #expect(result == repository.expectedResponse)
     }
 
     @Test
@@ -35,13 +30,8 @@ final class GetCharactersInteractorDefaultTests: ResetTestDependencies {
 
         let interactor = GetCharactersInteractorDefault()
 
-        do {
-            _ = try await interactor.execute()
-
-            Issue.record("Test Fail")
-
-        } catch {
-            #expect(error as? InteractorError == .repositoryFail(error: .invalidUrl))
+        await #expect(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+            try await interactor.execute()
         }
     }
 }

@@ -11,7 +11,7 @@ import Resolver
 final class CharactersRepositoryDefaultTests: ResetTestDependencies {
 
     @Test
-    func getCharactersSuccess() async {
+    func getCharactersSuccess() async throws {
         let datasource = CharacterRemoteDatasourceMock()
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
@@ -20,17 +20,12 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
         #expect(repository.nextPage == nil)
         #expect(repository.totalPages == nil)
 
-        do {
-            let result = try await repository.getCharacters()
+        let result = try #require(await repository.getCharacters())
 
-            #expect(repository.nextPage == 2)
-            #expect(repository.totalPages == 12)
-            #expect(result.count == datasource.expectedResponseByPage.results.count)
-            #expect(result == datasource.expectedResponseByPage.results.map { $0.toDomain() })
-
-        } catch {
-            Issue.record("Test Fail")
-        }
+        #expect(repository.nextPage == 2)
+        #expect(repository.totalPages == 12)
+        #expect(result.count == datasource.expectedResponseByPage.results.count)
+        #expect(result == datasource.expectedResponseByPage.results.map { $0.toDomain() })
     }
 
     @Test
@@ -40,18 +35,13 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
 
         let repository = CharactersRepositoryDefault()
 
-        do {
-            _ = try await repository.getCharacters()
-
-            Issue.record("Test Fail")
-
-        } catch {
-            #expect(error as? RepositoryError == .invalidUrl)
+        await #expect(throws: RepositoryError.invalidUrl) {
+            try await repository.getCharacters()
         }
     }
 
     @Test
-    func getCharactersByIdSuccess() async {
+    func getCharactersByIdSuccess() async throws {
         let datasource = CharacterRemoteDatasourceMock()
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
@@ -60,15 +50,10 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
         #expect(repository.nextPage == nil)
         #expect(repository.totalPages == nil)
 
-        do {
-            let result = try await repository.getCharacters(characterIds: [1, 2])
+        let result = try #require(await repository.getCharacters(characterIds: [1, 2]))
 
-            #expect(result.count == datasource.expectedResponseByIds.count)
-            #expect(result == datasource.expectedResponseByIds.map { $0.toDomain() })
-
-        } catch {
-            Issue.record("Test Fail")
-        }
+        #expect(result.count == datasource.expectedResponseByIds.count)
+        #expect(result == datasource.expectedResponseByIds.map { $0.toDomain() })
     }
 
     @Test
@@ -78,13 +63,8 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
 
         let repository = CharactersRepositoryDefault()
 
-        do {
-            _ = try await repository.getCharacters(characterIds: [1, 2])
-
-            Issue.record("Test Fail")
-
-        } catch {
-            #expect(error as? RepositoryError == .invalidUrl)
+        await #expect(throws: RepositoryError.invalidUrl) {
+            try await repository.getCharacters(characterIds: [1, 2])
         }
     }
 }

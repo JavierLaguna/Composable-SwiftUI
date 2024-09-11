@@ -11,21 +11,16 @@ import Resolver
 final class EpisodesRepositoryDefaultTests: ResetTestDependencies {
 
     @Test
-    func getEpisodesFromListSuccess() async {
+    func getEpisodesFromListSuccess() async throws {
         let datasource = EpisodesRemoteDatasourceMock()
         Resolver.test.register { datasource as EpisodesRemoteDatasource }
 
         let repository = EpisodesRepositoryDefault()
 
-        do {
-            let result = try await repository.getEpisodesFromList(ids: [1, 2])
+        let result = try #require(await repository.getEpisodesFromList(ids: [1, 2]))
 
-            #expect(result.count == datasource.expectedResponse.count)
-            #expect(result == datasource.expectedResponse.map { $0.toDomain() })
-
-        } catch {
-            Issue.record("Test Fail")
-        }
+        #expect(result.count == datasource.expectedResponse.count)
+        #expect(result == datasource.expectedResponse.map { $0.toDomain() })
     }
 
     @Test
@@ -35,13 +30,8 @@ final class EpisodesRepositoryDefaultTests: ResetTestDependencies {
 
         let repository = EpisodesRepositoryDefault()
 
-        do {
-            _ = try await repository.getEpisodesFromList(ids: [1, 2])
-
-            Issue.record("Test Fail")
-
-        } catch {
-            #expect(error as? RepositoryError == .invalidUrl)
+        await #expect(throws: RepositoryError.invalidUrl) {
+            try await repository.getEpisodesFromList(ids: [1, 2])
         }
     }
 }
