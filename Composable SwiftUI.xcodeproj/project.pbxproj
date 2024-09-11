@@ -1610,8 +1610,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint";
 			requirement = {
-				branch = "swift-6";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.57.0;
 			};
 		};
 		49E4F810283D54770037FD72 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */ = {
