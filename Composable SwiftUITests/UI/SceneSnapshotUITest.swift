@@ -22,7 +22,7 @@ class SceneSnapshotUITest {
         assertSnapshot(
             of: view,
             as: .image,
-            file: file,
+            file: file, // TODO: JLI - Class var ?
             testName: testName
         )
     }

@@ -20,4 +20,27 @@ final class ErrorViewTests: SceneSnapshotUITest {
             file: #filePath
         )
     }
+
+    // TODO: JLI
+    @Test
+    func errorView_genericError_image_snapshot() {
+
+        assertSnapshot(
+            of: ErrorView(error: error, onRetry: onRetry),
+            as: .image
+        )
+    }
+
+    // TODO: JLI
+    @Test
+    func errorView_genericError_iPhoneSe_light_snapshot() {
+
+        assertSnapshot(
+            of: ErrorView(error: error, onRetry: onRetry),
+            as: .image(
+            layout: .device(config: .iPhoneSe),
+            traits: .init(userInterfaceStyle: .light)
+            )
+        )
+    }
 }
