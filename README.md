@@ -48,7 +48,7 @@ Show the character details and the Beer Buddy of all characters.
 
 Based on [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) + [The Composable Architecture (TCA)](https://github.com/pointfreeco/swift-composable-architecture) as main architecture.
 
-[stinsen](https://github.com/rundfunk47/stinsen) as router using [Coordinator](https://khanlou.com/2015/01/the-coordinator/) pattern.
+[Coordinator](https://khanlou.com/2015/01/the-coordinator/) pattern for routing.
 
 [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) as Git methodology.
 
