@@ -8,14 +8,20 @@ class SceneSnapshotUITest {
         #filePath
     }
 
-    func execute(view: some View, snapshotType: SnapshotType, name: String) {
+    func execute(
+        name: String,
+        view: some View,
+        snapshotType: SnapshotType,
+        uiStyle: UIStyle
+    ) {
+        let testName = "\(name)_\(snapshotType.layoutName)_\(uiStyle.rawValue)_snapshot"
         let layout = snapshotType.layout
-        let testName = "\(name)_\(snapshotType.layoutName)_snapshot"
+
         assertSnapshot(
             of: view,
             as: layout == nil ? .image : .image(
-                layout: layout!
-//                traits: .init(userInterfaceStyle: .light)
+                layout: layout!,
+                traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
             ),
             file: file,
             testName: testName
@@ -23,6 +29,7 @@ class SceneSnapshotUITest {
     }
 }
 
+// MARK: SnapshotType
 extension SceneSnapshotUITest {
 
     enum SnapshotType: CaseIterable {
@@ -63,9 +70,20 @@ extension SceneSnapshotUITest {
             }
         }
     }
+}
+
+// MARK: UIStyle
+extension SceneSnapshotUITest {
 
     enum UIStyle: String, CaseIterable {
         case light
         case dark
+
+        var userInterfaceStyle: UIUserInterfaceStyle {
+            switch self {
+            case .light: .light
+            case .dark: .dark
+            }
+        }
     }
 }
