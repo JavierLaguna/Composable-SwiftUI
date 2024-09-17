@@ -1,3 +1,4 @@
+import Testing
 import SwiftUI
 import SnapshotTesting
 
@@ -41,7 +42,7 @@ class SceneSnapshotUITest {
 // MARK: Variant
 extension SceneSnapshotUITest {
 
-    enum Variant: CustomStringConvertible {
+    enum Variant: CustomTestStringConvertible {
         case image
         case device(Device, uiStyle: UIStyle, orientation: ViewImageConfig.Orientation = .portrait)
 
@@ -69,7 +70,7 @@ extension SceneSnapshotUITest {
             }
         }
 
-        var description: String {
+        var testDescription: String {
             layoutName.replacingOccurrences(of: "_", with: " ")
         }
     }
