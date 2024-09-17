@@ -1,6 +1,5 @@
 import ComposableArchitecture
 import Resolver
-import XCTest
 
 extension Resolver {
 
@@ -9,10 +8,6 @@ extension Resolver {
     static func resetUnitTestRegistrations() {
         Resolver.test = Resolver(child: .main)
         Resolver.root = Resolver.test
-
-        Resolver.test.register(AnySchedulerOf<DispatchQueue>.self, name: "main") { _ in
-            .immediate
-        }
 
         registerMockDatasources()
         registerMockRepositories()

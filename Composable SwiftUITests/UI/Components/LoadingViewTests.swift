@@ -1,15 +1,24 @@
-import XCTest
+import Testing
 import SwiftUI
-import SnapshotTesting
 
 @testable import Composable_SwiftUI
 
-// @SceneSnapshotUITest(scene: "LoadingView")
-// final class LoadingViewTests: XCTestCase {
-//
-//    override class func setUp() {
-//        super.setUp()
-//
-//        isRecording = false
-//    }
-// }
+@Suite("LoadingView", .tags(.UI))
+final class LoadingViewTests: SceneSnapshotUITest {
+
+    override var file: StaticString {
+        #filePath
+    }
+
+    @Test(
+        "LoadingView",
+        arguments: SceneSnapshotUITest.Variant.allVariants
+    )
+    func loadingView(variant: SceneSnapshotUITest.Variant) {
+        execute(
+            name: "loadingView",
+            view: LoadingView(),
+            variant: variant
+        )
+    }
+}

@@ -1,52 +1,37 @@
-import XCTest
+import Testing
 import ComposableArchitecture
 import Resolver
 
 @testable import Composable_SwiftUI
 
-final class LocationRepositoryDefaultTests: XCTestCase {
+@Suite(
+    "LocationRepositoryDefault Tests",
+    .tags(.repository),
+    .serialized
+)
+final class LocationRepositoryDefaultTests: ResetTestDependencies {
 
-    override func setUp() {
-        super.setUp()
-
-        Resolver.resetUnitTestRegistrations()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-
-        Resolver.tearDown()
-    }
-
-    func testGetCharacterIdsFromLocationSuccess() async {
+    @Test
+    func getCharacterIdsFromLocationSuccess() async throws {
         let datasource = LocationRemoteDatasourceMock()
         Resolver.test.register { datasource as LocationRemoteDatasource }
 
         let repository = LocationRepositoryDefault()
 
-        do {
-            let result = try await repository.getCharacterIdsFromLocation(locationId: 1)
+        let result = try #require(await repository.getCharacterIdsFromLocation(locationId: 1))
 
-            XCTAssertEqual(result, [1, 2])
-
-        } catch {
-            XCTFail("Test Fail")
-        }
+        #expect(result == [1, 2])
     }
 
-    func testGetCharacterIdsFromLocationFail() async {
+    @Test
+    func getCharacterIdsFromLocationFail() async throws {
         let datasource = LocationRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as LocationRemoteDatasource }
 
         let repository = LocationRepositoryDefault()
 
-        do {
-            _ = try await repository.getCharacterIdsFromLocation(locationId: 1)
-
-            XCTFail("Test Fail")
-
-        } catch {
-            XCTAssertEqual(error as? RepositoryError, .invalidUrl)
+        try await #require(throws: RepositoryError.invalidUrl) {
+            try await repository.getCharacterIdsFromLocation(locationId: 1)
         }
     }
 }

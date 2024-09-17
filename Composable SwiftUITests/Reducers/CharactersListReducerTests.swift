@@ -1,25 +1,15 @@
-import XCTest
+import Testing
 import ComposableArchitecture
 import Resolver
 
 @testable import Composable_SwiftUI
 
 @MainActor
-final class CharactersListReducerTests: XCTestCase {
+@Suite("CharactersListReducer Tests", .tags(.reducer))
+final class CharactersListReducerTests: ResetTestDependencies {
 
-    override func setUp() {
-        super.setUp()
-
-        Resolver.resetUnitTestRegistrations()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-
-        Resolver.tearDown()
-    }
-
-    func testBindingSearchText() async {
+    @Test
+    func bindingSearchText() async {
         let store = TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
@@ -32,7 +22,8 @@ final class CharactersListReducerTests: XCTestCase {
         }
     }
 
-    func testGetCharactersSuccess() async {
+    @Test
+    func getCharactersSuccess() async {
         let interactor = GetCharactersInteractorMock()
         Resolver.test.register { interactor as GetCharactersInteractor }
 
@@ -52,7 +43,8 @@ final class CharactersListReducerTests: XCTestCase {
         }
     }
 
-    func testGetCharactersSuccessAndMoreCharacters() async {
+    @Test
+    func getCharactersSuccessAndMoreCharacters() async {
         let interactor = GetCharactersInteractorMock()
         Resolver.test.register { interactor as GetCharactersInteractor }
 
@@ -82,7 +74,8 @@ final class CharactersListReducerTests: XCTestCase {
         }
     }
 
-    func testGetCharactersFail() async {
+    @Test
+    func getCharactersFail() async {
         Resolver.test.register { GetCharactersInteractorMock(success: false) as GetCharactersInteractor }
 
         let store = TestStore(

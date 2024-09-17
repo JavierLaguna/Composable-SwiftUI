@@ -1,10 +1,12 @@
-import XCTest
+import Testing
 
 @testable import Composable_SwiftUI
 
-final class ResponseMapperTests: XCTestCase {
+@Suite("ResponseMapper Tests", .tags(.mapper))
+struct ResponseMapperTests {
 
-    func testLocationResponseToDomain() throws {
+    @Test
+    func locationResponseToDomain() {
         let response = LocationResponse(
             id: 1,
             name: "Earth",
@@ -21,10 +23,11 @@ final class ResponseMapperTests: XCTestCase {
             residents: [1, 3]
         )
 
-        XCTAssertEqual(response.toDomain(), domainDto)
+        #expect(response.toDomain() == domainDto)
     }
 
-    func testCharacterResponseToDomain() throws {
+    @Test
+    func characterResponseToDomain() {
         let locationResponse = CharacterLocationResponse(
             name: "Earth",
             url: "url/1"
@@ -56,6 +59,6 @@ final class ResponseMapperTests: XCTestCase {
             episodes: [1, 200]
         )
 
-        XCTAssertEqual(response.toDomain(), domainDto)
+        #expect(response.toDomain() == domainDto)
     }
 }

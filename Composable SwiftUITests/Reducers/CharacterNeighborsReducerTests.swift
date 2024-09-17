@@ -1,13 +1,15 @@
-import XCTest
+import Testing
 import ComposableArchitecture
 import Resolver
 
 @testable import Composable_SwiftUI
 
 @MainActor
-final class CharacterNeighborsReducerTests: ReducerTestCase {
+@Suite("CharacterNeighborsReducer Tests", .tags(.reducer))
+final class CharacterNeighborsReducerTests: ResetTestDependencies {
 
-    func test_getLocationInfo_whenInteractorSuccess_returnsLocationInfoData() async {
+    @Test
+    func getLocationInfo_whenInteractorSuccess_returnsLocationInfoData() async {
         let interactor = GetLocationInfoInteractorMock()
         Resolver.test.register { interactor as GetLocationInfoInteractor }
 
@@ -27,7 +29,8 @@ final class CharacterNeighborsReducerTests: ReducerTestCase {
         }
     }
 
-    func test_getLocationInfo_whenInteractorFail_returnsInteractorError() async {
+    @Test
+    func getLocationInfo_whenInteractorFail_returnsInteractorError() async {
         let interactor = GetLocationInfoInteractorMock(success: false)
         Resolver.test.register { interactor as GetLocationInfoInteractor }
 

@@ -1,94 +1,71 @@
-import XCTest
+import Testing
 import ComposableArchitecture
 import Resolver
 
 @testable import Composable_SwiftUI
 
-final class CharactersRepositoryDefaultTests: XCTestCase {
+@Suite(
+    "CharactersRepositoryDefault Tests",
+    .tags(.repository),
+    .serialized
+)
+final class CharactersRepositoryDefaultTests: ResetTestDependencies {
 
-    override func setUp() {
-        super.setUp()
-
-        Resolver.resetUnitTestRegistrations()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-
-        Resolver.tearDown()
-    }
-
-    func testGetCharactersSuccess() async {
+    @Test
+    func getCharactersSuccess() async throws {
         let datasource = CharacterRemoteDatasourceMock()
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
         let repository = CharactersRepositoryDefault()
 
-        XCTAssertNil(repository.nextPage)
-        XCTAssertNil(repository.totalPages)
+        #expect(repository.nextPage == nil)
+        #expect(repository.totalPages == nil)
 
-        do {
-            let result = try await repository.getCharacters()
+        let result = try #require(await repository.getCharacters())
 
-            XCTAssertEqual(repository.nextPage, 2)
-            XCTAssertEqual(repository.totalPages, 12)
-            XCTAssertEqual(result.count, datasource.expectedResponseByPage.results.count)
-            XCTAssertEqual(result, datasource.expectedResponseByPage.results.map { $0.toDomain() })
-
-        } catch {
-            XCTFail("Test Fail")
-        }
+        #expect(repository.nextPage == 2)
+        #expect(repository.totalPages == 12)
+        #expect(result.count == datasource.expectedResponseByPage.results.count)
+        #expect(result == datasource.expectedResponseByPage.results.map { $0.toDomain() })
     }
 
-    func testGetCharactersFail() async {
+    @Test
+    func getCharactersFail() async throws {
         let datasource = CharacterRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
         let repository = CharactersRepositoryDefault()
 
-        do {
-            _ = try await repository.getCharacters()
-
-            XCTFail("Test Fail")
-
-        } catch {
-            XCTAssertEqual(error as? RepositoryError, .invalidUrl)
+        try await #require(throws: RepositoryError.invalidUrl) {
+            try await repository.getCharacters()
         }
     }
 
-    func testGetCharactersByIdSuccess() async {
+    @Test
+    func getCharactersByIdSuccess() async throws {
         let datasource = CharacterRemoteDatasourceMock()
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
         let repository = CharactersRepositoryDefault()
 
-        XCTAssertNil(repository.nextPage)
-        XCTAssertNil(repository.totalPages)
+        #expect(repository.nextPage == nil)
+        #expect(repository.totalPages == nil)
 
-        do {
-            let result = try await repository.getCharacters(characterIds: [1, 2])
+        let result = try #require(await repository.getCharacters(characterIds: [1, 2]))
 
-            XCTAssertEqual(result.count, datasource.expectedResponseByIds.count)
-            XCTAssertEqual(result, datasource.expectedResponseByIds.map { $0.toDomain() })
-
-        } catch {
-            XCTFail("Test Fail")
-        }
+        #expect(result.count == datasource.expectedResponseByIds.count)
+        #expect(result == datasource.expectedResponseByIds.map { $0.toDomain() })
     }
 
-    func testGetCharactersByIdFail() async {
+    @Test
+    func getCharactersByIdFail() async throws {
         let datasource = CharacterRemoteDatasourceMock(success: false)
         Resolver.test.register { datasource as CharacterRemoteDatasource }
 
         let repository = CharactersRepositoryDefault()
 
-        do {
-            _ = try await repository.getCharacters(characterIds: [1, 2])
-
-            XCTFail("Test Fail")
-
-        } catch {
-            XCTAssertEqual(error as? RepositoryError, .invalidUrl)
+        try await #require(throws: RepositoryError.invalidUrl) {
+            try await repository.getCharacters(characterIds: [1, 2])
         }
     }
 }
