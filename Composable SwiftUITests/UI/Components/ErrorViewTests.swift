@@ -1,6 +1,5 @@
 import Testing
 import SwiftUI
-import SnapshotTesting
 
 @testable import Composable_SwiftUI
 

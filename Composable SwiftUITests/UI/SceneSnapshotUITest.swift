@@ -24,11 +24,11 @@ class SceneSnapshotUITest {
                 testName: testName
             )
 
-        case let .device(device, uiStyle):
+        case let .device(device, uiStyle, orientation):
             assertSnapshot(
                 of: view,
                 as: .image(
-                    layout: device.layout,
+                    layout: device.layout(orientation: orientation),
                     traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
                 ),
                 file: file,
@@ -43,14 +43,17 @@ extension SceneSnapshotUITest {
 
     enum Variant: CustomStringConvertible {
         case image
-        case device(Device, uiStyle: UIStyle)
+        case device(Device, uiStyle: UIStyle, orientation: ViewImageConfig.Orientation = .portrait)
 
         static var allVariants: [Variant] {
+            let orientations: [ViewImageConfig.Orientation] = [.portrait, .landscape]
             var variants: [Variant] = [.image]
 
             Device.allCases.forEach { device in
                 UIStyle.allCases.forEach { style in
-                    variants.append(.device(device, uiStyle: style))
+                    orientations.forEach { orientation in
+                        variants.append(.device(device, uiStyle: style, orientation: orientation))
+                    }
                 }
             }
 
@@ -61,8 +64,8 @@ extension SceneSnapshotUITest {
             switch self {
             case .image:
                 "image"
-            case let .device(device, uiStyle):
-                "\(device.layoutName)_\(uiStyle.rawValue)"
+            case let .device(device, uiStyle, orientation):
+                "\(device.layoutName)_\(uiStyle.rawValue)_\(orientation)"
             }
         }
 
@@ -82,20 +85,6 @@ extension SceneSnapshotUITest {
         case iPhoneBig
         case iPhoneBigest
 
-        var layout: SwiftUISnapshotLayout {
-            .device(config: viewImageConfig)
-        }
-
-        var viewImageConfig: ViewImageConfig {
-            switch self {
-            case .iPhoneSmallest: .iPhoneSe
-            case .iPhoneSmall: .iPhone13Mini
-            case .iPhoneMedium: .iPhone12
-            case .iPhoneBig: .iPhone13Pro
-            case .iPhoneBigest: .iPhone13ProMax
-            }
-        }
-
         var layoutName: String {
             switch self {
             case .iPhoneSmallest: "iPhoneSE"
@@ -103,6 +92,20 @@ extension SceneSnapshotUITest {
             case .iPhoneMedium: "iPhone12"
             case .iPhoneBig: "iPhone13Pro"
             case .iPhoneBigest: "iPhone13ProMax"
+            }
+        }
+
+        func layout(orientation: ViewImageConfig.Orientation = .portrait) -> SwiftUISnapshotLayout {
+            .device(config: viewImageConfig(orientation: orientation))
+        }
+
+        private func viewImageConfig(orientation: ViewImageConfig.Orientation) -> ViewImageConfig {
+            switch self {
+            case .iPhoneSmallest: .iPhoneSe(orientation)
+            case .iPhoneSmall: .iPhone13Mini(orientation)
+            case .iPhoneMedium: .iPhone12(orientation)
+            case .iPhoneBig: .iPhone13Pro(orientation)
+            case .iPhoneBigest: .iPhone13ProMax(orientation)
             }
         }
     }
