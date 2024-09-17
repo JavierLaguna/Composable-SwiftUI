@@ -12,15 +12,15 @@ struct Theme {
         static let primary = R.color.green_200.color
 
         static let text = R.color.green_200.color
-        static let secondaryText = R.color.white.color
+        static let secondaryText = R.color.white_custom.color
 
-        static let buttonText = R.color.white.color
+        static let buttonText = R.color.white_custom.color
         static let buttonBackground = R.color.green_500.color
 
-        static let navIcon = R.color.white.color
+        static let navIcon = R.color.white_custom.color
 
         static var background: Color {
-            return Theme.isDarkMode ? R.color.gray.color : R.color.white.color
+            return Theme.isDarkMode ? R.color.gray_custom.color : R.color.white_custom.color
         }
     }
 
