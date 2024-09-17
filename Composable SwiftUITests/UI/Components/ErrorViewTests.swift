@@ -3,7 +3,7 @@ import SwiftUI
 
 @testable import Composable_SwiftUI
 
-@Suite("ErrorView")
+@Suite("ErrorView", .tags(.UI))
 final class ErrorViewTests: SceneSnapshotUITest {
 
     override var file: StaticString {

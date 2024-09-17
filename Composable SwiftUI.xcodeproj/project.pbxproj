@@ -35,6 +35,7 @@
 		49529CA42A784058002F7594 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA32A784058002F7594 /* LoadingView.swift */; };
 		49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */; };
 		4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */; };
+		4976B3692C99CC6000531ADE /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976B3682C99CC6000531ADE /* Tags.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
 		497C1ED52C2033490041297A /* PlainNavLinkModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497C1ED42C2033490041297A /* PlainNavLinkModifier.swift */; };
@@ -176,6 +177,7 @@
 		49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducerTests.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInfoInteractorMock.swift; sourceTree = "<group>"; };
+		4976B3682C99CC6000531ADE /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
 		497C1ED42C2033490041297A /* PlainNavLinkModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainNavLinkModifier.swift; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 			children = (
 				4998407A2C89F8980021ADEC /* ResetTestDependencies.swift */,
 				494C05892C241CE7006CFF1B /* TestConfig.swift */,
+				4976B3682C99CC6000531ADE /* Tags.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1177,6 +1180,7 @@
 				49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */,
 				49E4F845284AA46F0037FD72 /* CharactersListReducerTests.swift in Sources */,
 				49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */,
+				4976B3692C99CC6000531ADE /* Tags.swift in Sources */,
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
 				49E4F843284AA23A0037FD72 /* GetCharactersInteractorMock.swift in Sources */,
 				492B43462ABB45A6005B631E /* CharactersListViewTests.swift in Sources */,

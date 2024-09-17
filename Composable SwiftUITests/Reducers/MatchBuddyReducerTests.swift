@@ -5,7 +5,7 @@ import Resolver
 @testable import Composable_SwiftUI
 
 @MainActor
-@Suite("MatchBuddyReducer Tests")
+@Suite("MatchBuddyReducer Tests", .tags(.reducer))
 final class MatchBuddyReducerTests: ResetTestDependencies {
 
     @Test

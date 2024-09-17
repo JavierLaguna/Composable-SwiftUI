@@ -7,6 +7,7 @@ import Resolver
 // TODO: JLI why?
 @Suite(
     "GetBeerBuddyInteractorDefault Tests",
+    .tags(.interactor),
     .serialized
 )
 final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {

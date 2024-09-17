@@ -6,6 +6,7 @@ import Resolver
 
 @Suite(
     "LocationRepositoryDefault Tests",
+    .tags(.repository),
     .serialized
 )
 final class LocationRepositoryDefaultTests: ResetTestDependencies {

@@ -4,7 +4,7 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@Suite("CharactersListView")
+@Suite("CharactersListView", .tags(.UI))
 final class CharactersListViewTests: SceneSnapshotUITest {
 
     override var file: StaticString {

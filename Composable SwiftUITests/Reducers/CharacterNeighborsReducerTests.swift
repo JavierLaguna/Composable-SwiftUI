@@ -5,7 +5,7 @@ import Resolver
 @testable import Composable_SwiftUI
 
 @MainActor
-@Suite("CharacterNeighborsReducer Tests")
+@Suite("CharacterNeighborsReducer Tests", .tags(.reducer))
 final class CharacterNeighborsReducerTests: ResetTestDependencies {
 
     @Test

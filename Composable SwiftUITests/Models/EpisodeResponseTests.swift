@@ -3,7 +3,7 @@ import InlineSnapshotTesting
 
 @testable import Composable_SwiftUI
 
-@Suite("EpisodeResponse Tests")
+@Suite("EpisodeResponse Tests", .tags(.mapper))
 struct EpisodeResponseTests {
 
     @Test

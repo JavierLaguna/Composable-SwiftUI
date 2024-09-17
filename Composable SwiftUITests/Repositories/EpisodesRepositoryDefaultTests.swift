@@ -6,6 +6,7 @@ import Resolver
 
 @Suite(
     "EpisodesRepositoryDefault Tests",
+    .tags(.repository),
     .serialized
 )
 final class EpisodesRepositoryDefaultTests: ResetTestDependencies {

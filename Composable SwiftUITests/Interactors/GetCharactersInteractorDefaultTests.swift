@@ -6,6 +6,7 @@ import Resolver
 
 @Suite(
     "GetCharactersInteractorDefault Tests",
+    .tags(.interactor),
     .serialized
 )
 final class GetCharactersInteractorDefaultTests: ResetTestDependencies {

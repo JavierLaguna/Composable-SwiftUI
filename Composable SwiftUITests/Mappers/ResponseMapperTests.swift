@@ -2,7 +2,7 @@ import Testing
 
 @testable import Composable_SwiftUI
 
-@Suite("ResponseMapper Tests")
+@Suite("ResponseMapper Tests", .tags(.mapper))
 struct ResponseMapperTests {
 
     @Test

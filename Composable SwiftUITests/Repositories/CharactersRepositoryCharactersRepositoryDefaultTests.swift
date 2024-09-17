@@ -6,6 +6,7 @@ import Resolver
 
 @Suite(
     "CharactersRepositoryDefault Tests",
+    .tags(.repository),
     .serialized
 )
 final class CharactersRepositoryDefaultTests: ResetTestDependencies {
