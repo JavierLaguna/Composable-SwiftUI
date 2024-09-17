@@ -11,46 +11,80 @@ class SceneSnapshotUITest {
     func execute(
         name: String,
         view: some View,
-        snapshotType: SnapshotType,
-        uiStyle: UIStyle
+        variant: Variant
     ) {
-        let testName = "\(name)_\(snapshotType.layoutName)_\(uiStyle.rawValue)_snapshot"
-        let layout = snapshotType.layout
+        let testName = "\(name)_\(variant.layoutName)_snapshot"
 
-        assertSnapshot(
-            of: view,
-            as: layout == nil ? .image : .image(
-                layout: layout!,
-                traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
-            ),
-            file: file,
-            testName: testName
-        )
+        switch variant {
+        case .image:
+            assertSnapshot(
+                of: view,
+                as: .image,
+                file: file,
+                testName: testName
+            )
+
+        case let .device(device, uiStyle):
+            assertSnapshot(
+                of: view,
+                as: .image(
+                    layout: device.layout,
+                    traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
+                ),
+                file: file,
+                testName: testName
+            )
+        }
     }
 }
 
-// MARK: SnapshotType
+// MARK: Variant
 extension SceneSnapshotUITest {
 
-    enum SnapshotType: CaseIterable {
+    enum Variant {
         case image
+        case device(Device, uiStyle: UIStyle)
+
+        static var allVariants: [Variant] {
+            var variants: [Variant] = [.image]
+
+            Device.allCases.forEach { device in
+                UIStyle.allCases.forEach { style in
+                    variants.append(.device(device, uiStyle: style)
+                    )
+                }
+            }
+
+            return variants
+        }
+
+        var layoutName: String {
+            switch self {
+            case .image:
+                "image"
+            case let .device(device, uiStyle):
+                "\(device.layoutName)_\(uiStyle.rawValue)"
+            }
+        }
+    }
+}
+
+// MARK: Device
+extension SceneSnapshotUITest {
+
+    enum Device: CaseIterable {
         case iPhoneSmallest
         case iPhoneSmall
         case iPhoneMedium
         case iPhoneBig
         case iPhoneBigest
 
-        var layout: SwiftUISnapshotLayout? {
-            self == .image ? nil : .device(config: device ?? defaultDevice)
+        var layout: SwiftUISnapshotLayout {
+            .device(config: viewImageConfig)
         }
 
-        var defaultDevice: ViewImageConfig {
-            .iPhone12
-        }
-
-        var device: ViewImageConfig? {
+        var viewImageConfig: ViewImageConfig {
             switch self {
-            case .image: nil
             case .iPhoneSmallest: .iPhoneSe
             case .iPhoneSmall: .iPhone13Mini
             case .iPhoneMedium: .iPhone12
@@ -61,7 +95,6 @@ extension SceneSnapshotUITest {
 
         var layoutName: String {
             switch self {
-            case .image: "image"
             case .iPhoneSmallest: "iPhoneSe"
             case .iPhoneSmall: "iPhone13Mini"
             case .iPhoneMedium: "iPhone12"

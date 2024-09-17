@@ -5,18 +5,6 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-struct VariantTest { // TODO: JLI
-    let name: String
-    let params: String?
-    let setUp: String?
-
-    init(name: String, params: String? = nil, setUp: String? = nil) {
-        self.name = name
-        self.params = params
-        self.setUp = setUp
-    }
-}
-
 // @SceneSnapshotUITest(
 //    scene: "CharactersListView",
 //    variants: [

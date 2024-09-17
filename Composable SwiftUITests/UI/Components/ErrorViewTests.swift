@@ -18,19 +18,13 @@ final class ErrorViewTests: SceneSnapshotUITest {
 
     @Test(
         "errorView_genericError",
-        arguments:
-            SceneSnapshotUITest.SnapshotType.allCases,
-            SceneSnapshotUITest.UIStyle.allCases
+        arguments: SceneSnapshotUITest.Variant.allVariants
     )
-    func errorViewGenericError(
-        snapshotType: SceneSnapshotUITest.SnapshotType,
-        uiStyle: SceneSnapshotUITest.UIStyle
-    ) async throws {
+    func errorViewGenericError(variant: SceneSnapshotUITest.Variant) async throws {
         execute(
             name: "errorView_genericError",
             view: ErrorView(error: error, onRetry: onRetry),
-            snapshotType: snapshotType,
-            uiStyle: uiStyle
+            variant: variant
         )
     }
 }
