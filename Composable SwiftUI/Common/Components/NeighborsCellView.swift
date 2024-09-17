@@ -33,7 +33,7 @@ struct NeighborsCellView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     let location = CharacterLocation(id: 1, name: "Earth")
     let character = Character(
         id: 1,
@@ -49,6 +49,5 @@ struct NeighborsCellView: View {
     )
 
     return NeighborsCellView(character: character)
-        .previewLayout(.sizeThatFits)
         .padding()
 }
