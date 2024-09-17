@@ -15,8 +15,7 @@ struct LoadingView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     LoadingView()
-        .previewLayout(.sizeThatFits)
         .padding()
 }
