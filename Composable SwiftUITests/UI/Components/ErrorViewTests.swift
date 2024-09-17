@@ -17,7 +17,7 @@ final class ErrorViewTests: SceneSnapshotUITest {
     }
 
     @Test(
-        "errorView_genericError",
+        "Generic error",
         arguments: SceneSnapshotUITest.Variant.allVariants
     )
     func errorViewGenericError(variant: SceneSnapshotUITest.Variant) async throws {

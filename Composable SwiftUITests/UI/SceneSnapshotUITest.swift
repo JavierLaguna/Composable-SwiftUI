@@ -41,7 +41,7 @@ class SceneSnapshotUITest {
 // MARK: Variant
 extension SceneSnapshotUITest {
 
-    enum Variant {
+    enum Variant: CustomStringConvertible {
         case image
         case device(Device, uiStyle: UIStyle)
 
@@ -50,8 +50,7 @@ extension SceneSnapshotUITest {
 
             Device.allCases.forEach { device in
                 UIStyle.allCases.forEach { style in
-                    variants.append(.device(device, uiStyle: style)
-                    )
+                    variants.append(.device(device, uiStyle: style))
                 }
             }
 
@@ -65,6 +64,10 @@ extension SceneSnapshotUITest {
             case let .device(device, uiStyle):
                 "\(device.layoutName)_\(uiStyle.rawValue)"
             }
+        }
+
+        var description: String {
+            layoutName.replacingOccurrences(of: "_", with: " ")
         }
     }
 }
@@ -95,7 +98,7 @@ extension SceneSnapshotUITest {
 
         var layoutName: String {
             switch self {
-            case .iPhoneSmallest: "iPhoneSe"
+            case .iPhoneSmallest: "iPhoneSE"
             case .iPhoneSmall: "iPhone13Mini"
             case .iPhoneMedium: "iPhone12"
             case .iPhoneBig: "iPhone13Pro"
