@@ -90,7 +90,6 @@
 		49E4F829284931640037FD72 /* MatchBuddyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F828284931640037FD72 /* MatchBuddyInfoView.swift */; };
 		49E4F82B284A11D80037FD72 /* UIScreen+Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F82A284A11D70037FD72 /* UIScreen+Sizes.swift */; };
 		49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */; };
-		49E4F831284A94930037FD72 /* NavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F830284A94930037FD72 /* NavigationBarAppearance.swift */; };
 		49E4F833284A95DE0037FD72 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F832284A95DE0037FD72 /* KeyboardManager.swift */; };
 		49E4F835284A9A990037FD72 /* Error+Equality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F834284A9A980037FD72 /* Error+Equality.swift */; };
 		49E4F83A284AA0CE0037FD72 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F839284AA0CE0037FD72 /* Resolver.swift */; };
@@ -228,7 +227,6 @@
 		49E4F81F284920180037FD72 /* CharactersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCoordinator.swift; sourceTree = "<group>"; };
 		49E4F828284931640037FD72 /* MatchBuddyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyInfoView.swift; sourceTree = "<group>"; };
 		49E4F82A284A11D70037FD72 /* UIScreen+Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Sizes.swift"; sourceTree = "<group>"; };
-		49E4F830284A94930037FD72 /* NavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearance.swift; sourceTree = "<group>"; };
 		49E4F832284A95DE0037FD72 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		49E4F834284A9A980037FD72 /* Error+Equality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Equality.swift"; sourceTree = "<group>"; };
 		49E4F839284AA0CE0037FD72 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
@@ -621,7 +619,6 @@
 		49A4A67F282FB2EF00D43FB3 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				49E4F830284A94930037FD72 /* NavigationBarAppearance.swift */,
 				49A4A680282FB30A00D43FB3 /* Theme.swift */,
 			);
 			path = Styles;
@@ -1108,7 +1105,6 @@
 				49E88D35283103F400058486 /* CharactersRepository.swift in Sources */,
 				49E88D302830F8DA00058486 /* GetCharactersResponse.swift in Sources */,
 				49E88D262830F23800058486 /* RickAndMortyAPI.swift in Sources */,
-				49E4F831284A94930037FD72 /* NavigationBarAppearance.swift in Sources */,
 				49E4F809283D3F9E0037FD72 /* CharacterResponse.swift in Sources */,
 				49A4A684282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift in Sources */,
 				493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */,
