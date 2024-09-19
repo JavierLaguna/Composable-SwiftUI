@@ -771,8 +771,8 @@
 			isa = PBXGroup;
 			children = (
 				4998407A2C89F8980021ADEC /* ResetTestDependencies.swift */,
-				494C05892C241CE7006CFF1B /* TestConfig.swift */,
 				4976B3682C99CC6000531ADE /* Tags.swift */,
+				494C05892C241CE7006CFF1B /* TestConfig.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
