@@ -1,8 +1,6 @@
-import Resolver
+struct EpisodesRepositoryDefault: EpisodesRepository {
 
-final class EpisodesRepositoryDefault: EpisodesRepository {
-
-    @Injected private var service: EpisodesRemoteDatasource
+    let service: EpisodesRemoteDatasource
 
     func getEpisodesFromList(ids: [Int]) async throws -> [Episode] {
         let response = try await service.getEpisodesList(ids: ids)

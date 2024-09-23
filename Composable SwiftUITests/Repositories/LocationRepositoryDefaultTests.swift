@@ -1,22 +1,18 @@
 import Testing
 import ComposableArchitecture
-import Resolver
 
 @testable import Composable_SwiftUI
 
 @Suite(
     "LocationRepositoryDefault Tests",
-    .tags(.repository),
-    .serialized
+    .tags(.repository)
 )
-final class LocationRepositoryDefaultTests: ResetTestDependencies {
+struct LocationRepositoryDefaultTests {
 
     @Test
     func getCharacterIdsFromLocationSuccess() async throws {
         let datasource = LocationRemoteDatasourceMock()
-        Resolver.test.register { datasource as LocationRemoteDatasource }
-
-        let repository = LocationRepositoryDefault()
+        let repository = LocationRepositoryDefault(service: datasource)
 
         let result = try #require(await repository.getCharacterIdsFromLocation(locationId: 1))
 
@@ -26,9 +22,7 @@ final class LocationRepositoryDefaultTests: ResetTestDependencies {
     @Test
     func getCharacterIdsFromLocationFail() async throws {
         let datasource = LocationRemoteDatasourceMock(success: false)
-        Resolver.test.register { datasource as LocationRemoteDatasource }
-
-        let repository = LocationRepositoryDefault()
+        let repository = LocationRepositoryDefault(service: datasource)
 
         try await #require(throws: RepositoryError.invalidUrl) {
             try await repository.getCharacterIdsFromLocation(locationId: 1)

@@ -1,22 +1,18 @@
 import Testing
 import ComposableArchitecture
-import Resolver
 
 @testable import Composable_SwiftUI
 
 @Suite(
     "EpisodesRepositoryDefault Tests",
-    .tags(.repository),
-    .serialized
+    .tags(.repository)
 )
-final class EpisodesRepositoryDefaultTests: ResetTestDependencies {
+struct EpisodesRepositoryDefaultTests {
 
     @Test
     func getEpisodesFromListSuccess() async throws {
         let datasource = EpisodesRemoteDatasourceMock()
-        Resolver.test.register { datasource as EpisodesRemoteDatasource }
-
-        let repository = EpisodesRepositoryDefault()
+        let repository = EpisodesRepositoryDefault(service: datasource)
 
         let result = try #require(await repository.getEpisodesFromList(ids: [1, 2]))
 
@@ -27,9 +23,7 @@ final class EpisodesRepositoryDefaultTests: ResetTestDependencies {
     @Test
     func getEpisodesFromListFail() async throws {
         let datasource = EpisodesRemoteDatasourceMock(success: false)
-        Resolver.test.register { datasource as EpisodesRemoteDatasource }
-
-        let repository = EpisodesRepositoryDefault()
+        let repository = EpisodesRepositoryDefault(service: datasource)
 
         try await #require(throws: RepositoryError.invalidUrl) {
             try await repository.getEpisodesFromList(ids: [1, 2])

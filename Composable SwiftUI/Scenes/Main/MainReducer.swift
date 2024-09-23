@@ -3,6 +3,9 @@ import ComposableArchitecture
 @Reducer
 struct MainReducer {
 
+    private let charactersListReducer = CharactersListReducer.build()
+    private let matchBuddyReducer = MatchBuddyReducer.build()
+
     @ObservableState
     struct State: Equatable {
         var charactersListState = CharactersListReducer.State()
@@ -16,13 +19,13 @@ struct MainReducer {
 
     var body: some ReducerOf<Self> {
         Scope(state: \.charactersListState, action: \.charactersListActions) {
-            CharactersListReducer()
+            charactersListReducer
         }
         Scope(state: \.matchBuddyState, action: \.matchBuddyActions) {
-            MatchBuddyReducer()
+            matchBuddyReducer
         }
         Reduce { _, _ in
-            return .none
+            .none
         }
     }
 }
