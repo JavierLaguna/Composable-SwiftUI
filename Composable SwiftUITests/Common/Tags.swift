@@ -8,4 +8,6 @@ extension Tag {
     @Tag static var reducer: Self
     @Tag static var state: Self
     @Tag static var UI: Self
+    @Tag static var UIComponent: Self
+    @Tag static var UIScene: Self
 }

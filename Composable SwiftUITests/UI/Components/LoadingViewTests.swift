@@ -3,7 +3,7 @@ import SwiftUI
 
 @testable import Composable_SwiftUI
 
-@Suite("LoadingView", .tags(.UI))
+@Suite("LoadingView", .tags(.UI, .UIComponent))
 final class LoadingViewTests: SceneSnapshotUITest {
 
     override var file: StaticString {
