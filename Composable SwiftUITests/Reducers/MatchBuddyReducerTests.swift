@@ -3,8 +3,7 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@MainActor
-@Suite("MatchBuddyReducer Tests", .tags(.reducer))
+@Suite("MatchBuddyReducer", .tags(.reducer))
 struct MatchBuddyReducerTests {
 
     @Test
@@ -13,7 +12,7 @@ struct MatchBuddyReducerTests {
         let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: .init(),
             reducer: {
                 MatchBuddyReducer(
@@ -37,7 +36,7 @@ struct MatchBuddyReducerTests {
         let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: .init(),
             reducer: {
                 MatchBuddyReducer(
@@ -61,7 +60,7 @@ struct MatchBuddyReducerTests {
         let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: .init(),
             reducer: {
                 MatchBuddyReducer(

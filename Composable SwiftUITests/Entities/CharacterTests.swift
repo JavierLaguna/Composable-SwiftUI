@@ -2,7 +2,7 @@ import Testing
 
 @testable import Composable_SwiftUI
 
-@Suite("Character Tests", .tags(.model))
+@Suite("Character", .tags(.model))
 struct CharacterTests {
 
     @Test

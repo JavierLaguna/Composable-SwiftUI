@@ -3,10 +3,7 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@Suite(
-    "GetBeerBuddyInteractorDefault Tests",
-    .tags(.interactor)
-)
+@Suite("GetBeerBuddyInteractorDefault", .tags(.interactor))
 struct GetBeerBuddyInteractorDefaultTests {
 
     @Test

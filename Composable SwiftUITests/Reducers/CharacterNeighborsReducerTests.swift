@@ -3,14 +3,13 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@MainActor
-@Suite("CharacterNeighborsReducer Tests", .tags(.reducer))
+@Suite("CharacterNeighborsReducer", .tags(.reducer))
 struct CharacterNeighborsReducerTests {
 
     @Test
     func getLocationInfo_whenInteractorSuccess_returnsLocationInfoData() async {
         let interactor = GetLocationInfoInteractorMock()
-        let store = TestStore(
+        let store = await TestStore(
             initialState: .init(),
             reducer: {
                 CharacterNeighborsReducer(
@@ -32,7 +31,7 @@ struct CharacterNeighborsReducerTests {
     @Test
     func getLocationInfo_whenInteractorFail_returnsInteractorError() async {
         let interactor = GetLocationInfoInteractorMock(success: false)
-        let store = TestStore(
+        let store = await TestStore(
             initialState: .init(),
             reducer: {
                 CharacterNeighborsReducer(

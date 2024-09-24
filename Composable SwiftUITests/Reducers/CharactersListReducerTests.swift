@@ -3,14 +3,13 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@MainActor
-@Suite("CharactersListReducer Tests", .tags(.reducer))
+@Suite("CharactersListReducer", .tags(.reducer))
 struct CharactersListReducerTests {
 
     @Test
     func bindingSearchText() async {
         let interactor = GetCharactersInteractorMock()
-        let store = TestStore(
+        let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
                 CharactersListReducer(
@@ -56,7 +55,7 @@ struct CharactersListReducerTests {
             Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: [])
         ]
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: CharactersListReducer.State(
                 characters: StateLoadable(state: .populated(data: initialCharacters))
             ),
@@ -82,7 +81,7 @@ struct CharactersListReducerTests {
     func getCharactersFail() async {
         let interactor = GetCharactersInteractorMock(success: false)
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
                 CharactersListReducer(

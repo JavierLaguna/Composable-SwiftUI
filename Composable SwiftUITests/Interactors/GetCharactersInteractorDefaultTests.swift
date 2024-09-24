@@ -3,10 +3,7 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@Suite(
-    "GetCharactersInteractorDefault Tests",
-    .tags(.interactor)
-)
+@Suite("GetCharactersInteractorDefault", .tags(.interactor))
 struct GetCharactersInteractorDefaultTests {
 
     @Test

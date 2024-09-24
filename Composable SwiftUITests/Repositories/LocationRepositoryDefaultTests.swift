@@ -3,10 +3,7 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@Suite(
-    "LocationRepositoryDefault Tests",
-    .tags(.repository)
-)
+@Suite("LocationRepositoryDefault", .tags(.repository))
 struct LocationRepositoryDefaultTests {
 
     @Test
