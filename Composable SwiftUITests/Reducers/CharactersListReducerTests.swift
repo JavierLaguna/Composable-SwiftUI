@@ -27,7 +27,7 @@ struct CharactersListReducerTests {
     func getCharactersSuccess() async {
         let interactor = GetCharactersInteractorMock()
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
                 CharactersListReducer(
