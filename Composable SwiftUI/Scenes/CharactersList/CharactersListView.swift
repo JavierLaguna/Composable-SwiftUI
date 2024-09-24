@@ -1,6 +1,5 @@
 import SwiftUI
 import ComposableArchitecture
-import Resolver
 
 struct CharactersListView: View {
 
@@ -144,7 +143,12 @@ private struct SkeletonRows: View {
 }
 
 #Preview {
-    @Injected(name: "scoped") var store: StoreOf<CharactersListReducer>
+    let store: StoreOf<CharactersListReducer> = Store(
+        initialState: .init(),
+        reducer: {
+            CharactersListReducer.build()
+        }
+    )
 
     return NavigationStack {
         CharactersListView(store: store)

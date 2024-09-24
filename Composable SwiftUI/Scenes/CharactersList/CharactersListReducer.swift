@@ -3,7 +3,7 @@ import ComposableArchitecture
 @Reducer
 struct CharactersListReducer {
 
-    private let getCharactersInteractor: GetCharactersInteractor
+    let getCharactersInteractor: GetCharactersInteractor
 
     @ObservableState
     struct State: Equatable {

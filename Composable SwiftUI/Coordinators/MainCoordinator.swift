@@ -1,5 +1,6 @@
 import Observation
 import SwiftUI
+import ComposableArchitecture
 
 @Observable
 final class MainCoordinator {
@@ -40,8 +41,15 @@ extension MainCoordinator {
 
     struct RootView: View {
 
+        let mainStore = StoreOf<MainReducer>(
+            initialState: .init(),
+            reducer: {
+                MainReducer()
+            }
+        )
+
         var body: some View {
-            MainView()
+            MainView(mainStore: mainStore)
         }
     }
 }

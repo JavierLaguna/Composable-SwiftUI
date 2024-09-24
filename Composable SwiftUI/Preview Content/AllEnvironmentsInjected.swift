@@ -12,11 +12,11 @@ extension View {
 private struct AllEnvironmentsInjectedModifier: ViewModifier {
 
     @State private var mainCoordinator = MainCoordinator()
-    @State private var charactersCoordinator = CharactersCoordinator()
+//    @State private var charactersCoordinator = CharactersCoordinator()
 
     func body(content: Content) -> some View {
         content
             .environment(mainCoordinator)
-            .environment(charactersCoordinator)
+//            .environment(charactersCoordinator)
     }
 }

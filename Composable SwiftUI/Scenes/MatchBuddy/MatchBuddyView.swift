@@ -1,18 +1,20 @@
 import SwiftUI
 import ComposableArchitecture
-import Resolver
 import Kingfisher
 
 struct MatchBuddyView: View {
 
-    @Injected(name: "scoped") private var store: StoreOf<MatchBuddyReducer>
-
     @Environment(CharactersCoordinator.self)
     private var charactersCoordinator
 
-    private var character: Character
+    private let store: StoreOf<MatchBuddyReducer>
+    private let character: Character
 
-    init(character: Character) {
+    init(
+        store: StoreOf<MatchBuddyReducer>,
+        character: Character
+    ) {
+        self.store = store
         self.character = character
     }
 
@@ -160,6 +162,13 @@ struct MatchBuddyView: View {
 }
 
 #Preview {
+    let store: StoreOf<MatchBuddyReducer> = Store(
+        initialState: .init(),
+        reducer: {
+            MatchBuddyReducer.build()
+        }
+    )
+
     let location = CharacterLocation(id: 1, name: "Earth")
     let character = Character(
         id: 1,
@@ -174,6 +183,9 @@ struct MatchBuddyView: View {
         episodes: []
     )
 
-    return MatchBuddyView(character: character)
-        .allEnvironmentsInjected
+    return MatchBuddyView(
+        store: store,
+        character: character
+    )
+    .allEnvironmentsInjected
 }

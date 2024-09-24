@@ -1,5 +1,3 @@
-import Resolver
-
 struct LocationRepositoryDefault: LocationRepository {
 
     let service: LocationRemoteDatasource

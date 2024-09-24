@@ -1,16 +1,10 @@
 import ComposableArchitecture
-import Resolver
 
 @Reducer
 struct CharacterNeighborsReducer {
 
-    @Injected private var getLocationInfoInteractor: GetLocationInfoInteractor
-
-    private let locationId: Int
-
-    init(locationId: Int) {
-        self.locationId = locationId
-    }
+    let getLocationInfoInteractor: GetLocationInfoInteractor
+    let locationId: Int
 
     @ObservableState
     struct State: Equatable {
@@ -43,5 +37,16 @@ struct CharacterNeighborsReducer {
                 return .none
             }
         }
+    }
+}
+
+// MARK: Builder
+extension CharacterNeighborsReducer {
+
+    static func build(locationId: Int) -> CharacterNeighborsReducer {
+        CharacterNeighborsReducer(
+            getLocationInfoInteractor: GetLocationInfoInteractorFactory.build(),
+            locationId: locationId
+        )
     }
 }
