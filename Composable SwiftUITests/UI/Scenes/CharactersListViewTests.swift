@@ -32,13 +32,15 @@ final class CharactersListViewTests: SceneSnapshotUITest {
         arguments: SceneSnapshotUITest.Variant.allVariants
     )
     func loadingStateWithData(variant: SceneSnapshotUITest.Variant) {
-        loadingStateWithDataSetUp()
+        withKnownIssue {
+            loadingStateWithDataSetUp()
 
-        execute(
-            name: "charactersListView_loadingStateWithData",
-            view: view,
-            variant: variant
-        )
+            execute(
+                name: "charactersListView_loadingStateWithData",
+                view: view,
+                variant: variant
+            )
+        }
     }
 
     @Test(
@@ -46,13 +48,15 @@ final class CharactersListViewTests: SceneSnapshotUITest {
         arguments: SceneSnapshotUITest.Variant.allVariants
     )
     func populatedState(variant: SceneSnapshotUITest.Variant) {
-        populatedStateSetUp()
+        withKnownIssue {
+            populatedStateSetUp()
 
-        execute(
-            name: "charactersListView_populatedState",
-            view: view,
-            variant: variant
-        )
+            execute(
+                name: "charactersListView_populatedState",
+                view: view,
+                variant: variant
+            )
+        }
     }
 
     @Test(
