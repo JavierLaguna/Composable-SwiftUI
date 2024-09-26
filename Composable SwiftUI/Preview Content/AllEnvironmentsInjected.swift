@@ -18,14 +18,13 @@ private struct AllEnvironmentsInjectedModifier: ViewModifier {
     @State private var charactersCoordinator: CharactersCoordinator
 
     init() {
-        let mainStore = StoreOf<MainReducer>(
+        mainStore = StoreOf<MainReducer>(
             initialState: .init(),
             reducer: {
                 MainReducer()
             }
         )
 
-        self.mainStore = mainStore
         charactersCoordinator = CharactersCoordinator(mainStore: mainStore)
     }
 

@@ -25,8 +25,23 @@ platform :ios do
       clean: true,
       code_coverage: true,
       result_bundle: true,
+      derived_data_path: "fastlane/test_output",  # Asegúrate de que scan y xcov usen el mismo derived_data_path
       skip_testing: ['Composable SwiftUIUITests'],
       xcargs: "-skipPackagePluginValidation"
+    )
+  end
+
+  desc "Generate coverage report"
+  lane :generate_coverage_report do
+    xcov(
+      project: "Composable SwiftUI.xcodeproj",
+      scheme: "Composable SwiftUI",
+      derived_data_path: "fastlane/test_output",  # Asegúrate de que scan y xcov usen el mismo derived_data_path
+      xccov_file_direct_path: "fastlane/test_output/Composable SwiftUITests.xcresult",  # Ruta directa al archivo de cobertura
+      output_directory: "fastlane/test_output/coverage",  # Directorio donde se generarán los reportes
+      html_report: true,  # Generar un reporte en formato HTML
+      json_report: true   # Generar un reporte en formato JSON
+      # minimum_coverage_percentage: 80  # Falla si la cobertura es menor al 80%
     )
   end
 

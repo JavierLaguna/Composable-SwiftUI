@@ -3,7 +3,6 @@ protocol CharactersRepository {
     func getCharacters(characterIds: [Int]) async throws -> [Character]
 }
 
-// TODO: JLI - donde pongo esto?
 struct CharactersRepositoryFactory {
 
     static func build() -> CharactersRepository {
