@@ -1,17 +1,23 @@
-import Resolver
-
 protocol GetCharactersInteractor {
     func execute() async throws -> [Character]
 }
 
-final class GetCharactersInteractorDefault: GetCharactersInteractor, ManagedErrorInteractor {
+struct GetCharactersInteractorFactory {
 
-    @Injected private var repository: CharactersRepository
+    static func build() -> GetCharactersInteractor {
+         GetCharactersInteractorDefault(
+            repository: CharactersRepositoryFactory.build()
+        )
+    }
+}
+
+struct GetCharactersInteractorDefault: GetCharactersInteractor, ManagedErrorInteractor {
+
+    let repository: CharactersRepository
 
     func execute() async throws -> [Character] {
         do {
-            let response = try await repository.getCharacters()
-            return response
+            return try await repository.getCharacters()
 
         } catch {
             throw manageError(error: error)

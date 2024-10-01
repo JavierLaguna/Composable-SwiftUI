@@ -3,3 +3,10 @@ protocol CharacterRemoteDatasource {
     func getCharacter(by id: Int) async throws -> CharacterResponse
     func getCharacters(by characterIds: [Int]) async throws -> [CharacterResponse]
 }
+
+struct CharacterRemoteDatasourceFactory {
+
+    static func build() -> CharacterRemoteDatasource {
+        CharacterService()
+    }
+}

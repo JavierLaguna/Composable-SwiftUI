@@ -1,10 +1,11 @@
 import Observation
 import SwiftUI
-import Resolver
 import ComposableArchitecture
 
 @Observable
 final class CharactersCoordinator {
+
+    private let mainStore: StoreOf<MainReducer>
 
     private(set) var path: [Routes] = []
     var pathBinding: Binding<[Routes]> {
@@ -20,6 +21,10 @@ final class CharactersCoordinator {
             get: { self.sheet != nil },
             set: { self.sheet = $0 ? self.sheet : nil }
         )
+    }
+
+    init(mainStore: StoreOf<MainReducer>) {
+        self.mainStore = mainStore
     }
 
     func navigateToCharacterDetail(character: Character) {
@@ -47,7 +52,7 @@ final class CharactersCoordinator {
 extension CharactersCoordinator {
 
     enum Routes: Hashable, View {
-        case root
+        case root(StoreOf<MainReducer>)
         case characterDetail(Character)
         case beerBuddy(Character)
         case neighbors(Character)
@@ -55,22 +60,35 @@ extension CharactersCoordinator {
         // MARK: View
         var body: some View {
             switch self {
-            case .root:
-                @Injected(name: "scoped") var store: StoreOf<CharactersListReducer>
+            case .root(let mainStore):
+                let store = mainStore.scope(
+                    state: \.charactersListState,
+                    action: \.charactersListActions
+                )
                 CharactersListView(store: store)
 
             case .characterDetail(let character):
                 CharacterDetailView(character: character)
 
             case .beerBuddy(let character):
-                MatchBuddyView(character: character)
+                MatchBuddyView(
+                    store: Store(
+                        initialState: .init(),
+                        reducer: {
+                            MatchBuddyReducer.build()
+                        }
+                    ),
+                    character: character
+                )
 
             case .neighbors(let character):
                 CharacterNeighborsView(
                     store: Store(
                         initialState: .init(),
                         reducer: {
-                            CharacterNeighborsReducer(locationId: character.location.id)
+                            CharacterNeighborsReducer.build(
+                                locationId: character.location.id
+                            )
                         }
                     )
                 )

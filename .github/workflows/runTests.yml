@@ -9,19 +9,19 @@ on:
 jobs:
   build:
     name: Run test using Fastlane
-    runs-on: ${{ matrix.MACOS_VERSION }}
+    runs-on: ${{ matrix.macos_version }}
 
     strategy:
       matrix:
-        macos_version: [macos-14]
+        macos_version: [macos-15]
         xcode_version: ['16.0.0'] #https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
-        iphone_model: ['iPhone 15']
+        iphone_model: ['iPhone 16 Pro']
 
     steps:
       - name: Setup Xcode version
         uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
-          xcode-version: ${{ matrix.XCODE_VERSION }}
+          xcode-version: ${{ matrix.xcode_version }}
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,21 +31,80 @@ jobs:
         with:
           ruby-version: 3.0
 
-      - name: Install Fastlane
-        run: gem install fastlane
-
       - name: Install Bundler
         run: gem install bundler
 
       - name: Install dependencies
         run: bundle install
 
+      # Optional: Check the Fastlane version
+      - name: Check Fastlane version
+        run: bundle exec fastlane --version
+
+      # Optional: List iOS available simulators
+      - name: List the available simulators
+        run: xcrun simctl list devices
+
       - name: Set Xcode to Skip Macro Validation
         run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
 
       - name: Run Fastlane
         env:
-          DEVICE: ${{ matrix.IPHONE_MODEL }}
+          DEVICE: ${{ matrix.iphone_model }}
         run: |
           export FASTLANE_XCODEBUILD_SETTINGS_RETRIES=10
           bundle exec fastlane test
+
+      # Verificar si los archivos de cobertura se generaron
+      - name: List DerivedData files
+        run: find fastlane/test_output -name "*.xccoverage"
+
+      - name: Generate Coverage Report
+        run: bundle exec fastlane generate_coverage_report
+
+      # Listar archivos generados en el directorio de cobertura
+      - name: List coverage files
+        run: ls -la fastlane/test_output/coverage
+
+      # Opcional: Renombrar el archivo JSON generado dinámicamente a un nombre fijo
+      - name: Rename coverage report
+        run: |
+          mv $(find fastlane/test_output/coverage -name "*.json") fastlane/test_output/coverage/coverage.json
+
+      # Verificar la existencia del archivo coverage.json
+      - name: Check if coverage report exists
+        run: ls -la fastlane/test_output/coverage/coverage.json
+
+      # Subir el archivo de cobertura como un artefacto para que el siguiente job lo pueda usar
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: fastlane/test_output/coverage/coverage.json
+
+  sonarcloud:
+    name: Upload coverage to SonarCloud
+    runs-on: ubuntu-latest  # Este job corre en Linux
+
+    needs: build  # Esto asegura que el job de build termine antes de ejecutar este job
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Descargar el reporte de cobertura generado en el job anterior
+      - name: Download coverage report
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-report
+
+      # Subir la cobertura a SonarCloud
+      - name: Upload coverage to SonarCloud
+        uses: sonarsource/sonarcloud-github-action@v3.0.0
+        with:
+          args: >
+            -Dsonar.organization=javierlaguna
+            -Dsonar.projectKey=JavierLaguna_Composable-SwiftUI
+            -Dsonar.swift.coverage.reportPaths=coverage.json
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Pasar el token desde los secretos

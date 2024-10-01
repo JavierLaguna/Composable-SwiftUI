@@ -1,19 +1,20 @@
 import Testing
 import ComposableArchitecture
-import Resolver
 
 @testable import Composable_SwiftUI
 
-@MainActor
-@Suite("CharactersListReducer Tests", .tags(.reducer))
-final class CharactersListReducerTests: ResetTestDependencies {
+@Suite("CharactersListReducer", .tags(.reducer))
+struct CharactersListReducerTests {
 
     @Test
     func bindingSearchText() async {
-        let store = TestStore(
+        let interactor = GetCharactersInteractorMock()
+        let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
-                CharactersListReducer()
+                CharactersListReducer(
+                    getCharactersInteractor: interactor
+                )
             }
         )
 
@@ -25,12 +26,13 @@ final class CharactersListReducerTests: ResetTestDependencies {
     @Test
     func getCharactersSuccess() async {
         let interactor = GetCharactersInteractorMock()
-        Resolver.test.register { interactor as GetCharactersInteractor }
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
-                CharactersListReducer()
+                CharactersListReducer(
+                    getCharactersInteractor: interactor
+                )
             }
         )
 
@@ -46,7 +48,6 @@ final class CharactersListReducerTests: ResetTestDependencies {
     @Test
     func getCharactersSuccessAndMoreCharacters() async {
         let interactor = GetCharactersInteractorMock()
-        Resolver.test.register { interactor as GetCharactersInteractor }
 
         let location = CharacterLocation(id: 1, name: "Earth")
         let initialCharacters: [Character] = [
@@ -54,12 +55,14 @@ final class CharactersListReducerTests: ResetTestDependencies {
             Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: [])
         ]
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: CharactersListReducer.State(
                 characters: StateLoadable(state: .populated(data: initialCharacters))
             ),
             reducer: {
-                CharactersListReducer()
+                CharactersListReducer(
+                    getCharactersInteractor: interactor
+                )
             }
         )
 
@@ -76,12 +79,14 @@ final class CharactersListReducerTests: ResetTestDependencies {
 
     @Test
     func getCharactersFail() async {
-        Resolver.test.register { GetCharactersInteractorMock(success: false) as GetCharactersInteractor }
+        let interactor = GetCharactersInteractorMock(success: false)
 
-        let store = TestStore(
+        let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
-                CharactersListReducer()
+                CharactersListReducer(
+                    getCharactersInteractor: interactor
+                )
             }
         )
 

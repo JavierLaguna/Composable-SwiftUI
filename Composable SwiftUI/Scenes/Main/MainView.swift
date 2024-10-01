@@ -1,16 +1,24 @@
 import SwiftUI
+import ComposableArchitecture
 
 struct MainView: View {
 
+    let mainStore: StoreOf<MainReducer>
+
     @State private var mainCoordinator = MainCoordinator()
-    @State private var charactersCoordinator = CharactersCoordinator()
+    @State private var charactersCoordinator: CharactersCoordinator
+
+    init(mainStore: StoreOf<MainReducer>) {
+        self.mainStore = mainStore
+        charactersCoordinator = CharactersCoordinator(mainStore: mainStore)
+    }
 
     var body: some View {
         TabView(selection: mainCoordinator.tabSelectionBinding) {
 
             NavigationStack(path: charactersCoordinator.pathBinding) {
                 CharactersCoordinator.Routes
-                    .root
+                    .root(mainStore)
                     .navigationDestination(for: CharactersCoordinator.Routes.self) { $0 }
             }
             .tabItem {
@@ -42,7 +50,6 @@ struct MainView: View {
                 )
             }
             .tag(MainCoordinator.Tab.locations.rawValue)
-
         }
         .environment(mainCoordinator)
         .environment(charactersCoordinator)
@@ -50,5 +57,13 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+
+    let mainStore = StoreOf<MainReducer>(
+        initialState: .init(),
+        reducer: {
+            MainReducer()
+        }
+    )
+
+    MainView(mainStore: mainStore)
 }

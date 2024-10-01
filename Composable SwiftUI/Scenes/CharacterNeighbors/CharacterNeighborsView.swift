@@ -4,11 +4,7 @@ import Kingfisher
 
 struct CharacterNeighborsView: View {
 
-    private let store: StoreOf<CharacterNeighborsReducer>
-
-    init(store: StoreOf<CharacterNeighborsReducer>) {
-        self.store = store
-    }
+    let store: StoreOf<CharacterNeighborsReducer>
 
     var body: some View {
         VStack {
@@ -55,7 +51,7 @@ struct CharacterNeighborsView: View {
                 locationDetail: .init(state: .loading)
             ),
             reducer: {
-                CharacterNeighborsReducer(locationId: 1)
+                CharacterNeighborsReducer.build(locationId: 1)
             }
         ))
     }

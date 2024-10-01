@@ -1,16 +1,10 @@
 import Testing
 import ComposableArchitecture
-import Resolver
 
 @testable import Composable_SwiftUI
 
-// TODO: JLI why?
-@Suite(
-    "GetBeerBuddyInteractorDefault Tests",
-    .tags(.interactor),
-    .serialized
-)
-final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
+@Suite("GetBeerBuddyInteractorDefault", .tags(.interactor))
+struct GetBeerBuddyInteractorDefaultTests {
 
     @Test
     func executeSuccess() async throws {
@@ -23,18 +17,16 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
         let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15])
 
         let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
-        Resolver.test.register { locationRepository as LocationRepository }
-
         let charactersRepository = CharactersRepositoryMock(success: true, expectedResponse: [morty, beth])
-        Resolver.test.register { charactersRepository as CharactersRepository }
-
         let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
             Episode(id: 1, name: "episode1", date: "10-10-2010"),
             Episode(id: 301, name: "episode301", date: "12-12-2012")
         ])
-        Resolver.test.register { episodesRepository as EpisodesRepository }
-
-        let interactor = GetBeerBuddyInteractorDefault()
+        let interactor = GetBeerBuddyInteractorDefault(
+            locationRepository: locationRepository,
+            charactersRepository: charactersRepository,
+            episodesRepository: episodesRepository
+        )
 
         let result = try #require(await interactor.execute(character: rick))
 
@@ -52,15 +44,13 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
 
         let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [])
-        Resolver.test.register { locationRepository as LocationRepository }
-
         let charactersRepository = CharactersRepositoryMock(success: true)
-        Resolver.test.register { charactersRepository as CharactersRepository }
-
         let episodesRepository = EpisodesRepositoryMock(success: true)
-        Resolver.test.register { episodesRepository as EpisodesRepository }
-
-        let interactor = GetBeerBuddyInteractorDefault()
+        let interactor = GetBeerBuddyInteractorDefault(
+            locationRepository: locationRepository,
+            charactersRepository: charactersRepository,
+            episodesRepository: episodesRepository
+        )
 
         let result = try await interactor.execute(character: rick)
 
@@ -78,18 +68,16 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
         let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15])
 
         let locationRepository = LocationRepositoryMock(success: false)
-        Resolver.test.register { locationRepository as LocationRepository }
-
         let charactersRepository = CharactersRepositoryMock(success: true, expectedResponse: [morty, beth])
-        Resolver.test.register { charactersRepository as CharactersRepository }
-
         let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
             Episode(id: 1, name: "episode1", date: "10-10-2010"),
             Episode(id: 301, name: "episode301", date: "12-12-2012")
         ])
-        Resolver.test.register { episodesRepository as EpisodesRepository }
-
-        let interactor = GetBeerBuddyInteractorDefault()
+        let interactor = GetBeerBuddyInteractorDefault(
+            locationRepository: locationRepository,
+            charactersRepository: charactersRepository,
+            episodesRepository: episodesRepository
+        )
 
         try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
             try await interactor.execute(character: rick)
@@ -103,18 +91,16 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
         let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
 
         let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
-        Resolver.test.register { locationRepository as LocationRepository }
-
         let charactersRepository = CharactersRepositoryMock(success: false)
-        Resolver.test.register { charactersRepository as CharactersRepository }
-
         let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
             Episode(id: 1, name: "episode1", date: "10-10-2010"),
             Episode(id: 301, name: "episode301", date: "12-12-2012")
         ])
-        Resolver.test.register { episodesRepository as EpisodesRepository }
-
-        let interactor = GetBeerBuddyInteractorDefault()
+        let interactor = GetBeerBuddyInteractorDefault(
+            locationRepository: locationRepository,
+            charactersRepository: charactersRepository,
+            episodesRepository: episodesRepository
+        )
 
         try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
             try await interactor.execute(character: rick)
@@ -132,15 +118,13 @@ final class GetBeerBuddyInteractorDefaultTests: ResetTestDependencies {
         let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15])
 
         let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
-        Resolver.test.register { locationRepository as LocationRepository }
-
         let charactersRepository = CharactersRepositoryMock(success: true, expectedResponse: [morty, beth])
-        Resolver.test.register { charactersRepository as CharactersRepository }
-
         let episodesRepository = EpisodesRepositoryMock(success: false)
-        Resolver.test.register { episodesRepository as EpisodesRepository }
-
-        let interactor = GetBeerBuddyInteractorDefault()
+        let interactor = GetBeerBuddyInteractorDefault(
+            locationRepository: locationRepository,
+            charactersRepository: charactersRepository,
+            episodesRepository: episodesRepository
+        )
 
         try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
             try await interactor.execute(character: rick)

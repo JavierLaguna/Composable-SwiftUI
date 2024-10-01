@@ -1,10 +1,9 @@
 import ComposableArchitecture
-import Resolver
 
 @Reducer
 struct CharactersListReducer {
 
-    @Injected var getCharactersInteractor: GetCharactersInteractor
+    let getCharactersInteractor: GetCharactersInteractor
 
     @ObservableState
     struct State: Equatable {
@@ -62,5 +61,15 @@ struct CharactersListReducer {
                 return .none
             }
         }
+    }
+}
+
+// MARK: Builder
+extension CharactersListReducer {
+
+    static func build() -> CharactersListReducer {
+        CharactersListReducer(
+            getCharactersInteractor: GetCharactersInteractorFactory.build()
+        )
     }
 }

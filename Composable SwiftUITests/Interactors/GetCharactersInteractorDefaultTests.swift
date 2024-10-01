@@ -1,22 +1,16 @@
 import Testing
 import ComposableArchitecture
-import Resolver
 
 @testable import Composable_SwiftUI
 
-@Suite(
-    "GetCharactersInteractorDefault Tests",
-    .tags(.interactor),
-    .serialized
-)
-final class GetCharactersInteractorDefaultTests: ResetTestDependencies {
+@Suite("GetCharactersInteractorDefault", .tags(.interactor))
+struct GetCharactersInteractorDefaultTests {
 
     @Test
     func executeSuccess() async throws {
         let repository = CharactersRepositoryMock()
-        Resolver.test.register { repository as CharactersRepository }
 
-        let interactor = GetCharactersInteractorDefault()
+        let interactor = GetCharactersInteractorDefault(repository: repository)
 
         let result = try #require(await interactor.execute())
 
@@ -27,9 +21,8 @@ final class GetCharactersInteractorDefaultTests: ResetTestDependencies {
     @Test
     func executeFail() async throws {
         let repository = CharactersRepositoryMock(success: false)
-        Resolver.test.register { repository as CharactersRepository }
 
-        let interactor = GetCharactersInteractorDefault()
+        let interactor = GetCharactersInteractorDefault(repository: repository)
 
         try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
             try await interactor.execute()

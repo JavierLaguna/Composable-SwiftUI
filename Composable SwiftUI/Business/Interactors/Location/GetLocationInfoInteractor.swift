@@ -1,13 +1,21 @@
-import Resolver
-
 protocol GetLocationInfoInteractor {
     func execute(locationId: Int) async throws -> LocationDetail
 }
 
+struct GetLocationInfoInteractorFactory {
+
+    static func build() -> GetLocationInfoInteractor {
+        GetLocationInfoInteractorDefault(
+            locationRepository: LocationRepositoryFactory.build(),
+            charactersRepository: CharactersRepositoryFactory.build()
+        )
+    }
+}
+
 struct GetLocationInfoInteractorDefault: GetLocationInfoInteractor {
 
-    @Injected private var locationRepository: LocationRepository
-    @Injected private var charactersRepository: CharactersRepository
+    let locationRepository: LocationRepository
+    let charactersRepository: CharactersRepository
 
     func execute(locationId: Int) async throws -> LocationDetail {
         // Catch and map error if needed

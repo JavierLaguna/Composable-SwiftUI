@@ -1,11 +1,12 @@
-import Resolver
-
 final class CharactersRepositoryDefault: CharactersRepository {
 
-    @Injected private var service: CharacterRemoteDatasource
-
+    private let service: CharacterRemoteDatasource
     private(set) var nextPage: Int?
     private(set) var totalPages: Int?
+
+    init(service: CharacterRemoteDatasource) {
+        self.service = service
+    }
 
     func getCharacters() async throws -> [Character] {
 

@@ -1,22 +1,17 @@
 import Testing
 import ComposableArchitecture
-import Resolver
 
 @testable import Composable_SwiftUI
 
-@Suite(
-    "CharactersRepositoryDefault Tests",
-    .tags(.repository),
-    .serialized
-)
-final class CharactersRepositoryDefaultTests: ResetTestDependencies {
+@Suite("CharactersRepositoryDefault", .tags(.repository))
+struct CharactersRepositoryDefaultTests {
 
     @Test
     func getCharactersSuccess() async throws {
         let datasource = CharacterRemoteDatasourceMock()
-        Resolver.test.register { datasource as CharacterRemoteDatasource }
-
-        let repository = CharactersRepositoryDefault()
+        let repository = CharactersRepositoryDefault(
+            service: datasource
+        )
 
         #expect(repository.nextPage == nil)
         #expect(repository.totalPages == nil)
@@ -32,9 +27,9 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
     @Test
     func getCharactersFail() async throws {
         let datasource = CharacterRemoteDatasourceMock(success: false)
-        Resolver.test.register { datasource as CharacterRemoteDatasource }
-
-        let repository = CharactersRepositoryDefault()
+        let repository = CharactersRepositoryDefault(
+            service: datasource
+        )
 
         try await #require(throws: RepositoryError.invalidUrl) {
             try await repository.getCharacters()
@@ -44,9 +39,9 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
     @Test
     func getCharactersByIdSuccess() async throws {
         let datasource = CharacterRemoteDatasourceMock()
-        Resolver.test.register { datasource as CharacterRemoteDatasource }
-
-        let repository = CharactersRepositoryDefault()
+        let repository = CharactersRepositoryDefault(
+            service: datasource
+        )
 
         #expect(repository.nextPage == nil)
         #expect(repository.totalPages == nil)
@@ -60,9 +55,9 @@ final class CharactersRepositoryDefaultTests: ResetTestDependencies {
     @Test
     func getCharactersByIdFail() async throws {
         let datasource = CharacterRemoteDatasourceMock(success: false)
-        Resolver.test.register { datasource as CharacterRemoteDatasource }
-
-        let repository = CharactersRepositoryDefault()
+        let repository = CharactersRepositoryDefault(
+            service: datasource
+        )
 
         try await #require(throws: RepositoryError.invalidUrl) {
             try await repository.getCharacters(characterIds: [1, 2])

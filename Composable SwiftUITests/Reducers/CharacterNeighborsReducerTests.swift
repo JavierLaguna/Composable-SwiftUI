@@ -1,22 +1,21 @@
 import Testing
 import ComposableArchitecture
-import Resolver
 
 @testable import Composable_SwiftUI
 
-@MainActor
-@Suite("CharacterNeighborsReducer Tests", .tags(.reducer))
-final class CharacterNeighborsReducerTests: ResetTestDependencies {
+@Suite("CharacterNeighborsReducer", .tags(.reducer))
+struct CharacterNeighborsReducerTests {
 
     @Test
     func getLocationInfo_whenInteractorSuccess_returnsLocationInfoData() async {
         let interactor = GetLocationInfoInteractorMock()
-        Resolver.test.register { interactor as GetLocationInfoInteractor }
-
-        let store = TestStore(
-            initialState: CharacterNeighborsReducer.State(),
+        let store = await TestStore(
+            initialState: .init(),
             reducer: {
-                CharacterNeighborsReducer(locationId: 1)
+                CharacterNeighborsReducer(
+                    getLocationInfoInteractor: interactor,
+                    locationId: 1
+                )
             }
         )
 
@@ -32,12 +31,13 @@ final class CharacterNeighborsReducerTests: ResetTestDependencies {
     @Test
     func getLocationInfo_whenInteractorFail_returnsInteractorError() async {
         let interactor = GetLocationInfoInteractorMock(success: false)
-        Resolver.test.register { interactor as GetLocationInfoInteractor }
-
-        let store = TestStore(
-            initialState: CharacterNeighborsReducer.State(),
+        let store = await TestStore(
+            initialState: .init(),
             reducer: {
-                CharacterNeighborsReducer(locationId: 1)
+                CharacterNeighborsReducer(
+                    getLocationInfoInteractor: interactor,
+                    locationId: 1
+                )
             }
         )
 

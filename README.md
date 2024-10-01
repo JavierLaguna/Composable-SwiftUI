@@ -1,5 +1,9 @@
 # 📱 Composable SwiftUI
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=JavierLaguna_Composable-SwiftUI&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=JavierLaguna_Composable-SwiftUI)
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=JavierLaguna_Composable-SwiftUI)](https://sonarcloud.io/summary/new_code?id=JavierLaguna_Composable-SwiftUI)
+
 ## 📝 Description
 
 Little iOS app for consume [The Rick and Morty](https://rickandmortyapi.com/) API. Inspired on [RickAndMortyBeerBuddy](https://github.com/danielriverolosa/RickAndMortyBeerBuddy) Android project from [Daniel Rivero Losa](https://github.com/danielriverolosa).
@@ -68,7 +72,7 @@ Based on [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/t
     - In order for them to have enough anecdotes to tell while getting drunk, priority will be given to the characters who have shared more times filming set, for this purpose the number of chapters in which they have coincided will be bought.
 
     - In case two possible matches have shared the same number of chapters with the selected character, preference will be given to those who have known each other the longest, using the date of the first chapter in which they appeared together.
-    
+
     - If they have participated in the same number of chapters, and they met on the same day, priority will be given to the candidate who has not seen the selected character for the longest time, using the date of the last chapter in which they both appeared.
 
     - Finally, in case there is more than one candidate that meets all the criteria, they will be ordered by ID.

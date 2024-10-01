@@ -1,10 +1,9 @@
 import ComposableArchitecture
-import Resolver
 
 @Reducer
 struct MatchBuddyReducer {
 
-    @Injected var getBeerBuddyInteractor: GetBeerBuddyInteractor
+    let getBeerBuddyInteractor: GetBeerBuddyInteractor
 
     @ObservableState
     struct State: Equatable {
@@ -42,5 +41,15 @@ struct MatchBuddyReducer {
                 return .none
             }
         }
+    }
+}
+
+// MARK: Builder
+extension MatchBuddyReducer {
+
+    static func build() -> MatchBuddyReducer {
+        MatchBuddyReducer(
+            getBeerBuddyInteractor: GetBeerBuddyInteractorFactory.build()
+        )
     }
 }

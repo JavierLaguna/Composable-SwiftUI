@@ -1,8 +1,6 @@
-import Resolver
-
 struct LocationRepositoryDefault: LocationRepository {
 
-    @Injected private var service: LocationRemoteDatasource
+    let service: LocationRemoteDatasource
 
     func getCharacterIdsFromLocation(locationId: Int) async throws -> [Int] {
         try await service.getLocation(locationId: locationId)

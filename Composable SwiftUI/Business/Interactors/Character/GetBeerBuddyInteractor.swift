@@ -1,14 +1,23 @@
-import Resolver
-
 protocol GetBeerBuddyInteractor {
     func execute(character: Character) async throws -> BeerBuddy?
 }
 
-final class GetBeerBuddyInteractorDefault: GetBeerBuddyInteractor, ManagedErrorInteractor {
+struct GetBeerBuddyInteractorFactory {
 
-    @Injected private var locationRepository: LocationRepository
-    @Injected private var charactersRepository: CharactersRepository
-    @Injected private var episodesRepository: EpisodesRepository
+    static func build() -> GetBeerBuddyInteractor {
+        GetBeerBuddyInteractorDefault(
+            locationRepository: LocationRepositoryFactory.build(),
+            charactersRepository: CharactersRepositoryFactory.build(),
+            episodesRepository: EpisodesRepositoryFactory.build()
+        )
+    }
+}
+
+struct GetBeerBuddyInteractorDefault: GetBeerBuddyInteractor, ManagedErrorInteractor {
+
+    let locationRepository: LocationRepository
+    let charactersRepository: CharactersRepository
+    let episodesRepository: EpisodesRepository
 
     func execute(character: Character) async throws -> BeerBuddy? {
         do {
@@ -27,23 +36,28 @@ final class GetBeerBuddyInteractorDefault: GetBeerBuddyInteractor, ManagedErrorI
             throw manageError(error: error)
         }
     }
+}
 
-    private func getBestBuddyBeer(
+// MARK: Private methods
+private extension GetBeerBuddyInteractorDefault {
+
+    func getBestBuddyBeer(
         selectedCharacter: Character,
-        buddiesFromLocation: [Character]) async throws -> BeerBuddy? {
-            let matchedEpisodesList = buddiesFromLocation
-                .compactMap {
-                    $0.matchedEpisodes(with: selectedCharacter)
-                }
-                .sorted()
+        buddiesFromLocation: [Character]
+    ) async throws -> BeerBuddy? {
+        let matchedEpisodesList = buddiesFromLocation
+            .compactMap {
+                $0.matchedEpisodes(with: selectedCharacter)
+            }
+            .sorted()
 
-            return try await buildBestBuddy(
-                matchedEpisodesList: matchedEpisodesList,
-                selectedCharacter: selectedCharacter
-            )
-        }
+        return try await buildBestBuddy(
+            matchedEpisodesList: matchedEpisodesList,
+            selectedCharacter: selectedCharacter
+        )
+    }
 
-    private func buildBestBuddy(
+    func buildBestBuddy(
         matchedEpisodesList: [MatchedEpisodes],
         selectedCharacter: Character
     ) async throws -> BeerBuddy? {

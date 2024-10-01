@@ -1,25 +1,23 @@
 import Testing
 import ComposableArchitecture
-import Resolver
 
 @testable import Composable_SwiftUI
 
-@MainActor
-@Suite("MatchBuddyReducer Tests", .tags(.reducer))
-final class MatchBuddyReducerTests: ResetTestDependencies {
+@Suite("MatchBuddyReducer", .tags(.reducer))
+struct MatchBuddyReducerTests {
 
     @Test
     func getBeerBuddySuccess() async {
         let interactor = GetBeerBuddyInteractorMock()
-        Resolver.test.register { interactor as GetBeerBuddyInteractor }
-
         let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
 
-        let store = TestStore(
-            initialState: MatchBuddyReducer.State(),
+        let store = await TestStore(
+            initialState: .init(),
             reducer: {
-                MatchBuddyReducer()
+                MatchBuddyReducer(
+                    getBeerBuddyInteractor: interactor
+                )
             }
         )
 
@@ -35,15 +33,15 @@ final class MatchBuddyReducerTests: ResetTestDependencies {
     @Test
     func getBeerBuddyNotFoundSuccess() async {
         let interactor = GetBeerBuddyInteractorMock(success: true, expectedResponse: nil)
-        Resolver.test.register { interactor as GetBeerBuddyInteractor }
-
         let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
 
-        let store = TestStore(
-            initialState: MatchBuddyReducer.State(),
+        let store = await TestStore(
+            initialState: .init(),
             reducer: {
-                MatchBuddyReducer()
+                MatchBuddyReducer(
+                    getBeerBuddyInteractor: interactor
+                )
             }
         )
 
@@ -58,15 +56,16 @@ final class MatchBuddyReducerTests: ResetTestDependencies {
 
     @Test
     func getBeerBuddyFail() async {
-        Resolver.test.register { GetBeerBuddyInteractorMock(success: false) as GetBeerBuddyInteractor }
-
+        let interactor = GetBeerBuddyInteractorMock(success: false)
         let location = CharacterLocation(id: 1, name: "Earth")
         let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
 
-        let store = TestStore(
-            initialState: MatchBuddyReducer.State(),
+        let store = await TestStore(
+            initialState: .init(),
             reducer: {
-                MatchBuddyReducer()
+                MatchBuddyReducer(
+                    getBeerBuddyInteractor: interactor
+                )
             }
         )
 
