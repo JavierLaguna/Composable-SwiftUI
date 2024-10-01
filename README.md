@@ -1,7 +1,5 @@
 # 📱 Composable SwiftUI
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=JavierLaguna_Composable-SwiftUI&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=JavierLaguna_Composable-SwiftUI)
-
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=JavierLaguna_Composable-SwiftUI)](https://sonarcloud.io/summary/new_code?id=JavierLaguna_Composable-SwiftUI)
 
 ## 📝 Description
@@ -48,7 +46,7 @@ Show the character details and the Beer Buddy of all characters.
 
 Based on [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) + [The Composable Architecture (TCA)](https://github.com/pointfreeco/swift-composable-architecture) as main architecture.
 
-[stinsen](https://github.com/rundfunk47/stinsen) as router using [Coordinator](https://khanlou.com/2015/01/the-coordinator/) pattern.
+[Coordinator](https://khanlou.com/2015/01/the-coordinator/) pattern for routing.
 
 [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) as Git methodology.
 
@@ -65,21 +63,21 @@ Based on [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/t
 
 ##### Character Beer Buddy
 
-- Once the user selects a character the application will search for the perfect galactic beer companion by applying the following criteria:
+ Once the user selects a character the application will search for the perfect galactic beer companion by applying the following criteria:
 
-    - The Ricks Council has decreed perimeter confinement of planets, so actors will only be able to date actors that are in the same location.
+  - The Ricks Council has decreed perimeter confinement of planets, so actors will only be able to date actors that are in the same location.
 
-    - In order for them to have enough anecdotes to tell while getting drunk, priority will be given to the characters who have shared more times filming set, for this purpose the number of chapters in which they have coincided will be bought.
+  - In order for them to have enough anecdotes to tell while getting drunk, priority will be given to the characters who have shared more times filming set, for this purpose the number of chapters in which they have coincided will be bought.
 
-    - In case two possible matches have shared the same number of chapters with the selected character, preference will be given to those who have known each other the longest, using the date of the first chapter in which they appeared together.
+  - In case two possible matches have shared the same number of chapters with the selected character, preference will be given to those who have known each other the longest, using the date of the first chapter in which they appeared together.
 
-    - If they have participated in the same number of chapters, and they met on the same day, priority will be given to the candidate who has not seen the selected character for the longest time, using the date of the last chapter in which they both appeared.
+  - If they have participated in the same number of chapters, and they met on the same day, priority will be given to the candidate who has not seen the selected character for the longest time, using the date of the last chapter in which they both appeared.
 
-    - Finally, in case there is more than one candidate that meets all the criteria, they will be ordered by ID.
+  - Finally, in case there is more than one candidate that meets all the criteria, they will be ordered by ID.
 
 ## 🛠 Work in progress
 
-- Fix TabBar accent color.
+- Swift 6 strict concurrency mode
 
 ## 🔮 Next steps / features
 
