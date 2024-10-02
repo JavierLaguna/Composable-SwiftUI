@@ -34,6 +34,7 @@ jobs:
 
       # Optional: Check the Fastlane version
       - name: Check Fastlane version
+        if: false
         run: bundle exec fastlane --version
 
       - name: Setup Xcode version
@@ -43,6 +44,7 @@ jobs:
 
       # Optional: List iOS available simulators
       - name: List the available simulators
+        if: false
         run: xcrun simctl list devices
 
       - name: Set Xcode to Skip Macro Validation
@@ -60,6 +62,7 @@ jobs:
 
       # Optional: List files generated in the coverage directory
       - name: List coverage files
+        if: false
         run: ls -la fastlane/test_output/coverage
 
       # Rename the dynamically generated JSON file to a fixed name
@@ -69,6 +72,7 @@ jobs:
 
       # Optional: Verify the existence of the coverage.json file
       - name: Check if coverage report exists
+        if: false
         run: ls -la fastlane/test_output/coverage/coverage.json
 
       # Upload the coverage file as an artifact so that the next job can use it
