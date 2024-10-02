@@ -66,22 +66,12 @@ jobs:
         if: ${{ matrix.optional_steps }}
         run: ls -la fastlane/test_output/coverage
 
-      # Rename the dynamically generated JSON file to a fixed name
-      - name: Rename coverage report
-        run: |
-          mv $(find fastlane/test_output/coverage -name "*.json") fastlane/test_output/coverage/coverage.json
-
-      # Optional: Verify the existence of the coverage.json file
-      - name: Check if coverage report exists
-        if: ${{ matrix.optional_steps }}
-        run: ls -la fastlane/test_output/coverage/coverage.json
-
       # Upload the coverage file as an artifact so that the next job can use it
       - name: Upload coverage report
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
-          path: fastlane/test_output/coverage/coverage.json
+          path: fastlane/test_output/coverage/report.json
 
   sonarcloud:
     name: Upload coverage to SonarCloud
@@ -106,4 +96,4 @@ jobs:
           args: >
             -Dsonar.organization=javierlaguna
             -Dsonar.projectKey=JavierLaguna_Composable-SwiftUI
-            -Dsonar.swift.coverage.reportPaths=coverage.json
+            -Dsonar.swift.coverage.reportPaths=report.json
