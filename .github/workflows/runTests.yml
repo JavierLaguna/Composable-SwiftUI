@@ -16,6 +16,7 @@ jobs:
         macos_version: [macos-15]
         xcode_version: ['16.0.0'] # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
         iphone_model: ['iPhone 16 Pro']
+        optional_steps: [true]
 
     steps:
       - name: Checkout
@@ -34,7 +35,7 @@ jobs:
 
       # Optional: Check the Fastlane version
       - name: Check Fastlane version
-        if: false
+        if: ${{ matrix.optional_steps }}
         run: bundle exec fastlane --version
 
       - name: Setup Xcode version
@@ -44,7 +45,7 @@ jobs:
 
       # Optional: List iOS available simulators
       - name: List the available simulators
-        if: false
+        if: ${{ matrix.optional_steps }}
         run: xcrun simctl list devices
 
       - name: Set Xcode to Skip Macro Validation
@@ -62,7 +63,7 @@ jobs:
 
       # Optional: List files generated in the coverage directory
       - name: List coverage files
-        if: false
+        if: ${{ matrix.optional_steps }}
         run: ls -la fastlane/test_output/coverage
 
       # Rename the dynamically generated JSON file to a fixed name
@@ -72,7 +73,7 @@ jobs:
 
       # Optional: Verify the existence of the coverage.json file
       - name: Check if coverage report exists
-        if: false
+        if: ${{ matrix.optional_steps }}
         run: ls -la fastlane/test_output/coverage/coverage.json
 
       # Upload the coverage file as an artifact so that the next job can use it
