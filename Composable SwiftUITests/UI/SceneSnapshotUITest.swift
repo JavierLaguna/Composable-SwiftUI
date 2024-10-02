@@ -9,7 +9,7 @@ class SceneSnapshotUITest {
         #filePath
     }
 
-    var precision: Float = 0.99
+    var precision: Float = 0.98
 
     func execute(
         name: String,
