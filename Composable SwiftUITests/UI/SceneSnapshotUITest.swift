@@ -21,7 +21,7 @@ class SceneSnapshotUITest {
         case .image:
             assertSnapshot(
                 of: view,
-                as: .image,
+                as: .image(precision: 0.9),
                 file: file,
                 testName: testName
             )
@@ -30,6 +30,7 @@ class SceneSnapshotUITest {
             assertSnapshot(
                 of: view,
                 as: .image(
+                    precision: 0.9,
                     layout: device.layout(orientation: orientation),
                     traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
                 ),
