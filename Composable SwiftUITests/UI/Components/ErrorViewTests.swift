@@ -5,8 +5,7 @@ import SwiftUI
 
 @Suite(
     "ErrorView",
-    .tags(.UI, .UIComponent),
-    .disabled("Github CI fails")
+    .tags(.UI, .UIComponent)
 )
 final class ErrorViewTests: SceneSnapshotUITest {
 

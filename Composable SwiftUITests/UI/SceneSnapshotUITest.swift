@@ -2,6 +2,8 @@ import Testing
 import SwiftUI
 import SnapshotTesting
 
+// IMPORTANT: Run tests using iPhone 16 Pro (18.0)
+
 @MainActor
 class SceneSnapshotUITest {
 
@@ -9,10 +11,13 @@ class SceneSnapshotUITest {
         #filePath
     }
 
+    var precision: Float = 0.98
+
     func execute(
         name: String,
         view: some View,
-        variant: Variant
+        variant: Variant,
+        record: Bool = false
     ) {
         let testName = "\(name)_\(variant.layoutName)_snapshot"
 
@@ -20,7 +25,8 @@ class SceneSnapshotUITest {
         case .image:
             assertSnapshot(
                 of: view,
-                as: .image,
+                as: .image(precision: precision),
+                record: record,
                 file: file,
                 testName: testName
             )
@@ -29,9 +35,11 @@ class SceneSnapshotUITest {
             assertSnapshot(
                 of: view,
                 as: .image(
+                    precision: precision,
                     layout: device.layout(orientation: orientation),
                     traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
                 ),
+                record: record,
                 file: file,
                 testName: testName
             )
