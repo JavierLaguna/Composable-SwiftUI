@@ -14,9 +14,9 @@ class SceneSnapshotUITest {
     func execute(
         name: String,
         view: some View,
-        variant: Variant
+        variant: Variant,
+        record: Bool = false
     ) {
-//        isRecording = true
         let testName = "\(name)_\(variant.layoutName)_snapshot"
 
         switch variant {
@@ -24,6 +24,7 @@ class SceneSnapshotUITest {
             assertSnapshot(
                 of: view,
                 as: .image(precision: precision),
+                record: record,
                 file: file,
                 testName: testName
             )
@@ -36,6 +37,7 @@ class SceneSnapshotUITest {
                     layout: device.layout(orientation: orientation),
                     traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
                 ),
+                record: record,
                 file: file,
                 testName: testName
             )
