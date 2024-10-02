@@ -9,6 +9,8 @@ class SceneSnapshotUITest {
         #filePath
     }
 
+    var precision: Float = 0.99
+
     func execute(
         name: String,
         view: some View,
@@ -21,7 +23,7 @@ class SceneSnapshotUITest {
         case .image:
             assertSnapshot(
                 of: view,
-                as: .image(precision: 0.9),
+                as: .image(precision: precision),
                 file: file,
                 testName: testName
             )
@@ -30,7 +32,7 @@ class SceneSnapshotUITest {
             assertSnapshot(
                 of: view,
                 as: .image(
-                    precision: 0.9,
+                    precision: precision,
                     layout: device.layout(orientation: orientation),
                     traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
                 ),
