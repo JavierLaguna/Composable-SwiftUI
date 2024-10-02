@@ -5,8 +5,7 @@ import SwiftUI
 
 @Suite(
     "LoadingView",
-    .tags(.UI, .UIComponent),
-    .disabled("Github CI fails")
+    .tags(.UI, .UIComponent)
 )
 final class LoadingViewTests: SceneSnapshotUITest {
 

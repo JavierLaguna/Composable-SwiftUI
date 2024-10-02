@@ -14,6 +14,7 @@ class SceneSnapshotUITest {
         view: some View,
         variant: Variant
     ) {
+//        isRecording = true
         let testName = "\(name)_\(variant.layoutName)_snapshot"
 
         switch variant {

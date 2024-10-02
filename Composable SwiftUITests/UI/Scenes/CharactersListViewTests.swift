@@ -6,8 +6,7 @@ import ComposableArchitecture
 
 @Suite(
     "CharactersListView",
-    .tags(.UI, .UIScene),
-    .disabled("Github CI fails")
+    .tags(.UI, .UIScene)
 )
 final class CharactersListViewTests: SceneSnapshotUITest {
 
