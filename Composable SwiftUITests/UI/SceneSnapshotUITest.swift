@@ -2,6 +2,8 @@ import Testing
 import SwiftUI
 import SnapshotTesting
 
+// IMPORTANT: Run tests using iPhone 16 Pro (18.0)
+
 @MainActor
 class SceneSnapshotUITest {
 
