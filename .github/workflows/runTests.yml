@@ -16,7 +16,7 @@ jobs:
         macos_version: [macos-15]
         xcode_version: ['16.0.0'] # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
         iphone_model: ['iPhone SE (3rd generation) (18.0)']
-        optional_steps: [true]
+        optional_steps: [false]
 
     steps:
       - name: Checkout
