@@ -1,4 +1,4 @@
-final class CharactersRepositoryDefault: CharactersRepository {
+actor CharactersRepositoryDefault: CharactersRepository {
 
     private let service: CharacterRemoteDatasource
     private(set) var nextPage: Int?
