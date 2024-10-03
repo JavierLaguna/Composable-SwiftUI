@@ -1,4 +1,4 @@
-protocol GetLocationInfoInteractor {
+protocol GetLocationInfoInteractor: Sendable {
     func execute(locationId: Int) async throws -> LocationDetail
 }
 

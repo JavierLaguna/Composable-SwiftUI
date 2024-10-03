@@ -1,4 +1,4 @@
-protocol GetCharactersInteractor {
+protocol GetCharactersInteractor: Sendable {
     func execute() async throws -> [Character]
 }
 

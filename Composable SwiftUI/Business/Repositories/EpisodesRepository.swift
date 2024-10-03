@@ -1,4 +1,4 @@
-protocol EpisodesRepository {
+protocol EpisodesRepository: Sendable {
     func getEpisodesFromList(ids: [Int]) async throws -> [Episode]
 }
 

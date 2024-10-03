@@ -1,4 +1,4 @@
-protocol EpisodesRemoteDatasource {
+protocol EpisodesRemoteDatasource: Sendable {
     func getEpisodesList(ids: [Int]) async throws -> [EpisodeResponse]
 }
 

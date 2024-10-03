@@ -1,4 +1,4 @@
-protocol LocationRemoteDatasource {
+protocol LocationRemoteDatasource: Sendable {
     func getLocation(locationId: Int) async throws -> LocationResponse
 }
 

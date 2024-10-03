@@ -1,4 +1,4 @@
-protocol GetBeerBuddyInteractor {
+protocol GetBeerBuddyInteractor: Sendable {
     func execute(character: Character) async throws -> BeerBuddy?
 }
 
