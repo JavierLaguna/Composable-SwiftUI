@@ -1,6 +1,6 @@
 import Foundation
 
-final class EpisodesService: HttpClient, EpisodesRemoteDatasource {
+final class EpisodesService: HttpClient, EpisodesRemoteDatasource, @unchecked Sendable {
 
     private let baseURL = RickAndMortyAPI.apiBaseUrl
     private let path = "/episode"

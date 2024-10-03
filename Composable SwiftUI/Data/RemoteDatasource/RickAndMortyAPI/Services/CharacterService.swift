@@ -1,6 +1,6 @@
 import Foundation
 
-final class CharacterService: HttpClient, CharacterRemoteDatasource {
+final class CharacterService: HttpClient, CharacterRemoteDatasource, @unchecked Sendable {
 
     private let baseURL = RickAndMortyAPI.apiBaseUrl
     private let path = "/character"

@@ -1,6 +1,6 @@
 import Foundation
 
-final class LocationService: HttpClient, LocationRemoteDatasource {
+final class LocationService: HttpClient, LocationRemoteDatasource, @unchecked Sendable {
 
     private let baseURL = RickAndMortyAPI.apiBaseUrl
     private let path = "/location"
