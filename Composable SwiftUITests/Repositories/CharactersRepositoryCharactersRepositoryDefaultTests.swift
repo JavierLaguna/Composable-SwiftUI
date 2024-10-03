@@ -3,7 +3,10 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@Suite("CharactersRepositoryDefault", .tags(.repository))
+@Suite(
+    "CharactersRepositoryDefault",
+    .tags(.repository)
+)
 struct CharactersRepositoryDefaultTests {
 
     @Test

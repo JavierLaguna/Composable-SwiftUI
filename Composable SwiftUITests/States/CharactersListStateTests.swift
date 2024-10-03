@@ -2,7 +2,10 @@ import Testing
 
 @testable import Composable_SwiftUI
 
-@Suite("CharactersListState", .tags(.state))
+@Suite(
+    "CharactersListState",
+    .tags(.state)
+)
 struct CharactersListStateTests {
 
     @Test
@@ -30,7 +33,7 @@ struct CharactersListStateTests {
         #expect(state.filteredCharacters == shouldFilteredcharacters)
 
         state.searchText = "QWERTY"
-        #expect(state.filteredCharacters?.count == 0)
+        #expect(state.filteredCharacters?.isEmpty)
         #expect(state.filteredCharacters == [])
     }
 }

@@ -3,7 +3,10 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@Suite("CharactersListReducer", .tags(.reducer))
+@Suite(
+    "CharactersListReducer",
+    .tags(.reducer)
+)
 struct CharactersListReducerTests {
 
     @Test
