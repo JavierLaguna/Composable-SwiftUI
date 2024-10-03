@@ -8,6 +8,8 @@ final class CharactersCoordinator {
     private let mainStore: StoreOf<MainReducer>
 
     private(set) var path: [Routes] = []
+
+    @MainActor
     var pathBinding: Binding<[Routes]> {
         Binding(
             get: { self.path },
@@ -16,6 +18,8 @@ final class CharactersCoordinator {
     }
 
     private(set) var sheet: Sheet?
+
+    @MainActor
     var sheetIsPresented: Binding<Bool> {
         Binding(
             get: { self.sheet != nil },
