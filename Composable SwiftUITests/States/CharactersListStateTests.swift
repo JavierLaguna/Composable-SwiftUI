@@ -33,7 +33,7 @@ struct CharactersListStateTests {
         #expect(state.filteredCharacters == shouldFilteredcharacters)
 
         state.searchText = "QWERTY"
-        #expect(state.filteredCharacters?.isEmpty)
+        #expect(state.filteredCharacters?.isEmpty ?? false)
         #expect(state.filteredCharacters == [])
     }
 }
