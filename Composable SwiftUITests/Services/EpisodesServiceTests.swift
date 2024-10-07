@@ -24,7 +24,6 @@ struct EpisodesServiceTests {
         )
 
         do {
-            // TODO: JLI - @discardableResult
             try await service.getEpisodesList(ids: ids)
 
         } catch {

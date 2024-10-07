@@ -16,8 +16,6 @@ struct LocationService: LocationRemoteDatasource {
         do {
             return try await apiClient.request(apiRequest)
         } catch {
-
-            // TODO: JLI - Debería ser repository ??
             throw RepositoryError.serviceFail(error: error)
         }
     }

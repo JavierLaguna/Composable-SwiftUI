@@ -1,6 +1,6 @@
 enum RepositoryError: Error {
-    case invalidUrl // TODO: JLI ??
-    case invalidParameters // TODO: JLI ??
+    case invalidUrl
+    case invalidParameters
     case serviceFail(error: any Error)
 }
 
