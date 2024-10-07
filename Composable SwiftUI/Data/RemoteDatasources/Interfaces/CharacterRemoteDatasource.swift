@@ -7,6 +7,8 @@ protocol CharacterRemoteDatasource: Sendable {
 struct CharacterRemoteDatasourceFactory {
 
     static func build() -> CharacterRemoteDatasource {
-        CharacterService()
+        CharacterService(
+            apiClient: APIClientFactory.build()
+        )
     }
 }
