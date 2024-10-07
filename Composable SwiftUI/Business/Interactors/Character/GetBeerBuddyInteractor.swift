@@ -4,7 +4,7 @@ protocol GetBeerBuddyInteractor: Sendable {
 
 struct GetBeerBuddyInteractorFactory {
 
-    static func build() -> GetBeerBuddyInteractor {
+    static func build() -> any GetBeerBuddyInteractor {
         GetBeerBuddyInteractorDefault(
             locationRepository: LocationRepositoryFactory.build(),
             charactersRepository: CharactersRepositoryFactory.build(),
@@ -15,9 +15,9 @@ struct GetBeerBuddyInteractorFactory {
 
 struct GetBeerBuddyInteractorDefault: GetBeerBuddyInteractor, ManagedErrorInteractor {
 
-    let locationRepository: LocationRepository
-    let charactersRepository: CharactersRepository
-    let episodesRepository: EpisodesRepository
+    let locationRepository: any LocationRepository
+    let charactersRepository: any CharactersRepository
+    let episodesRepository: any EpisodesRepository
 
     func execute(character: Character) async throws -> BeerBuddy? {
         do {

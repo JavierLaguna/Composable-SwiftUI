@@ -3,7 +3,7 @@ import ComposableArchitecture
 @Reducer
 struct CharacterNeighborsReducer {
 
-    let getLocationInfoInteractor: GetLocationInfoInteractor
+    let getLocationInfoInteractor: any GetLocationInfoInteractor
     let locationId: Int
 
     @ObservableState

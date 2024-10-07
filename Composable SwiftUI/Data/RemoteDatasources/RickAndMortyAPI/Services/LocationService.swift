@@ -2,7 +2,7 @@ import Foundation
 
 struct LocationService: LocationRemoteDatasource {
 
-    let apiClient: APIClient
+    let apiClient: any APIClient
 
     @discardableResult
     func getLocation(locationId: Int) async throws -> LocationResponse {

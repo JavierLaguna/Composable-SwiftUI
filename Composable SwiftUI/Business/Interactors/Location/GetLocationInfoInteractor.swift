@@ -4,7 +4,7 @@ protocol GetLocationInfoInteractor: Sendable {
 
 struct GetLocationInfoInteractorFactory {
 
-    static func build() -> GetLocationInfoInteractor {
+    static func build() -> any GetLocationInfoInteractor {
         GetLocationInfoInteractorDefault(
             locationRepository: LocationRepositoryFactory.build(),
             charactersRepository: CharactersRepositoryFactory.build()
@@ -14,8 +14,8 @@ struct GetLocationInfoInteractorFactory {
 
 struct GetLocationInfoInteractorDefault: GetLocationInfoInteractor {
 
-    let locationRepository: LocationRepository
-    let charactersRepository: CharactersRepository
+    let locationRepository: any LocationRepository
+    let charactersRepository: any CharactersRepository
 
     func execute(locationId: Int) async throws -> LocationDetail {
         // Catch and map error if needed

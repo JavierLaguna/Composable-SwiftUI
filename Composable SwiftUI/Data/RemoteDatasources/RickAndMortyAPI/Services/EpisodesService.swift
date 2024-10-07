@@ -2,7 +2,7 @@ import Foundation
 
 struct EpisodesService: EpisodesRemoteDatasource {
 
-    let apiClient: APIClient
+    let apiClient: any APIClient
 
     @discardableResult
     func getEpisodesList(ids: [Int]) async throws -> [EpisodeResponse] {

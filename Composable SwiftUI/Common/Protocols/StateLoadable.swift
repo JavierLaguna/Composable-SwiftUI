@@ -5,13 +5,13 @@ struct StateLoadable<T: Equatable> {
         case loading
         case populated(data: T)
         case empty
-        case error(Error)
+        case error(any Error)
 
         indirect case previous (State)
     }
 
     private(set)var data: T?
-    private(set)var error: Error?
+    private(set)var error: (any Error)?
 
     var state: State = .initial {
         didSet {

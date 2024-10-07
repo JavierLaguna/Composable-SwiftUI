@@ -45,9 +45,7 @@ struct URLSessionAPIClient: APIClient {
     @discardableResult
     func requestWithProgress(
         _ apiRequest: APIRequest,
-        progressDelegate: (
-            UploadProgressDelegateProtocol
-        )?
+        progressDelegate: (any UploadProgressDelegateProtocol)?
     ) async throws -> Data? {
         guard let request = apiRequest.urlRequest else {
             throw APIClientError.urlRequestIsEmpty
@@ -68,7 +66,7 @@ private extension URLSessionAPIClient {
     @discardableResult
     private func performRequest(
         _ request: URLRequest,
-        progressDelegate: (UploadProgressDelegateProtocol)? = nil
+        progressDelegate: (any UploadProgressDelegateProtocol)? = nil
     ) async throws -> Data {
         // Inject token if available
         if let token = token {

@@ -5,7 +5,7 @@ protocol CharactersRepository: Sendable {
 
 struct CharactersRepositoryFactory {
 
-    static func build() -> CharactersRepository {
+    static func build() -> any CharactersRepository {
         CharactersRepositoryDefault(
             service: CharacterRemoteDatasourceFactory.build()
         )

@@ -1,10 +1,10 @@
 actor CharactersRepositoryDefault: CharactersRepository {
 
-    private let service: CharacterRemoteDatasource
+    private let service: any CharacterRemoteDatasource
     private(set) var nextPage: Int?
     private(set) var totalPages: Int?
 
-    init(service: CharacterRemoteDatasource) {
+    init(service: any CharacterRemoteDatasource) {
         self.service = service
     }
 

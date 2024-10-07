@@ -4,7 +4,7 @@ protocol LocationRemoteDatasource: Sendable {
 
 struct LocationRemoteDatasourceFactory {
 
-    static func build() -> LocationRemoteDatasource {
+    static func build() -> any LocationRemoteDatasource {
         LocationService(
             apiClient: APIClientFactory.build()
         )

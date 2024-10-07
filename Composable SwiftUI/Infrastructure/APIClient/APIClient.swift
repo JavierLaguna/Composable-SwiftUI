@@ -41,7 +41,7 @@ protocol APIClient: Sendable {
     @discardableResult
     func requestWithProgress(
         _ apiRequest: APIRequest,
-        progressDelegate: (UploadProgressDelegateProtocol)?
+        progressDelegate: (any UploadProgressDelegateProtocol)?
     ) async throws -> Data?
 }
 

@@ -5,7 +5,7 @@ protocol LocationRepository: Sendable {
 
 struct LocationRepositoryFactory {
 
-    static func build() -> LocationRepository {
+    static func build() -> any LocationRepository {
         LocationRepositoryDefault(
             service: LocationRemoteDatasourceFactory.build()
         )

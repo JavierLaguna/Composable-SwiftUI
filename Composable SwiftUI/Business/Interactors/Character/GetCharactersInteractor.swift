@@ -4,7 +4,7 @@ protocol GetCharactersInteractor: Sendable {
 
 struct GetCharactersInteractorFactory {
 
-    static func build() -> GetCharactersInteractor {
+    static func build() -> any GetCharactersInteractor {
          GetCharactersInteractorDefault(
             repository: CharactersRepositoryFactory.build()
         )
@@ -13,7 +13,7 @@ struct GetCharactersInteractorFactory {
 
 struct GetCharactersInteractorDefault: GetCharactersInteractor, ManagedErrorInteractor {
 
-    let repository: CharactersRepository
+    let repository: any CharactersRepository
 
     func execute() async throws -> [Character] {
         do {

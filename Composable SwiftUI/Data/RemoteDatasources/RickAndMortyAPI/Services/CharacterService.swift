@@ -2,12 +2,12 @@ import Foundation
 
 struct CharacterService: CharacterRemoteDatasource {
 
-    let apiClient: APIClient
+    let apiClient: any APIClient
 
     @discardableResult
     func getCharacters(page: Int? = nil) async throws -> GetCharactersResponse {
 
-        var urlParams: [String: CustomStringConvertible] = [:]
+        var urlParams: [String: any CustomStringConvertible] = [:]
         if let page {
             urlParams["page"] = "\(page)"
         }

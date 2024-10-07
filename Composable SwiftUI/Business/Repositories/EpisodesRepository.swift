@@ -4,7 +4,7 @@ protocol EpisodesRepository: Sendable {
 
 struct EpisodesRepositoryFactory {
 
-    static func build() -> EpisodesRepository {
+    static func build() -> any EpisodesRepository {
         EpisodesRepositoryDefault(
             service: EpisodesRemoteDatasourceFactory.build()
         )

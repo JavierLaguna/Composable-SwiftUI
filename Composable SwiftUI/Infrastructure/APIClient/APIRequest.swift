@@ -15,7 +15,7 @@ struct APIRequest {
     let baseURL: String
     let apiVersion: APIConstants.APIVersion
     let path: String
-    let urlParams: [String: CustomStringConvertible]
+    let urlParams: [String: any CustomStringConvertible]
     let method: HTTPMethod
     let headers: [String: String]
     let body: Data?
@@ -24,7 +24,7 @@ struct APIRequest {
         baseURL: String,
         apiVersion: APIConstants.APIVersion,
         path: String,
-        urlParams: [String: CustomStringConvertible] = [:],
+        urlParams: [String: any CustomStringConvertible] = [:],
         method: HTTPMethod,
         headers: [String: String] = [:],
         body: Data? = nil

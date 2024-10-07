@@ -12,14 +12,14 @@ extension Error {
 
 extension NSError {
     public func isEqual(to other: NSError) -> Bool {
-        let lhs = self as Error
-        let rhs = other as Error
+        let lhs = self as (any Error)
+        let rhs = other as (any Error)
         return isEqual(other) && lhs.reflectedString == rhs.reflectedString
     }
 }
 
-class ErrorUtility {
-    public static func areEqual(_ lhs: Error, _ rhs: Error) -> Bool {
+final class ErrorUtility {
+    public static func areEqual(_ lhs: any Error, _ rhs: any Error) -> Bool {
         return lhs.reflectedString == rhs.reflectedString
     }
 }

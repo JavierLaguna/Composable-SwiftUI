@@ -15,10 +15,10 @@ import Foundation
 enum APIClientError: Error {
     case invalidURL
     case invalidResponse(_ data: Data)
-    case requestFailed(_ error: Error)
-    case decodingFailed(_ error: Error)
+    case requestFailed(_ error: any Error)
+    case decodingFailed(_ error: any Error)
     case notExpectedHttpResponseCode(code: Int)
     case urlRequestIsEmpty
     case statusCode(Int)
-    case networkError(Error)
+    case networkError(any Error)
 }
