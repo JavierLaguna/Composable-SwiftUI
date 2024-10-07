@@ -14,6 +14,12 @@
 		491A399828533DB200D17719 /* CharacterRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399728533DB200D17719 /* CharacterRemoteDatasource.swift */; };
 		491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399B28533F6000D17719 /* EpisodesRemoteDatasource.swift */; };
 		491A399E28533FF000D17719 /* LocationRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399D28533FF000D17719 /* LocationRemoteDatasource.swift */; };
+		49206E3B2CAEDC5900C21802 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49206E3A2CAEDC5900C21802 /* APIClient.swift */; };
+		49206E402CAEDD8A00C21802 /* APIClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49206E3F2CAEDD8A00C21802 /* APIClientError.swift */; };
+		49206E422CAEDEEB00C21802 /* UploadProgressDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49206E412CAEDEEB00C21802 /* UploadProgressDelegate.swift */; };
+		49206E482CAEE13700C21802 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49206E472CAEE13700C21802 /* HTTPMethod.swift */; };
+		49206E512CAFCA4800C21802 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49206E502CAFCA4800C21802 /* APIConstants.swift */; };
+		49206E532CAFCA8500C21802 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49206E522CAFCA8500C21802 /* APIRequest.swift */; };
 		49222F302C203C600026B5E8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49222F2F2C203C600026B5E8 /* MainView.swift */; };
 		49222F332C203F070026B5E8 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49222F322C203F070026B5E8 /* MainCoordinator.swift */; };
 		492B43412ABAE171005B631E /* ErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B43402ABAE171005B631E /* ErrorViewTests.swift */; };
@@ -145,6 +151,12 @@
 		491A399728533DB200D17719 /* CharacterRemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRemoteDatasource.swift; sourceTree = "<group>"; };
 		491A399B28533F6000D17719 /* EpisodesRemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDatasource.swift; sourceTree = "<group>"; };
 		491A399D28533FF000D17719 /* LocationRemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDatasource.swift; sourceTree = "<group>"; };
+		49206E3A2CAEDC5900C21802 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		49206E3F2CAEDD8A00C21802 /* APIClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientError.swift; sourceTree = "<group>"; };
+		49206E412CAEDEEB00C21802 /* UploadProgressDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProgressDelegate.swift; sourceTree = "<group>"; };
+		49206E472CAEE13700C21802 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		49206E502CAFCA4800C21802 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		49206E522CAFCA8500C21802 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		49222F2F2C203C600026B5E8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		49222F322C203F070026B5E8 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		492B43402ABAE171005B631E /* ErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewTests.swift; sourceTree = "<group>"; };
@@ -288,6 +300,29 @@
 				491A399D28533FF000D17719 /* LocationRemoteDatasource.swift */,
 			);
 			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		49206E392CAEDC4F00C21802 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				49206E3A2CAEDC5900C21802 /* APIClient.swift */,
+				49206E3F2CAEDD8A00C21802 /* APIClientError.swift */,
+				49206E552CAFD14900C21802 /* APIClientFactory.swift */,
+				49206E502CAFCA4800C21802 /* APIConstants.swift */,
+				49206E522CAFCA8500C21802 /* APIRequest.swift */,
+				49206E472CAEE13700C21802 /* HTTPMethod.swift */,
+				49206E412CAEDEEB00C21802 /* UploadProgressDelegate.swift */,
+				49206E4B2CAF0C6B00C21802 /* URLSession */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		49206E572CAFD2BB00C21802 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				49206E392CAEDC4F00C21802 /* APIClient */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		492B43442ABB4594005B631E /* Scenes */ = {
@@ -434,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				49A4A658282F973600D43FB3 /* Common */,
+				49206E572CAFD2BB00C21802 /* Infrastructure */,
 				49A4A659282F973B00D43FB3 /* Data */,
 				49A4A657282F972A00D43FB3 /* Business */,
 				49E4F81C28491FBC0037FD72 /* Coordinators */,
