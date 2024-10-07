@@ -6,6 +6,8 @@ import ComposableArchitecture
 final class MainCoordinator {
 
     private(set) var tabSelection: Int = Tab.characters.rawValue
+
+    @MainActor
     var tabSelectionBinding: Binding<Int> {
         Binding(
             get: { self.tabSelection },

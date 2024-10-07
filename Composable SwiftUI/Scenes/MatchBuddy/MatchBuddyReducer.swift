@@ -3,7 +3,7 @@ import ComposableArchitecture
 @Reducer
 struct MatchBuddyReducer {
 
-    let getBeerBuddyInteractor: GetBeerBuddyInteractor
+    let getBeerBuddyInteractor: any GetBeerBuddyInteractor
 
     @ObservableState
     struct State: Equatable {

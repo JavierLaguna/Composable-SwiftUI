@@ -3,7 +3,10 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@Suite("CharactersRepositoryDefault", .tags(.repository))
+@Suite(
+    "CharactersRepositoryDefault",
+    .tags(.repository)
+)
 struct CharactersRepositoryDefaultTests {
 
     @Test
@@ -13,13 +16,13 @@ struct CharactersRepositoryDefaultTests {
             service: datasource
         )
 
-        #expect(repository.nextPage == nil)
-        #expect(repository.totalPages == nil)
+        await #expect(repository.nextPage == nil)
+        await #expect(repository.totalPages == nil)
 
         let result = try #require(await repository.getCharacters())
 
-        #expect(repository.nextPage == 2)
-        #expect(repository.totalPages == 12)
+        await #expect(repository.nextPage == 2)
+        await #expect(repository.totalPages == 12)
         #expect(result.count == datasource.expectedResponseByPage.results.count)
         #expect(result == datasource.expectedResponseByPage.results.map { $0.toDomain() })
     }
@@ -43,8 +46,8 @@ struct CharactersRepositoryDefaultTests {
             service: datasource
         )
 
-        #expect(repository.nextPage == nil)
-        #expect(repository.totalPages == nil)
+        await #expect(repository.nextPage == nil)
+        await #expect(repository.totalPages == nil)
 
         let result = try #require(await repository.getCharacters(characterIds: [1, 2]))
 

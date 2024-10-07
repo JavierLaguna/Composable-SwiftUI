@@ -1,6 +1,6 @@
 struct LocationRepositoryDefault: LocationRepository {
 
-    let service: LocationRemoteDatasource
+    let service: any LocationRemoteDatasource
 
     func getCharacterIdsFromLocation(locationId: Int) async throws -> [Int] {
         try await service.getLocation(locationId: locationId)

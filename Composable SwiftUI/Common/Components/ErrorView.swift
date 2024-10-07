@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ErrorView: View {
-    var error: Error
+    var error: any Error
     var onRetry: () -> Void
 
     var body: some View {

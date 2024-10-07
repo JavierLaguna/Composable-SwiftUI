@@ -1,7 +1,7 @@
 enum RepositoryError: Error {
     case invalidUrl
     case invalidParameters
-    case serviceFail(error: Error)
+    case serviceFail(error: any Error)
 }
 
 extension RepositoryError: Equatable {

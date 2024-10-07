@@ -3,6 +3,7 @@ import SwiftUI
 
 struct Theme {
 
+    @MainActor
     static var isDarkMode: Bool {
         return UIScreen.main.traitCollection.userInterfaceStyle == .dark
     }
@@ -19,6 +20,7 @@ struct Theme {
 
         static let navIcon = R.color.white_custom.color
 
+        @MainActor
         static var background: Color {
             return Theme.isDarkMode ? R.color.gray_custom.color : R.color.white_custom.color
         }

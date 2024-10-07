@@ -3,7 +3,10 @@ import ComposableArchitecture
 
 @testable import Composable_SwiftUI
 
-@Suite("MatchBuddyReducer", .tags(.reducer))
+@Suite(
+    "MatchBuddyReducer",
+    .tags(.reducer)
+)
 struct MatchBuddyReducerTests {
 
     @Test
