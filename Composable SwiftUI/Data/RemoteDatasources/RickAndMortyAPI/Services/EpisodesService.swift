@@ -10,7 +10,7 @@ struct EpisodesService: EpisodesRemoteDatasource {
         let apiRequest = APIRequest(
             baseURL: APIConstants.baseURL,
             apiVersion: .v1,
-            path: APIConstants.episodePath + "/" + idsParam,
+            path: "\(APIConstants.episodePath)/\(idsParam)",
             method: .get
         )
 

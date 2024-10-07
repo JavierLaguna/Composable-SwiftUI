@@ -51,12 +51,7 @@ struct URLSessionAPIClient: APIClient {
             throw APIClientError.urlRequestIsEmpty
         }
 
-        do {
-            let data = try await performRequest(request, progressDelegate: progressDelegate)
-            return data
-        } catch {
-            throw error
-        }
+        return try await performRequest(request, progressDelegate: progressDelegate)
     }
 }
 
