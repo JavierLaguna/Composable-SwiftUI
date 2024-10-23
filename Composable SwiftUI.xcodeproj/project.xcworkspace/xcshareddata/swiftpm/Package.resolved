@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mac-cain13/R.swift.git",
       "state" : {
-        "revision" : "44f60ad03ceef284489f9083eef72ce88802a020",
-        "version" : "7.6.0"
+        "revision" : "4ac2eb7e6157887c9f59dc5ccc5978d51546be6d",
+        "version" : "7.7.0"
       }
     },
     {
@@ -96,8 +96,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-case-paths",
       "state" : {
-        "revision" : "642e6aab8e03e5f992d9c83e38c5be98cfad5078",
-        "version" : "1.5.5"
+        "revision" : "bc92c4b27f9a84bfb498cdbfdf35d5a357e9161f",
+        "version" : "1.5.6"
       }
     },
     {
@@ -114,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections",
       "state" : {
-        "revision" : "9bf03ff58ce34478e66aaee630e491823326fd06",
-        "version" : "1.1.3"
+        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
+        "version" : "1.1.4"
       }
     },
     {
@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "revision" : "8013f1a72af8ccb2b1735d7aed831a8dc07c6fd0",
-        "version" : "1.15.0"
+        "revision" : "56149436a3c3dbf605a89a204aaa904de8ba4580",
+        "version" : "1.15.2"
       }
     },
     {
@@ -168,8 +168,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-navigation",
       "state" : {
-        "revision" : "d1bdbd8a5d1d1dfd2e4bb1f5e2f6facb631404d4",
-        "version" : "2.2.1"
+        "revision" : "16a27ab7ae0abfefbbcba73581b3e2380b47a579",
+        "version" : "2.2.2"
       }
     },
     {
@@ -186,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
       "state" : {
-        "revision" : "7b0bbbae90c41f848f90ac7b4df6c4f50068256d",
-        "version" : "1.17.5"
+        "revision" : "42a086182681cf661f5c47c9b7dc3931de18c6d7",
+        "version" : "1.17.6"
       }
     },
     {
@@ -240,8 +240,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tomlokhorst/XcodeEdit",
       "state" : {
-        "revision" : "49734e514af8e917f5aa2112ce59a0eea542580c",
-        "version" : "2.10.1"
+        "revision" : "017d23f71fa8d025989610db26d548c44cacefae",
+        "version" : "2.10.2"
       }
     },
     {
@@ -249,8 +249,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
       "state" : {
-        "revision" : "27d767d643fa2cf083d0a73d74fa84cacb53e85c",
-        "version" : "1.4.1"
+        "revision" : "770f990d3e4eececb57ac04a6076e22f8c97daeb",
+        "version" : "1.4.2"
       }
     },
     {
