@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         macos_version: [macos-15]
-        xcode_version: ['16.0.0'] # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
-        iphone_model: ['iPhone 16 Pro (18.0)']
+        xcode_version: ['16.2'] # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
+        iphone_model: ['iPhone 16 Pro (18.2)']
         optional_steps: [false]
 
     steps:
@@ -68,7 +68,7 @@ jobs:
 
       # Upload the coverage file as an artifact so that the next job can use it
       - name: Upload coverage report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: fastlane/test_output/coverage/report.json
@@ -84,7 +84,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download coverage report
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: coverage-report
 
