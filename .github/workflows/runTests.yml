@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         macos_version: [macos-15]
-        xcode_version: ['16.0.0'] # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
+        xcode_version: ['16.2.0'] # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
         iphone_model: ['iPhone 16 Pro (18.0)']
         optional_steps: [false]
 
