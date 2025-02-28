@@ -68,7 +68,7 @@ jobs:
 
       # Upload the coverage file as an artifact so that the next job can use it
       - name: Upload coverage report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: fastlane/test_output/coverage/report.json
