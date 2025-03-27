@@ -150,8 +150,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-dependencies",
       "state" : {
-        "revision" : "121a428c505c01c4ce02d5ada1c8fc3da93afce9",
-        "version" : "1.8.0"
+        "revision" : "ec2862d1364536fc22ec56a3094e7a034bbc7da8",
+        "version" : "1.8.1"
       }
     },
     {
@@ -177,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-perception",
       "state" : {
-        "revision" : "21811d6230a625fa0f2e6ffa85be857075cc02c4",
-        "version" : "1.5.0"
+        "revision" : "671fa54b279fd73933b4a8b34782ebf6c8869145",
+        "version" : "1.5.1"
       }
     },
     {
@@ -249,8 +249,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tomlokhorst/XcodeEdit",
       "state" : {
-        "revision" : "9bc684439d16c07d7bede66ae43bb577a25d6bb1",
-        "version" : "2.12.0"
+        "revision" : "0e550cdee72844b35431afc3a1e176042be6d0f0",
+        "version" : "2.13.0"
       }
     },
     {
