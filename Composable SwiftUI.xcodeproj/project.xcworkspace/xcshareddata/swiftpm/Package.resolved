@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/SourceKitten.git",
       "state" : {
-        "revision" : "fd4df99170f5e9d7cf9aa8312aa8506e0e7a44e7",
-        "version" : "0.35.0"
+        "revision" : "eb6656ed26bdef967ad8d07c27e2eab34dc582f2",
+        "version" : "0.37.0"
       }
     },
     {
@@ -96,8 +96,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-case-paths",
       "state" : {
-        "revision" : "19b7263bacb9751f151ec0c93ec816fe1ef67c7b",
-        "version" : "1.6.1"
+        "revision" : "41b89b8b68d8c56c622dbb7132258f1a3e638b25",
+        "version" : "1.7.0"
       }
     },
     {
@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "revision" : "76c4411e02cc7768a3f27ca058bd2143c342e5b2",
-        "version" : "1.18.0"
+        "revision" : "b1d27a82b498b8e697acabd8cc01b585d26aab19",
+        "version" : "1.19.1"
       }
     },
     {
@@ -150,8 +150,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-dependencies",
       "state" : {
-        "revision" : "ec2862d1364536fc22ec56a3094e7a034bbc7da8",
-        "version" : "1.8.1"
+        "revision" : "fee6aa29908a75437506ddcbe7434c460605b7e6",
+        "version" : "1.9.1"
       }
     },
     {
@@ -177,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-perception",
       "state" : {
-        "revision" : "671fa54b279fd73933b4a8b34782ebf6c8869145",
-        "version" : "1.5.1"
+        "revision" : "d924c62a70fca5f43872f286dbd7cef0957f1c01",
+        "version" : "1.6.0"
       }
     },
     {
@@ -186,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-sharing",
       "state" : {
-        "revision" : "2c840cf2ae0526ad6090e7796c4e13d9a2339f4a",
-        "version" : "2.3.3"
+        "revision" : "732871fabfc6b38fcdff5ad2f7336327dbf78e81",
+        "version" : "2.4.0"
       }
     },
     {
@@ -195,8 +195,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
       "state" : {
-        "revision" : "b2d4cb30735f4fbc3a01963a9c658336dd21e9ba",
-        "version" : "1.18.1"
+        "revision" : "1be8144023c367c5de701a6313ed29a3a10bf59b",
+        "version" : "1.18.3"
       }
     },
     {
@@ -204,8 +204,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-syntax.git",
       "state" : {
-        "revision" : "cb53fa1bd3219b0b23ded7dfdd3b2baff266fd25",
-        "version" : "600.0.0"
+        "revision" : "1103c45ece4f7fe160b8f75b4ea1ee2e5fac1841",
+        "version" : "601.0.0"
       }
     },
     {
@@ -213,8 +213,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/SwiftLint",
       "state" : {
-        "revision" : "eba420f77846e93beb98d516b225abeb2fef4ca2",
-        "version" : "0.58.2"
+        "revision" : "625792423014cc49b0a1e5a1a5c0d6b8b3de10f9",
+        "version" : "0.59.1"
       }
     },
     {
