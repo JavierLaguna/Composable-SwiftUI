@@ -15,7 +15,7 @@ struct GetCharactersInteractorDefaultTests {
 
         let interactor = GetCharactersInteractorDefault(repository: repository)
 
-        let result = try #require(await interactor.execute())
+        let result = try await interactor.execute()
 
         #expect(result.count == repository.expectedResponse.count)
         #expect(result == repository.expectedResponse)

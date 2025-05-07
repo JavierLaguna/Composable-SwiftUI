@@ -14,7 +14,7 @@ struct LocationRepositoryDefaultTests {
         let datasource = LocationRemoteDatasourceMock()
         let repository = LocationRepositoryDefault(service: datasource)
 
-        let result = try #require(await repository.getCharacterIdsFromLocation(locationId: 1))
+        let result = try await repository.getCharacterIdsFromLocation(locationId: 1)
 
         #expect(result == [1, 2])
     }
