@@ -19,7 +19,7 @@ struct CharactersRepositoryDefaultTests {
         await #expect(repository.nextPage == nil)
         await #expect(repository.totalPages == nil)
 
-        let result = try #require(await repository.getCharacters())
+        let result = try await repository.getCharacters()
 
         await #expect(repository.nextPage == 2)
         await #expect(repository.totalPages == 12)
@@ -49,7 +49,7 @@ struct CharactersRepositoryDefaultTests {
         await #expect(repository.nextPage == nil)
         await #expect(repository.totalPages == nil)
 
-        let result = try #require(await repository.getCharacters(characterIds: [1, 2]))
+        let result = try await repository.getCharacters(characterIds: [1, 2])
 
         #expect(result.count == datasource.expectedResponseByIds.count)
         #expect(result == datasource.expectedResponseByIds.map { $0.toDomain() })

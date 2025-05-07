@@ -14,7 +14,7 @@ struct EpisodesRepositoryDefaultTests {
         let datasource = EpisodesRemoteDatasourceMock()
         let repository = EpisodesRepositoryDefault(service: datasource)
 
-        let result = try #require(await repository.getEpisodesFromList(ids: [1, 2]))
+        let result = try await repository.getEpisodesFromList(ids: [1, 2])
 
         #expect(result.count == datasource.expectedResponse.count)
         #expect(result == datasource.expectedResponse.map { $0.toDomain() })
