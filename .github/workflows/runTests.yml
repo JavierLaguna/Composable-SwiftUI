@@ -16,7 +16,7 @@ jobs:
         macos_version: [macos-15]
         xcode_version: ['16.2'] # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
         iphone_model: ['iPhone 16 Pro (18.2)']
-        optional_steps: [false]
+        optional_steps: [true]
 
     steps:
       - name: Checkout
