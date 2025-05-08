@@ -93,14 +93,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          args: >
-            -Dsonar.organization=javierlaguna
-            -Dsonar.projectKey=JavierLaguna_Composable-SwiftUI
-            -Dsonar.sources="Composable SwiftUI"
-            -Dsonar.tests="Composable SwiftUITests"
-            -Dsonar.coverage.exclusions="**/Preview Content/**/*"
-            -Dsonar.swift.swiftlint.config=.swiftlint.yml
-            -Dsonar.swift.simulator=platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0
-            -Dsonar.swift.project="Composable SwiftUI.xcodeproj"
-            -Dsonar.swift.appScheme="Composable SwiftUI"
-            -Dsonar.swift.coverage.reportPaths=coverage-report/coverage.xcovreport
+          args: ''
