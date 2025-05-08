@@ -16,7 +16,7 @@ jobs:
         macos_version: [macos-15]
         xcode_version: ['16.2'] # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md#xcode
         iphone_model: ['iPhone 16 Pro (18.2)']
-        optional_steps: [false]
+        optional_steps: [true]
 
     steps:
       - name: Checkout
@@ -71,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: fastlane/test_output/coverage/report.json
+          path: fastlane/test_output/coverage/sonarqube-generic-coverage.xml
 
   sonarcloud:
     name: Upload coverage to SonarCloud
@@ -93,7 +93,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          args: >
-            -Dsonar.organization=javierlaguna
-            -Dsonar.projectKey=JavierLaguna_Composable-SwiftUI
-            -Dsonar.swift.coverage.reportPaths=report.json
+          args: ''

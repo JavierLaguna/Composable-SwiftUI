@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'fastlane', '>= 2.222.0'
-gem 'xcov', '~> 1.7.0'
-gem 'logger'
-gem 'abbrev'
+gem 'fastlane', '>= 2.227.0'
+gem 'slather'
+gem 'logger' # TODO: JLI - Se usa?
+gem 'abbrev' # TODO: JLI - Se usa?
