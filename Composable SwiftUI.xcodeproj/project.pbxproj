@@ -28,6 +28,7 @@
 		49206E652CAFF5E900C21802 /* CharacterServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49206E642CAFF5E900C21802 /* CharacterServiceTests.swift */; };
 		49222F302C203C600026B5E8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49222F2F2C203C600026B5E8 /* MainView.swift */; };
 		49222F332C203F070026B5E8 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49222F322C203F070026B5E8 /* MainCoordinator.swift */; };
+		492B29862DCDFB080019CB3B /* CharacterLocationResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B29852DCDFB080019CB3B /* CharacterLocationResponseTests.swift */; };
 		492B43412ABAE171005B631E /* ErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B43402ABAE171005B631E /* ErrorViewTests.swift */; };
 		492B43462ABB45A6005B631E /* CharactersListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B43452ABB45A6005B631E /* CharactersListViewTests.swift */; };
 		493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 493A4B162A698A19006E250D /* RswiftLibrary */; };
@@ -159,6 +160,7 @@
 		49206E642CAFF5E900C21802 /* CharacterServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterServiceTests.swift; sourceTree = "<group>"; };
 		49222F2F2C203C600026B5E8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		49222F322C203F070026B5E8 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		492B29852DCDFB080019CB3B /* CharacterLocationResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocationResponseTests.swift; sourceTree = "<group>"; };
 		492B43402ABAE171005B631E /* ErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewTests.swift; sourceTree = "<group>"; };
 		492B43452ABB45A6005B631E /* CharactersListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewTests.swift; sourceTree = "<group>"; };
 		493BF0302834298700ECC3A3 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 		49A4A630282F949200D43FB3 /* Composable SwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				492B29852DCDFB080019CB3B /* CharacterLocationResponseTests.swift */,
 				49E4F85B284FD0CF0037FD72 /* Common */,
 				49E4F837284AA09B0037FD72 /* Mocks */,
 				49A17DC82AB9BBBB00DAF653 /* Models */,
@@ -1095,6 +1098,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49B8D33F2C94253400F7F655 /* SceneSnapshotUITest.swift in Sources */,
+				492B29862DCDFB080019CB3B /* CharacterLocationResponseTests.swift in Sources */,
 				49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */,
 				49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */,
 				491A3991285097B900D17719 /* LocationRepositoryMock.swift in Sources */,
