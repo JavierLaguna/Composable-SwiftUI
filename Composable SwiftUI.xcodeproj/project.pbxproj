@@ -31,6 +31,7 @@
 		492B29862DCDFB080019CB3B /* CharacterLocationResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B29852DCDFB080019CB3B /* CharacterLocationResponseTests.swift */; };
 		492B43412ABAE171005B631E /* ErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B43402ABAE171005B631E /* ErrorViewTests.swift */; };
 		492B43462ABB45A6005B631E /* CharactersListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B43452ABB45A6005B631E /* CharactersListViewTests.swift */; };
+		492BFBC12DDCF57D0072C537 /* CharacterStatusCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BFBC02DDCF57D0072C537 /* CharacterStatusCapsule.swift */; };
 		493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 493A4B162A698A19006E250D /* RswiftLibrary */; };
 		493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF0302834298700ECC3A3 /* CharacterStatus.swift */; };
 		493BF03328342D1900ECC3A3 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF03228342D1900ECC3A3 /* String+URL.swift */; };
@@ -87,7 +88,6 @@
 		49E4F807283D393B0037FD72 /* EpisodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F806283D393B0037FD72 /* EpisodeResponse.swift */; };
 		49E4F809283D3F9E0037FD72 /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F808283D3F9E0037FD72 /* CharacterResponse.swift */; };
 		49E4F80F283D53540037FD72 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F80E283D53540037FD72 /* CharacterDetailView.swift */; };
-		49E4F812283D54770037FD72 /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 49E4F811283D54770037FD72 /* ScalingHeaderScrollView */; };
 		49E4F814283E89FB0037FD72 /* CharacterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F813283E89FB0037FD72 /* CharacterGender.swift */; };
 		49E4F816283E97ED0037FD72 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F815283E97ED0037FD72 /* View+CornerRadius.swift */; };
 		49E4F818283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F817283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift */; };
@@ -163,6 +163,7 @@
 		492B29852DCDFB080019CB3B /* CharacterLocationResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocationResponseTests.swift; sourceTree = "<group>"; };
 		492B43402ABAE171005B631E /* ErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewTests.swift; sourceTree = "<group>"; };
 		492B43452ABB45A6005B631E /* CharactersListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewTests.swift; sourceTree = "<group>"; };
+		492BFBC02DDCF57D0072C537 /* CharacterStatusCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatusCapsule.swift; sourceTree = "<group>"; };
 		493BF0302834298700ECC3A3 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
 		493BF03228342D1900ECC3A3 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		494C05892C241CE7006CFF1B /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
@@ -265,7 +266,6 @@
 				49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */,
 				49A4A67C282FA32E00D43FB3 /* Kingfisher in Frameworks */,
 				49A4A64C282F952700D43FB3 /* ComposableArchitecture in Frameworks */,
-				49E4F812283D54770037FD72 /* ScalingHeaderScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +605,7 @@
 			children = (
 				494E345E283AA68B00445B79 /* ButtonView.swift */,
 				49A4A678282FA21200D43FB3 /* CharacterCellView.swift */,
+				492BFBC02DDCF57D0072C537 /* CharacterStatusCapsule.swift */,
 				494E3465283AAA8500445B79 /* ErrorView.swift */,
 				49529CA32A784058002F7594 /* LoadingView.swift */,
 				49529C992A783B7B002F7594 /* NeighborsCellView.swift */,
@@ -911,7 +912,6 @@
 				49A4A64B282F952700D43FB3 /* ComposableArchitecture */,
 				49A4A67B282FA32E00D43FB3 /* Kingfisher */,
 				494E345A283A40FE00445B79 /* SkeletonUI */,
-				49E4F811283D54770037FD72 /* ScalingHeaderScrollView */,
 				49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */,
 				493A4B162A698A19006E250D /* RswiftLibrary */,
 			);
@@ -974,7 +974,6 @@
 				49A4A64A282F952700D43FB3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				49A4A67A282FA32E00D43FB3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				494E3459283A40FE00445B79 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
-				49E4F810283D54770037FD72 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
 				49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */,
 				49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */,
@@ -1066,6 +1065,7 @@
 				49EDA8D0283CEB81002C9C80 /* EpisodesRepository.swift in Sources */,
 				49E88D232830F21400058486 /* CharacterService.swift in Sources */,
 				49206E3B2CAEDC5900C21802 /* APIClient.swift in Sources */,
+				492BFBC12DDCF57D0072C537 /* CharacterStatusCapsule.swift in Sources */,
 				49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */,
 				497C1ED52C2033490041297A /* PlainNavLinkModifier.swift in Sources */,
 				49EDA8CA283BFC3D002C9C80 /* BeerBuddy.swift in Sources */,
@@ -1523,14 +1523,6 @@
 				minimumVersion = 0.57.0;
 			};
 		};
-		49E4F810283D54770037FD72 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/exyte/ScalingHeaderScrollView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
-			};
-		};
 		49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -1580,11 +1572,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintPlugin";
-		};
-		49E4F811283D54770037FD72 /* ScalingHeaderScrollView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49E4F810283D54770037FD72 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
-			productName = ScalingHeaderScrollView;
 		};
 		49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

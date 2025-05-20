@@ -54,6 +54,7 @@ struct Theme {
         static let subtitle = FontStyle.medium.font.fontWithSize(20)
 
         static let body = FontStyle.regular.font.fontWithSize(16)
+        static let bodyBold = FontStyle.bold.font.fontWithSize(16)
         static let body2 = FontStyle.regular.font.fontWithSize(14)
 
         static let button = FontStyle.regular.font.fontWithSize(18)
