@@ -71,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: fastlane/test_output/coverage/sonarqube-generic-coverage.xml
+          path: fastlane/test_output/coverage/sonarqube-generic-coverage.lcov
 
   sonarcloud:
     name: Upload coverage to SonarCloud
