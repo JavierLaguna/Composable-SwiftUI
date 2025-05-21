@@ -34,13 +34,12 @@ platform :ios do
   desc "Generate coverage report"
   lane :generate_coverage_report do
     slather(
-      coverage_xml: false,
-      coverage_html: false,
-      coverage_lcov: true,
+      sonarqube_xml: true,
       scheme: 'Composable SwiftUI',
       proj: 'Composable SwiftUI.xcodeproj',
       build_directory: "fastlane/test_output/build",
       output_directory: "fastlane/test_output/coverage",
+      html: false,
       use_bundle_exec: true
     )
   end
