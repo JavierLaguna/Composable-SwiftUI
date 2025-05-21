@@ -1,8 +1,10 @@
 import SwiftUI
+import ComposableArchitecture
 import Kingfisher
 
 struct CharacterDetailView: View {
 
+    let store: StoreOf<CharacterNeighborsReducer>
     var character: Character
 
     var body: some View {
@@ -89,6 +91,16 @@ struct CharacterDetailView: View {
     )
 
     return NavigationStack {
-        CharacterDetailView(character: character)
+        CharacterDetailView(
+            store: Store(
+                initialState: .init(
+                    locationDetail: .init(state: .loading)
+                ),
+                reducer: {
+                    CharacterNeighborsReducer.build(locationId: 1)
+                }
+            ),
+            character: character
+        )
     }
 }
