@@ -81,7 +81,7 @@ jobs:
 
     strategy:
       matrix:
-        optional_steps: [false]
+        optional_steps: [true]
 
     steps:
       - name: Checkout
