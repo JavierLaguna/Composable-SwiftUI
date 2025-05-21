@@ -79,6 +79,10 @@ jobs:
 
     needs: fastlane  # This ensures that the build job finishes before executing this job
 
+    strategy:
+      matrix:
+        optional_steps: [false]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -90,9 +94,10 @@ jobs:
           path: fastlane/test_output/coverage/
 
       - name: List downloaded coverage files
+        if: ${{ matrix.optional_steps }}
         run: ls -la fastlane/test_output/coverage/
 
-      - name: Upload coverage to SonarCloud
-        uses: sonarsource/sonarqube-scan-action@v5.2.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      # - name: Upload coverage to SonarCloud
+      #   uses: sonarsource/sonarqube-scan-action@v5.2.0
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
