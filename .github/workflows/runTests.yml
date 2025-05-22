@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -79,9 +81,15 @@ jobs:
 
     needs: fastlane  # This ensures that the build job finishes before executing this job
 
+    strategy:
+      matrix:
+        optional_steps: [true]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Download coverage report
         uses: actions/download-artifact@v4
@@ -90,9 +98,11 @@ jobs:
           path: fastlane/test_output/coverage/
 
       - name: List downloaded coverage files
+        if: ${{ matrix.optional_steps }}
         run: ls -la fastlane/test_output/coverage/
 
       - name: Upload coverage to SonarCloud
-        uses: sonarsource/sonarcloud-github-action@v3.0.0
+        uses: sonarsource/sonarqube-scan-action@v5.2.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONARQUBE_SCANNER_DEBUG: true
