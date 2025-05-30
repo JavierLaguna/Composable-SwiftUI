@@ -21,11 +21,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0
+          ruby-version: 3.2
 
       - name: Install Bundler
         run: gem install bundler
@@ -58,41 +60,82 @@ jobs:
           export FASTLANE_XCODEBUILD_SETTINGS_RETRIES=10
           bundle exec fastlane test
 
-      - name: Generate Coverage Report
-        run: bundle exec fastlane generate_coverage_report
 
-      # Optional: List files generated in the coverage directory
-      - name: List coverage files
-        if: ${{ matrix.optional_steps }}
-        run: ls -la fastlane/test_output/coverage
+      # - name: Convert xccov to lcov
+      #   run: |
+      #     brew install xccov-to-lcov
+      #     xccov-to-lcov --output-path coverage.lcov \
+      #       $(find ~/Library/Developer/Xcode/DerivedData -name "*.xcresult" | head -n 1)
 
-      # Upload the coverage file as an artifact so that the next job can use it
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
+      - name: Install slather
+        run: gem install slather
+
+      # - name: Generate lcov coverage report with slather
+      #   run: |
+      #     bundle exec slather coverage \
+      #       --scheme "Composable SwiftUI" \
+      #       --output-directory . \
+      #       --binary-basename "Composable SwiftUI" \
+      #       --ignore "Composable SwiftUIUITests/*" \
+      #       "Composable SwiftUI.xcodeproj"
+
+      - name: Convert tests results to Sonar generic format
+        run: bundle exec slather coverage --sonarqube-xml --scheme "Composable SwiftUI" "Composable SwiftUI.xcodeproj"
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         with:
-          name: coverage-report
-          path: fastlane/test_output/coverage/sonarqube-generic-coverage.xml
+          args: >
+            -Dsonar.projectKey=JavierLaguna_Composable-SwiftUI
+            -Dsonar.organization=javierlaguna
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.swift.coverage.reportPaths=coverage.lcov
+            -Dsonar.sources=.
 
-  sonarcloud:
-    name: Upload coverage to SonarCloud
-    runs-on: ubuntu-latest
+      # - name: Generate Coverage Report
+      #   run: bundle exec fastlane generate_coverage_report
 
-    needs: fastlane  # This ensures that the build job finishes before executing this job
+      # # Optional: List files generated in the coverage directory
+      # - name: List coverage files
+      #   if: ${{ matrix.optional_steps }}
+      #   run: ls -la fastlane/test_output/coverage
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      # # Upload the coverage file as an artifact so that the next job can use it
+      # - name: Upload coverage report
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: coverage-report
+      #     path: fastlane/test_output/coverage/sonarqube-generic-coverage.xml
 
-      - name: Download coverage report
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage-report
-          path: fastlane/test_output/coverage/
+  # sonarcloud:
+  #   name: Upload coverage to SonarCloud
+  #   runs-on: ubuntu-latest
 
-      - name: List downloaded coverage files
-        run: ls -la fastlane/test_output/coverage/
+  #   needs: fastlane  # This ensures that the build job finishes before executing this job
 
-      - name: Upload coverage to SonarCloud
-        uses: sonarsource/sonarcloud-github-action@v3.0.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #   strategy:
+  #     matrix:
+  #       optional_steps: [true]
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Download coverage report
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: coverage-report
+  #         path: fastlane/test_output/coverage/
+
+  #     - name: List downloaded coverage files
+  #       if: ${{ matrix.optional_steps }}
+  #       run: ls -la fastlane/test_output/coverage/
+
+  #     - name: Upload coverage to SonarCloud
+  #       uses: sonarsource/sonarqube-scan-action@v5.2.0
+  #       env:
+  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #         SONARQUBE_SCANNER_DEBUG: true
