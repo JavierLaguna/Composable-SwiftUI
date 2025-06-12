@@ -95,7 +95,6 @@ private struct MainContentView: View {
                         )
                     }
                     .coordinateSpace(name: "scrollView")
-//                    .background(Color.black.opacity(0.95)) // Fondo para el bounce
                 }
             }
             .clipped()
@@ -130,7 +129,7 @@ private struct ExpandedHeaderView: View {
                 y: Theme.Space.xl
             )
         }
-        .padding(.top, 60)
+        .padding(.top, Theme.Space.xl)
     }
 }
 
@@ -248,7 +247,7 @@ private struct BottomContentView: View {
                         .matchedGeometryEffect(id: GeometryEffectIds.name, in: namespace)
 
                     HStack(spacing: Theme.Space.xl) {
-                        TagView(text: "CREATED YEAR | \(character.gender.localizedDescription)")
+                        TagView(text: "\(character.created.formatted(.dateTime.year())) | \(character.gender.localizedDescription)")
 
                         TagView(text: character.type)
                     }
@@ -286,7 +285,7 @@ private struct BottomContentView: View {
                 .padding(.top, 16)
             }
             .padding(.horizontal, 24)
-            .padding(.bottom, 32)
+            .padding(.bottom, 62)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Color.black.opacity(0.95))
 

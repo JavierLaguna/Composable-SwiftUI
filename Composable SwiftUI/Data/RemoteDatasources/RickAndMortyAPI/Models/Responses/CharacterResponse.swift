@@ -11,10 +11,13 @@ struct CharacterResponse: Codable {
     let location: CharacterLocationResponse
     let image: String
     let episode: [String]
-    let created: Date
+    let created: String
 
     func toDomain() -> Character {
-        Character(
+        let formatter = ISO8601DateFormatter() // TODO: JLI - Make reusable with only 1 init, lazy?
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+
+        return Character(
             id: self.id,
             name: self.name,
             status: CharacterStatus(rawValue: self.status) ?? .unknown,
@@ -25,7 +28,7 @@ struct CharacterResponse: Codable {
             location: self.location.toDomain(),
             image: self.image,
             episodes: self.episode.compactMap { $0.getIdFromUrl() },
-            created: self.created,
+            created: formatter.date(from: self.created)!, // TODO: JLI
             description: nil
         )
     }
