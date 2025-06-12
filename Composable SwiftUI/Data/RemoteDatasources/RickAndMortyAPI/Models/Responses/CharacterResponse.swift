@@ -1,3 +1,5 @@
+import Foundation
+
 struct CharacterResponse: Codable {
     let id: Int
     let name: String
@@ -9,9 +11,10 @@ struct CharacterResponse: Codable {
     let location: CharacterLocationResponse
     let image: String
     let episode: [String]
+    let created: Date
 
     func toDomain() -> Character {
-        return Character(
+        Character(
             id: self.id,
             name: self.name,
             status: CharacterStatus(rawValue: self.status) ?? .unknown,
@@ -21,7 +24,9 @@ struct CharacterResponse: Codable {
             origin: self.origin.toDomain(),
             location: self.location.toDomain(),
             image: self.image,
-            episodes: self.episode.compactMap { $0.getIdFromUrl() }
+            episodes: self.episode.compactMap { $0.getIdFromUrl() },
+            created: self.created,
+            description: nil
         )
     }
 }

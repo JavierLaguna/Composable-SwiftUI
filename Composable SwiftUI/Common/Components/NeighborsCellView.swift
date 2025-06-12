@@ -3,11 +3,7 @@ import Kingfisher
 
 struct NeighborsCellView: View {
 
-    private let character: Character
-
-    init(character: Character) {
-        self.character = character
-    }
+    let character: Character
 
     var body: some View {
         VStack {
@@ -34,20 +30,6 @@ struct NeighborsCellView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    let location = CharacterLocation(id: 1, name: "Earth")
-    let character = Character(
-        id: 1,
-        name: "Rick Sanchez",
-        status: .alive,
-        species: "Human",
-        type: "",
-        gender: .male,
-        origin: location,
-        location: location,
-        image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-        episodes: []
-    )
-
-    return NeighborsCellView(character: character)
+    NeighborsCellView(character: Character.mock)
         .padding()
 }
