@@ -1,3 +1,5 @@
+import Foundation
+
 struct Character: Equatable, Identifiable, Hashable {
     let id: Int
     let name: String
@@ -9,6 +11,8 @@ struct Character: Equatable, Identifiable, Hashable {
     let location: CharacterLocation
     let image: String
     let episodes: [Int]
+    let created: Date
+    let description: String?
 
     func matchedEpisodes(with selectedCharacter: Character) -> MatchedEpisodes? {
         let filterEpisodes = self.episodes.filter {

@@ -1,12 +1,7 @@
-//
-//  CharacterLocationResponseTests.swift
-//  Composable SwiftUI
-//
-//  Created by Javier Laguna on 9/5/25.
-//
-
 import XCTest
 @testable import Composable_SwiftUI
+
+// TODO: JLI - Move file
 
 final class CharacterLocationResponseTests: XCTestCase {
 

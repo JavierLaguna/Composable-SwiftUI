@@ -1,10 +1,12 @@
+import Foundation
+
 extension String {
 
     func getIdFromUrl() -> Int? {
-        guard let lastIndex = self.lastIndex(of: "/") else {
+        guard let idString = URL(string: self)?.lastPathComponent else {
             return nil
         }
 
-        return Int(self[self.index(after: lastIndex)...])
+        return Int(idString)
     }
 }

@@ -9,7 +9,7 @@
 // CharacterStatus
 "characterStatus.alive" = "Alive";
 "characterStatus.dead" = "Dead";
-"characterStatus.unknown" = "unknown";
+"characterStatus.unknown" = "Unknown";
 
 // CharacterGender
 "characterGender.female" = "Female";

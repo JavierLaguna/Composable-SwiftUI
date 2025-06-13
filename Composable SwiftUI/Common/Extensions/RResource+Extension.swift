@@ -14,16 +14,3 @@ extension RswiftResources.ColorResource {
         Color(name)
     }
 }
-
-// MARK: - FontResource
-extension FontResource {
-    func font(size: CGFloat) -> Font {
-        Font.custom(name, size: size)
-    }
-}
-
-extension UIFont {
-    func fontWithSize(_ size: CGFloat) -> Font {
-        Font.custom(fontName, size: size)
-    }
-}
