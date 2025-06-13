@@ -126,13 +126,13 @@ struct MatchBuddyView: View {
 
                     infoView(
                         title: R.string.localizable.matchBuddyFirstTimeTogether(),
-                        value: store.beerBuddy.data?.firstEpisode.date,
+                        value: store.beerBuddy.data?.firstEpisode.airDate.formatted(date: .long, time: .omitted),
                         isLoading: store.beerBuddy.isLoading
                     )
-
+//
                     infoView(
                         title: R.string.localizable.matchBuddyLastTimeTogether(),
-                        value: store.beerBuddy.data?.lastEpisode.date,
+                        value: store.beerBuddy.data?.lastEpisode.airDate.formatted(date: .long, time: .omitted),
                         isLoading: store.beerBuddy.isLoading
                     )
                 }

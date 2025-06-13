@@ -18,17 +18,17 @@ struct CharacterResponse: Codable {
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
 
         return Character(
-            id: self.id,
-            name: self.name,
-            status: CharacterStatus(rawValue: self.status) ?? .unknown,
-            species: self.species,
-            type: self.type,
-            gender: CharacterGender(rawValue: self.gender) ?? .unknown,
-            origin: self.origin.toDomain(),
-            location: self.location.toDomain(),
-            image: self.image,
-            episodes: self.episode.compactMap { $0.getIdFromUrl() },
-            created: formatter.date(from: self.created)!, // TODO: JLI
+            id: id,
+            name: name,
+            status: CharacterStatus(rawValue: status) ?? .unknown,
+            species: species,
+            type: type,
+            gender: CharacterGender(rawValue: gender) ?? .unknown,
+            origin: origin.toDomain(),
+            location: location.toDomain(),
+            image: image,
+            episodes: episode.compactMap { $0.getIdFromUrl() },
+            created: formatter.date(from: created)!, // TODO: JLI
             description: nil
         )
     }

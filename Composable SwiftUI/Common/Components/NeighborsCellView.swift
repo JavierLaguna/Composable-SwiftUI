@@ -21,10 +21,10 @@ struct NeighborsCellView: View {
                 }
 
             Text(character.name)
-                .font(Theme.Fonts.body)
+                .font(Theme.Fonts.Special.body)
                 .foregroundColor(Theme.Colors.secondaryText)
                 .shadow(radius: Theme.Radius.xl)
-                .padding(.bottom, Theme.Space.s)
+                .padding(.bottom, Theme.Space.l)
         }
     }
 }

@@ -89,6 +89,8 @@
 		49B765052DFB17AE004B545D /* StatusBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765042DFB17AE004B545D /* StatusBadgeView.swift */; };
 		49B765652DFB39C6004B545D /* CharacterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765642DFB39C6004B545D /* CharacterMock.swift */; };
 		49B765712DFB3B05004B545D /* CharacterDescriptionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765702DFB3B05004B545D /* CharacterDescriptionMock.swift */; };
+		49B765CD2DFC3052004B545D /* EpisodeCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765CC2DFC3052004B545D /* EpisodeCarouselView.swift */; };
+		49B765D92DFC4747004B545D /* EpisodeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765D82DFC4747004B545D /* EpisodeMock.swift */; };
 		49B8D33F2C94253400F7F655 /* SceneSnapshotUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B8D33E2C94253400F7F655 /* SceneSnapshotUITest.swift */; };
 		49C65CA72AB449A90047F02B /* ManagedErrorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C65CA62AB449A90047F02B /* ManagedErrorInteractor.swift */; };
 		49DBDF5D2CADB3E4007CDE74 /* MatchBuddyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBDF5C2CADB3E4007CDE74 /* MatchBuddyViewTests.swift */; };
@@ -224,6 +226,8 @@
 		49B765042DFB17AE004B545D /* StatusBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadgeView.swift; sourceTree = "<group>"; };
 		49B765642DFB39C6004B545D /* CharacterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMock.swift; sourceTree = "<group>"; };
 		49B765702DFB3B05004B545D /* CharacterDescriptionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescriptionMock.swift; sourceTree = "<group>"; };
+		49B765CC2DFC3052004B545D /* EpisodeCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCarouselView.swift; sourceTree = "<group>"; };
+		49B765D82DFC4747004B545D /* EpisodeMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeMock.swift; sourceTree = "<group>"; };
 		49B8D33E2C94253400F7F655 /* SceneSnapshotUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSnapshotUITest.swift; sourceTree = "<group>"; };
 		49C65CA62AB449A90047F02B /* ManagedErrorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedErrorInteractor.swift; sourceTree = "<group>"; };
 		49DBDF5C2CADB3E4007CDE74 /* MatchBuddyViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyViewTests.swift; sourceTree = "<group>"; };
@@ -505,6 +509,7 @@
 				49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */,
 				49B765702DFB3B05004B545D /* CharacterDescriptionMock.swift */,
 				49B765642DFB39C6004B545D /* CharacterMock.swift */,
+				49B765D82DFC4747004B545D /* EpisodeMock.swift */,
 				49A4A627282F949100D43FB3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -617,6 +622,7 @@
 		49A4A677282FA1F400D43FB3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				49B765CC2DFC3052004B545D /* EpisodeCarouselView.swift */,
 				49B764FA2DFB175D004B545D /* BackgroundPatternSecondaryView.swift */,
 				494E345E283AA68B00445B79 /* ButtonView.swift */,
 				49A4A678282FA21200D43FB3 /* CharacterCellView.swift */,
@@ -1040,6 +1046,7 @@
 				49B765652DFB39C6004B545D /* CharacterMock.swift in Sources */,
 				4987ED462A6BD91E00AA7839 /* LocationType.swift in Sources */,
 				491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */,
+				49B765CD2DFC3052004B545D /* EpisodeCarouselView.swift in Sources */,
 				493BF03328342D1900ECC3A3 /* String+URL.swift in Sources */,
 				49A4A679282FA21200D43FB3 /* CharacterCellView.swift in Sources */,
 				49F9FBE42C21FDB200BC6F92 /* AllEnvironmentsInjected.swift in Sources */,
@@ -1056,6 +1063,7 @@
 				49EDA8BF283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift in Sources */,
 				49E88D3D28310EA200058486 /* InteractorError.swift in Sources */,
 				49206E512CAFCA4800C21802 /* APIConstants.swift in Sources */,
+				49B765D92DFC4747004B545D /* EpisodeMock.swift in Sources */,
 				4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */,
 				49529CA42A784058002F7594 /* LoadingView.swift in Sources */,
 				49B765052DFB17AE004B545D /* StatusBadgeView.swift in Sources */,
