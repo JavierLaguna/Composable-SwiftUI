@@ -129,7 +129,7 @@ struct MatchBuddyView: View {
                         value: store.beerBuddy.data?.firstEpisode.airDate.formatted(date: .long, time: .omitted),
                         isLoading: store.beerBuddy.isLoading
                     )
-//
+
                     infoView(
                         title: R.string.localizable.matchBuddyLastTimeTogether(),
                         value: store.beerBuddy.data?.lastEpisode.airDate.formatted(date: .long, time: .omitted),

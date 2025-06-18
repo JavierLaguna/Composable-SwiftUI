@@ -69,6 +69,10 @@
 		498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */; };
 		498BEF8328535C41003A3131 /* LocationRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF8228535C41003A3131 /* LocationRemoteDatasourceMock.swift */; };
 		498FFDA02AB9EFCF00C01BE1 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FFD9F2AB9EFCF00C01BE1 /* LoadingViewTests.swift */; };
+		4998C74E2E005BE400F755D9 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */; };
+		4998C7542E005C1700F755D9 /* CircleIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C7532E005C1700F755D9 /* CircleIconButton.swift */; };
+		4998C75E2E005C3B00F755D9 /* TextModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C75D2E005C3B00F755D9 /* TextModifiers.swift */; };
+		4998C7832E01675D00F755D9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C7822E01675D00F755D9 /* Color+Extension.swift */; };
 		49A17DCA2AB9BBCB00DAF653 /* EpisodeResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A17DC92AB9BBCB00DAF653 /* EpisodeResponseTests.swift */; };
 		49A17DCE2AB9BEBA00DAF653 /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 49A17DCD2AB9BEBA00DAF653 /* InlineSnapshotTesting */; };
 		49A17DD02AB9BEBA00DAF653 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 49A17DCF2AB9BEBA00DAF653 /* SnapshotTesting */; };
@@ -208,6 +212,10 @@
 		498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryDefaultTests.swift; sourceTree = "<group>"; };
 		498BEF8228535C41003A3131 /* LocationRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498FFD9F2AB9EFCF00C01BE1 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
+		4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
+		4998C7532E005C1700F755D9 /* CircleIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconButton.swift; sourceTree = "<group>"; };
+		4998C75D2E005C3B00F755D9 /* TextModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifiers.swift; sourceTree = "<group>"; };
+		4998C7822E01675D00F755D9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		49A17DC92AB9BBCB00DAF653 /* EpisodeResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeResponseTests.swift; sourceTree = "<group>"; };
 		49A4A61D282F948C00D43FB3 /* Composable SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Composable SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A4A620282F948C00D43FB3 /* ComposableSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableSwiftUIApp.swift; sourceTree = "<group>"; };
@@ -370,6 +378,8 @@
 			isa = PBXGroup;
 			children = (
 				497C1ED42C2033490041297A /* PlainNavLinkModifier.swift */,
+				4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */,
+				4998C75D2E005C3B00F755D9 /* TextModifiers.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -622,11 +632,12 @@
 		49A4A677282FA1F400D43FB3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				49B765CC2DFC3052004B545D /* EpisodeCarouselView.swift */,
 				49B764FA2DFB175D004B545D /* BackgroundPatternSecondaryView.swift */,
 				494E345E283AA68B00445B79 /* ButtonView.swift */,
 				49A4A678282FA21200D43FB3 /* CharacterCellView.swift */,
 				492BFBC02DDCF57D0072C537 /* CharacterStatusCapsule.swift */,
+				4998C7532E005C1700F755D9 /* CircleIconButton.swift */,
+				49B765CC2DFC3052004B545D /* EpisodeCarouselView.swift */,
 				494E3465283AAA8500445B79 /* ErrorView.swift */,
 				49529CA32A784058002F7594 /* LoadingView.swift */,
 				49529C992A783B7B002F7594 /* NeighborsCellView.swift */,
@@ -653,6 +664,7 @@
 				49E4F817283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift */,
 				49E4F815283E97ED0037FD72 /* View+CornerRadius.swift */,
 				49E4F834284A9A980037FD72 /* Error+Equality.swift */,
+				4998C7822E01675D00F755D9 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1041,6 +1053,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */,
+				4998C75E2E005C3B00F755D9 /* TextModifiers.swift in Sources */,
 				49222F302C203C600026B5E8 /* MainView.swift in Sources */,
 				49E4F829284931640037FD72 /* MatchBuddyInfoView.swift in Sources */,
 				49B765652DFB39C6004B545D /* CharacterMock.swift in Sources */,
@@ -1065,10 +1078,12 @@
 				49206E512CAFCA4800C21802 /* APIConstants.swift in Sources */,
 				49B765D92DFC4747004B545D /* EpisodeMock.swift in Sources */,
 				4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */,
+				4998C74E2E005BE400F755D9 /* PressableButtonStyle.swift in Sources */,
 				49529CA42A784058002F7594 /* LoadingView.swift in Sources */,
 				49B765052DFB17AE004B545D /* StatusBadgeView.swift in Sources */,
 				49B765712DFB3B05004B545D /* CharacterDescriptionMock.swift in Sources */,
 				49E4F816283E97ED0037FD72 /* View+CornerRadius.swift in Sources */,
+				4998C7832E01675D00F755D9 /* Color+Extension.swift in Sources */,
 				492BFBD92DDE233F0072C537 /* CharacterDetailReducer.swift in Sources */,
 				49A4A664282F993B00D43FB3 /* MainReducer.swift in Sources */,
 				49206E422CAEDEEB00C21802 /* UploadProgressDelegate.swift in Sources */,
@@ -1114,6 +1129,7 @@
 				491A399E28533FF000D17719 /* LocationRemoteDatasource.swift in Sources */,
 				49EDA8C8283BF04B002C9C80 /* LocationResponse.swift in Sources */,
 				49EDA8C4283BEF7F002C9C80 /* LocationRepositoryDefault.swift in Sources */,
+				4998C7542E005C1700F755D9 /* CircleIconButton.swift in Sources */,
 				49A4A621282F948C00D43FB3 /* ComposableSwiftUIApp.swift in Sources */,
 				497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */,
 				494E346E283AAF3F00445B79 /* MatchBuddyReducer.swift in Sources */,

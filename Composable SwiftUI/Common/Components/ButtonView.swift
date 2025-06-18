@@ -17,9 +17,7 @@ struct ButtonView: View {
     }
 
     var body: some View {
-        Button(action: {
-            action()
-        }) {
+        Button(action: action) {
             HStack(spacing: 12) {
                 if let icon {
                     Image(systemName: icon)
@@ -27,8 +25,7 @@ struct ButtonView: View {
                 }
 
                 Text(title.uppercased())
-                    .font(.custom("Impact", size: 18))
-                    .fontWeight(.black)
+                    .font(Theme.Fonts.button)
             }
             .foregroundColor(.black)
             .padding(.horizontal, 32)
@@ -40,16 +37,7 @@ struct ButtonView: View {
                     .stroke(Color.black.opacity(0.2), lineWidth: 2)
             )
         }
-        .buttonStyle(PressableStyle())
-    }
-}
-
-private struct PressableStyle: ButtonStyle {
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.93 : 1.0)
-            .animation(.spring(response: 0.30, dampingFraction: 0.45), value: configuration.isPressed)
+        .buttonStyle(PressableButtonStyle())
     }
 }
 

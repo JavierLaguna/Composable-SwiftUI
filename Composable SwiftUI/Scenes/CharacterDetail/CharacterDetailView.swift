@@ -82,8 +82,10 @@ private struct MainContentView: View {
                 ScrollViewReader { _ in
                     ScrollView {
                         VStack(spacing: 0) {
-                            // Bottom content overlay
-                            BottomContentView(character: character, namespace: namespace)
+                            BottomContentView(
+                                character: character,
+                                namespace: namespace
+                            )
                         }
                         .background(
                             GeometryReader { geometry in
@@ -119,13 +121,13 @@ private struct ExpandedHeaderView: View {
                     .matchedGeometryEffect(id: GeometryEffectIds.status, in: namespace)
 
                 InfoCard(
-                    title: "SPECIES",
-                    value: character.species.uppercased()
+                    title: R.string.localizable.characterDetailSpecies(),
+                    value: character.species
                 )
                 .matchedGeometryEffect(id: GeometryEffectIds.species, in: namespace)
             }
             .offset(
-                x: 40,
+                x: 32,
                 y: Theme.Space.xl
             )
         }
@@ -143,12 +145,10 @@ struct CollapsedHeaderView: View {
             CharacterImageView(character: character, size: .small, namespace: namespace)
 
             VStack(alignment: .leading, spacing: 8) {
-                Text(character.name.uppercased())
-                    .font(Theme.Fonts.title)
-                    .foregroundColor(Theme.Colors.primary)
-                    .shadow(color: .black, radius: 0, x: 1, y: 1)
-                    .lineLimit(1)
-                    .matchedGeometryEffect(id: GeometryEffectIds.name, in: namespace)
+                CharacterNameView(
+                    character: character,
+                    namespace: namespace
+                )
 
                 HStack(spacing: 8) {
                     StatusBadgeView(status: character.status)
@@ -164,7 +164,7 @@ struct CollapsedHeaderView: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 12)
         .background(
-            Color.black.opacity(0.95)
+            Theme.Colors.background.opacity(0.95)
                 .overlay(
                     Rectangle()
                         .frame(height: 1)
@@ -172,6 +172,22 @@ struct CollapsedHeaderView: View {
                     alignment: .bottom
                 )
         )
+    }
+}
+
+private struct CharacterNameView: View {
+
+    let character: Character
+    let namespace: Namespace.ID
+
+    var body: some View {
+        Text(character.name)
+            .specialTitleStyle()
+            .lineLimit(1)
+            .matchedGeometryEffect(
+                id: GeometryEffectIds.name,
+                in: namespace
+            )
     }
 }
 
@@ -222,15 +238,16 @@ private struct BottomContentView: View {
     let character: Character
     let namespace: Namespace.ID
 
+    let bgColor = Theme.Colors.background
+
     var body: some View {
         VStack(spacing: 0) {
-            // Gradiente que se conecta con la imagen de arriba
             LinearGradient(
                 colors: [
                     Color.clear,
-                    Color.black.opacity(0.3),
-                    Color.black.opacity(0.8),
-                    Color.black.opacity(0.95)
+                    bgColor.opacity(0.3),
+                    bgColor.opacity(0.8),
+                    bgColor.opacity(0.95)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
@@ -239,58 +256,61 @@ private struct BottomContentView: View {
 
             VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading, spacing: Theme.Space.xl) {
-                    Text(character.name.uppercased())
-                        .font(Theme.Fonts.title)
-                        .fontWeight(.black)
-                        .foregroundColor(Theme.Colors.primary)
-                        .shadow(color: .black, radius: 0, x: 2, y: 2)
-                        .matchedGeometryEffect(id: GeometryEffectIds.name, in: namespace)
+                    CharacterNameView(
+                        character: character,
+                        namespace: namespace
+                    )
 
                     HStack(spacing: Theme.Space.xl) {
                         TagView(text: "\(character.created.formatted(.dateTime.year())) | \(character.gender.localizedDescription)")
 
-                        TagView(text: character.type)
+                        if !character.type.isEmpty {
+                            TagView(text: character.type)
+                        }
                     }
                 }
 
                 Text(character.description)
+                    .bodyStyle()
                     .multilineTextAlignment(.leading)
-                    .font(.custom("Impact", size: 12))
-                    .fontWeight(.medium)
-                    .foregroundColor(.white.opacity(0.9))
 
                 HStack(spacing: Theme.Space.xl) {
                     InfoCard(
-                        title: "ORIGIN",
+                        title: R.string.localizable.characterDetailOrigin(),
                         value: character.origin.name
                     )
 
                     InfoCard(
-                        title: "LAST LOCATION",
+                        title: R.string.localizable.characterDetailLocation(),
                         value: character.location.name
                     )
 
                     InfoCard(
-                        title: "Nº EPISODES",
+                        title: R.string.localizable.characterDetailNumberOfEpisodes(),
                         value: "\(character.episodes.count)"
                     )
                 }
 
-                // Botón de navegación siempre visible
                 HStack {
+                    CircleIconButton(icon: "chevron.left") {
+
+                    }
+
                     Spacer()
-                    NavigationButton(icon: "chevron.right")
-                    Spacer()
+
+                    CircleIconButton(icon: "chevron.right") {
+
+                    }
                 }
                 .padding(.top, 16)
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 62)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.black.opacity(0.95))
+            .background(bgColor.opacity(0.95))
 
             // Extender el fondo negro solo para cubrir safe area inferior
-            Color.black.opacity(0.95)
+            bgColor.opacity(0.95)
                 .frame(height: 50)
         }
     }
@@ -301,8 +321,7 @@ private struct TagView: View {
 
     var body: some View {
         Text(text)
-            .font(.custom("Impact", size: 12))
-            .fontWeight(.black)
+            .chipStyle()
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
             .background(
@@ -325,56 +344,20 @@ private struct InfoCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Space.s) {
             Text(title)
-                .font(.custom("Impact", size: 12))
-                .fontWeight(.black)
-                .foregroundColor(Theme.Colors.primary)
+                .sectionTitleStyle()
 
             Text(value)
-                .font(.custom("Impact", size: 14))
-                .fontWeight(.black)
-                .foregroundColor(.white)
+                .bodyStyle(small: true, bold: true)
         }
         .padding(Theme.Space.xl)
         .background(
             RoundedRectangle(cornerRadius: Theme.Radius.m)
-                .fill(Color.black.opacity(0.7))
+                .fill(Theme.Colors.background.opacity(0.95))
                 .overlay(
                     RoundedRectangle(cornerRadius: Theme.Radius.m)
-                        .stroke(Theme.Colors.primary.opacity(0.3), lineWidth: 1)
+                        .stroke(Theme.Colors.primary.opacity(0.8), lineWidth: 1)
                 )
         )
-    }
-}
-
-private struct NavigationButton: View {
-    let icon: String
-    let isActive: Bool
-
-    init(icon: String, isActive: Bool = false) {
-        self.icon = icon
-        self.isActive = isActive
-    }
-
-    var body: some View {
-        Button(action: {}) {
-            Circle()
-                .fill(isActive ? Theme.Colors.primary.opacity(0.2) : Color.black.opacity(0.6))
-                .frame(width: 48, height: 48)
-                .overlay(
-                    Image(systemName: icon)
-                        .foregroundColor(Theme.Colors.primary)
-                        .font(.system(size: 20, weight: .medium))
-                )
-                .overlay(
-                    Circle()
-                        .stroke(
-                            isActive ? Theme.Colors.primary : Theme.Colors.primary.opacity(0.3),
-                            lineWidth: 2
-                        )
-                )
-        }
-        .scaleEffect(isActive ? 1.1 : 1.0)
-        .animation(.spring(response: 0.3), value: isActive)
     }
 }
 

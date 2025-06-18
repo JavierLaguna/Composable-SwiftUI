@@ -3,16 +3,11 @@ import SwiftUI
 
 struct Theme {
 
-    @MainActor
-    static var isDarkMode: Bool {
-        return UIScreen.main.traitCollection.userInterfaceStyle == .dark
-    }
-
     // MARK: Colors
     struct Colors {
         static let primary = R.color.green_200.color
 
-        static let text = R.color.green_200.color
+        static let text = Color(light: R.color.black_custom.color, dark: R.color.white_custom.color)
         static let secondaryText = R.color.white_custom.color
 
         static let buttonText = R.color.white_custom.color
@@ -20,10 +15,8 @@ struct Theme {
 
         static let navIcon = R.color.white_custom.color
 
-        @MainActor
-        static var background: Color {
-            return Theme.isDarkMode ? R.color.gray_custom.color : R.color.white_custom.color
-        }
+        static let background = Color(light: R.color.white_custom.color, dark: R.color.black_custom.color)
+        static let backgroundSecondary = Color(light: R.color.white_custom.color, dark: R.color.gray_custom.color)
     }
 
     // MARK: Fonts
@@ -39,9 +32,14 @@ struct Theme {
 
         static let subtitle: Font = .custom(fontName, size: 20)
 
+        static let sectionTitle: Font = .custom(fontName, size: 16).weight(.black)
+
         static let body: Font = .custom(fontName, size: 16).weight(.regular)
         static let bodyBold: Font = .custom(fontName, size: 16).weight(.bold)
         static let body2: Font = .custom(fontName, size: 14).weight(.regular)
+        static let body2Bold: Font = .custom(fontName, size: 14).weight(.bold)
+
+        static let chip: Font = .custom(fontName, size: 12).weight(.heavy)
 
         static let button: Font = .custom(fontName, size: 18).weight(.regular)
 

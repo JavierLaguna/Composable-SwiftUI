@@ -2,13 +2,15 @@ import SwiftUI
 
 struct BackgroundPatternSecondaryView: View {
 
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         ZStack {
             R.image.ic_background_2.image
                 .resizable()
                 .scaledToFill()
 
-            if Theme.isDarkMode {
+            if colorScheme == .dark {
                 Color.black.opacity(0.5)
             }
         }

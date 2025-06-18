@@ -8,8 +8,8 @@ struct StatusBadgeView: View {
     private var statusIcon: some View {
         switch status {
         case .alive: Image(systemName: "heart.fill")
-        case .dead: Image(systemName: "xmark")
-        case .unknown: Image(systemName: "questionmark")
+        case .dead: Image(systemName: "poweroutlet.type.h.square.fill")
+        case .unknown: Image(systemName: "questionmark.app.fill")
         }
     }
 
@@ -22,14 +22,13 @@ struct StatusBadgeView: View {
     }
 
     var body: some View {
-        HStack(spacing: Theme.Space.m) {
+        HStack(spacing: Theme.Space.s) {
             statusIcon
-                .foregroundColor(Color.black)
-                .font(.system(size: 14))
+                .tint(Theme.Colors.text)
+                .font(.system(size: 16))
 
             Text(status.rawValue.uppercased())
-                .font(.custom("Impact", size: 12)) // TODO: JLI
-                .fontWeight(.black)
+                .bodyStyle(small: true, bold: true)
         }
         .padding(.horizontal, Theme.Space.xl)
         .padding(.vertical, Theme.Space.m)
