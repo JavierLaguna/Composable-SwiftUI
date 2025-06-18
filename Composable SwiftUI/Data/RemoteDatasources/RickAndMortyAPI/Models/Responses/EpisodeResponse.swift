@@ -21,10 +21,14 @@ struct EpisodeResponse: Codable {
         let formatter = ISO8601DateFormatter() // TODO: JLI - Make reusable with only 1 init, lazy?
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
 
+        let formatter2 = DateFormatter()
+        formatter2.locale = Locale(identifier: "en_US_POSIX")
+        formatter2.dateFormat = "MMMM d, yyyy"
+
         return Episode(
             id: id,
             name: name,
-            airDate: formatter.date(from: airDate)!, // TODO: JLI,
+            airDate: formatter2.date(from: airDate)!, // TODO: JLI
             episode: episode,
             characters: characters.compactMap { $0.getIdFromUrl() },
             created: formatter.date(from: created)!, // TODO: JLI

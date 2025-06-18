@@ -15,7 +15,7 @@ extension Character {
             origin: location,
             location: location,
             image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-            episodes: [],
+            episodes: [1, 2, 5, 7, 12, 23, 67],
             created: Date(),
             description: CharacterDescriptionMock.description
         )

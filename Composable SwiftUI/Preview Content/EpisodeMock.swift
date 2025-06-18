@@ -20,7 +20,7 @@ extension Episode {
             episode: "S01E\(String(format: "%02d", index))",
             characters: (1...5).map { $0 + index },
             created: Date(timeIntervalSince1970: 1700000000 + TimeInterval(index * 86400)),
-            image: UIImage(named: "Episode_\(index)")
+            image: UIImage(named: "Episode_\(Int.random(in: 1...10))")
         )
     }
 }

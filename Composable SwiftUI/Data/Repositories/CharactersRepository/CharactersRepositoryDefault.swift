@@ -27,6 +27,16 @@ actor CharactersRepositoryDefault: CharactersRepository {
         return response.results.map { $0.toDomain() }
     }
 
+    func getCharacter(characterId: Int) async throws -> Character {
+        let characters = try await service.getCharacters(by: [characterId])
+
+        guard let character = characters.first?.toDomain() else {
+            throw RepositoryError.invalidParameters
+        }
+
+        return character
+    }
+
     func getCharacters(characterIds: [Int]) async throws -> [Character] {
         try await service.getCharacters(by: characterIds)
             .map { $0.toDomain() }

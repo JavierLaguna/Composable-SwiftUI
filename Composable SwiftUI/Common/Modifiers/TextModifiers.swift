@@ -7,6 +7,14 @@ extension View {
         modifier(SpecialTitleModifier())
     }
 
+    func specialSubtitleStyle() -> some View {
+        modifier(SpecialSubtitleModifier())
+    }
+
+    func specialBodyStyle() -> some View {
+        modifier(SpecialBodyModifier())
+    }
+
     func titleStyle(small: Bool = false, bold: Bool = false) -> some View {
         modifier(TitleModifier(small: small, bold: bold))
     }
@@ -32,6 +40,24 @@ struct SpecialTitleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(Theme.Fonts.Special.title)
+            .foregroundStyle(Theme.Colors.primary)
+            .textCase(.uppercase)
+    }
+}
+
+struct SpecialSubtitleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(Theme.Fonts.Special.subtitle)
+            .foregroundStyle(Theme.Colors.primary)
+            .textCase(.uppercase)
+    }
+}
+
+struct SpecialBodyModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(Theme.Fonts.Special.body)
             .foregroundStyle(Theme.Colors.primary)
             .textCase(.uppercase)
     }

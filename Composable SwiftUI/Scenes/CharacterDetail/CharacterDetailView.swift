@@ -4,24 +4,27 @@ import Kingfisher
 
 struct CharacterDetailView: View {
 
-    let store: StoreOf<CharacterNeighborsReducer>
-    let character: Character
+    let store: StoreOf<CharacterDetailReducer>
 
     @Namespace private var namespace
 
     var body: some View {
         Group {
-//            if store.locationDetail.isLoading {
+//            if store.currentCharacter.isLoading { // TODO: JLI ?¿
 //                LoadingView()
 //                    .frame(maxWidth: .infinity, maxHeight: .infinity)
 //                    .ignoresSafeArea()
 //
 //            } else {
-                MainContentView(character: character, namespace: namespace)
+                MainContentView(namespace: namespace)
 //            }
         }
         .background(BackgroundPatternSecondaryView())
         .ignoresSafeArea(.container, edges: .bottom) // Permitir que el contenido se extienda al safe area inferior
+        .environment(store)
+        .task {
+            store.send(.getEpisodes)
+        }
     }
 }
 
@@ -34,7 +37,9 @@ private struct GeometryEffectIds {
 
 private struct MainContentView: View {
 
-    let character: Character
+    @Environment(StoreOf<CharacterDetailReducer>.self)
+    private var store
+
     let namespace: Namespace.ID
 
     private let collapseThreshold: CGFloat = 120
@@ -42,6 +47,10 @@ private struct MainContentView: View {
 
     @State private var isCollapsed: Bool = false
     @State private var namePosition: CGFloat = 0
+
+    var character: Character {
+        store.currentCharacter.data! // TODO: JLI
+    }
 
     private func updateCollapsedState(scrollOffset: CGFloat) {
         let shouldCollapse: Bool
@@ -82,10 +91,7 @@ private struct MainContentView: View {
                 ScrollViewReader { _ in
                     ScrollView {
                         VStack(spacing: 0) {
-                            BottomContentView(
-                                character: character,
-                                namespace: namespace
-                            )
+                            BottomContentView(namespace: namespace)
                         }
                         .background(
                             GeometryReader { geometry in
@@ -144,13 +150,13 @@ struct CollapsedHeaderView: View {
         HStack(spacing: Theme.Space.xl) {
             CharacterImageView(character: character, size: .small, namespace: namespace)
 
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: Theme.Space.m) {
                 CharacterNameView(
                     character: character,
                     namespace: namespace
                 )
 
-                HStack(spacing: 8) {
+                HStack(spacing: Theme.Space.m) {
                     StatusBadgeView(status: character.status)
                         .matchedGeometryEffect(id: GeometryEffectIds.status, in: namespace)
 
@@ -235,10 +241,17 @@ private struct CharacterImageView: View {
 }
 
 private struct BottomContentView: View {
-    let character: Character
+
+    private let bgColor = Theme.Colors.background // TODO: JLI do static
+
+    @Environment(StoreOf<CharacterDetailReducer>.self)
+    private var store
+
     let namespace: Namespace.ID
 
-    let bgColor = Theme.Colors.background
+    var character: Character {
+        store.currentCharacter.data! // TODO: JLI
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -254,85 +267,81 @@ private struct BottomContentView: View {
             )
             .frame(height: 100)
 
-            VStack(alignment: .leading, spacing: 24) {
-                VStack(alignment: .leading, spacing: Theme.Space.xl) {
-                    CharacterNameView(
-                        character: character,
-                        namespace: namespace
-                    )
+            VStack(alignment: .leading, spacing: Theme.Space.xxl) {
+                Group {
+                    VStack(alignment: .leading, spacing: Theme.Space.xl) {
+                        CharacterNameView(
+                            character: character,
+                            namespace: namespace
+                        )
 
-                    HStack(spacing: Theme.Space.xl) {
-                        TagView(text: "\(character.created.formatted(.dateTime.year())) | \(character.gender.localizedDescription)")
+                        HStack(spacing: Theme.Space.xl) {
+                            TagView(text: "\(character.created.formatted(.dateTime.year())) | \(character.gender.localizedDescription)")
 
-                        if !character.type.isEmpty {
-                            TagView(text: character.type)
+                            if !character.type.isEmpty {
+                                TagView(text: character.type)
+                            }
                         }
                     }
+
+                    Text(character.description)
+                        .bodyStyle()
+                        .multilineTextAlignment(.leading)
+
+                    HStack(spacing: Theme.Space.xl) {
+                        InfoCard(
+                            title: R.string.localizable.characterDetailOrigin(),
+                            value: character.origin.name
+                        )
+
+                        InfoCard(
+                            title: R.string.localizable.characterDetailLocation(),
+                            value: character.location.name
+                        )
+
+                        InfoCard(
+                            title: R.string.localizable.characterDetailNumberOfEpisodes(),
+                            value: "\(character.episodes.count)"
+                        )
+                    }
                 }
+                .padding(.horizontal, Theme.Space.xxl)
 
-                Text(character.description)
-                    .bodyStyle()
-                    .multilineTextAlignment(.leading)
+                if let episodes = store.episodes.data {
+                    EpisodeCarouselView(
+                        episodes: episodes,
+                        onEpisodeTap: { _ in
 
-                HStack(spacing: Theme.Space.xl) {
-                    InfoCard(
-                        title: R.string.localizable.characterDetailOrigin(),
-                        value: character.origin.name
+                        },
+                        onSeeAll: {
+
+                        }
                     )
-
-                    InfoCard(
-                        title: R.string.localizable.characterDetailLocation(),
-                        value: character.location.name
-                    )
-
-                    InfoCard(
-                        title: R.string.localizable.characterDetailNumberOfEpisodes(),
-                        value: "\(character.episodes.count)"
-                    )
+                    .padding(.top, Theme.Space.m)
                 }
 
                 HStack {
                     CircleIconButton(icon: "chevron.left") {
-
+                        store.send(.seePreviousCharacter)
                     }
 
                     Spacer()
 
                     CircleIconButton(icon: "chevron.right") {
-
+                        store.send(.seeNextCharacter)
                     }
                 }
-                .padding(.top, 16)
+                .padding(.top, Theme.Space.xl)
+                .padding(.horizontal, Theme.Space.xxl)
             }
-            .padding(.horizontal, 24)
             .padding(.bottom, 62)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(bgColor.opacity(0.95))
 
             // Extender el fondo negro solo para cubrir safe area inferior
-            bgColor.opacity(0.95)
+            bgColor.opacity(0.95) // TODO: JLI
                 .frame(height: 50)
         }
-    }
-}
-
-private struct TagView: View {
-    let text: String
-
-    var body: some View {
-        Text(text)
-            .chipStyle()
-            .padding(.horizontal, 12)
-            .padding(.vertical, 6)
-            .background(
-                Capsule()
-                    .fill(Theme.Colors.primary.opacity(0.2))
-                    .overlay(
-                        Capsule()
-                            .stroke(Theme.Colors.primary, lineWidth: 1)
-                    )
-            )
-            .foregroundColor(Theme.Colors.primary)
     }
 }
 
@@ -362,17 +371,17 @@ private struct InfoCard: View {
 }
 
 #Preview {
+    let character = Character.mock
     NavigationStack {
         CharacterDetailView(
             store: Store(
                 initialState: .init(
-                    locationDetail: .init(state: .loading)
+                    currentCharacter: .init(state: .populated(data: character))
                 ),
                 reducer: {
-                    CharacterNeighborsReducer.build(locationId: 1)
+                    CharacterDetailReducer.build(character: character)
                 }
-            ),
-            character: Character.mock
+            )
         )
     }
 }

@@ -53,6 +53,7 @@ struct Theme {
             }()
 
             static let title = Font(font.withSize(34))
+            static let subtitle = Font(font.withSize(28))
             static let body = Font(font.withSize(18))
         }
     }

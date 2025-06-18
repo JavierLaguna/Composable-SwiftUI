@@ -29,7 +29,7 @@ struct CharactersListView: View {
                     )
                     .padding()
                 }
-                .background(Theme.Colors.background)
+                .background(Theme.Colors.backgroundSecondary)
             }
 
             if let characters = store.filteredCharacters {

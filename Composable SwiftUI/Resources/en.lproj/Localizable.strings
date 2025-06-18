@@ -1,5 +1,7 @@
 // Commons
 "commons.retry" = "Retry";
+"commons.episodes" = "Episodes";
+"commons.seeAll" = "Ver todos";
 
 // TabBar
 "tabBar.characters" = "Characters";
