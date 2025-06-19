@@ -25,7 +25,7 @@ struct ButtonView: View {
                 }
 
                 Text(title.uppercased())
-                    .font(Theme.Fonts.button)
+                    .font(Theme.Fonts.Special.button)
             }
             .foregroundColor(.black)
             .padding(.horizontal, 32)

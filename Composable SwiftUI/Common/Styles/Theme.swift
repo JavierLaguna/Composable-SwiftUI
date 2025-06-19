@@ -15,7 +15,7 @@ struct Theme {
 
         static let navIcon = R.color.white_custom.color
 
-        static let background = Color(light: R.color.white_custom.color, dark: R.color.black_custom.color)
+        static let background = Color(light: R.color.white_custom.color, dark: R.color.black_custom.color).opacity(0.95)
         static let backgroundSecondary = Color(light: R.color.white_custom.color, dark: R.color.gray_custom.color)
     }
 
@@ -55,6 +55,7 @@ struct Theme {
             static let title = Font(font.withSize(34))
             static let subtitle = Font(font.withSize(28))
             static let body = Font(font.withSize(18))
+            static let button = Font(font.withSize(18))
         }
     }
 

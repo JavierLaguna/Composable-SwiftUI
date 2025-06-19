@@ -10,17 +10,17 @@ struct CharacterDetailView: View {
 
     var body: some View {
         Group {
-//            if store.currentCharacter.isLoading { // TODO: JLI ?¿
-//                LoadingView()
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                    .ignoresSafeArea()
-//
-//            } else {
+            if store.currentCharacter.isLoading {
+                LoadingView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea()
+
+            } else {
                 MainContentView(namespace: namespace)
-//            }
+            }
         }
         .background(BackgroundPatternSecondaryView())
-        .ignoresSafeArea(.container, edges: .bottom) // Permitir que el contenido se extienda al safe area inferior
+        .ignoresSafeArea(.container, edges: .bottom)
         .environment(store)
         .task {
             store.send(.getEpisodes)
@@ -49,17 +49,15 @@ private struct MainContentView: View {
     @State private var namePosition: CGFloat = 0
 
     var character: Character {
-        store.currentCharacter.data! // TODO: JLI
+        store.currentCharacter.data! // TODO: JLI - Fix
     }
 
     private func updateCollapsedState(scrollOffset: CGFloat) {
         let shouldCollapse: Bool
 
         if isCollapsed {
-            // Si está colapsado, necesita menos scroll para expandirse (hysteresis)
             shouldCollapse = scrollOffset > (collapseThreshold - hysteresis)
         } else {
-            // Si está expandido, necesita más scroll para colapsar (hysteresis)
             shouldCollapse = scrollOffset > (collapseThreshold + hysteresis)
         }
 
@@ -78,6 +76,8 @@ private struct MainContentView: View {
 
             } else {
                 ExpandedHeaderView(character: character, namespace: namespace)
+                    .offset(y: Theme.Space.xxl)
+                    .zIndex(1)
             }
         }
         .animation(.easeInOut(duration: 0.4), value: isCollapsed)
@@ -90,8 +90,8 @@ private struct MainContentView: View {
 
                 ScrollViewReader { _ in
                     ScrollView {
-                        VStack(spacing: 0) {
-                            BottomContentView(namespace: namespace)
+                        VStack(spacing: Theme.Space.none) {
+                            DetailContentView(namespace: namespace)
                         }
                         .background(
                             GeometryReader { geometry in
@@ -130,10 +130,11 @@ private struct ExpandedHeaderView: View {
                     title: R.string.localizable.characterDetailSpecies(),
                     value: character.species
                 )
+                .fixedSize(horizontal: true, vertical: true)
                 .matchedGeometryEffect(id: GeometryEffectIds.species, in: namespace)
             }
             .offset(
-                x: 32,
+                x: Theme.Space.xxxl,
                 y: Theme.Space.xl
             )
         }
@@ -151,10 +152,13 @@ struct CollapsedHeaderView: View {
             CharacterImageView(character: character, size: .small, namespace: namespace)
 
             VStack(alignment: .leading, spacing: Theme.Space.m) {
-                CharacterNameView(
-                    character: character,
-                    namespace: namespace
-                )
+                Text(character.name)
+                    .specialBodyStyle()
+                    .lineLimit(1)
+                    .matchedGeometryEffect(
+                        id: GeometryEffectIds.name,
+                        in: namespace
+                    )
 
                 HStack(spacing: Theme.Space.m) {
                     StatusBadgeView(status: character.status)
@@ -167,10 +171,10 @@ struct CollapsedHeaderView: View {
 
             Spacer()
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 12)
+        .padding(.horizontal, Theme.Space.xl)
+        .padding(.vertical, Theme.Space.l)
         .background(
-            Theme.Colors.background.opacity(0.95)
+            Theme.Colors.background
                 .overlay(
                     Rectangle()
                         .frame(height: 1)
@@ -178,22 +182,6 @@ struct CollapsedHeaderView: View {
                     alignment: .bottom
                 )
         )
-    }
-}
-
-private struct CharacterNameView: View {
-
-    let character: Character
-    let namespace: Namespace.ID
-
-    var body: some View {
-        Text(character.name)
-            .specialTitleStyle()
-            .lineLimit(1)
-            .matchedGeometryEffect(
-                id: GeometryEffectIds.name,
-                in: namespace
-            )
     }
 }
 
@@ -223,16 +211,19 @@ private struct CharacterImageView: View {
                 width: size.size * 0.95,
                 height: size.size * 0.95
             )
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.xl))
             .background {
-                RoundedRectangle(cornerRadius: 24)
+                
+                let cornerRadius = Theme.Radius.xl + 4
+                
+                RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(Color.black.opacity(0.4))
                     .frame(
                         width: size.size,
                         height: size.size
                     )
                     .overlay(
-                        RoundedRectangle(cornerRadius: 24)
+                        RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(Theme.Colors.primary, lineWidth: 4)
                     )
             }
@@ -240,27 +231,31 @@ private struct CharacterImageView: View {
     }
 }
 
-private struct BottomContentView: View {
+private struct DetailContentView: View {
 
-    private let bgColor = Theme.Colors.background // TODO: JLI do static
+    static private let bgColor = Theme.Colors.background
 
     @Environment(StoreOf<CharacterDetailReducer>.self)
     private var store
+    
+    @Environment(CharactersCoordinator.self)
+    private var charactersCoordinator
 
     let namespace: Namespace.ID
 
     var character: Character {
-        store.currentCharacter.data! // TODO: JLI
+        store.currentCharacter.data! // TODO: JLI - Fix
     }
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: Theme.Space.none) {
             LinearGradient(
                 colors: [
                     Color.clear,
-                    bgColor.opacity(0.3),
-                    bgColor.opacity(0.8),
-                    bgColor.opacity(0.95)
+                    Self.bgColor.opacity(0.3),
+                    Self.bgColor.opacity(0.55),
+                    Self.bgColor.opacity(0.8),
+                    Self.bgColor
                 ],
                 startPoint: .top,
                 endPoint: .bottom
@@ -270,10 +265,12 @@ private struct BottomContentView: View {
             VStack(alignment: .leading, spacing: Theme.Space.xxl) {
                 Group {
                     VStack(alignment: .leading, spacing: Theme.Space.xl) {
-                        CharacterNameView(
-                            character: character,
-                            namespace: namespace
-                        )
+                        Text(character.name)
+                            .specialTitleStyle()
+                            .matchedGeometryEffect(
+                                id: GeometryEffectIds.name,
+                                in: namespace
+                            )
 
                         HStack(spacing: Theme.Space.xl) {
                             TagView(text: "\(character.created.formatted(.dateTime.year())) | \(character.gender.localizedDescription)")
@@ -288,7 +285,7 @@ private struct BottomContentView: View {
                         .bodyStyle()
                         .multilineTextAlignment(.leading)
 
-                    HStack(spacing: Theme.Space.xl) {
+                    HStack(alignment: .top, spacing: Theme.Space.xl) {
                         InfoCard(
                             title: R.string.localizable.characterDetailOrigin(),
                             value: character.origin.name
@@ -304,6 +301,7 @@ private struct BottomContentView: View {
                             value: "\(character.episodes.count)"
                         )
                     }
+                    .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.horizontal, Theme.Space.xxl)
 
@@ -311,42 +309,69 @@ private struct BottomContentView: View {
                     EpisodeCarouselView(
                         episodes: episodes,
                         onEpisodeTap: { _ in
-
+                            // TODO: JLI - Implement
                         },
                         onSeeAll: {
-
+                            // TODO: JLI - Implement
                         }
                     )
                     .padding(.top, Theme.Space.m)
                 }
-
-                HStack {
-                    CircleIconButton(icon: "chevron.left") {
-                        store.send(.seePreviousCharacter)
+                
+                Group {
+                    HStack {
+                        Spacer()
+                        
+                        ButtonView(
+                            title: R.string.localizable.characterDetailBeerBuddy(),
+                            icon: "mug.fill"
+                        ) {
+                            charactersCoordinator.navigateToBeerBuddy(character: character)
+                        }
+                        
+                        Spacer()
                     }
-
-                    Spacer()
-
-                    CircleIconButton(icon: "chevron.right") {
-                        store.send(.seeNextCharacter)
+                    .padding(.top, Theme.Space.l)
+                    
+                    HStack {
+                        Spacer()
+                        
+                        ButtonView(
+                            title: R.string.localizable.characterDetailNeighbors(),
+                            icon: "house.lodge.fill"
+                        ) {
+                            charactersCoordinator.navigateToNeighbors(character: character)
+                        }
+                        
+                        Spacer()
                     }
+                    
+                    HStack {
+                        CircleIconButton(icon: "chevron.left") {
+                            store.send(.seePreviousCharacter)
+                        }
+
+                        Spacer()
+
+                        CircleIconButton(icon: "chevron.right") {
+                            store.send(.seeNextCharacter)
+                        }
+                    }
+                    .padding(.top, Theme.Space.xl)
                 }
-                .padding(.top, Theme.Space.xl)
                 .padding(.horizontal, Theme.Space.xxl)
             }
             .padding(.bottom, 62)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(bgColor.opacity(0.95))
+            .background(Self.bgColor)
 
-            // Extender el fondo negro solo para cubrir safe area inferior
-            bgColor.opacity(0.95) // TODO: JLI
+            Self.bgColor
                 .frame(height: 50)
         }
     }
 }
 
 private struct InfoCard: View {
-
     let title: String
     let value: String
 
@@ -355,13 +380,16 @@ private struct InfoCard: View {
             Text(title)
                 .sectionTitleStyle()
 
+            Spacer()
+
             Text(value)
                 .bodyStyle(small: true, bold: true)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(Theme.Space.xl)
         .background(
             RoundedRectangle(cornerRadius: Theme.Radius.m)
-                .fill(Theme.Colors.background.opacity(0.95))
+                .fill(Theme.Colors.background)
                 .overlay(
                     RoundedRectangle(cornerRadius: Theme.Radius.m)
                         .stroke(Theme.Colors.primary.opacity(0.8), lineWidth: 1)
@@ -372,6 +400,7 @@ private struct InfoCard: View {
 
 #Preview {
     let character = Character.mock
+    
     NavigationStack {
         CharacterDetailView(
             store: Store(
@@ -384,4 +413,5 @@ private struct InfoCard: View {
             )
         )
     }
+    .allEnvironmentsInjected
 }

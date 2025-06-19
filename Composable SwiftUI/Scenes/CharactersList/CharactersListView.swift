@@ -150,7 +150,7 @@ private struct SkeletonRows: View {
         }
     )
 
-    return NavigationStack {
+    NavigationStack {
         CharactersListView(store: store)
     }
     .allEnvironmentsInjected

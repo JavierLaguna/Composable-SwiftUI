@@ -31,6 +31,8 @@
 "characterDetail.origin" = "Origin";
 "characterDetail.location" = "Last Location";
 "characterDetail.numberOfEpisodes" = "Nº Episodes";
+"characterDetail.beerBuddy" = "Beer buddy";
+"characterDetail.neighbors" = "Neighbors";
 
 // MatchBuddy
 "matchBuddy.location" = "Location";
