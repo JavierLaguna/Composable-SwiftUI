@@ -6,7 +6,6 @@ struct CharacterService: CharacterRemoteDatasource {
 
     @discardableResult
     func getCharacters(page: Int? = nil) async throws -> GetCharactersResponse {
-
         var urlParams: [String: any CustomStringConvertible] = [:]
         if let page {
             urlParams["page"] = "\(page)"

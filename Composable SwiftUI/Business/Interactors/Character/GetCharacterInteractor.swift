@@ -20,9 +20,9 @@ struct GetCharacterInteractorDefault: GetCharacterInteractor, ManagedErrorIntera
     func execute(id: Int) async throws -> Character {
         do {
             let character = try await repository.getCharacter(characterId: id)
-            
+
             let description = try await getCharacterDescriptionInteractor.execute(character: character)
-            
+
             return Character(
                 id: character.id,
                 name: character.name,

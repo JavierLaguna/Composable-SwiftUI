@@ -5,6 +5,7 @@ import Kingfisher
 struct CharacterDetailView: View {
 
     let store: StoreOf<CharacterDetailReducer>
+    let mode: Mode
 
     @Namespace private var namespace
 
@@ -16,15 +17,30 @@ struct CharacterDetailView: View {
                     .ignoresSafeArea()
 
             } else {
-                MainContentView(namespace: namespace)
+                MainContentView(
+                    mode: mode,
+                    namespace: namespace
+                )
             }
         }
         .background(BackgroundPatternSecondaryView())
         .ignoresSafeArea(.container, edges: .bottom)
         .environment(store)
         .task {
-            store.send(.getEpisodes)
+            if mode == .allInfo {
+                store.send(.getTotalCharactersCount)
+                store.send(.getEpisodes)
+            }
         }
+    }
+}
+
+// MARK: Mode
+extension CharacterDetailView {
+
+    enum Mode {
+        case basicInfo
+        case allInfo
     }
 }
 
@@ -40,6 +56,7 @@ private struct MainContentView: View {
     @Environment(StoreOf<CharacterDetailReducer>.self)
     private var store
 
+    let mode: CharacterDetailView.Mode
     let namespace: Namespace.ID
 
     private let collapseThreshold: CGFloat = 120
@@ -72,7 +89,11 @@ private struct MainContentView: View {
     private var headerView: some View {
         Group {
             if isCollapsed {
-                CollapsedHeaderView(character: character, namespace: namespace)
+                CollapsedHeaderView(
+                    character: character,
+                    mode: mode,
+                    namespace: namespace
+                )
 
             } else {
                 ExpandedHeaderView(character: character, namespace: namespace)
@@ -91,7 +112,10 @@ private struct MainContentView: View {
                 ScrollViewReader { _ in
                     ScrollView {
                         VStack(spacing: Theme.Space.none) {
-                            DetailContentView(namespace: namespace)
+                            DetailContentView(
+                                mode: mode,
+                                namespace: namespace
+                            )
                         }
                         .background(
                             GeometryReader { geometry in
@@ -145,6 +169,7 @@ private struct ExpandedHeaderView: View {
 struct CollapsedHeaderView: View {
 
     let character: Character
+    let mode: CharacterDetailView.Mode
     let namespace: Namespace.ID
 
     var body: some View {
@@ -213,9 +238,9 @@ private struct CharacterImageView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.xl))
             .background {
-                
+
                 let cornerRadius = Theme.Radius.xl + 4
-                
+
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(Color.black.opacity(0.4))
                     .frame(
@@ -237,10 +262,11 @@ private struct DetailContentView: View {
 
     @Environment(StoreOf<CharacterDetailReducer>.self)
     private var store
-    
+
     @Environment(CharactersCoordinator.self)
     private var charactersCoordinator
 
+    let mode: CharacterDetailView.Mode
     let namespace: Namespace.ID
 
     var character: Character {
@@ -305,61 +331,69 @@ private struct DetailContentView: View {
                 }
                 .padding(.horizontal, Theme.Space.xxl)
 
-                if let episodes = store.episodes.data {
-                    EpisodeCarouselView(
-                        episodes: episodes,
-                        onEpisodeTap: { _ in
-                            // TODO: JLI - Implement
-                        },
-                        onSeeAll: {
-                            // TODO: JLI - Implement
-                        }
-                    )
-                    .padding(.top, Theme.Space.m)
-                }
-                
-                Group {
-                    HStack {
-                        Spacer()
-                        
-                        ButtonView(
-                            title: R.string.localizable.characterDetailBeerBuddy(),
-                            icon: "mug.fill"
-                        ) {
-                            charactersCoordinator.navigateToBeerBuddy(character: character)
-                        }
-                        
-                        Spacer()
+                if mode == .allInfo {
+                    if let episodes = store.episodes.data {
+                        EpisodeCarouselView(
+                            episodes: episodes,
+                            onEpisodeTap: { _ in
+                                // TODO: JLI - Implement
+                            },
+                            onSeeAll: {
+                                // TODO: JLI - Implement
+                            }
+                        )
+                        .padding(.top, Theme.Space.m)
                     }
-                    .padding(.top, Theme.Space.l)
-                    
-                    HStack {
-                        Spacer()
-                        
-                        ButtonView(
-                            title: R.string.localizable.characterDetailNeighbors(),
-                            icon: "house.lodge.fill"
-                        ) {
-                            charactersCoordinator.navigateToNeighbors(character: character)
+
+                    Group {
+                        HStack {
+                            Spacer()
+
+                            ButtonView(
+                                title: R.string.localizable.characterDetailBeerBuddy(),
+                                icon: "mug.fill"
+                            ) {
+                                charactersCoordinator.navigateToBeerBuddy(character: character)
+                            }
+
+                            Spacer()
                         }
-                        
-                        Spacer()
-                    }
-                    
-                    HStack {
-                        CircleIconButton(icon: "chevron.left") {
-                            store.send(.seePreviousCharacter)
+                        .padding(.top, Theme.Space.l)
+
+                        HStack {
+                            Spacer()
+
+                            ButtonView(
+                                title: R.string.localizable.characterDetailNeighbors(),
+                                icon: "house.lodge.fill"
+                            ) {
+                                charactersCoordinator.navigateToNeighbors(character: character)
+                            }
+
+                            Spacer()
                         }
 
-                        Spacer()
+                        HStack {
+                            CircleIconButton(
+                                icon: "chevron.left",
+                                isDisabled: !store.state.canSeePreviousCharacter
+                            ) {
+                                store.send(.seePreviousCharacter)
+                            }
 
-                        CircleIconButton(icon: "chevron.right") {
-                            store.send(.seeNextCharacter)
+                            Spacer()
+
+                            CircleIconButton(
+                                icon: "chevron.right",
+                                isDisabled: !store.state.canSeeNextCharacter
+                            ) {
+                                store.send(.seeNextCharacter)
+                            }
                         }
+                        .padding(.top, Theme.Space.xl)
                     }
-                    .padding(.top, Theme.Space.xl)
+                    .padding(.horizontal, Theme.Space.xxl)
                 }
-                .padding(.horizontal, Theme.Space.xxl)
             }
             .padding(.bottom, 62)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -400,17 +434,16 @@ private struct InfoCard: View {
 
 #Preview {
     let character = Character.mock
-    
+
     NavigationStack {
         CharacterDetailView(
             store: Store(
-                initialState: .init(
-                    currentCharacter: .init(state: .populated(data: character))
-                ),
+                initialState: .init(character: character),
                 reducer: {
-                    CharacterDetailReducer.build(character: character)
+                    CharacterDetailReducer.build()
                 }
-            )
+            ),
+            mode: .allInfo
         )
     }
     .allEnvironmentsInjected

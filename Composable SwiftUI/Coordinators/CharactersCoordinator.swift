@@ -74,13 +74,12 @@ extension CharactersCoordinator {
             case .characterDetail(let character):
                 CharacterDetailView(
                     store: Store(
-                        initialState: .init(
-                            currentCharacter: .init(state: .populated(data: character))
-                        ),
+                        initialState: .init(character: character),
                         reducer: {
-                            CharacterDetailReducer.build(character: character)
+                            CharacterDetailReducer.build()
                         }
-                    )
+                    ),
+                    mode: .allInfo
                 )
 
             case .beerBuddy(let character):
@@ -126,13 +125,12 @@ extension CharactersCoordinator {
             case .beerBuddyCharacterDetail(let character):
                 CharacterDetailView(
                     store: Store(
-                        initialState: .init(
-                            currentCharacter: .init(state: .populated(data: character))
-                        ),
+                        initialState: .init(character: character),
                         reducer: {
-                            CharacterDetailReducer.build(character: character)
+                            CharacterDetailReducer.build()
                         }
-                    )
+                    ),
+                    mode: .basicInfo
                 )
             }
         }

@@ -4,16 +4,32 @@ import ComposableArchitecture
 struct CharacterDetailReducer {
 
     let getCharacterInteractor: any GetCharacterInteractor
+    let getTotalCharactersCountInteractor: any GetTotalCharactersCountInteractor
     let getEpisodesByIdsInteractor: any GetEpisodesByIdsInteractor
-    let character: Character // TODO: JLI ?¿
 
     @ObservableState
     struct State: Equatable {
         var currentCharacter: StateLoadable<Character>
+        var totalCharactersCount: Int = 0
         var episodes: StateLoadable<[Episode]> = .init()
+
+        var canSeePreviousCharacter: Bool {
+            (currentCharacter.data?.id ?? 0) > 1
+        }
+
+        var canSeeNextCharacter: Bool {
+            (currentCharacter.data?.id ?? 0) < totalCharactersCount
+        }
+
+        init(character: Character) {
+            currentCharacter = .init(state: .populated(data: character))
+        }
     }
 
     enum Action {
+        case getTotalCharactersCount
+        case onGetTotalCharactersCount(TaskResult<Int>)
+
         case getEpisodes
         case onGetEpisodes(TaskResult<[Episode]>)
 
@@ -25,6 +41,20 @@ struct CharacterDetailReducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case .getTotalCharactersCount:
+                return .run { send in
+                    await send(.onGetTotalCharactersCount(TaskResult {
+                        try await getTotalCharactersCountInteractor.execute()
+                    }))
+                }
+
+            case .onGetTotalCharactersCount(.success(let totalCharactersCount)):
+                state.totalCharactersCount = totalCharactersCount
+                return .none
+
+            case .onGetTotalCharactersCount(.failure):
+                return .none
+
             case .getEpisodes:
                 guard let currentCharacter = state.currentCharacter.data else {
                     return .none
@@ -47,7 +77,8 @@ struct CharacterDetailReducer {
                 return .none
 
             case .seePreviousCharacter:
-                guard let currentCharacter = state.currentCharacter.data else {
+                guard state.canSeePreviousCharacter,
+                      let currentCharacter = state.currentCharacter.data else {
                     return .none
                 }
 
@@ -62,7 +93,8 @@ struct CharacterDetailReducer {
                 }
 
             case .seeNextCharacter:
-                guard let currentCharacter = state.currentCharacter.data else {
+                guard state.canSeeNextCharacter,
+                    let currentCharacter = state.currentCharacter.data else {
                     return .none
                 }
 
@@ -91,11 +123,11 @@ struct CharacterDetailReducer {
 // MARK: Builder
 extension CharacterDetailReducer {
 
-    static func build(character: Character) -> CharacterDetailReducer {
+    static func build() -> CharacterDetailReducer {
         CharacterDetailReducer(
             getCharacterInteractor: GetCharacterInteractorFactory.build(),
-            getEpisodesByIdsInteractor: GetEpisodesByIdsInteractorFactory.build(),
-            character: character
+            getTotalCharactersCountInteractor: GetTotalCharactersCountInteractorFactory.build(),
+            getEpisodesByIdsInteractor: GetEpisodesByIdsInteractorFactory.build()
         )
     }
 }
