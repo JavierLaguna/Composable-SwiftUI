@@ -5,7 +5,6 @@ import Kingfisher
 struct CharacterDetailView: View {
 
     let store: StoreOf<CharacterDetailReducer>
-    let mode: Mode
 
     @Namespace private var namespace
 
@@ -17,38 +16,24 @@ struct CharacterDetailView: View {
                     .ignoresSafeArea()
 
             } else {
-                MainContentView(
-                    mode: mode,
-                    namespace: namespace
-                )
+                MainContentView(namespace: namespace)
             }
         }
         .background(BackgroundPatternSecondaryView())
         .ignoresSafeArea(.container, edges: .bottom)
         .environment(store)
         .task {
-            if mode == .allInfo {
-                store.send(.getTotalCharactersCount)
-                store.send(.getEpisodes)
-            }
+            store.send(.onAppear)
         }
     }
 }
 
-// MARK: Mode
-extension CharacterDetailView {
-
-    enum Mode {
-        case basicInfo
-        case allInfo
-    }
-}
-
-private struct GeometryEffectIds {
+private struct GeometryId {
     static let character = "characterImage"
     static let status = "characterStatus"
     static let name = "characterName"
     static let species = "characterSpecies"
+    static let scroll = "scrollView"
 }
 
 private struct MainContentView: View {
@@ -56,7 +41,6 @@ private struct MainContentView: View {
     @Environment(StoreOf<CharacterDetailReducer>.self)
     private var store
 
-    let mode: CharacterDetailView.Mode
     let namespace: Namespace.ID
 
     private let collapseThreshold: CGFloat = 120
@@ -91,7 +75,6 @@ private struct MainContentView: View {
             if isCollapsed {
                 CollapsedHeaderView(
                     character: character,
-                    mode: mode,
                     namespace: namespace
                 )
 
@@ -112,21 +95,18 @@ private struct MainContentView: View {
                 ScrollViewReader { _ in
                     ScrollView {
                         VStack(spacing: Theme.Space.none) {
-                            DetailContentView(
-                                mode: mode,
-                                namespace: namespace
-                            )
+                            DetailContentView(namespace: namespace)
                         }
                         .background(
                             GeometryReader { geometry in
                                 Color.clear
-                                    .onChange(of: geometry.frame(in: .named("scrollView")).minY) { _, newValue in
+                                    .onChange(of: geometry.frame(in: .named(GeometryId.scroll)).minY) { _, newValue in
                                         updateCollapsedState(scrollOffset: abs(newValue))
                                     }
                             }
                         )
                     }
-                    .coordinateSpace(name: "scrollView")
+                    .coordinateSpace(name: GeometryId.scroll)
                 }
             }
             .clipped()
@@ -148,14 +128,14 @@ private struct ExpandedHeaderView: View {
         .overlay(alignment: .topTrailing) {
             VStack(alignment: .trailing, spacing: Theme.Space.xl) {
                 StatusBadgeView(status: character.status)
-                    .matchedGeometryEffect(id: GeometryEffectIds.status, in: namespace)
+                    .matchedGeometryEffect(id: GeometryId.status, in: namespace)
 
                 InfoCard(
                     title: R.string.localizable.characterDetailSpecies(),
                     value: character.species
                 )
                 .fixedSize(horizontal: true, vertical: true)
-                .matchedGeometryEffect(id: GeometryEffectIds.species, in: namespace)
+                .matchedGeometryEffect(id: GeometryId.species, in: namespace)
             }
             .offset(
                 x: Theme.Space.xxxl,
@@ -169,7 +149,6 @@ private struct ExpandedHeaderView: View {
 struct CollapsedHeaderView: View {
 
     let character: Character
-    let mode: CharacterDetailView.Mode
     let namespace: Namespace.ID
 
     var body: some View {
@@ -181,16 +160,16 @@ struct CollapsedHeaderView: View {
                     .specialBodyStyle()
                     .lineLimit(1)
                     .matchedGeometryEffect(
-                        id: GeometryEffectIds.name,
+                        id: GeometryId.name,
                         in: namespace
                     )
 
                 HStack(spacing: Theme.Space.m) {
                     StatusBadgeView(status: character.status)
-                        .matchedGeometryEffect(id: GeometryEffectIds.status, in: namespace)
+                        .matchedGeometryEffect(id: GeometryId.status, in: namespace)
 
                     TagView(text: character.species)
-                        .matchedGeometryEffect(id: GeometryEffectIds.species, in: namespace)
+                        .matchedGeometryEffect(id: GeometryId.species, in: namespace)
                 }
             }
 
@@ -252,7 +231,7 @@ private struct CharacterImageView: View {
                             .stroke(Theme.Colors.primary, lineWidth: 4)
                     )
             }
-            .matchedGeometryEffect(id: GeometryEffectIds.character, in: namespace)
+            .matchedGeometryEffect(id: GeometryId.character, in: namespace)
     }
 }
 
@@ -266,7 +245,6 @@ private struct DetailContentView: View {
     @Environment(CharactersCoordinator.self)
     private var charactersCoordinator
 
-    let mode: CharacterDetailView.Mode
     let namespace: Namespace.ID
 
     var character: Character {
@@ -294,7 +272,7 @@ private struct DetailContentView: View {
                         Text(character.name)
                             .specialTitleStyle()
                             .matchedGeometryEffect(
-                                id: GeometryEffectIds.name,
+                                id: GeometryId.name,
                                 in: namespace
                             )
 
@@ -331,7 +309,7 @@ private struct DetailContentView: View {
                 }
                 .padding(.horizontal, Theme.Space.xxl)
 
-                if mode == .allInfo {
+                if store.viewMode == .allInfo {
                     if let episodes = store.episodes.data {
                         EpisodeCarouselView(
                             episodes: episodes,
@@ -376,7 +354,7 @@ private struct DetailContentView: View {
                         HStack {
                             CircleIconButton(
                                 icon: "chevron.left",
-                                isDisabled: !store.state.canSeePreviousCharacter
+                                isDisabled: !store.canSeePreviousCharacter
                             ) {
                                 store.send(.seePreviousCharacter)
                             }
@@ -385,7 +363,7 @@ private struct DetailContentView: View {
 
                             CircleIconButton(
                                 icon: "chevron.right",
-                                isDisabled: !store.state.canSeeNextCharacter
+                                isDisabled: !store.canSeeNextCharacter
                             ) {
                                 store.send(.seeNextCharacter)
                             }
@@ -433,17 +411,17 @@ private struct InfoCard: View {
 }
 
 #Preview {
-    let character = Character.mock
-
     NavigationStack {
         CharacterDetailView(
             store: Store(
-                initialState: .init(character: character),
+                initialState: .init(
+                    character: Character.mock,
+                    viewMode: .allInfo
+                ),
                 reducer: {
                     CharacterDetailReducer.build()
                 }
-            ),
-            mode: .allInfo
+            )
         )
     }
     .allEnvironmentsInjected

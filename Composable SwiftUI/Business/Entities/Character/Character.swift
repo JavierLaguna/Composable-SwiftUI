@@ -32,4 +32,21 @@ struct Character: Equatable, Identifiable, Hashable {
             lastEpisode: lastEpisode
         )
     }
+
+    func withDescription(_ description: String?) -> Character {
+        Character(
+            id: id,
+            name: name,
+            status: status,
+            species: species,
+            type: type,
+            gender: gender,
+            origin: origin,
+            location: location,
+            image: image,
+            episodes: episodes,
+            created: created,
+            description: description
+        )
+    }
 }
