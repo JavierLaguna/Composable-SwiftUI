@@ -1,8 +1,28 @@
-//
-//  EpisodesListReducer.swift
-//  Composable SwiftUI
-//
-//  Created by Javier Laguna on 26/6/25.
-//
+import ComposableArchitecture
 
-import Foundation
+@Reducer
+struct EpisodesListReducer {
+
+    @ObservableState
+    struct State: Equatable {
+        var episodes: [Episode]
+    }
+
+    enum Action {
+
+    }
+
+    var body: some ReducerOf<Self> {
+        Reduce { _, _ in
+            .none
+        }
+    }
+}
+
+// MARK: Builder
+extension EpisodesListReducer {
+
+    static func build() -> EpisodesListReducer {
+        EpisodesListReducer()
+    }
+}

@@ -30,7 +30,9 @@ struct MainView: View {
             .tag(MainCoordinator.Tab.characters.rawValue)
 
             NavigationStack {
-                Text("TODO: EPISODES")
+                EpisodesCoordinator.Routes
+                    .root
+                    .navigationDestination(for: EpisodesCoordinator.Routes.self) { $0 }
             }
             .tabItem {
                 Label(

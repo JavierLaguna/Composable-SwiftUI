@@ -50,3 +50,6 @@
 
 // CharacterNeighbors
 "characterNeighbors.residents" = "Residents";
+
+// EpisodesList
+"episodesList.title" = "Episodes";

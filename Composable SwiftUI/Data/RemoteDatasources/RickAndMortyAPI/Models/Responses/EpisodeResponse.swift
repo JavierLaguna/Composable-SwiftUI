@@ -29,7 +29,7 @@ struct EpisodeResponse: Codable {
             id: id,
             name: name,
             airDate: formatter2.date(from: airDate)!, // TODO: JLI
-            episode: episode,
+            code: episode,
             characters: characters.compactMap { $0.getIdFromUrl() },
             created: formatter.date(from: created)!, // TODO: JLI
             image: nil

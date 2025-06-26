@@ -40,7 +40,7 @@ struct GetEpisodesByIdsInteractorDefault: GetEpisodesByIdsInteractor, ManagedErr
                             id: episode.id,
                             name: episode.name,
                             airDate: episode.airDate,
-                            episode: episode.episode,
+                            code: episode.code,
                             characters: episode.characters,
                             created: episode.created,
                             image: image

@@ -1,18 +1,31 @@
-//
-//  EpisodeCellView.swift
-//  Composable SwiftUI
-//
-//  Created by Javier Laguna on 26/6/25.
-//
-
 import SwiftUI
 
 struct EpisodeCellView: View {
+
+    let episode: Episode
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: Theme.Space.none) {
+            VStack(alignment: .leading, spacing: Theme.Space.none) {
+                Text(episode.name)
+                    .specialSubtitleStyle()
+
+                Text("\(episode.code) | \(episode.airDate.formatted(date: .long, time: .omitted))")
+                    .bodyStyle()
+            }
+
+            Spacer()
+
+            Image(uiImage: episode.image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 150, height: 100)
+                .clipped()
+                .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.l, style: .continuous))
+        }
     }
 }
 
 #Preview {
-    EpisodeCellView()
+    EpisodeCellView(episode: Episode.mock)
 }
