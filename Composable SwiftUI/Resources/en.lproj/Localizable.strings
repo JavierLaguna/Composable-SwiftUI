@@ -1,5 +1,7 @@
 // Commons
 "commons.retry" = "Retry";
+"commons.episodes" = "Episodes";
+"commons.seeAll" = "Ver todos";
 
 // TabBar
 "tabBar.characters" = "Characters";
@@ -9,7 +11,7 @@
 // CharacterStatus
 "characterStatus.alive" = "Alive";
 "characterStatus.dead" = "Dead";
-"characterStatus.unknown" = "unknown";
+"characterStatus.unknown" = "Unknown";
 
 // CharacterGender
 "characterGender.female" = "Female";
@@ -27,8 +29,10 @@
 "characterDetail.type" = "Type";
 "characterDetail.gender" = "Gender";
 "characterDetail.origin" = "Origin";
-"characterDetail.location" = "Location";
-"characterDetail.numberOfEpisodes" = "Number of episodes";
+"characterDetail.location" = "Last Location";
+"characterDetail.numberOfEpisodes" = "Nº Episodes";
+"characterDetail.beerBuddy" = "Beer buddy";
+"characterDetail.neighbors" = "Neighbors";
 
 // MatchBuddy
 "matchBuddy.location" = "Location";

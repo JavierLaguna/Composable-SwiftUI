@@ -3,16 +3,11 @@ import SwiftUI
 
 struct Theme {
 
-    @MainActor
-    static var isDarkMode: Bool {
-        return UIScreen.main.traitCollection.userInterfaceStyle == .dark
-    }
-
     // MARK: Colors
     struct Colors {
         static let primary = R.color.green_200.color
 
-        static let text = R.color.green_200.color
+        static let text = Color(light: R.color.black_custom.color, dark: R.color.white_custom.color)
         static let secondaryText = R.color.white_custom.color
 
         static let buttonText = R.color.white_custom.color
@@ -20,69 +15,91 @@ struct Theme {
 
         static let navIcon = R.color.white_custom.color
 
-        @MainActor
-        static var background: Color {
-            return Theme.isDarkMode ? R.color.gray_custom.color : R.color.white_custom.color
-        }
+        static let background = Color(light: R.color.white_custom.color, dark: R.color.black_custom.color).opacity(0.95)
+        static let backgroundSecondary = Color(light: R.color.white_custom.color, dark: R.color.gray_custom.color)
     }
 
     // MARK: Fonts
     struct Fonts {
 
-        private enum FontStyle: String {
-            case regular
-            case medium
-            case bold
-            case extraBold
-            case light
+        // .weight(.medium) is the default
+        static private let fontName = "HelveticaNeue-CondensedBold"
 
-            var font: UIFont {
-                // let fontName = "WubbaLubbaDubDub-\(rawValue.capitalized)"
+        static let title: Font = .custom(fontName, size: 32)
+        static let titleBold: Font = .custom(fontName, size: 32).weight(.heavy)
+        static let title2: Font = .custom(fontName, size: 24)
+        static let title2Bold: Font = .custom(fontName, size: 24).weight(.bold)
+
+        static let subtitle: Font = .custom(fontName, size: 20)
+
+        static let sectionTitle: Font = .custom(fontName, size: 16).weight(.black)
+
+        static let body: Font = .custom(fontName, size: 16).weight(.regular)
+        static let bodyBold: Font = .custom(fontName, size: 16).weight(.bold)
+        static let body2: Font = .custom(fontName, size: 14).weight(.regular)
+        static let body2Bold: Font = .custom(fontName, size: 14).weight(.bold)
+
+        static let chip: Font = .custom(fontName, size: 12).weight(.heavy)
+
+        static let button: Font = .custom(fontName, size: 18).weight(.regular)
+
+        struct Special {
+            static let font: UIFont = {
                 let fontName = "WubbaLubbaDubDubRegular"
                 guard let font = UIFont(name: fontName, size: 14) else {
                     return UIFont.systemFont(ofSize: 14)
                 }
                 return font
-            }
+            }()
+
+            static let title = Font(font.withSize(34))
+            static let subtitle = Font(font.withSize(28))
+            static let body = Font(font.withSize(18))
+            static let button = Font(font.withSize(18))
         }
-
-        static let title = FontStyle.medium.font.fontWithSize(32)
-        static let titleBold = FontStyle.bold.font.fontWithSize(32)
-        static let title2 = FontStyle.medium.font.fontWithSize(24)
-        static let title2Bold = FontStyle.bold.font.fontWithSize(24)
-
-        static let subtitle = FontStyle.medium.font.fontWithSize(20)
-
-        static let body = FontStyle.regular.font.fontWithSize(16)
-        static let body2 = FontStyle.regular.font.fontWithSize(14)
-
-        static let button = FontStyle.regular.font.fontWithSize(18)
     }
 
     // MARK: Space
     struct Space {
         private static let spacer: CGFloat = 8
 
-        static let none: CGFloat = 0  // 0
-        static let xs = spacer * 0.25  // 2
-        static let s = spacer * 0.5  // 4
-        static let m = spacer * 1  // 8
-        static let l = spacer * 1.5  // 14
-        static let xl = spacer * 2  // 16
-        static let xxl = spacer * 3  // 24
-        static let xxxl = spacer * 4  // 32
+        /** 0 */
+        static let none: CGFloat = 0
+        /** 2 */
+        static let xs = spacer * 0.25
+        /** 4 */
+        static let s = spacer * 0.5
+        /** 8 */
+        static let m = spacer * 1
+        /** 12 */
+        static let l = spacer * 1.5
+        /** 16 */
+        static let xl = spacer * 2
+        /** 24 */
+        static let xxl = spacer * 3
+        /** 32 */
+        static let xxxl = spacer * 4
     }
 
+    // MARK: Radius
     struct Radius {
         private static let spacer: CGFloat = 10
 
-        static let none: CGFloat = 0  // 0
-        static let xs = spacer * 0.25  // 2.5
-        static let s = spacer * 0.5  // 5
-        static let m = spacer * 1  // 10
-        static let l = spacer * 1.5  // 15
-        static let xl = spacer * 2  // 20
-        static let xxl = spacer * 3  // 30
-        static let xxxl = spacer * 4  // 40
+        /** 0 */
+        static let none: CGFloat = 0
+        /** 2.5 */
+        static let xs = spacer * 0.25
+        /** 5 */
+        static let s = spacer * 0.5
+        /** 10 */
+        static let m = spacer * 1
+        /** 15 */
+        static let l = spacer * 1.5
+        /** 20 */
+        static let xl = spacer * 2
+        /** 30 */
+        static let xxl = spacer * 3
+        /** 40 */
+        static let xxxl = spacer * 4
     }
 }

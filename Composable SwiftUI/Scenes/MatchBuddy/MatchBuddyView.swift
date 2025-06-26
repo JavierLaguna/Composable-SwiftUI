@@ -126,13 +126,13 @@ struct MatchBuddyView: View {
 
                     infoView(
                         title: R.string.localizable.matchBuddyFirstTimeTogether(),
-                        value: store.beerBuddy.data?.firstEpisode.date,
+                        value: store.beerBuddy.data?.firstEpisode.airDate.formatted(date: .long, time: .omitted),
                         isLoading: store.beerBuddy.isLoading
                     )
 
                     infoView(
                         title: R.string.localizable.matchBuddyLastTimeTogether(),
-                        value: store.beerBuddy.data?.lastEpisode.date,
+                        value: store.beerBuddy.data?.lastEpisode.airDate.formatted(date: .long, time: .omitted),
                         isLoading: store.beerBuddy.isLoading
                     )
                 }
@@ -169,23 +169,9 @@ struct MatchBuddyView: View {
         }
     )
 
-    let location = CharacterLocation(id: 1, name: "Earth")
-    let character = Character(
-        id: 1,
-        name: "Rick Sanchez",
-        status: .alive,
-        species: "Human",
-        type: "",
-        gender: .male,
-        origin: location,
-        location: location,
-        image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-        episodes: []
-    )
-
-    return MatchBuddyView(
+    MatchBuddyView(
         store: store,
-        character: character
+        character: Character.mock
     )
     .allEnvironmentsInjected
 }

@@ -22,7 +22,7 @@ struct ErrorView: View {
             }
         }
         .padding(Theme.Space.xxl)
-        .background(Theme.Colors.background)
+        .background(Theme.Colors.backgroundSecondary)
         .cornerRadius(Theme.Radius.xxl)
         .shadow(radius: Theme.Radius.m)
     }

@@ -22,31 +22,29 @@ struct CharacterCellView: View {
                     .zIndex(1)
 
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text(character?.name)
-                            .foregroundColor(Theme.Colors.text)
-                            .font(Theme.Fonts.body)
-                            .skeleton(with: showLoading)
 
-                        Text(character?.species)
-                            .foregroundColor(Theme.Colors.text)
-                            .font(Theme.Fonts.body2)
-                            .skeleton(with: showLoading)
+                    if let character {
+                        VStack(alignment: .leading, spacing: Theme.Space.l) {
+                            Text(character.name)
+                                .specialBodyStyle()
+                                .skeleton(with: showLoading)
 
-                        Text(character?.type)
-                            .foregroundColor(Theme.Colors.text)
-                            .font(Theme.Fonts.body2)
-                            .skeleton(with: showLoading)
+                            TagView(
+                                text: character.location.name,
+                                icon: Image(systemName: "globe.europe.africa.fill")
+                            )
+
+                            Spacer()
+                        }
+                        .padding(.top)
+                        .padding(.leading)
 
                         Spacer()
                     }
-                    .padding(.leading)
-
-                    Spacer()
                 }
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: 90)
-                .background(Theme.Colors.background)
+                .background(Theme.Colors.backgroundSecondary)
                 .cornerRadius(10)
             }
         }
@@ -55,19 +53,7 @@ struct CharacterCellView: View {
 }
 
 #Preview {
-    let location = CharacterLocation(id: 1, name: "Earth")
-    let character = Character(
-        id: 1,
-        name: "Rick Sanchez",
-        status: .alive,
-        species: "Human",
-        type: "",
-        gender: .male,
-        origin: location,
-        location: location,
-        image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-        episodes: []
-    )
-
-    return CharacterCellView(character: character)
+    CharacterCellView(character: Character.mock)
+        .padding()
+        .background(.black)
 }

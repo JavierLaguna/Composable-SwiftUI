@@ -1,5 +1,5 @@
 {
-  "originHash" : "2f91c2086a4dcc721ad36bceea8124021bfd980205de07b1aaf9d846c3a0e311",
+  "originHash" : "26701667c568c0dd053906f0f8d386ba8af69f76ac9d92ae677841896e38498d",
   "pins" : [
     {
       "identity" : "collectionconcurrencykit",
@@ -56,15 +56,6 @@
       }
     },
     {
-      "identity" : "scalingheaderscrollview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/exyte/ScalingHeaderScrollView.git",
-      "state" : {
-        "revision" : "7cbab18ff10016cad6821ff1d5e24ef55848fa35",
-        "version" : "0.2.0"
-      }
-    },
-    {
       "identity" : "skeletonui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CSolanaM/SkeletonUI.git",
@@ -78,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/SourceKitten.git",
       "state" : {
-        "revision" : "eb6656ed26bdef967ad8d07c27e2eab34dc582f2",
-        "version" : "0.37.0"
+        "revision" : "453f75b8a3bb2c3596c0d2dd422c289788233a22",
+        "version" : "0.37.1"
       }
     },
     {
@@ -87,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser.git",
       "state" : {
-        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
-        "version" : "1.5.0"
+        "revision" : "011f0c765fb46d9cac61bca19be0527e99c98c8b",
+        "version" : "1.5.1"
       }
     },
     {
@@ -114,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections",
       "state" : {
-        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
-        "version" : "1.1.4"
+        "revision" : "c1805596154bb3a265fd91b8ac0c4433b4348fb0",
+        "version" : "1.2.0"
       }
     },
     {
@@ -123,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "revision" : "b1d27a82b498b8e697acabd8cc01b585d26aab19",
-        "version" : "1.19.1"
+        "revision" : "6574de2396319a58e86e2178577268cb4aeccc30",
+        "version" : "1.20.2"
       }
     },
     {
@@ -168,8 +159,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-navigation",
       "state" : {
-        "revision" : "db6bc9dbfed001f21e6728fd36413d9342c235b4",
-        "version" : "2.3.0"
+        "revision" : "ae208d1a5cf33aee1d43734ea780a09ada6e2a21",
+        "version" : "2.3.1"
       }
     },
     {
@@ -186,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-sharing",
       "state" : {
-        "revision" : "2c41085ebcb859ef74802b07367c433c1000100a",
-        "version" : "2.5.0"
+        "revision" : "75e846ee3159dc75b3a29bfc24b6ce5a557ddca9",
+        "version" : "2.5.2"
       }
     },
     {
@@ -195,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
       "state" : {
-        "revision" : "1be8144023c367c5de701a6313ed29a3a10bf59b",
-        "version" : "1.18.3"
+        "revision" : "37230a37e83f1b7023be08e1b1a2603fcb1567fb",
+        "version" : "1.18.4"
       }
     },
     {
@@ -215,15 +206,6 @@
       "state" : {
         "revision" : "625792423014cc49b0a1e5a1a5c0d6b8b3de10f9",
         "version" : "0.59.1"
-      }
-    },
-    {
-      "identity" : "swiftui-introspect",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
-      "state" : {
-        "revision" : "121c146fe591b1320238d054ae35c81ffa45f45a",
-        "version" : "0.12.0"
       }
     },
     {
@@ -267,8 +249,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/Yams.git",
       "state" : {
-        "revision" : "b4b8042411dc7bbb696300a34a4bf3ba1b7ad19b",
-        "version" : "5.3.1"
+        "revision" : "3d6871d5b4a5cd519adf233fbb576e0a2af71c17",
+        "version" : "5.4.0"
       }
     }
   ],
