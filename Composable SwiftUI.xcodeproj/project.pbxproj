@@ -86,6 +86,7 @@
 		49A1A2922E0DB9ED00B97442 /* BackgroundPatternPrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A1A2912E0DB9ED00B97442 /* BackgroundPatternPrimaryView.swift */; };
 		49A1A2C12E0EB39F00B97442 /* GetEpisodesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A1A2C02E0EB39F00B97442 /* GetEpisodesResponse.swift */; };
 		49A1A2E72E0EC91600B97442 /* FullScreenLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A1A2E62E0EC91600B97442 /* FullScreenLoadingView.swift */; };
+		49A1A2FB2E0EDA9E00B97442 /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A1A2FA2E0EDA9E00B97442 /* EpisodeDetailView.swift */; };
 		49A4A621282F948C00D43FB3 /* ComposableSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4A620282F948C00D43FB3 /* ComposableSwiftUIApp.swift */; };
 		49A4A623282F948C00D43FB3 /* CharactersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4A622282F948C00D43FB3 /* CharactersListView.swift */; };
 		49A4A625282F949100D43FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A4A624282F949100D43FB3 /* Assets.xcassets */; };
@@ -240,6 +241,7 @@
 		49A1A2912E0DB9ED00B97442 /* BackgroundPatternPrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPatternPrimaryView.swift; sourceTree = "<group>"; };
 		49A1A2C02E0EB39F00B97442 /* GetEpisodesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesResponse.swift; sourceTree = "<group>"; };
 		49A1A2E62E0EC91600B97442 /* FullScreenLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenLoadingView.swift; sourceTree = "<group>"; };
+		49A1A2FA2E0EDA9E00B97442 /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
 		49A4A61D282F948C00D43FB3 /* Composable SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Composable SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A4A620282F948C00D43FB3 /* ComposableSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableSwiftUIApp.swift; sourceTree = "<group>"; };
 		49A4A622282F948C00D43FB3 /* CharactersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListView.swift; sourceTree = "<group>"; };
@@ -512,6 +514,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		49A1A2F92E0EDA8E00B97442 /* EpisodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				49A1A2FA2E0EDA9E00B97442 /* EpisodeDetailView.swift */,
+			);
+			path = EpisodeDetail;
+			sourceTree = "<group>";
+		};
 		49A4A614282F948C00D43FB3 = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +636,7 @@
 		49A4A65A282F974E00D43FB3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				49A1A2F92E0EDA8E00B97442 /* EpisodeDetail */,
 				49E4F80D283D533E0037FD72 /* CharacterDetail */,
 				4987ED392A6AAB1C00AA7839 /* CharacterNeighbors */,
 				49A4A668282F9A5B00D43FB3 /* CharactersList */,
@@ -1179,6 +1190,7 @@
 				49A1A2922E0DB9ED00B97442 /* BackgroundPatternPrimaryView.swift in Sources */,
 				49A1A2E72E0EC91600B97442 /* FullScreenLoadingView.swift in Sources */,
 				49529C9A2A783B7B002F7594 /* NeighborsCellView.swift in Sources */,
+				49A1A2FB2E0EDA9E00B97442 /* EpisodeDetailView.swift in Sources */,
 				497C1ED52C2033490041297A /* PlainNavLinkModifier.swift in Sources */,
 				49EDA8CA283BFC3D002C9C80 /* BeerBuddy.swift in Sources */,
 				4987ED3C2A6AAB2D00AA7839 /* CharacterNeighborsView.swift in Sources */,
