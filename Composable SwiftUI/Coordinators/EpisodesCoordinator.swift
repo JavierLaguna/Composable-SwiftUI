@@ -21,6 +21,7 @@ extension EpisodesCoordinator {
 
     enum Routes: Hashable, View {
         case root
+        case episodeDetail(Episode)
 
         // MARK: View
         var body: some View {
@@ -32,6 +33,9 @@ extension EpisodesCoordinator {
                         EpisodesListReducer.build()
                     }
                 ))
+
+            case .episodeDetail(let episode):
+                EpisodeDetailView(episode: episode)
             }
         }
     }

@@ -17,6 +17,7 @@ struct Theme {
 
         static let background = Color(light: R.color.white_custom.color, dark: R.color.black_custom.color).opacity(0.95)
         static let backgroundSecondary = Color(light: R.color.white_custom.color, dark: R.color.gray_custom.color).opacity(0.95)
+        static let backgroundTertiary = R.color.green_900.color
     }
 
     // MARK: Fonts

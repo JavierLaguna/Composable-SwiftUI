@@ -43,8 +43,12 @@ final class CharactersCoordinator {
         path.append(.neighbors(character))
     }
 
-    func navigateEpisodesList(episodes: [Episode]) {
+    func navigateToEpisodesList(episodes: [Episode]) {
         path.append(.episodes(episodes))
+    }
+
+    func navigateToEpisodeDetail(episode: Episode) {
+        path.append(.episodeDetail(episode))
     }
 
     func showBeerBuddyInfo() {
@@ -65,6 +69,7 @@ extension CharactersCoordinator {
         case beerBuddy(Character)
         case neighbors(Character)
         case episodes([Episode])
+        case episodeDetail(Episode)
 
         // MARK: View
         var body: some View {
@@ -121,6 +126,9 @@ extension CharactersCoordinator {
                         EpisodesListReducer.build()
                     }
                 ))
+
+            case .episodeDetail(let episode):
+                EpisodeDetailView(episode: episode)
             }
         }
     }

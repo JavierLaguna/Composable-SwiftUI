@@ -311,11 +311,11 @@ private struct DetailContentView: View {
                     if let episodes = store.episodes.data {
                         EpisodeCarouselView(
                             episodes: episodes,
-                            onEpisodeTap: { _ in
-                                // TODO: JLI - Implement
+                            onEpisodeTap: {
+                                charactersCoordinator.navigateToEpisodeDetail(episode: $0)
                             },
                             onSeeAll: {
-                                charactersCoordinator.navigateEpisodesList(episodes: episodes)
+                                charactersCoordinator.navigateToEpisodesList(episodes: episodes)
                             }
                         )
                         .padding(.top, Theme.Space.m)
