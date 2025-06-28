@@ -110,6 +110,7 @@ private struct CharactersList: View {
                     charactersCoordinator.navigateToCharacterDetail(character: character)
                 } label: {
                     CharacterCellView(character: character)
+                        .padding(.bottom, character == characters.last ? Theme.Space.tabBarHeight : 0)
                         .onAppear {
                             if characters.last == character {
                                 onEndReached()

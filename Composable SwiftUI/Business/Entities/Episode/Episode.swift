@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-struct Episode: Equatable, Identifiable {
+struct Episode: Equatable, Identifiable, Hashable {
     let id: Int
     let name: String
     let airDate: Date

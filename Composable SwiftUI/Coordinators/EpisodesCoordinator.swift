@@ -27,7 +27,7 @@ extension EpisodesCoordinator {
             switch self {
             case .root:
                 EpisodesListView(store: Store(
-                    initialState: EpisodesListReducer.State(episodes: Episode.mocks),
+                    initialState: .init(),
                     reducer: {
                         EpisodesListReducer.build()
                     }

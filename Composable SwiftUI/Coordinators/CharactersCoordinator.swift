@@ -43,6 +43,10 @@ final class CharactersCoordinator {
         path.append(.neighbors(character))
     }
 
+    func navigateEpisodesList(episodes: [Episode]) {
+        path.append(.episodes(episodes))
+    }
+
     func showBeerBuddyInfo() {
         sheet = .beerBuddyInfo
     }
@@ -60,6 +64,7 @@ extension CharactersCoordinator {
         case characterDetail(Character)
         case beerBuddy(Character)
         case neighbors(Character)
+        case episodes([Episode])
 
         // MARK: View
         var body: some View {
@@ -106,6 +111,16 @@ extension CharactersCoordinator {
                         }
                     )
                 )
+
+            case .episodes(let episodes):
+                EpisodesListView(store: Store(
+                    initialState: .init(
+                        episodes: episodes
+                    ),
+                    reducer: {
+                        EpisodesListReducer.build()
+                    }
+                ))
             }
         }
     }

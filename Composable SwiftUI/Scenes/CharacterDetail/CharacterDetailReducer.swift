@@ -6,7 +6,7 @@ struct CharacterDetailReducer {
     let getCharacterInteractor: any GetCharacterInteractor
     let getCharacterDescriptionInteractor: any GetCharacterDescriptionInteractor
     let getTotalCharactersCountInteractor: any GetTotalCharactersCountInteractor
-    let getEpisodesByIdsInteractor: any GetEpisodesByIdsInteractor
+    let getEpisodesByIdsInteractor: any GetEpisodesInteractor
 
     @ObservableState
     struct State: Equatable {
@@ -180,7 +180,7 @@ extension CharacterDetailReducer {
             getCharacterInteractor: GetCharacterInteractorFactory.build(),
             getCharacterDescriptionInteractor: GetCharacterDescriptionInteractorFactory.build(),
             getTotalCharactersCountInteractor: GetTotalCharactersCountInteractorFactory.build(),
-            getEpisodesByIdsInteractor: GetEpisodesByIdsInteractorFactory.build()
+            getEpisodesByIdsInteractor: GetEpisodesInteractorFactory.build()
         )
     }
 }
