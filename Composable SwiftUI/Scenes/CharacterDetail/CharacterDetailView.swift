@@ -386,7 +386,7 @@ private struct InfoCard: View {
     let value: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Theme.Space.s) {
+        VStack(alignment: .center, spacing: Theme.Space.s) {
             Text(title)
                 .sectionTitleStyle()
 
@@ -394,6 +394,7 @@ private struct InfoCard: View {
 
             Text(value)
                 .bodyStyle(small: true, bold: true)
+                .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(Theme.Space.xl)

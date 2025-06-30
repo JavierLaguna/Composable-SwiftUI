@@ -14,6 +14,10 @@ final class EpisodesCoordinator {
             set: { self.path = $0 }
         )
     }
+
+    func navigateToEpisodeDetail(episode: Episode) {
+        path.append(.episodeDetail(episode))
+    }
 }
 
 // MARK: Routes

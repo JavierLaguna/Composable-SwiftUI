@@ -50,6 +50,9 @@ private struct EpisodesList: View {
     @Environment(StoreOf<EpisodesListReducer>.self)
     private var store
 
+    @Environment(EpisodesCoordinator.self)
+    private var episodesCoordinator
+
     let episodes: [Episode]
     let isLoading: Bool
 
@@ -57,12 +60,17 @@ private struct EpisodesList: View {
         List {
             Group {
                 ForEach(episodes) { episode in
-                    EpisodeCellView(episode: episode)
-                        .onAppear {
-                            if episode == episodes.last {
-                                store.send(.getMoreEpisodes)
+                    Button {
+                        episodesCoordinator.navigateToEpisodeDetail(episode: episode)
+
+                    } label: {
+                        EpisodeCellView(episode: episode)
+                            .onAppear {
+                                if episode == episodes.last {
+                                    store.send(.getMoreEpisodes)
+                                }
                             }
-                        }
+                    }
                 }
 
                 if isLoading {

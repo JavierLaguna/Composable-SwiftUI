@@ -7,10 +7,12 @@ struct MainView: View {
 
     @State private var mainCoordinator = MainCoordinator()
     @State private var charactersCoordinator: CharactersCoordinator
+    @State private var episodesCoordinator: EpisodesCoordinator
 
     init(mainStore: StoreOf<MainReducer>) {
         self.mainStore = mainStore
         charactersCoordinator = CharactersCoordinator(mainStore: mainStore)
+        episodesCoordinator = EpisodesCoordinator()
     }
 
     var body: some View {
@@ -29,7 +31,7 @@ struct MainView: View {
             }
             .tag(MainCoordinator.Tab.characters.rawValue)
 
-            NavigationStack {
+            NavigationStack(path: episodesCoordinator.pathBinding) {
                 EpisodesCoordinator.Routes
                     .root
                     .navigationDestination(for: EpisodesCoordinator.Routes.self) { $0 }
@@ -55,6 +57,7 @@ struct MainView: View {
         }
         .environment(mainCoordinator)
         .environment(charactersCoordinator)
+        .environment(episodesCoordinator)
     }
 }
 

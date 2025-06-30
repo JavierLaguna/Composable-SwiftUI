@@ -11,25 +11,7 @@ struct EpisodeDetailView: View {
             Image(uiImage: episode.image)
                 .resizable()
                 .scaledToFill()
-                .frame(
-                    width: .infinity,
-                    height: 200
-                )
-//                .overlay(alignment: .bottom) {
-//                    LinearGradient(
-//                        colors: [
-//                            Color.clear,
-//                            Self.bgColor.opacity(0.3),
-//                            Self.bgColor.opacity(0.5),
-//                            Self.bgColor.opacity(0.7),
-//                            Self.bgColor.opacity(0.85),
-//                            Self.bgColor
-//                        ],
-//                        startPoint: .top,
-//                        endPoint: .bottom
-//                    )
-//                    .frame(height: 100)
-//                }
+                .frame(height: 200)
 
                 LinearGradient(
                     colors: [
@@ -47,9 +29,9 @@ struct EpisodeDetailView: View {
 
                 Text(episode.name)
                     .specialTitleStyle()
+                    .multilineTextAlignment(.center)
 
             ScrollView {
-
                 HStack {
                     HStack(spacing: Theme.Space.none) {
                         Image(systemName: "calendar")
