@@ -5,18 +5,22 @@ struct EpisodesListView: View {
 
     let store: StoreOf<EpisodesListReducer>
 
-    var episodes: [Episode] {
-        store.episodes.data ?? [] // TODO: JLI - FIX
-    }
-
     var body: some View {
         Group {
             switch store.episodes.state {
-            case .loading, .initial:
-                FullScreenLoadingView()
+            case .initial,
+                    .loading,
+                    .populated:
 
-            case .populated(let episodes):
-                EpisodesList(episodes: episodes)
+                if let episodes = store.episodes.data {
+                    EpisodesList(
+                        episodes: episodes,
+                        isLoading: store.episodes.isLoading
+                    )
+
+                } else {
+                    FullScreenLoadingView()
+                }
 
             case .error(let error):
                 ErrorView(
@@ -47,17 +51,30 @@ private struct EpisodesList: View {
     private var store
 
     let episodes: [Episode]
+    let isLoading: Bool
 
     var body: some View {
         List {
-            ForEach(episodes) { episode in
-                EpisodeCellView(episode: episode)
-                    .padding(.bottom, episode == episodes.last ? Theme.Space.tabBarHeight : 0)
-                    .onAppear {
-                        if episode == episodes.last {
-                            store.send(.getMoreEpisodes)
+            Group {
+                ForEach(episodes) { episode in
+                    EpisodeCellView(episode: episode)
+                        .onAppear {
+                            if episode == episodes.last {
+                                store.send(.getMoreEpisodes)
+                            }
                         }
+                }
+
+                if isLoading {
+                    HStack {
+                        Spacer()
+                        LoadingView()
+                        Spacer()
                     }
+                }
+
+                Color.clear
+                    .frame(height: Theme.Space.tabBarHeight)
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
