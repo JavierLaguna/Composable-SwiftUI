@@ -19,9 +19,11 @@ struct MainView: View {
         TabView(selection: mainCoordinator.tabSelectionBinding) {
 
             NavigationStack(path: charactersCoordinator.pathBinding) {
-                CharactersCoordinator.Routes
-                    .root(mainStore)
-                    .navigationDestination(for: CharactersCoordinator.Routes.self) { $0 }
+                charactersCoordinator
+                    .view(for: .root)
+                    .navigationDestination(for: CharactersCoordinator.Routes.self) {
+                        charactersCoordinator.view(for: $0)
+                    }
             }
             .tabItem {
                 Label(
@@ -32,9 +34,11 @@ struct MainView: View {
             .tag(MainCoordinator.Tab.characters.rawValue)
 
             NavigationStack(path: episodesCoordinator.pathBinding) {
-                EpisodesCoordinator.Routes
-                    .root
-                    .navigationDestination(for: EpisodesCoordinator.Routes.self) { $0 }
+                episodesCoordinator
+                    .view(for: .root)
+                    .navigationDestination(for: EpisodesCoordinator.Routes.self) {
+                        episodesCoordinator.view(for: $0)
+                    }
             }
             .tabItem {
                 Label(

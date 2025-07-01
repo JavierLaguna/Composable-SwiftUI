@@ -3,7 +3,12 @@ import ComposableArchitecture
 
 struct EpisodesListView: View {
 
+    protocol Coordinatable {
+        func onSelect(episode: Episode)
+    }
+
     let store: StoreOf<EpisodesListReducer>
+    let coordinator: any Coordinatable
 
     var body: some View {
         Group {
@@ -15,7 +20,8 @@ struct EpisodesListView: View {
                 if let episodes = store.episodes.data {
                     EpisodesList(
                         episodes: episodes,
-                        isLoading: store.episodes.isLoading
+                        isLoading: store.episodes.isLoading,
+                        coordinator: coordinator
                     )
 
                 } else {
@@ -50,18 +56,16 @@ private struct EpisodesList: View {
     @Environment(StoreOf<EpisodesListReducer>.self)
     private var store
 
-    @Environment(EpisodesCoordinator.self)
-    private var episodesCoordinator
-
     let episodes: [Episode]
     let isLoading: Bool
+    let coordinator: any EpisodesListView.Coordinatable
 
     var body: some View {
         List {
             Group {
                 ForEach(episodes) { episode in
                     Button {
-                        episodesCoordinator.navigateToEpisodeDetail(episode: episode)
+                        coordinator.onSelect(episode: episode)
 
                     } label: {
                         EpisodeCellView(episode: episode)
@@ -105,7 +109,8 @@ private struct EpisodesList: View {
                 reducer: {
                     EpisodesListReducer.build()
                 }
-            )
+            ),
+            coordinator: EpisodesCoordinator()
         )
     }
     .allEnvironmentsInjected

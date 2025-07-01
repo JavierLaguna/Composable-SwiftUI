@@ -2,7 +2,7 @@ import SwiftUI
 import Observation
 
 @Observable
-class Coordinator<Route: Hashable, SheetType: Hashable>: ObservableObject {
+class Coordinator<Route: Hashable, SheetType: Hashable> {
 
     private(set) var path: [Route] = []
     private(set) var sheet: SheetType?

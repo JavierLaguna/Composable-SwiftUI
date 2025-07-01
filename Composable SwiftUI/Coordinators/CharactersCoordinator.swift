@@ -41,73 +41,76 @@ final class CharactersCoordinator: Coordinator<CharactersCoordinator.Routes, Cha
 // MARK: Routes
 extension CharactersCoordinator {
 
-    enum Routes: Hashable, View {
-        case root(StoreOf<MainReducer>)
+    enum Routes: Hashable {
+        case root
         case characterDetail(Character)
         case beerBuddy(Character)
         case neighbors(Character)
         case episodes([Episode])
         case episodeDetail(Episode)
+    }
 
-        // MARK: View
-        var body: some View {
-            switch self {
-            case .root(let mainStore):
-                let store = mainStore.scope(
-                    state: \.charactersListState,
-                    action: \.charactersListActions
-                )
-                CharactersListView(store: store)
+    @MainActor
+    @ViewBuilder
+    func view(for route: Routes) -> some View {
+        switch route {
+        case .root:
+            CharactersListView(store: mainStore.scope(
+                state: \.charactersListState,
+                action: \.charactersListActions
+            ))
 
-            case .characterDetail(let character):
-                CharacterDetailView(
-                    store: Store(
-                        initialState: .init(
-                            character: character,
-                            viewMode: .allInfo
-                        ),
-                        reducer: {
-                            CharacterDetailReducer.build()
-                        }
-                    )
-                )
-
-            case .beerBuddy(let character):
-                MatchBuddyView(
-                    store: Store(
-                        initialState: .init(),
-                        reducer: {
-                            MatchBuddyReducer.build()
-                        }
+        case .characterDetail(let character):
+            CharacterDetailView(
+                store: Store(
+                    initialState: .init(
+                        character: character,
+                        viewMode: .allInfo
                     ),
-                    character: character
+                    reducer: {
+                        CharacterDetailReducer.build()
+                    }
                 )
+            )
 
-            case .neighbors(let character):
-                CharacterNeighborsView(
-                    store: Store(
-                        initialState: .init(),
-                        reducer: {
-                            CharacterNeighborsReducer.build(
-                                locationId: character.location.id
-                            )
-                        }
-                    )
+        case .beerBuddy(let character):
+            MatchBuddyView(
+                store: Store(
+                    initialState: .init(),
+                    reducer: {
+                        MatchBuddyReducer.build()
+                    }
+                ),
+                character: character
+            )
+
+        case .neighbors(let character):
+            CharacterNeighborsView(
+                store: Store(
+                    initialState: .init(),
+                    reducer: {
+                        CharacterNeighborsReducer.build(
+                            locationId: character.location.id
+                        )
+                    }
                 )
+            )
 
-            case .episodes(let episodes):
-                EpisodesListView(store: Store(
+        case .episodes(let episodes):
+            EpisodesListView(
+                store: Store(
                     initialState: .init(
                         episodes: episodes
                     ),
                     reducer: {
                         EpisodesListReducer.build()
                     }
-                ))
+                ),
+                coordinator: self
+            )
 
-            case .episodeDetail(let episode):
-                EpisodeDetailView(episode: episode)
-            }
+        case .episodeDetail(let episode):
+            EpisodeDetailView(episode: episode)
         }
     }
 }
@@ -139,5 +142,13 @@ extension CharactersCoordinator {
                 )
             }
         }
+    }
+}
+
+// MARK: EpisodesListView.Coordinatable
+extension CharactersCoordinator: EpisodesListView.Coordinatable {
+
+    func onSelect(episode: Episode) {
+        push(.episodeDetail(episode))
     }
 }

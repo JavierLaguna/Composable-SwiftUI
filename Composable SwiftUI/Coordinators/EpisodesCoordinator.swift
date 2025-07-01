@@ -2,33 +2,32 @@ import SwiftUI
 import ComposableArchitecture
 
 final class EpisodesCoordinator: Coordinator<EpisodesCoordinator.Routes, EpisodesCoordinator.Sheet> {
-
-    func navigateToEpisodeDetail(episode: Episode) {
-        push(.episodeDetail(episode))
-    }
+    // Intentionally empty
 }
 
 // MARK: Routes
 extension EpisodesCoordinator {
 
-    enum Routes: Hashable, View {
+    enum Routes: Hashable {
         case root
         case episodeDetail(Episode)
+    }
 
-        // MARK: View
-        var body: some View {
-            switch self {
-            case .root:
-                EpisodesListView(store: Store(
+    @MainActor
+    @ViewBuilder
+    func view(for route: Routes) -> some View {
+        switch route {
+        case .root:
+            EpisodesListView(
+                store: Store(
                     initialState: .init(),
-                    reducer: {
-                        EpisodesListReducer.build()
-                    }
-                ))
+                    reducer: { EpisodesListReducer.build() }
+                ),
+                coordinator: self
+            )
 
-            case .episodeDetail(let episode):
-                EpisodeDetailView(episode: episode)
-            }
+        case .episodeDetail(let episode):
+            EpisodeDetailView(episode: episode)
         }
     }
 }
@@ -36,5 +35,15 @@ extension EpisodesCoordinator {
 // MARK: Sheets
 extension EpisodesCoordinator {
 
-    enum Sheet: Hashable {}
+    enum Sheet: Hashable {
+        // Intentionally empty
+    }
+}
+
+// MARK: EpisodesListView.Coordinatable
+extension EpisodesCoordinator: EpisodesListView.Coordinatable {
+
+    func onSelect(episode: Episode) {
+        push(.episodeDetail(episode))
+    }
 }
