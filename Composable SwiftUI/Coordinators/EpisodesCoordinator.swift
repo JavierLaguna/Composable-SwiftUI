@@ -1,22 +1,10 @@
-import Observation
 import SwiftUI
 import ComposableArchitecture
 
-@Observable
-final class EpisodesCoordinator {
-
-    private(set) var path: [Routes] = []
-
-    @MainActor
-    var pathBinding: Binding<[Routes]> {
-        Binding(
-            get: { self.path },
-            set: { self.path = $0 }
-        )
-    }
+final class EpisodesCoordinator: Coordinator<EpisodesCoordinator.Routes, EpisodesCoordinator.Sheet> {
 
     func navigateToEpisodeDetail(episode: Episode) {
-        path.append(.episodeDetail(episode))
+        push(.episodeDetail(episode))
     }
 }
 
@@ -43,4 +31,10 @@ extension EpisodesCoordinator {
             }
         }
     }
+}
+
+// MARK: Sheets
+extension EpisodesCoordinator {
+
+    enum Sheet: Hashable {}
 }

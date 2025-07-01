@@ -1,62 +1,40 @@
-import Observation
 import SwiftUI
 import ComposableArchitecture
 
-@Observable
-final class CharactersCoordinator {
+final class CharactersCoordinator: Coordinator<CharactersCoordinator.Routes, CharactersCoordinator.Sheet> {
 
     private let mainStore: StoreOf<MainReducer>
-
-    private(set) var path: [Routes] = []
-
-    @MainActor
-    var pathBinding: Binding<[Routes]> {
-        Binding(
-            get: { self.path },
-            set: { self.path = $0 }
-        )
-    }
-
-    private(set) var sheet: Sheet?
-
-    @MainActor
-    var sheetIsPresented: Binding<Bool> {
-        Binding(
-            get: { self.sheet != nil },
-            set: { self.sheet = $0 ? self.sheet : nil }
-        )
-    }
 
     init(mainStore: StoreOf<MainReducer>) {
         self.mainStore = mainStore
     }
 
     func navigateToCharacterDetail(character: Character) {
-        path.append(.characterDetail(character))
+        push(.characterDetail(character))
     }
 
     func navigateToBeerBuddy(character: Character) {
-        path.append(.beerBuddy(character))
+        push(.beerBuddy(character))
     }
 
     func navigateToNeighbors(character: Character) {
-        path.append(.neighbors(character))
+        push(.neighbors(character))
     }
 
     func navigateToEpisodesList(episodes: [Episode]) {
-        path.append(.episodes(episodes))
+        push(.episodes(episodes))
     }
 
     func navigateToEpisodeDetail(episode: Episode) {
-        path.append(.episodeDetail(episode))
+        push(.episodeDetail(episode))
     }
 
     func showBeerBuddyInfo() {
-        sheet = .beerBuddyInfo
+        present(.beerBuddyInfo)
     }
 
     func showBeerBuddyCharacterDetail(character: Character) {
-        sheet = .beerBuddyCharacterDetail(character)
+        present(.beerBuddyCharacterDetail(character))
     }
 }
 
