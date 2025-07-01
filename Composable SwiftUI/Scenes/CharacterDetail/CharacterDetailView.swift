@@ -382,6 +382,7 @@ private struct DetailContentView: View {
 }
 
 private struct InfoCard: View {
+    
     let title: String
     let value: String
 
@@ -389,14 +390,14 @@ private struct InfoCard: View {
         VStack(alignment: .center, spacing: Theme.Space.s) {
             Text(title)
                 .sectionTitleStyle()
-
+            
             Spacer()
 
             Text(value)
                 .bodyStyle(small: true, bold: true)
-                .multilineTextAlignment(.center)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .padding(Theme.Space.xl)
         .background(
             RoundedRectangle(cornerRadius: Theme.Radius.m)
