@@ -30,5 +30,6 @@ struct ErrorView: View {
 
 #Preview {
     let error = InteractorError.generic(message: "Algo ha fallado")
-    return ErrorView(error: error, onRetry: {})
+
+    ErrorView(error: error, onRetry: {})
 }

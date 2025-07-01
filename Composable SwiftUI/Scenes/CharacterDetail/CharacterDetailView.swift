@@ -11,9 +11,7 @@ struct CharacterDetailView: View {
     var body: some View {
         Group {
             if store.currentCharacter.isLoading {
-                LoadingView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .ignoresSafeArea()
+                FullScreenLoadingView()
 
             } else {
                 MainContentView(namespace: namespace)
@@ -317,7 +315,7 @@ private struct DetailContentView: View {
                                 // TODO: JLI - Implement
                             },
                             onSeeAll: {
-                                // TODO: JLI - Implement
+                                charactersCoordinator.navigateEpisodesList(episodes: episodes)
                             }
                         )
                         .padding(.top, Theme.Space.m)

@@ -45,4 +45,26 @@ struct EpisodesService: EpisodesRemoteDatasource {
             throw RepositoryError.serviceFail(error: error)
         }
     }
+
+    @discardableResult
+    func getEpisodes(page: Int?) async throws -> GetEpisodesResponse {
+        var urlParams: [String: any CustomStringConvertible] = [:]
+        if let page {
+            urlParams["page"] = "\(page)"
+        }
+
+        let apiRequest = APIRequest(
+            baseURL: APIConstants.baseURL,
+            apiVersion: .v1,
+            path: APIConstants.episodePath,
+            urlParams: urlParams,
+            method: .get
+        )
+
+        do {
+            return try await apiClient.request(apiRequest)
+        } catch {
+            throw RepositoryError.serviceFail(error: error)
+        }
+    }
 }

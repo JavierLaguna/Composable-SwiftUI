@@ -1,5 +1,6 @@
 protocol GetCharactersInteractor: Sendable {
     func execute() async throws -> [Character]
+    func execute(id: Int) async throws -> Character
 }
 
 struct GetCharactersInteractorFactory {
@@ -18,6 +19,15 @@ struct GetCharactersInteractorDefault: GetCharactersInteractor, ManagedErrorInte
     func execute() async throws -> [Character] {
         do {
             return try await repository.getCharacters()
+
+        } catch {
+            throw manageError(error: error)
+        }
+    }
+
+    func execute(id: Int) async throws -> Character {
+        do {
+            return try await repository.getCharacter(characterId: id)
 
         } catch {
             throw manageError(error: error)

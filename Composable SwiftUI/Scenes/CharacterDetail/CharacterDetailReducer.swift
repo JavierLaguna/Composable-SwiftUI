@@ -3,10 +3,10 @@ import ComposableArchitecture
 @Reducer
 struct CharacterDetailReducer {
 
-    let getCharacterInteractor: any GetCharacterInteractor
+    let getCharactersInteractor: any GetCharactersInteractor
     let getCharacterDescriptionInteractor: any GetCharacterDescriptionInteractor
     let getTotalCharactersCountInteractor: any GetTotalCharactersCountInteractor
-    let getEpisodesByIdsInteractor: any GetEpisodesByIdsInteractor
+    let getEpisodesByIdsInteractor: any GetEpisodesInteractor
 
     @ObservableState
     struct State: Equatable {
@@ -137,7 +137,7 @@ struct CharacterDetailReducer {
 
                 return .run { send in
                     await send(.onReceiveNewCharacter(TaskResult {
-                        try await getCharacterInteractor.execute(id: nextCharacterId)
+                        try await getCharactersInteractor.execute(id: nextCharacterId)
                     }))
                 }
 
@@ -153,7 +153,7 @@ struct CharacterDetailReducer {
 
                 return .run { send in
                     await send(.onReceiveNewCharacter(TaskResult {
-                        try await getCharacterInteractor.execute(id: nextCharacterId)
+                        try await getCharactersInteractor.execute(id: nextCharacterId)
                     }))
                 }
 
@@ -177,10 +177,10 @@ extension CharacterDetailReducer {
 
     static func build() -> CharacterDetailReducer {
         CharacterDetailReducer(
-            getCharacterInteractor: GetCharacterInteractorFactory.build(),
+            getCharactersInteractor: GetCharactersInteractorFactory.build(),
             getCharacterDescriptionInteractor: GetCharacterDescriptionInteractorFactory.build(),
             getTotalCharactersCountInteractor: GetTotalCharactersCountInteractorFactory.build(),
-            getEpisodesByIdsInteractor: GetEpisodesByIdsInteractorFactory.build()
+            getEpisodesByIdsInteractor: GetEpisodesInteractorFactory.build()
         )
     }
 }
