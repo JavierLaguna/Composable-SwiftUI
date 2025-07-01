@@ -30,44 +30,70 @@ struct EpisodeDetailView: View {
                 Text(episode.name)
                     .specialTitleStyle()
                     .multilineTextAlignment(.center)
+                    .padding(.horizontal, Theme.Space.m)
 
             ScrollView {
-                HStack {
-                    HStack(spacing: Theme.Space.none) {
-                        Image(systemName: "calendar")
+                VStack(spacing: Theme.Space.xl) {
+                    HStack {
+                        InfoCard(
+                            icon: "calendar",
+                            title: episode.airDate.formatted(date: .long, time: .omitted)
+                        )
 
-                        Text(episode.airDate.formatted(date: .long, time: .omitted))
-                            .bodyStyle(small: true)
+                        InfoCard(
+                            icon: "number.square.fill",
+                            title: episode.code
+                        )
                     }
-                    .padding(Theme.Space.l)
-                    .background(Theme.Colors.backgroundSecondary)
-                    .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous))
-                    .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous)
-                            .stroke(Color.gray.opacity(0.2), lineWidth: 0.5)
-                    )
+                    .padding(.top, Theme.Space.l)
+                    .padding(.horizontal, Theme.Space.xl)
 
-                    HStack(spacing: Theme.Space.none) {
-                        Image(systemName: "number.square.fill")
+                    VStack(alignment: .leading) {
+                        HStack(spacing: Theme.Space.m) {
+                            Image(systemName: "person.circle.fill")
+                                .bold()
+                                .foregroundStyle(Theme.Colors.primary)
 
-                        Text(episode.code)
-                            .bodyStyle(bold: true)
+                            Text("Characters") // TODO: JLI
+                                .bodyStyle(bold: true)
+
+                            Spacer()
+                        }
+
+                        // TODO: JLI - Characters Horizontal Scroll
                     }
-                    .padding(Theme.Space.l)
-                    .background(Theme.Colors.backgroundSecondary)
-                    .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous))
-                    .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous)
-                            .stroke(Color.gray.opacity(0.2), lineWidth: 0.5)
-                    )
+                    .cardStyle()
+
+                    VStack(alignment: .leading) {
+                        Text("Episode Description")
+                    }
+                    .cardStyle()
                 }
             }
+            .padding(.top, Theme.Space.l)
+            .padding(.horizontal, Theme.Space.xl)
 
             Spacer()
         }
         .background(Self.bgColor)
+    }
+}
+
+private struct InfoCard: View {
+
+    let icon: String
+    let title: String
+
+    var body: some View {
+        HStack(spacing: Theme.Space.m) {
+            Image(systemName: icon)
+                .bold()
+                .foregroundStyle(Theme.Colors.primary)
+
+            Text(title)
+                .bodyStyle(bold: true)
+        }
+        .cardStyle()
     }
 }
 

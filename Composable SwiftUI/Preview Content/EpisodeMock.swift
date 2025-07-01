@@ -4,7 +4,7 @@ extension Episode {
 
     static let mock: Episode = Episode(
         id: 1,
-        name: "Pilot",
+        name: "Raising Gazorpazorp",
         airDate: Date(timeIntervalSince1970: 1385980800), // December 2, 2013
         code: "S01E01",
         characters: [1, 2, 35, 38],

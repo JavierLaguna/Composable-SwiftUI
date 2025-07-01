@@ -152,6 +152,7 @@
 		49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EDA8D2283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift */; };
 		49EDA8D5283CEC2C002C9C80 /* EpisodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EDA8D4283CEC2C002C9C80 /* EpisodesService.swift */; };
 		49F82CE62E143F1800FDD69A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F82CE52E143F1800FDD69A /* Coordinator.swift */; };
+		49F82D4B2E14564600FDD69A /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F82D4A2E14564600FDD69A /* CardStyle.swift */; };
 		49F9FBE42C21FDB200BC6F92 /* AllEnvironmentsInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */; };
 /* End PBXBuildFile section */
 
@@ -307,6 +308,7 @@
 		49EDA8D2283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRepositoryDefault.swift; sourceTree = "<group>"; };
 		49EDA8D4283CEC2C002C9C80 /* EpisodesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesService.swift; sourceTree = "<group>"; };
 		49F82CE52E143F1800FDD69A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		49F82D4A2E14564600FDD69A /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
 		49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEnvironmentsInjected.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -416,6 +418,7 @@
 		497C1ED22C20333B0041297A /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				49F82D4A2E14564600FDD69A /* CardStyle.swift */,
 				497C1ED42C2033490041297A /* PlainNavLinkModifier.swift */,
 				4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */,
 				4998C75D2E005C3B00F755D9 /* TextModifiers.swift */,
@@ -1213,6 +1216,7 @@
 				49D3C9A82E031DC0003206DE /* GetEpisodeImageInteractor.swift in Sources */,
 				49F82CE62E143F1800FDD69A /* Coordinator.swift in Sources */,
 				49EDA8C4283BEF7F002C9C80 /* LocationRepositoryDefault.swift in Sources */,
+				49F82D4B2E14564600FDD69A /* CardStyle.swift in Sources */,
 				4998C7542E005C1700F755D9 /* CircleIconButton.swift in Sources */,
 				49A4A621282F948C00D43FB3 /* ComposableSwiftUIApp.swift in Sources */,
 				497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */,
