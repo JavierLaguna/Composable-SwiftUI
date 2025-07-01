@@ -382,7 +382,7 @@ private struct DetailContentView: View {
 }
 
 private struct InfoCard: View {
-    
+
     let title: String
     let value: String
 
@@ -390,7 +390,7 @@ private struct InfoCard: View {
         VStack(alignment: .center, spacing: Theme.Space.s) {
             Text(title)
                 .sectionTitleStyle()
-            
+
             Spacer()
 
             Text(value)

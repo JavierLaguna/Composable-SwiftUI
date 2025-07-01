@@ -3,7 +3,7 @@ import Observation
 
 @Observable
 class Coordinator<Route: Hashable, SheetType: Hashable>: ObservableObject {
-    
+
     private(set) var path: [Route] = []
     private(set) var sheet: SheetType?
 
