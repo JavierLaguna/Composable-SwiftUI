@@ -108,7 +108,6 @@
 		49B8D33F2C94253400F7F655 /* SceneSnapshotUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B8D33E2C94253400F7F655 /* SceneSnapshotUITest.swift */; };
 		49C65CA72AB449A90047F02B /* ManagedErrorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C65CA62AB449A90047F02B /* ManagedErrorInteractor.swift */; };
 		49D3C9A82E031DC0003206DE /* GetEpisodeImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D3C9A72E031DC0003206DE /* GetEpisodeImageInteractor.swift */; };
-		49D3C9B82E032354003206DE /* GetCharacterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D3C9B72E032354003206DE /* GetCharacterInteractor.swift */; };
 		49D3C9D62E0468C0003206DE /* GetCharacterDescriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D3C9D52E0468C0003206DE /* GetCharacterDescriptionInteractor.swift */; };
 		49D7AEB92E0DABD100C80C06 /* EpisodesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D7AEB82E0DABD100C80C06 /* EpisodesListView.swift */; };
 		49DBDF5D2CADB3E4007CDE74 /* MatchBuddyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBDF5C2CADB3E4007CDE74 /* MatchBuddyViewTests.swift */; };
@@ -263,7 +262,6 @@
 		49B8D33E2C94253400F7F655 /* SceneSnapshotUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSnapshotUITest.swift; sourceTree = "<group>"; };
 		49C65CA62AB449A90047F02B /* ManagedErrorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedErrorInteractor.swift; sourceTree = "<group>"; };
 		49D3C9A72E031DC0003206DE /* GetEpisodeImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodeImageInteractor.swift; sourceTree = "<group>"; };
-		49D3C9B72E032354003206DE /* GetCharacterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterInteractor.swift; sourceTree = "<group>"; };
 		49D3C9D52E0468C0003206DE /* GetCharacterDescriptionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterDescriptionInteractor.swift; sourceTree = "<group>"; };
 		49D7AEB82E0DABD100C80C06 /* EpisodesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesListView.swift; sourceTree = "<group>"; };
 		49DBDF5C2CADB3E4007CDE74 /* MatchBuddyViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyViewTests.swift; sourceTree = "<group>"; };
@@ -932,7 +930,6 @@
 			children = (
 				49EDA8BE283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift */,
 				49D3C9D52E0468C0003206DE /* GetCharacterDescriptionInteractor.swift */,
-				49D3C9B72E032354003206DE /* GetCharacterInteractor.swift */,
 				49E88D2D2830F43E00058486 /* GetCharactersInteractor.swift */,
 				4946E27C2E056BA600870FBC /* GetTotalCharactersCountInteractor.swift */,
 			);
@@ -1138,7 +1135,6 @@
 				49206E512CAFCA4800C21802 /* APIConstants.swift in Sources */,
 				49B765D92DFC4747004B545D /* EpisodeMock.swift in Sources */,
 				4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */,
-				49D3C9B82E032354003206DE /* GetCharacterInteractor.swift in Sources */,
 				4998C74E2E005BE400F755D9 /* PressableButtonStyle.swift in Sources */,
 				49D3C9D62E0468C0003206DE /* GetCharacterDescriptionInteractor.swift in Sources */,
 				49529CA42A784058002F7594 /* LoadingView.swift in Sources */,
