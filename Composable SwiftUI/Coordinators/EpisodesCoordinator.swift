@@ -27,7 +27,16 @@ extension EpisodesCoordinator {
             )
 
         case .episodeDetail(let episode):
-            EpisodeDetailView(episode: episode)
+            EpisodeDetailView(
+                store: Store(
+                    initialState: .init(
+                        episode: episode
+                    ),
+                    reducer: {
+                        EpisodeDetailReducer.build()
+                    }
+                )
+            )
         }
     }
 }
