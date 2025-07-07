@@ -24,6 +24,9 @@ struct MainView: View {
                     .navigationDestination(for: CharactersCoordinator.Routes.self) {
                         charactersCoordinator.view(for: $0)
                     }
+                    .sheet(isPresented: charactersCoordinator.sheetIsPresented) {
+                        charactersCoordinator.sheet
+                    }
             }
             .tabItem {
                 Label(
@@ -38,6 +41,9 @@ struct MainView: View {
                     .view(for: .root)
                     .navigationDestination(for: EpisodesCoordinator.Routes.self) {
                         episodesCoordinator.view(for: $0)
+                    }
+                    .sheet(isPresented: episodesCoordinator.sheetIsPresented) {
+                        episodesCoordinator.sheet
                     }
             }
             .tabItem {

@@ -2,7 +2,12 @@ import SwiftUI
 import ComposableArchitecture
 
 final class EpisodesCoordinator: Coordinator<EpisodesCoordinator.Routes, EpisodesCoordinator.Sheet> {
-    // Intentionally empty
+
+    @MainActor
+    private let episodesListStore: StoreOf<EpisodesListReducer> = Store(
+        initialState: .init(),
+        reducer: { EpisodesListReducer.build() }
+    )
 }
 
 // MARK: Routes
@@ -19,10 +24,7 @@ extension EpisodesCoordinator {
         switch route {
         case .root:
             EpisodesListView(
-                store: Store(
-                    initialState: .init(),
-                    reducer: { EpisodesListReducer.build() }
-                ),
+                store: episodesListStore,
                 coordinator: self
             )
 
@@ -35,7 +37,8 @@ extension EpisodesCoordinator {
                     reducer: {
                         EpisodeDetailReducer.build()
                     }
-                )
+                ),
+                coordinator: self
             )
         }
     }
@@ -44,8 +47,26 @@ extension EpisodesCoordinator {
 // MARK: Sheets
 extension EpisodesCoordinator {
 
-    enum Sheet: Hashable {
-        // Intentionally empty
+    enum Sheet: Hashable, View {
+        case characterDetail(Character)
+
+        // MARK: View
+        var body: some View {
+            switch self {
+            case .characterDetail(let character):
+                CharacterDetailView(
+                    store: Store(
+                        initialState: .init(
+                            character: character,
+                            viewMode: .basicInfo
+                        ),
+                        reducer: {
+                            CharacterDetailReducer.build()
+                        }
+                    )
+                )
+            }
+        }
     }
 }
 
@@ -54,5 +75,13 @@ extension EpisodesCoordinator: EpisodesListView.Coordinatable {
 
     func onSelect(episode: Episode) {
         push(.episodeDetail(episode))
+    }
+}
+
+// MARK: EpisodeDetailView.Coordinatable
+extension EpisodesCoordinator: EpisodeDetailView.Coordinatable {
+
+    func onSelect(character: Character) {
+        present(.characterDetail(character))
     }
 }

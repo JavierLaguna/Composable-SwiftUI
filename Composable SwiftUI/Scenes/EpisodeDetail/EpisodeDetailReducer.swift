@@ -4,11 +4,13 @@ import ComposableArchitecture
 struct EpisodeDetailReducer {
 
     let getCharactersInteractor: any GetCharactersInteractor
+    let getEpisodeDescriptionInteractor: any GetEpisodeDescriptionInteractor
 
     @ObservableState
     struct State: Equatable {
         let episode: Episode
         var characters: StateLoadable<[Character]> = .init()
+        var episodeDescription: StateLoadable<String> = .init()
     }
 
     enum Action {
@@ -16,13 +18,19 @@ struct EpisodeDetailReducer {
 
         case getEpisodeCharacters
         case onReceiveEpisodeCharacters(Result<[Character], any Error>)
+
+        case getEpisodeDescription
+        case onReceiveEpisodeDescription(Result<String, any Error>)
     }
 
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                return .send(.getEpisodeCharacters)
+                return .merge(
+                    .send(.getEpisodeCharacters),
+                    .send(.getEpisodeDescription)
+                )
 
             case .getEpisodeCharacters:
                 state.characters.state = .loading
@@ -40,6 +48,23 @@ struct EpisodeDetailReducer {
             case .onReceiveEpisodeCharacters(.failure(let error)):
                 state.characters.state = .error(error)
                 return .none
+
+            case .getEpisodeDescription:
+                state.episodeDescription.state = .loading
+                let episode = state.episode
+
+                return .run { send in
+                    await send(.onReceiveEpisodeDescription(Result { try await getEpisodeDescriptionInteractor.execute(episode: episode)
+                    }))
+                }
+
+            case .onReceiveEpisodeDescription(.success(let description)):
+                state.episodeDescription.state = .populated(data: description)
+                return .none
+
+            case .onReceiveEpisodeDescription(.failure(let error)):
+                state.episodeDescription.state = .error(error)
+                return .none
             }
         }
     }
@@ -50,7 +75,8 @@ extension EpisodeDetailReducer {
 
     static func build() -> EpisodeDetailReducer {
         EpisodeDetailReducer(
-            getCharactersInteractor: GetCharactersInteractorFactory.build()
+            getCharactersInteractor: GetCharactersInteractorFactory.build(),
+            getEpisodeDescriptionInteractor: GetEpisodeDescriptionInteractorFactory.build()
         )
     }
 }

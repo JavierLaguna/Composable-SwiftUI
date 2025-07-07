@@ -34,7 +34,7 @@ final class CharactersCoordinator: Coordinator<CharactersCoordinator.Routes, Cha
     }
 
     func showBeerBuddyCharacterDetail(character: Character) {
-        present(.beerBuddyCharacterDetail(character))
+        present(.characterDetail(character))
     }
 }
 
@@ -118,7 +118,8 @@ extension CharactersCoordinator {
                     reducer: {
                         EpisodeDetailReducer.build()
                     }
-                )
+                ),
+                coordinator: self
             )
         }
     }
@@ -129,7 +130,7 @@ extension CharactersCoordinator {
 
     enum Sheet: Hashable, View {
         case beerBuddyInfo
-        case beerBuddyCharacterDetail(Character)
+        case characterDetail(Character)
 
         // MARK: View
         var body: some View {
@@ -137,7 +138,7 @@ extension CharactersCoordinator {
             case .beerBuddyInfo:
                 MatchBuddyInfoView()
 
-            case .beerBuddyCharacterDetail(let character):
+            case .characterDetail(let character):
                 CharacterDetailView(
                     store: Store(
                         initialState: .init(
@@ -159,5 +160,13 @@ extension CharactersCoordinator: EpisodesListView.Coordinatable {
 
     func onSelect(episode: Episode) {
         push(.episodeDetail(episode))
+    }
+}
+
+// MARK: EpisodeDetailView.Coordinatable
+extension CharactersCoordinator: EpisodeDetailView.Coordinatable {
+
+    func onSelect(character: Character) {
+        showBeerBuddyCharacterDetail(character: character)
     }
 }

@@ -75,6 +75,7 @@ private struct EpisodesList: View {
                                 }
                             }
                     }
+                    .buttonStyle(PressableButtonStyle())
                 }
 
                 if isLoading {
