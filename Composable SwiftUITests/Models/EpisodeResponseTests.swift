@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 import InlineSnapshotTesting
 
@@ -14,8 +15,10 @@ struct EpisodeResponseTests {
         let episodeResponse = EpisodeResponse(
             id: 1,
             name: "name",
+            airDate: "22-12-2022",
             episode: "episode",
-            date: "22-12-2022"
+            characters: ["1"],
+            created: "created"
         )
 
         assertInlineSnapshot(of: episodeResponse, as: .json) {
@@ -35,14 +38,20 @@ struct EpisodeResponseTests {
         let response = EpisodeResponse(
             id: 1,
             name: "name",
+            airDate: "22-12-2022",
             episode: "episode",
-            date: "22-12-2022"
+            characters: ["1"],
+            created: "created"
         )
 
         let domainDto = Episode(
             id: 1,
             name: "name",
-            date: "22-12-2022"
+            airDate: Date.now,
+            code: "episode",
+            characters: [1],
+            created: Date.now,
+            image: nil
         )
 
         #expect(response.toDomain() == domainDto)

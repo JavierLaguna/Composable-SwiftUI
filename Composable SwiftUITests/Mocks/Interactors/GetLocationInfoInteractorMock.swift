@@ -1,3 +1,4 @@
+import Foundation
 @testable import Composable_SwiftUI
 
 struct GetLocationInfoInteractorMock: GetLocationInfoInteractor {
@@ -19,7 +20,9 @@ struct GetLocationInfoInteractorMock: GetLocationInfoInteractor {
                 origin: .init(id: 1, name: "Earth"),
                 location: .init(id: 1, name: "Earth"),
                 image: "image",
-                episodes: [1, 2, 3]
+                episodes: [1, 2, 3],
+                created: Date.now,
+                description: nil
             )
         ]
     )

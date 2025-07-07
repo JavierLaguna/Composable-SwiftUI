@@ -103,7 +103,9 @@ private extension CharactersListViewTests {
                     name: "Earth"
                 ),
                 image: Self.imageUrl(id: 1),
-                episodes: []
+                episodes: [],
+                created: Date.now,
+                description: nil
             ),
             Character(
                 id: 2,
@@ -121,7 +123,9 @@ private extension CharactersListViewTests {
                     name: "Earth"
                 ),
                 image: Self.imageUrl(id: 2),
-                episodes: []
+                episodes: [],
+                created: Date.now,
+                description: nil
             )
         ]
     }

@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 import ComposableArchitecture
 
@@ -13,17 +14,23 @@ struct GetBeerBuddyInteractorDefaultTests {
     func executeSuccess() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
-        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
+        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301],
+                             created: Date.now,
+                             description: nil)
 
-        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2, 15, 44, 35, 200, 301, 304])
+        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2, 15, 44, 35, 200, 301, 304],
+                              created: Date.now,
+                              description: nil)
 
-        let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15])
+        let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15],
+                             created: Date.now,
+                             description: nil)
 
         let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
         let charactersRepository = CharactersRepositoryMock(success: true, expectedResponse: [morty, beth])
         let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
-            Episode(id: 1, name: "episode1", date: "10-10-2010"),
-            Episode(id: 301, name: "episode301", date: "12-12-2012")
+            Episode(id: 1, name: "episode1", airDate: Date.now, code: "code-1", characters: [1, 2], created: Date.now, image: nil),
+            Episode(id: 2, name: "episode2", airDate: Date.now, code: "code-1", characters: [2, 3, 4], created: Date.now, image: nil)
         ])
         let interactor = GetBeerBuddyInteractorDefault(
             locationRepository: locationRepository,
@@ -35,8 +42,8 @@ struct GetBeerBuddyInteractorDefaultTests {
 
         #expect(result.character == rick)
         #expect(result.buddy == morty)
-        #expect(result.firstEpisode == Episode(id: 1, name: "episode1", date: "10-10-2010"))
-        #expect(result.lastEpisode == Episode(id: 301, name: "episode301", date: "12-12-2012"))
+        #expect(result.firstEpisode == Episode(id: 1, name: "episode1", airDate: Date.now, code: "code-1", characters: [1, 2], created: Date.now, image: nil))
+        #expect(result.lastEpisode == Episode(id: 2, name: "episode2", airDate: Date.now, code: "code-1", characters: [2, 3, 4], created: Date.now, image: nil))
         #expect(result.count == 5)
     }
 
@@ -44,7 +51,9 @@ struct GetBeerBuddyInteractorDefaultTests {
     func executeBeerBuddyNotFoundMsgError() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
-        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
+        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301],
+                             created: Date.now,
+                             description: nil)
 
         let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [])
         let charactersRepository = CharactersRepositoryMock(success: true)
@@ -64,17 +73,23 @@ struct GetBeerBuddyInteractorDefaultTests {
     func executeLocationRepositoryFail() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
-        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
+        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301],
+                             created: Date.now,
+                             description: nil)
 
-        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2, 15, 44, 35, 200, 301, 304])
+        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2, 15, 44, 35, 200, 301, 304],
+                              created: Date.now,
+                              description: nil)
 
-        let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15])
+        let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15],
+                             created: Date.now,
+                             description: nil)
 
         let locationRepository = LocationRepositoryMock(success: false)
         let charactersRepository = CharactersRepositoryMock(success: true, expectedResponse: [morty, beth])
         let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
-            Episode(id: 1, name: "episode1", date: "10-10-2010"),
-            Episode(id: 301, name: "episode301", date: "12-12-2012")
+            Episode(id: 1, name: "episode1", airDate: Date.now, code: "code-1", characters: [1, 2], created: Date.now, image: nil),
+            Episode(id: 301, name: "episode2", airDate: Date.now, code: "code-1", characters: [2, 3, 4], created: Date.now, image: nil)
         ])
         let interactor = GetBeerBuddyInteractorDefault(
             locationRepository: locationRepository,
@@ -91,13 +106,15 @@ struct GetBeerBuddyInteractorDefaultTests {
     func executeCharacterRepositoryFail() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
-        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
+        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301],
+                             created: Date.now,
+                             description: nil)
 
         let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
         let charactersRepository = CharactersRepositoryMock(success: false)
         let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
-            Episode(id: 1, name: "episode1", date: "10-10-2010"),
-            Episode(id: 301, name: "episode301", date: "12-12-2012")
+            Episode(id: 1, name: "episode1", airDate: Date.now, code: "code-1", characters: [1, 2], created: Date.now, image: nil),
+            Episode(id: 2, name: "episode2", airDate: Date.now, code: "code-1", characters: [2, 3, 4], created: Date.now, image: nil)
         ])
         let interactor = GetBeerBuddyInteractorDefault(
             locationRepository: locationRepository,
@@ -114,11 +131,17 @@ struct GetBeerBuddyInteractorDefaultTests {
     func executeEpisodesRepositoryFail() async throws {
         let location = CharacterLocation(id: 1, name: "Earth")
 
-        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
+        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301],
+                             created: Date.now,
+                             description: nil)
 
-        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2, 15, 44, 35, 200, 301, 304])
+        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2, 15, 44, 35, 200, 301, 304],
+                              created: Date.now,
+                              description: nil)
 
-        let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15])
+        let beth = Character(id: 4, name: "Beth Smith", status: .alive, species: "Human", type: "", gender: .female, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg", episodes: [1, 2, 15],
+                             created: Date.now,
+                             description: nil)
 
         let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
         let charactersRepository = CharactersRepositoryMock(success: true, expectedResponse: [morty, beth])

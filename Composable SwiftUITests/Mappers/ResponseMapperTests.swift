@@ -1,5 +1,5 @@
+import Foundation
 import Testing
-
 @testable import Composable_SwiftUI
 
 @Suite(
@@ -46,7 +46,8 @@ struct ResponseMapperTests {
             origin: locationResponse,
             location: locationResponse,
             image: "url/image",
-            episode: ["episode/1", "epidose/200"]
+            episode: ["episode/1", "epidose/200"],
+            created: "created"
         )
 
         let domainDto = Character(
@@ -59,7 +60,9 @@ struct ResponseMapperTests {
             origin: locationResponse.toDomain(),
             location: locationResponse.toDomain(),
             image: "url/image",
-            episodes: [1, 200]
+            episodes: [1, 200],
+            created: Date.now,
+            description: nil
         )
 
         #expect(response.toDomain() == domainDto)

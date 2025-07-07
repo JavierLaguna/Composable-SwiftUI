@@ -1,5 +1,5 @@
+import Foundation
 import Testing
-
 @testable import Composable_SwiftUI
 
 @Suite(
@@ -12,9 +12,13 @@ struct CharacterTests {
     func matchedEpisodes() {
         let location = CharacterLocation(id: 1, name: "Earth")
 
-        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301])
+        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [1, 2, 15, 22, 33, 200, 301],
+                             created: Date.now,
+                             description: nil)
 
-        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2, 15, 44, 35, 200, 301, 304])
+        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2, 15, 44, 35, 200, 301, 304],
+                              created: Date.now,
+                              description: nil)
 
         let matchedEpisodes = rick.matchedEpisodes(with: morty)
 
@@ -29,9 +33,13 @@ struct CharacterTests {
     func matchedEpisodesReturnNil() {
         let location = CharacterLocation(id: 1, name: "Earth")
 
-        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [200, 301])
+        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [200, 301],
+                             created: Date.now,
+                             description: nil)
 
-        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2])
+        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2],
+                              created: Date.now,
+                              description: nil)
 
         let matchedEpisodes = rick.matchedEpisodes(with: morty)
 

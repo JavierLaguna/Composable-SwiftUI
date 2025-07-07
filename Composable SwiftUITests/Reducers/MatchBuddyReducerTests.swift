@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 import ComposableArchitecture
 
@@ -13,7 +14,9 @@ struct MatchBuddyReducerTests {
     func getBeerBuddySuccess() async {
         let interactor = GetBeerBuddyInteractorMock()
         let location = CharacterLocation(id: 1, name: "Earth")
-        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
+        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [],
+                                  created: Date.now,
+                                  description: nil)
 
         let store = await TestStore(
             initialState: .init(),
@@ -37,7 +40,9 @@ struct MatchBuddyReducerTests {
     func getBeerBuddyNotFoundSuccess() async {
         let interactor = GetBeerBuddyInteractorMock(success: true, expectedResponse: nil)
         let location = CharacterLocation(id: 1, name: "Earth")
-        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
+        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [],
+                                  created: Date.now,
+                                  description: nil)
 
         let store = await TestStore(
             initialState: .init(),
@@ -61,7 +66,9 @@ struct MatchBuddyReducerTests {
     func getBeerBuddyFail() async {
         let interactor = GetBeerBuddyInteractorMock(success: false)
         let location = CharacterLocation(id: 1, name: "Earth")
-        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [])
+        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [],
+                                  created: Date.now,
+                                  description: nil)
 
         let store = await TestStore(
             initialState: .init(),

@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 import ComposableArchitecture
 
@@ -54,8 +55,12 @@ struct CharactersListReducerTests {
 
         let location = CharacterLocation(id: 1, name: "Earth")
         let initialCharacters: [Character] = [
-            Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: []),
-            Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: [])
+            Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: [],
+                      created: Date.now,
+                      description: nil),
+            Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: [],
+                      created: Date.now,
+                      description: nil)
         ]
 
         let store = await TestStore(

@@ -105,7 +105,9 @@ private extension MatchBuddyViewTests {
                 name: "Earth"
             ),
             image: Self.imageUrl(id: 1),
-            episodes: []
+            episodes: [],
+            created: Date.now,
+            description: nil
         )
     }
 
@@ -128,11 +130,13 @@ private extension MatchBuddyViewTests {
                     name: "Earth"
                 ),
                 image: Self.imageUrl(id: 2),
-                episodes: []
+                episodes: [],
+                created: Date.now,
+                description: nil
             ),
             character: character,
-            firstEpisode: Episode(id: 1, name: "1", date: "1"),
-            lastEpisode: Episode(id: 2, name: "2", date: "2")
+            firstEpisode: Episode(id: 1, name: "episode1", airDate: Date.now, code: "code-1", characters: [1, 2], created: Date.now, image: nil),
+            lastEpisode: Episode(id: 2, name: "episode2", airDate: Date.now, code: "code-1", characters: [2, 3, 4], created: Date.now, image: nil)
         )
     }
 
