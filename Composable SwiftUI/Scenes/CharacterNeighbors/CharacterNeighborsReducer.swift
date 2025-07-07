@@ -13,7 +13,7 @@ struct CharacterNeighborsReducer {
 
     enum Action {
         case getLocationInfo
-        case onGetLocationInfo(TaskResult<LocationDetail>)
+        case onGetLocationInfo(Result<LocationDetail, any Error>)
     }
 
     var body: some ReducerOf<Self> {
@@ -23,7 +23,7 @@ struct CharacterNeighborsReducer {
                 state.locationDetail.state = .loading
 
                 return .run { send in
-                    await send(.onGetLocationInfo(TaskResult {
+                    await send(.onGetLocationInfo(Result {
                         try await getLocationInfoInteractor.execute(locationId: locationId)
                     }))
                 }

@@ -39,17 +39,17 @@ struct CharacterDetailReducer {
         case onAppear
 
         case getCharacterDescription
-        case onReceiveCharacterDescription(TaskResult<String>)
+        case onReceiveCharacterDescription(Result<String, any Error>)
 
         case getTotalCharactersCount
-        case onReceiveTotalCharactersCount(TaskResult<Int>)
+        case onReceiveTotalCharactersCount(Result<Int, any Error>)
 
         case getEpisodes
-        case onReceiveEpisodes(TaskResult<[Episode]>)
+        case onReceiveEpisodes(Result<[Episode], any Error>)
 
         case seePreviousCharacter
         case seeNextCharacter
-        case onReceiveNewCharacter(TaskResult<Character>)
+        case onReceiveNewCharacter(Result<Character, any Error>)
     }
 
     var body: some ReducerOf<Self> {
@@ -73,7 +73,7 @@ struct CharacterDetailReducer {
                 }
 
                 return .run { send in
-                    await send(.onReceiveCharacterDescription(TaskResult {
+                    await send(.onReceiveCharacterDescription(Result {
                         try await getCharacterDescriptionInteractor.execute(character: currentCharacter)
                     }))
                 }
@@ -91,7 +91,7 @@ struct CharacterDetailReducer {
 
             case .getTotalCharactersCount:
                 return .run { send in
-                    await send(.onReceiveTotalCharactersCount(TaskResult {
+                    await send(.onReceiveTotalCharactersCount(Result {
                         try await getTotalCharactersCountInteractor.execute()
                     }))
                 }
@@ -112,7 +112,7 @@ struct CharacterDetailReducer {
                 state.episodes.state = .loading
 
                 return .run { send in
-                    await send(.onReceiveEpisodes(TaskResult {
+                    await send(.onReceiveEpisodes(Result {
                         try await getEpisodesByIdsInteractor.execute(ids: currentCharacter.episodes)
                     }))
                 }
@@ -136,7 +136,7 @@ struct CharacterDetailReducer {
                 let nextCharacterId = currentCharacter.id - 1
 
                 return .run { send in
-                    await send(.onReceiveNewCharacter(TaskResult {
+                    await send(.onReceiveNewCharacter(Result {
                         try await getCharactersInteractor.execute(id: nextCharacterId)
                     }))
                 }
@@ -152,7 +152,7 @@ struct CharacterDetailReducer {
                 let nextCharacterId = currentCharacter.id + 1
 
                 return .run { send in
-                    await send(.onReceiveNewCharacter(TaskResult {
+                    await send(.onReceiveNewCharacter(Result {
                         try await getCharactersInteractor.execute(id: nextCharacterId)
                     }))
                 }
