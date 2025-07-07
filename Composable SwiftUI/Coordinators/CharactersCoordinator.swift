@@ -1,127 +1,126 @@
-import Observation
 import SwiftUI
 import ComposableArchitecture
 
-@Observable
-final class CharactersCoordinator {
+final class CharactersCoordinator: Coordinator<CharactersCoordinator.Routes, CharactersCoordinator.Sheet> {
 
     private let mainStore: StoreOf<MainReducer>
-
-    private(set) var path: [Routes] = []
-
-    @MainActor
-    var pathBinding: Binding<[Routes]> {
-        Binding(
-            get: { self.path },
-            set: { self.path = $0 }
-        )
-    }
-
-    private(set) var sheet: Sheet?
-
-    @MainActor
-    var sheetIsPresented: Binding<Bool> {
-        Binding(
-            get: { self.sheet != nil },
-            set: { self.sheet = $0 ? self.sheet : nil }
-        )
-    }
 
     init(mainStore: StoreOf<MainReducer>) {
         self.mainStore = mainStore
     }
 
     func navigateToCharacterDetail(character: Character) {
-        path.append(.characterDetail(character))
+        push(.characterDetail(character))
     }
 
     func navigateToBeerBuddy(character: Character) {
-        path.append(.beerBuddy(character))
+        push(.beerBuddy(character))
     }
 
     func navigateToNeighbors(character: Character) {
-        path.append(.neighbors(character))
+        push(.neighbors(character))
     }
 
-    func navigateEpisodesList(episodes: [Episode]) {
-        path.append(.episodes(episodes))
+    func navigateToEpisodesList(episodes: [Episode]) {
+        push(.episodes(episodes))
+    }
+
+    func navigateToEpisodeDetail(episode: Episode) {
+        push(.episodeDetail(episode))
     }
 
     func showBeerBuddyInfo() {
-        sheet = .beerBuddyInfo
+        present(.beerBuddyInfo)
     }
 
     func showBeerBuddyCharacterDetail(character: Character) {
-        sheet = .beerBuddyCharacterDetail(character)
+        present(.characterDetail(character))
     }
 }
 
 // MARK: Routes
 extension CharactersCoordinator {
 
-    enum Routes: Hashable, View {
-        case root(StoreOf<MainReducer>)
+    enum Routes: Hashable {
+        case root
         case characterDetail(Character)
         case beerBuddy(Character)
         case neighbors(Character)
         case episodes([Episode])
+        case episodeDetail(Episode)
+    }
 
-        // MARK: View
-        var body: some View {
-            switch self {
-            case .root(let mainStore):
-                let store = mainStore.scope(
-                    state: \.charactersListState,
-                    action: \.charactersListActions
-                )
-                CharactersListView(store: store)
+    @MainActor
+    @ViewBuilder
+    func view(for route: Routes) -> some View {
+        switch route {
+        case .root:
+            CharactersListView(store: mainStore.scope(
+                state: \.charactersListState,
+                action: \.charactersListActions
+            ))
 
-            case .characterDetail(let character):
-                CharacterDetailView(
-                    store: Store(
-                        initialState: .init(
-                            character: character,
-                            viewMode: .allInfo
-                        ),
-                        reducer: {
-                            CharacterDetailReducer.build()
-                        }
-                    )
-                )
-
-            case .beerBuddy(let character):
-                MatchBuddyView(
-                    store: Store(
-                        initialState: .init(),
-                        reducer: {
-                            MatchBuddyReducer.build()
-                        }
+        case .characterDetail(let character):
+            CharacterDetailView(
+                store: Store(
+                    initialState: .init(
+                        character: character,
+                        viewMode: .allInfo
                     ),
-                    character: character
+                    reducer: {
+                        CharacterDetailReducer.build()
+                    }
                 )
+            )
 
-            case .neighbors(let character):
-                CharacterNeighborsView(
-                    store: Store(
-                        initialState: .init(),
-                        reducer: {
-                            CharacterNeighborsReducer.build(
-                                locationId: character.location.id
-                            )
-                        }
-                    )
+        case .beerBuddy(let character):
+            MatchBuddyView(
+                store: Store(
+                    initialState: .init(),
+                    reducer: {
+                        MatchBuddyReducer.build()
+                    }
+                ),
+                character: character
+            )
+
+        case .neighbors(let character):
+            CharacterNeighborsView(
+                store: Store(
+                    initialState: .init(),
+                    reducer: {
+                        CharacterNeighborsReducer.build(
+                            locationId: character.location.id
+                        )
+                    }
                 )
+            )
 
-            case .episodes(let episodes):
-                EpisodesListView(store: Store(
+        case .episodes(let episodes):
+            EpisodesListView(
+                store: Store(
                     initialState: .init(
                         episodes: episodes
                     ),
                     reducer: {
                         EpisodesListReducer.build()
                     }
-                ))
-            }
+                ),
+                coordinator: self
+            )
+
+        case .episodeDetail(let episode):
+            EpisodeDetailView(
+                store: Store(
+                    initialState: .init(
+                        episode: episode
+                    ),
+                    reducer: {
+                        EpisodeDetailReducer.build()
+                    }
+                ),
+                coordinator: self
+            )
         }
     }
 }
@@ -131,7 +130,7 @@ extension CharactersCoordinator {
 
     enum Sheet: Hashable, View {
         case beerBuddyInfo
-        case beerBuddyCharacterDetail(Character)
+        case characterDetail(Character)
 
         // MARK: View
         var body: some View {
@@ -139,7 +138,7 @@ extension CharactersCoordinator {
             case .beerBuddyInfo:
                 MatchBuddyInfoView()
 
-            case .beerBuddyCharacterDetail(let character):
+            case .characterDetail(let character):
                 CharacterDetailView(
                     store: Store(
                         initialState: .init(
@@ -153,5 +152,21 @@ extension CharactersCoordinator {
                 )
             }
         }
+    }
+}
+
+// MARK: EpisodesListView.Coordinatable
+extension CharactersCoordinator: EpisodesListView.Coordinatable {
+
+    func onSelect(episode: Episode) {
+        push(.episodeDetail(episode))
+    }
+}
+
+// MARK: EpisodeDetailView.Coordinatable
+extension CharactersCoordinator: EpisodeDetailView.Coordinatable {
+
+    func onSelect(character: Character) {
+        showBeerBuddyCharacterDetail(character: character)
     }
 }

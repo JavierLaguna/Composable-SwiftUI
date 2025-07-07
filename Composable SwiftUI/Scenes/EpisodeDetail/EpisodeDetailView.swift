@@ -1,18 +1,218 @@
-//
-//  EpisodeDetailView.swift
-//  Composable SwiftUI
-//
-//  Created by Javier Laguna on 27/6/25.
-//
-
 import SwiftUI
+import ComposableArchitecture
+import Kingfisher
 
 struct EpisodeDetailView: View {
+
+    protocol Coordinatable {
+        func onSelect(character: Character)
+    }
+
+    static private let bgColor = Theme.Colors.backgroundTertiary
+    static private let collapseThreshold: CGFloat = 100
+
+    let store: StoreOf<EpisodeDetailReducer>
+    let coordinator: any Coordinatable
+
+    @State private var showNavigationTitle: Bool = false
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack {
+                Image(uiImage: store.episode.image)
+                    .resizable()
+                    .scaledToFill()
+                    .stretchyVisualEffect()
+                    .overlay(alignment: .bottom) {
+                        LinearGradient(
+                            colors: [
+                                Color.clear,
+                                Self.bgColor.opacity(0.3),
+                                Self.bgColor.opacity(0.5),
+                                Self.bgColor.opacity(0.7),
+                                Self.bgColor.opacity(0.85),
+                                Self.bgColor
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .frame(height: 120)
+                    }
+
+                VStack {
+                    Text(store.episode.name)
+                        .specialTitleStyle()
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top, Theme.Space.m)
+                        .padding(.horizontal, Theme.Space.l)
+                        .background(
+                            GeometryReader { geometry in
+                                Color.clear
+                                    .onChange(of: geometry.frame(in: .global).maxY) { _, newValue in
+
+                                        withAnimation(.easeInOut(duration: 0.2)) {
+                                            showNavigationTitle = newValue <= Self.collapseThreshold
+                                        }
+                                    }
+                            }
+                        )
+                }
+
+                Spacer()
+                    .frame(height: Theme.Space.xxxl)
+
+                Group {
+                    VStack(spacing: Theme.Space.xl) {
+                        HStack {
+                            InfoCard(
+                                icon: "calendar",
+                                title: store.episode.airDate.formatted(date: .long, time: .omitted)
+                            )
+
+                            InfoCard(
+                                icon: "number.square.fill",
+                                title: store.episode.code
+                            )
+                        }
+                        .padding(.horizontal, Theme.Space.xl)
+
+                        VStack(
+                            alignment: .leading,
+                            spacing: Theme.Space.xl
+                        ) {
+                            HStack(spacing: Theme.Space.m) {
+                                Image(systemName: "person.circle.fill")
+                                    .bold()
+                                    .foregroundStyle(Theme.Colors.primary)
+
+                                Text(R.string.localizable.episodeDetailCharacters())
+                                    .bodyStyle(bold: true)
+
+                                Spacer()
+                            }
+                            .padding(.horizontal, Theme.Space.l)
+
+                            if store.characters.isLoading {
+                                Loading()
+
+                            } else if let characters = store.characters.data {
+                                CharactersCarouselView(
+                                    characters: characters,
+                                    coordinator: coordinator
+                                )
+                            }
+                        }
+                        .padding(.vertical, Theme.Space.l)
+                        .cardStyle(padding: Theme.Space.none)
+
+                        VStack(alignment: .leading) {
+                            if store.episodeDescription.isLoading {
+                                Loading()
+
+                            } else if let episodeDescription = store.episodeDescription.data {
+
+                                Text(episodeDescription)
+                                    .bodyStyle()
+                                    .multilineTextAlignment(.leading)
+                            }
+                        }
+                        .cardStyle()
+                    }
+                }
+                .padding(.horizontal, Theme.Space.xl)
+
+                Color.clear
+                    .frame(height: Theme.Space.tabBarHeight)
+            }
+        }
+        .ignoresSafeArea(edges: .top)
+        .background(Self.bgColor)
+        .navigationTitle(showNavigationTitle ? store.episode.name : "")
+        .navigationBarTitleDisplayMode(.inline)
+        .task {
+            store.send(.onAppear)
+        }
+    }
+}
+
+private struct InfoCard: View {
+
+    let icon: String
+    let title: String
+
+    var body: some View {
+        HStack(spacing: Theme.Space.m) {
+            Image(systemName: icon)
+                .bold()
+                .foregroundStyle(Theme.Colors.primary)
+
+            Text(title)
+                .bodyStyle(bold: true)
+        }
+        .cardStyle()
+    }
+}
+
+private struct Loading: View {
+
+    var body: some View {
+        HStack {
+            Spacer()
+
+            ProgressView()
+                .controlSize(.large)
+                .tint(Theme.Colors.primary)
+                .padding(Theme.Space.l)
+
+            Spacer()
+        }
+    }
+}
+
+private struct CharactersCarouselView: View {
+
+    let characters: [Character]
+    let coordinator: any EpisodeDetailView.Coordinatable
+
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: Theme.Space.l) {
+                ForEach(characters, id: \.id) { character in
+                    Button {
+                        coordinator.onSelect(character: character)
+
+                    } label: {
+                        KFImage(URL(string: character.image))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .clipped()
+                            .clipShape(Circle())
+                    }
+                    .buttonStyle(PressableButtonStyle())
+
+                }
+                .frame(width: 80)
+            }
+            .padding(.horizontal)
+        }
     }
 }
 
 #Preview {
-    EpisodeDetailView()
+    NavigationStack {
+        EpisodeDetailView(
+            store: Store(
+                initialState: .init(
+                    episode: Episode.mock
+                ),
+                reducer: {
+                    EpisodeDetailReducer.build()
+                }
+            ),
+            coordinator: EpisodesCoordinator()
+        )
+    }
+    .allEnvironmentsInjected
 }

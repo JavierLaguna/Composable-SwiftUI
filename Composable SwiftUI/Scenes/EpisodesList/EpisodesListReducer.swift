@@ -42,7 +42,8 @@ struct EpisodesListReducer {
                 state.episodes.state = .loading
 
                 return .run { send in
-                    await send(.onReceiveEpisodes(Result { try await getEpisodesInteractor.execute() }))
+                    await send(.onReceiveEpisodes(Result { try await getEpisodesInteractor.execute()
+                    }))
                 }
 
             case .onReceiveEpisodes(.success(let newEpisodes)):

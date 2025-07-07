@@ -311,11 +311,11 @@ private struct DetailContentView: View {
                     if let episodes = store.episodes.data {
                         EpisodeCarouselView(
                             episodes: episodes,
-                            onEpisodeTap: { _ in
-                                // TODO: JLI - Implement
+                            onEpisodeTap: {
+                                charactersCoordinator.navigateToEpisodeDetail(episode: $0)
                             },
                             onSeeAll: {
-                                charactersCoordinator.navigateEpisodesList(episodes: episodes)
+                                charactersCoordinator.navigateToEpisodesList(episodes: episodes)
                             }
                         )
                         .padding(.top, Theme.Space.m)
@@ -382,11 +382,12 @@ private struct DetailContentView: View {
 }
 
 private struct InfoCard: View {
+
     let title: String
     let value: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Theme.Space.s) {
+        VStack(alignment: .center, spacing: Theme.Space.s) {
             Text(title)
                 .sectionTitleStyle()
 
@@ -395,7 +396,8 @@ private struct InfoCard: View {
             Text(value)
                 .bodyStyle(small: true, bold: true)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .padding(Theme.Space.xl)
         .background(
             RoundedRectangle(cornerRadius: Theme.Radius.m)

@@ -7,19 +7,26 @@ struct MainView: View {
 
     @State private var mainCoordinator = MainCoordinator()
     @State private var charactersCoordinator: CharactersCoordinator
+    @State private var episodesCoordinator: EpisodesCoordinator
 
     init(mainStore: StoreOf<MainReducer>) {
         self.mainStore = mainStore
         charactersCoordinator = CharactersCoordinator(mainStore: mainStore)
+        episodesCoordinator = EpisodesCoordinator()
     }
 
     var body: some View {
         TabView(selection: mainCoordinator.tabSelectionBinding) {
 
             NavigationStack(path: charactersCoordinator.pathBinding) {
-                CharactersCoordinator.Routes
-                    .root(mainStore)
-                    .navigationDestination(for: CharactersCoordinator.Routes.self) { $0 }
+                charactersCoordinator
+                    .view(for: .root)
+                    .navigationDestination(for: CharactersCoordinator.Routes.self) {
+                        charactersCoordinator.view(for: $0)
+                    }
+                    .sheet(isPresented: charactersCoordinator.sheetIsPresented) {
+                        charactersCoordinator.sheet
+                    }
             }
             .tabItem {
                 Label(
@@ -29,10 +36,15 @@ struct MainView: View {
             }
             .tag(MainCoordinator.Tab.characters.rawValue)
 
-            NavigationStack {
-                EpisodesCoordinator.Routes
-                    .root
-                    .navigationDestination(for: EpisodesCoordinator.Routes.self) { $0 }
+            NavigationStack(path: episodesCoordinator.pathBinding) {
+                episodesCoordinator
+                    .view(for: .root)
+                    .navigationDestination(for: EpisodesCoordinator.Routes.self) {
+                        episodesCoordinator.view(for: $0)
+                    }
+                    .sheet(isPresented: episodesCoordinator.sheetIsPresented) {
+                        episodesCoordinator.sheet
+                    }
             }
             .tabItem {
                 Label(
@@ -55,6 +67,7 @@ struct MainView: View {
         }
         .environment(mainCoordinator)
         .environment(charactersCoordinator)
+        .environment(episodesCoordinator)
     }
 }
 

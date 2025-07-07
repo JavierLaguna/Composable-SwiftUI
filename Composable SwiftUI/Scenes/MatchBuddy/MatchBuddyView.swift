@@ -152,9 +152,6 @@ struct MatchBuddyView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
         }
-        .sheet(isPresented: charactersCoordinator.sheetIsPresented) {
-            charactersCoordinator.sheet
-        }
         .task {
             store.send(.getBeerBuddy(of: character))
         }

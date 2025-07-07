@@ -24,13 +24,13 @@ struct EpisodeCarouselView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: Theme.Space.xl) {
             Text(R.string.localizable.commonsEpisodes())
                 .specialSubtitleStyle()
                 .padding(.horizontal)
 
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 16) {
+                HStack(alignment: .top, spacing: Theme.Space.xl) {
                     ForEach(displayedEpisodes, id: \.id) { episode in
                         VStack(alignment: .leading) {
                             Button {

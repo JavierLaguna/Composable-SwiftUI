@@ -1,38 +1,87 @@
-import Observation
 import SwiftUI
 import ComposableArchitecture
 
-@Observable
-final class EpisodesCoordinator {
-
-    private(set) var path: [Routes] = []
+final class EpisodesCoordinator: Coordinator<EpisodesCoordinator.Routes, EpisodesCoordinator.Sheet> {
 
     @MainActor
-    var pathBinding: Binding<[Routes]> {
-        Binding(
-            get: { self.path },
-            set: { self.path = $0 }
-        )
-    }
+    private let episodesListStore: StoreOf<EpisodesListReducer> = Store(
+        initialState: .init(),
+        reducer: { EpisodesListReducer.build() }
+    )
 }
 
 // MARK: Routes
 extension EpisodesCoordinator {
 
-    enum Routes: Hashable, View {
+    enum Routes: Hashable {
         case root
+        case episodeDetail(Episode)
+    }
+
+    @MainActor
+    @ViewBuilder
+    func view(for route: Routes) -> some View {
+        switch route {
+        case .root:
+            EpisodesListView(
+                store: episodesListStore,
+                coordinator: self
+            )
+
+        case .episodeDetail(let episode):
+            EpisodeDetailView(
+                store: Store(
+                    initialState: .init(
+                        episode: episode
+                    ),
+                    reducer: {
+                        EpisodeDetailReducer.build()
+                    }
+                ),
+                coordinator: self
+            )
+        }
+    }
+}
+
+// MARK: Sheets
+extension EpisodesCoordinator {
+
+    enum Sheet: Hashable, View {
+        case characterDetail(Character)
 
         // MARK: View
         var body: some View {
             switch self {
-            case .root:
-                EpisodesListView(store: Store(
-                    initialState: .init(),
-                    reducer: {
-                        EpisodesListReducer.build()
-                    }
-                ))
+            case .characterDetail(let character):
+                CharacterDetailView(
+                    store: Store(
+                        initialState: .init(
+                            character: character,
+                            viewMode: .basicInfo
+                        ),
+                        reducer: {
+                            CharacterDetailReducer.build()
+                        }
+                    )
+                )
             }
         }
+    }
+}
+
+// MARK: EpisodesListView.Coordinatable
+extension EpisodesCoordinator: EpisodesListView.Coordinatable {
+
+    func onSelect(episode: Episode) {
+        push(.episodeDetail(episode))
+    }
+}
+
+// MARK: EpisodeDetailView.Coordinatable
+extension EpisodesCoordinator: EpisodeDetailView.Coordinatable {
+
+    func onSelect(character: Character) {
+        present(.characterDetail(character))
     }
 }
