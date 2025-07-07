@@ -3,15 +3,18 @@ import ComposableArchitecture
 import Kingfisher
 
 struct EpisodeDetailView: View {
-    
+
     protocol Coordinatable {
         func onSelect(character: Character)
     }
 
     static private let bgColor = Theme.Colors.backgroundTertiary
+    static private let collapseThreshold: CGFloat = 100
 
     let store: StoreOf<EpisodeDetailReducer>
     let coordinator: any Coordinatable
+
+    @State private var showNavigationTitle: Bool = false
 
     var body: some View {
         ScrollView {
@@ -36,11 +39,25 @@ struct EpisodeDetailView: View {
                         .frame(height: 120)
                     }
 
-                Text(store.episode.name)
-                    .specialTitleStyle()
-                    .multilineTextAlignment(.center)
-                    .padding(.top, Theme.Space.m)
-                    .padding(.horizontal, Theme.Space.l)
+                VStack {
+                    Text(store.episode.name)
+                        .specialTitleStyle()
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top, Theme.Space.m)
+                        .padding(.horizontal, Theme.Space.l)
+                        .background(
+                            GeometryReader { geometry in
+                                Color.clear
+                                    .onChange(of: geometry.frame(in: .global).maxY) { _, newValue in
+
+                                        withAnimation(.easeInOut(duration: 0.2)) {
+                                            showNavigationTitle = newValue <= Self.collapseThreshold
+                                        }
+                                    }
+                            }
+                        )
+                }
 
                 Spacer()
                     .frame(height: Theme.Space.xxxl)
@@ -76,10 +93,9 @@ struct EpisodeDetailView: View {
                             }
                             .padding(.horizontal, Theme.Space.l)
 
-                            
                             if store.characters.isLoading {
                                 Loading()
-                                
+
                             } else if let characters = store.characters.data {
                                 CharactersCarouselView(
                                     characters: characters,
@@ -90,13 +106,12 @@ struct EpisodeDetailView: View {
                         .padding(.vertical, Theme.Space.l)
                         .cardStyle(padding: Theme.Space.none)
 
-                       
                         VStack(alignment: .leading) {
                             if store.episodeDescription.isLoading {
                                 Loading()
-                                
+
                             } else if let episodeDescription = store.episodeDescription.data {
-                                
+
                                 Text(episodeDescription)
                                     .bodyStyle()
                                     .multilineTextAlignment(.leading)
@@ -113,6 +128,8 @@ struct EpisodeDetailView: View {
         }
         .ignoresSafeArea(edges: .top)
         .background(Self.bgColor)
+        .navigationTitle(showNavigationTitle ? store.episode.name : "")
+        .navigationBarTitleDisplayMode(.inline)
         .task {
             store.send(.onAppear)
         }
@@ -138,16 +155,16 @@ private struct InfoCard: View {
 }
 
 private struct Loading: View {
-    
+
     var body: some View {
         HStack {
             Spacer()
-            
+
             ProgressView()
                 .controlSize(.large)
                 .tint(Theme.Colors.primary)
                 .padding(Theme.Space.l)
-            
+
             Spacer()
         }
     }
@@ -174,7 +191,7 @@ private struct CharactersCarouselView: View {
                             .clipShape(Circle())
                     }
                     .buttonStyle(PressableButtonStyle())
-                    
+
                 }
                 .frame(width: 80)
             }
