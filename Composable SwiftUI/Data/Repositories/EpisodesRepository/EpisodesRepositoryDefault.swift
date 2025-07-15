@@ -23,7 +23,7 @@ actor EpisodesRepositoryDefault: EpisodesRepository {
 
         totalPages = response.info.pages
 
-        return response.results.map { $0.toDomain() }
+        return response.results.compactMap { $0.toDomain() }
     }
 
     func getEpisodesFromList(ids: [Int]) async throws -> [Episode] {

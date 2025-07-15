@@ -47,7 +47,7 @@ struct ResponseMapperTests {
             location: locationResponse,
             image: "url/image",
             episode: ["episode/1", "epidose/200"],
-            created: "created"
+            created: "2017-11-04T18:48:46.250Z"
         )
 
         let domainDto = Character(
@@ -61,7 +61,7 @@ struct ResponseMapperTests {
             location: locationResponse.toDomain(),
             image: "url/image",
             episodes: [1, 200],
-            created: Date.now,
+            created: "2017-11-04T18:48:46.250Z".dateFromApiDateString()!,
             description: nil
         )
 
