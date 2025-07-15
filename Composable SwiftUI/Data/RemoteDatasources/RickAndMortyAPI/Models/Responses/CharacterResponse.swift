@@ -14,7 +14,7 @@ struct CharacterResponse: Codable {
     let created: String
 
     func toDomain() -> Character? {
-        guard let created = created.dateFromApiDateString() else {
+        guard let created = created.dateFromApiFullDateString() else {
             return nil
         }
 

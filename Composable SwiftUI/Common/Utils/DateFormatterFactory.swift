@@ -2,7 +2,7 @@ import Foundation
 
 struct DateFormatterFactory {
 
-    func apiResponseFormatter() -> DateFormatter {
+    func apiFullDateFormatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -10,7 +10,7 @@ struct DateFormatterFactory {
         return formatter
     }
 
-    func apiMonthDayYearFormatter() -> DateFormatter {
+    func apiMonthDayYearDateFormatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "MMMM d, yyyy"

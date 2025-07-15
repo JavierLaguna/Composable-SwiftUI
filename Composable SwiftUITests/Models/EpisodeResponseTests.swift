@@ -58,7 +58,7 @@ struct EpisodeResponseTests {
             airDate: "December 2, 2013".dateFromApiMonthDayYearDateString()!,
             code: "episode",
             characters: [1],
-            created: "2017-11-04T18:48:46.250Z".dateFromApiDateString()!,
+            created: "2017-11-04T18:48:46.250Z".dateFromApiFullDateString()!,
             image: nil
         )
 

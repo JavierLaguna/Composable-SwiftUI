@@ -61,7 +61,7 @@ struct ResponseMapperTests {
             location: locationResponse.toDomain(),
             image: "url/image",
             episodes: [1, 200],
-            created: "2017-11-04T18:48:46.250Z".dateFromApiDateString()!,
+            created: "2017-11-04T18:48:46.250Z".dateFromApiFullDateString()!,
             description: nil
         )
 

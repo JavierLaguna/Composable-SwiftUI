@@ -18,7 +18,7 @@ struct EpisodeResponse: Codable {
     }
 
     func toDomain() -> Episode? {
-        guard let created = created.dateFromApiDateString(),
+        guard let created = created.dateFromApiFullDateString(),
               let airDate = airDate.dateFromApiMonthDayYearDateString() else {
             return nil
         }
