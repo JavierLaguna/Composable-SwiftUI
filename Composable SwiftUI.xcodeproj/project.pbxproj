@@ -75,7 +75,6 @@
 		498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */; };
 		498BEF7E2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */; };
 		498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */; };
-		498BEF8328535C41003A3131 /* LocationRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF8228535C41003A3131 /* LocationRemoteDatasourceMock.swift */; };
 		498FFDA02AB9EFCF00C01BE1 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FFD9F2AB9EFCF00C01BE1 /* LoadingViewTests.swift */; };
 		4998C74E2E005BE400F755D9 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */; };
 		4998C7542E005C1700F755D9 /* CircleIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C7532E005C1700F755D9 /* CircleIconButton.swift */; };
@@ -239,7 +238,6 @@
 		498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRepositoryDefaultTests.swift; sourceTree = "<group>"; };
 		498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryDefaultTests.swift; sourceTree = "<group>"; };
-		498BEF8228535C41003A3131 /* LocationRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498FFD9F2AB9EFCF00C01BE1 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
 		4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		4998C7532E005C1700F755D9 /* CircleIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconButton.swift; sourceTree = "<group>"; };
@@ -504,7 +502,6 @@
 			children = (
 				498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */,
 				498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */,
-				498BEF8228535C41003A3131 /* LocationRemoteDatasourceMock.swift */,
 			);
 			path = Datasources;
 			sourceTree = "<group>";
@@ -1272,7 +1269,6 @@
 				492BFBE92DDE2E640072C537 /* CharacterDetailReducerTests.swift in Sources */,
 				49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */,
 				491A3991285097B900D17719 /* LocationRepositoryMock.swift in Sources */,
-				498BEF8328535C41003A3131 /* LocationRemoteDatasourceMock.swift in Sources */,
 				49206E622CAFF3B500C21802 /* LocationServiceTests.swift in Sources */,
 				498FFDA02AB9EFCF00C01BE1 /* LoadingViewTests.swift in Sources */,
 				49206E652CAFF5E900C21802 /* CharacterServiceTests.swift in Sources */,
