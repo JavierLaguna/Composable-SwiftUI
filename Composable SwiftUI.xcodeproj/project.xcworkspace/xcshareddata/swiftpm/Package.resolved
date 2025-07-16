@@ -1,5 +1,5 @@
 {
-  "originHash" : "5bcbce8db61a60fc2fa605530a7f576c9a021f2789401114f397d5b7c6271f61",
+  "originHash" : "66c6624c6a8f4e43d81cbbad76acec9d9834bc0408d6ac6bd0c1748780b8b3ec",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
         "version" : "7.12.0"
+      }
+    },
+    {
+      "identity" : "mockable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kolos65/Mockable",
+      "state" : {
+        "revision" : "ee133a696dce312da292b00d0944aafaa808eaca",
+        "version" : "0.4.0"
       }
     },
     {

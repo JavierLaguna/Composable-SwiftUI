@@ -35,6 +35,8 @@
 		492BFBC12DDCF57D0072C537 /* CharacterStatusCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BFBC02DDCF57D0072C537 /* CharacterStatusCapsule.swift */; };
 		492BFBD92DDE233F0072C537 /* CharacterDetailReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BFBD82DDE233F0072C537 /* CharacterDetailReducer.swift */; };
 		492BFBE92DDE2E640072C537 /* CharacterDetailReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BFBE82DDE2E610072C537 /* CharacterDetailReducerTests.swift */; };
+		4935A3D62E27D50F005997A3 /* Mockable in Frameworks */ = {isa = PBXBuildFile; productRef = 4935A3D52E27D50F005997A3 /* Mockable */; };
+		4935A3DA2E27D517005997A3 /* Mockable in Frameworks */ = {isa = PBXBuildFile; productRef = 4935A3D92E27D517005997A3 /* Mockable */; };
 		493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 493A4B162A698A19006E250D /* RswiftLibrary */; };
 		493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */; };
 		493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF0302834298700ECC3A3 /* CharacterStatus.swift */; };
@@ -329,6 +331,7 @@
 			files = (
 				494E345B283A40FE00445B79 /* SkeletonUI in Frameworks */,
 				493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */,
+				4935A3D62E27D50F005997A3 /* Mockable in Frameworks */,
 				49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */,
 				49A4A67C282FA32E00D43FB3 /* Kingfisher in Frameworks */,
 				49A4A64C282F952700D43FB3 /* ComposableArchitecture in Frameworks */,
@@ -341,6 +344,7 @@
 			files = (
 				49A17DCE2AB9BEBA00DAF653 /* InlineSnapshotTesting in Frameworks */,
 				49A17DD02AB9BEBA00DAF653 /* SnapshotTesting in Frameworks */,
+				4935A3DA2E27D517005997A3 /* Mockable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,6 +1048,7 @@
 				494E345A283A40FE00445B79 /* SkeletonUI */,
 				49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */,
 				493A4B162A698A19006E250D /* RswiftLibrary */,
+				4935A3D52E27D50F005997A3 /* Mockable */,
 			);
 			productName = "Composable SwiftUI";
 			productReference = 49A4A61D282F948C00D43FB3 /* Composable SwiftUI.app */;
@@ -1066,6 +1071,7 @@
 			packageProductDependencies = (
 				49A17DCD2AB9BEBA00DAF653 /* InlineSnapshotTesting */,
 				49A17DCF2AB9BEBA00DAF653 /* SnapshotTesting */,
+				4935A3D92E27D517005997A3 /* Mockable */,
 			);
 			productName = "Composable SwiftUITests";
 			productReference = 49A4A62D282F949200D43FB3 /* Composable SwiftUITests.xctest */;
@@ -1108,6 +1114,7 @@
 				493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */,
 				49A17DCC2AB9BEBA00DAF653 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				4935A3D32E27D487005997A3 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */,
 			);
 			productRefGroup = 49A4A61E282F948C00D43FB3 /* Products */;
 			projectDirPath = "";
@@ -1467,6 +1474,7 @@
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jlagunadev.Composable-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MOCKING";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_CONCISE_MAGIC_FILE = YES;
 				SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = YES;
@@ -1543,6 +1551,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jlagunadev.Composable-SwiftUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MOCKING";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = minimal;
@@ -1640,6 +1649,14 @@
 				minimumVersion = 0.59.1;
 			};
 		};
+		4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kolos65/Mockable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
 		493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
@@ -1691,6 +1708,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4935A3D52E27D50F005997A3 /* Mockable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */;
+			productName = Mockable;
+		};
+		4935A3D92E27D517005997A3 /* Mockable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */;
+			productName = Mockable;
+		};
 		493A4B122A698996006E250D /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "plugin:RswiftGenerateInternalResources";
