@@ -1035,7 +1035,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				49B243252AD92D3B00FA9245 /* PBXTargetDependency */,
 				493A4B132A698996006E250D /* PBXTargetDependency */,
 			);
 			name = "Composable SwiftUI";
@@ -1107,8 +1106,8 @@
 				494E3459283A40FE00445B79 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
 				49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */,
-				49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				49A17DCC2AB9BEBA00DAF653 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				4935A3D32E27D487005997A3 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			productRefGroup = 49A4A61E282F948C00D43FB3 /* Products */;
 			projectDirPath = "";
@@ -1308,10 +1307,6 @@
 			isa = PBXTargetDependency;
 			target = 49A4A61C282F948C00D43FB3 /* Composable SwiftUI */;
 			targetProxy = 49A4A62E282F949200D43FB3 /* PBXContainerItemProxy */;
-		};
-		49B243252AD92D3B00FA9245 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 49B243242AD92D3B00FA9245 /* SwiftLintPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1637,6 +1632,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4935A3D32E27D487005997A3 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
+			};
+		};
 		493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
@@ -1675,14 +1678,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.0;
-			};
-		};
-		49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/SwiftLint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.57.0;
 			};
 		};
 		49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
@@ -1729,11 +1724,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49A4A67A282FA32E00D43FB3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		49B243242AD92D3B00FA9245 /* SwiftLintPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = "plugin:SwiftLintPlugin";
 		};
 		49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
