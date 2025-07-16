@@ -58,7 +58,6 @@
 		49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C9F2A783EC4002F7594 /* NeighborsListView.swift */; };
 		49529CA42A784058002F7594 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA32A784058002F7594 /* LoadingView.swift */; };
 		49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */; };
-		4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */; };
 		4976B3692C99CC6000531ADE /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976B3682C99CC6000531ADE /* Tags.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
@@ -221,7 +220,6 @@
 		49529CA32A784058002F7594 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducerTests.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInfoInteractorMock.swift; sourceTree = "<group>"; };
 		4976B3682C99CC6000531ADE /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
@@ -822,7 +820,6 @@
 			children = (
 				49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */,
 				49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */,
-				4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1293,7 +1290,6 @@
 				494C058A2C241CE7006CFF1B /* TestConfig.swift in Sources */,
 				491A398F2850948900D17719 /* CharacterTests.swift in Sources */,
 				498BEF7E2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift in Sources */,
-				4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */,
 				498BEF7828534F58003A3131 /* CharacterRemoteDatasourceMock.swift in Sources */,
 				498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */,
 			);
