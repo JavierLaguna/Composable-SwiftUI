@@ -54,15 +54,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "49A4A62C282F949200D43FB3"
-            BuildableName = "Composable SwiftUITests.xctest"
-            BlueprintName = "Composable SwiftUITests"
-            ReferencedContainer = "container:Composable SwiftUI.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
