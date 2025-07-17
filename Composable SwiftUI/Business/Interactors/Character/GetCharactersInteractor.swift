@@ -1,3 +1,7 @@
+import Foundation
+import Mockable
+
+@Mockable
 protocol GetCharactersInteractor: Sendable {
     func execute() async throws -> [Character]
     func execute(id: Int) async throws -> Character

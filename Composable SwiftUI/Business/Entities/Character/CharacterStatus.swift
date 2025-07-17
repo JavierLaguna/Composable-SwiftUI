@@ -1,4 +1,4 @@
-enum CharacterStatus: String, Equatable, Hashable {
+enum CharacterStatus: String, Equatable, Hashable, CaseIterable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"

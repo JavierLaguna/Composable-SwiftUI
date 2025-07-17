@@ -2,6 +2,11 @@ import Foundation
 
 extension String {
 
+    /// Returns a `Date` from a `"yyyy-MM-dd" String`
+    func dateFromYearMothDayString() -> Date? {
+        DateFormatterFactory().yearMothDayDateFormatter().date(from: self)
+    }
+
     /// Returns a `Date` from a `"yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX" String`
     func dateFromApiFullDateString() -> Date? {
         DateFormatterFactory().apiFullDateFormatter().date(from: self)

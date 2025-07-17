@@ -1,6 +1,6 @@
 import Testing
 import ComposableArchitecture
-
+import Mockable
 @testable import Composable_SwiftUI
 
 @Suite(
@@ -11,24 +11,64 @@ struct GetCharactersInteractorDefaultTests {
 
     @Test
     func executeSuccess() async throws {
-        let repository = CharactersRepositoryMock()
+        let mockRepository = MockCharactersRepository()
+        let mockResponse = Character.mocks
+        let interactor = GetCharactersInteractorDefault(repository: mockRepository)
 
-        let interactor = GetCharactersInteractorDefault(repository: repository)
+        given(mockRepository)
+            .getCharacters()
+            .willReturn(mockResponse)
 
         let result = try await interactor.execute()
 
-        #expect(result.count == repository.expectedResponse.count)
-        #expect(result == repository.expectedResponse)
+        #expect(result.count == mockResponse.count)
+        #expect(result == mockResponse)
+
+        verify(mockRepository)
+            .getCharacters()
+            .called(.once)
+
+        verify(mockRepository)
+            .getCharacter(characterId: .any)
+            .called(.never)
+
+        verify(mockRepository)
+            .getCharacters(characterIds: .any)
+            .called(.never)
+
+        verify(mockRepository)
+            .getTotalCharactersCount()
+            .called(.never)
     }
 
     @Test
     func executeFail() async throws {
-        let repository = CharactersRepositoryMock(success: false)
+        let mockRepository = MockCharactersRepository()
+        let mockError = InteractorError.repositoryFail(error: .invalidUrl)
+        let interactor = GetCharactersInteractorDefault(repository: mockRepository)
 
-        let interactor = GetCharactersInteractorDefault(repository: repository)
+        given(mockRepository)
+            .getCharacters()
+            .willThrow(mockError)
 
-        try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+        try await #require(throws: mockError) {
             try await interactor.execute()
         }
+
+        verify(mockRepository)
+            .getCharacters()
+            .called(.once)
+
+        verify(mockRepository)
+            .getCharacter(characterId: .any)
+            .called(.never)
+
+        verify(mockRepository)
+            .getCharacters(characterIds: .any)
+            .called(.never)
+
+        verify(mockRepository)
+            .getTotalCharactersCount()
+            .called(.never)
     }
 }

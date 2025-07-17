@@ -5,10 +5,10 @@ extension Episode {
     static let mock: Episode = Episode(
         id: 1,
         name: "Raising Gazorpazorp",
-        airDate: Date(timeIntervalSince1970: 1385980800), // December 2, 2013
+        airDate: "2013-12-02".dateFromYearMothDayString()!,
         code: "S01E01",
         characters: [1, 2, 35, 38],
-        created: Date(),
+        created: "2018-10-22".dateFromYearMothDayString()!,
         image: UIImage(named: "Episode_1")
     )
 

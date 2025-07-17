@@ -1,3 +1,6 @@
+import Mockable
+
+@Mockable
 protocol CharactersRepository: Sendable {
     func getCharacters() async throws -> [Character]
     func getCharacter(characterId: Int) async throws -> Character

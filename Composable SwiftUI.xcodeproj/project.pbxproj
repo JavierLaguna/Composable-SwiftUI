@@ -37,6 +37,9 @@
 		492BFBE92DDE2E640072C537 /* CharacterDetailReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BFBE82DDE2E610072C537 /* CharacterDetailReducerTests.swift */; };
 		4935A3D62E27D50F005997A3 /* Mockable in Frameworks */ = {isa = PBXBuildFile; productRef = 4935A3D52E27D50F005997A3 /* Mockable */; };
 		4935A3DA2E27D517005997A3 /* Mockable in Frameworks */ = {isa = PBXBuildFile; productRef = 4935A3D92E27D517005997A3 /* Mockable */; };
+		4935A4012E281605005997A3 /* LocationDetailMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A4002E281605005997A3 /* LocationDetailMock.swift */; };
+		4935A4132E291205005997A3 /* CharacterLocationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A4122E291205005997A3 /* CharacterLocationMock.swift */; };
+		4935A4302E291BDD005997A3 /* GetCharactersResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A42F2E291BDD005997A3 /* GetCharactersResponseMock.swift */; };
 		493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 493A4B162A698A19006E250D /* RswiftLibrary */; };
 		493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */; };
 		493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF0302834298700ECC3A3 /* CharacterStatus.swift */; };
@@ -126,7 +129,6 @@
 		49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */; };
 		49E4F833284A95DE0037FD72 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F832284A95DE0037FD72 /* KeyboardManager.swift */; };
 		49E4F835284A9A990037FD72 /* Error+Equality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F834284A9A980037FD72 /* Error+Equality.swift */; };
-		49E4F843284AA23A0037FD72 /* GetCharactersInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */; };
 		49E4F845284AA46F0037FD72 /* CharactersListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */; };
 		49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */; };
 		49E4F849284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */; };
@@ -200,6 +202,9 @@
 		492BFBC02DDCF57D0072C537 /* CharacterStatusCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatusCapsule.swift; sourceTree = "<group>"; };
 		492BFBD82DDE233F0072C537 /* CharacterDetailReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailReducer.swift; sourceTree = "<group>"; };
 		492BFBE82DDE2E610072C537 /* CharacterDetailReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailReducerTests.swift; sourceTree = "<group>"; };
+		4935A4002E281605005997A3 /* LocationDetailMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailMock.swift; sourceTree = "<group>"; };
+		4935A4122E291205005997A3 /* CharacterLocationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocationMock.swift; sourceTree = "<group>"; };
+		4935A42F2E291BDD005997A3 /* GetCharactersResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersResponseMock.swift; sourceTree = "<group>"; };
 		493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewMode.swift; sourceTree = "<group>"; };
 		493BF0302834298700ECC3A3 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
 		493BF03228342D1900ECC3A3 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
@@ -285,7 +290,6 @@
 		49E4F82A284A11D70037FD72 /* UIScreen+Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Sizes.swift"; sourceTree = "<group>"; };
 		49E4F832284A95DE0037FD72 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		49E4F834284A9A980037FD72 /* Error+Equality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Equality.swift"; sourceTree = "<group>"; };
-		49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersInteractorMock.swift; sourceTree = "<group>"; };
 		49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListReducerTests.swift; sourceTree = "<group>"; };
 		49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyReducerTests.swift; sourceTree = "<group>"; };
 		49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBeerBuddyInteractorMock.swift; sourceTree = "<group>"; };
@@ -588,8 +592,11 @@
 			children = (
 				49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */,
 				49B765702DFB3B05004B545D /* CharacterDescriptionMock.swift */,
+				4935A4122E291205005997A3 /* CharacterLocationMock.swift */,
 				49B765642DFB39C6004B545D /* CharacterMock.swift */,
 				49B765D82DFC4747004B545D /* EpisodeMock.swift */,
+				4935A42F2E291BDD005997A3 /* GetCharactersResponseMock.swift */,
+				4935A4002E281605005997A3 /* LocationDetailMock.swift */,
 				49A4A627282F949100D43FB3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -808,9 +815,9 @@
 			isa = PBXGroup;
 			children = (
 				492BFBE82DDE2E610072C537 /* CharacterDetailReducerTests.swift */,
+				49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */,
 				49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */,
 				49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */,
-				49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -819,7 +826,6 @@
 			isa = PBXGroup;
 			children = (
 				49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */,
-				49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1150,6 +1156,7 @@
 				49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */,
 				4998C75E2E005C3B00F755D9 /* TextModifiers.swift in Sources */,
 				49222F302C203C600026B5E8 /* MainView.swift in Sources */,
+				4935A4012E281605005997A3 /* LocationDetailMock.swift in Sources */,
 				49E4F829284931640037FD72 /* MatchBuddyInfoView.swift in Sources */,
 				49A1A25D2E0DB37200B97442 /* EpisodesListReducer.swift in Sources */,
 				49415E2F2E2561FD00F99C24 /* DateFormatterFactory.swift in Sources */,
@@ -1172,6 +1179,7 @@
 				4987ED372A6A976400AA7839 /* GetLocationInfoInteractor.swift in Sources */,
 				49E4F82B284A11D80037FD72 /* UIScreen+Sizes.swift in Sources */,
 				49EDA8BF283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift in Sources */,
+				4935A4132E291205005997A3 /* CharacterLocationMock.swift in Sources */,
 				49E88D3D28310EA200058486 /* InteractorError.swift in Sources */,
 				49206E512CAFCA4800C21802 /* APIConstants.swift in Sources */,
 				49B765D92DFC4747004B545D /* EpisodeMock.swift in Sources */,
@@ -1185,6 +1193,7 @@
 				4998C7832E01675D00F755D9 /* Color+Extension.swift in Sources */,
 				4946E27D2E056BA600870FBC /* GetTotalCharactersCountInteractor.swift in Sources */,
 				492BFBD92DDE233F0072C537 /* CharacterDetailReducer.swift in Sources */,
+				4935A4302E291BDD005997A3 /* GetCharactersResponseMock.swift in Sources */,
 				493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */,
 				49A4A664282F993B00D43FB3 /* MainReducer.swift in Sources */,
 				49206E422CAEDEEB00C21802 /* UploadProgressDelegate.swift in Sources */,
@@ -1283,7 +1292,6 @@
 				49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */,
 				4976B3692C99CC6000531ADE /* Tags.swift in Sources */,
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
-				49E4F843284AA23A0037FD72 /* GetCharactersInteractorMock.swift in Sources */,
 				49DBDF5D2CADB3E4007CDE74 /* MatchBuddyViewTests.swift in Sources */,
 				492B43462ABB45A6005B631E /* CharactersListViewTests.swift in Sources */,
 				491A39932850986B00D17719 /* EpisodesRepositoryMock.swift in Sources */,
