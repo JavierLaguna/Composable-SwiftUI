@@ -61,7 +61,7 @@ private extension GetEpisodesInteractorDefault {
             for episode in episodes {
                 group.addTask {
                     let image = try await getEpisodeImageInteractor.execute(episode: episode)
-                    return episode.withImage(image)
+                    return episode.copy(image: image)
                 }
             }
 

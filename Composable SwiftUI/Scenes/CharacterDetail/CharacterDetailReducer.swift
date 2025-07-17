@@ -82,7 +82,7 @@ struct CharacterDetailReducer {
                 guard let currentCharacter = state.currentCharacter.data else {
                     return .none
                 }
-                let newCharacter = currentCharacter.withDescription(characterDescription)
+                let newCharacter = currentCharacter.copy(description: characterDescription)
                 state.currentCharacter.state = .populated(data: newCharacter)
                 return .none
 
