@@ -1,5 +1,5 @@
 {
-  "originHash" : "66c6624c6a8f4e43d81cbbad76acec9d9834bc0408d6ac6bd0c1748780b8b3ec",
+  "originHash" : "3a0e01b30f60789a2576854dea4c8f9ea1af7fe8809472d9d69d7250aa68384b",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "c00b1ae9fa1ad8af4465bb6ca901f6943fc98eba",
         "version" : "6.5.16"
+      }
+    },
+    {
+      "identity" : "jlagunadevmacros",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JavierLaguna/JLagunaDevMacros",
+      "state" : {
+        "branch" : "main",
+        "revision" : "96df4710963b96520dca6f3a3eea8fcf6fef86ec"
       }
     },
     {

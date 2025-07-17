@@ -40,6 +40,7 @@
 		4935A4012E281605005997A3 /* LocationDetailMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A4002E281605005997A3 /* LocationDetailMock.swift */; };
 		4935A4132E291205005997A3 /* CharacterLocationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A4122E291205005997A3 /* CharacterLocationMock.swift */; };
 		4935A4302E291BDD005997A3 /* GetCharactersResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A42F2E291BDD005997A3 /* GetCharactersResponseMock.swift */; };
+		4935A43A2E29599C005997A3 /* JLagunaDevMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 4935A4392E29599C005997A3 /* JLagunaDevMacros */; };
 		493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 493A4B162A698A19006E250D /* RswiftLibrary */; };
 		493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */; };
 		493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF0302834298700ECC3A3 /* CharacterStatus.swift */; };
@@ -332,6 +333,7 @@
 				494E345B283A40FE00445B79 /* SkeletonUI in Frameworks */,
 				493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */,
 				4935A3D62E27D50F005997A3 /* Mockable in Frameworks */,
+				4935A43A2E29599C005997A3 /* JLagunaDevMacros in Frameworks */,
 				49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */,
 				49A4A67C282FA32E00D43FB3 /* Kingfisher in Frameworks */,
 				49A4A64C282F952700D43FB3 /* ComposableArchitecture in Frameworks */,
@@ -1049,6 +1051,7 @@
 				49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */,
 				493A4B162A698A19006E250D /* RswiftLibrary */,
 				4935A3D52E27D50F005997A3 /* Mockable */,
+				4935A4392E29599C005997A3 /* JLagunaDevMacros */,
 			);
 			productName = "Composable SwiftUI";
 			productReference = 49A4A61D282F948C00D43FB3 /* Composable SwiftUI.app */;
@@ -1115,6 +1118,7 @@
 				49A17DCC2AB9BEBA00DAF653 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				4935A3D32E27D487005997A3 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */,
+				4935A4382E29599C005997A3 /* XCRemoteSwiftPackageReference "JLagunaDevMacros" */,
 			);
 			productRefGroup = 49A4A61E282F948C00D43FB3 /* Products */;
 			projectDirPath = "";
@@ -1657,6 +1661,14 @@
 				minimumVersion = 0.4.0;
 			};
 		};
+		4935A4382E29599C005997A3 /* XCRemoteSwiftPackageReference "JLagunaDevMacros" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JavierLaguna/JLagunaDevMacros";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
@@ -1717,6 +1729,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */;
 			productName = Mockable;
+		};
+		4935A4392E29599C005997A3 /* JLagunaDevMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4935A4382E29599C005997A3 /* XCRemoteSwiftPackageReference "JLagunaDevMacros" */;
+			productName = JLagunaDevMacros;
 		};
 		493A4B122A698996006E250D /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
