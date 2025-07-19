@@ -1,6 +1,6 @@
 import Foundation
 
-extension GetCharactersResponse {
+extension CharacterResponse {
 
     static let mock = CharacterResponse(
         id: 1,
@@ -9,24 +9,15 @@ extension GetCharactersResponse {
         species: "",
         type: "",
         gender: "male",
-        origin: CharacterLocationResponse(
-            name: "earth",
-            url: "urlLocation"
-        ),
-        location: CharacterLocationResponse(
-            name: "earth",
-            url: "urlLocation"
-        ),
+        origin: CharacterLocationResponse(name: "earth", url: "urlLocation"),
+        location: CharacterLocationResponse(name: "earth", url: "urlLocation"),
         image: "image",
-        episode: [
-            "url/1",
-            "url/2"
-        ],
+        episode: ["url/1", "url/2"],
         created: "2017-11-04T18:48:46.250Z"
     )
 
     static let mocks: [CharacterResponse] = [
-        Self.mock,
+        mock,
         CharacterResponse(
             id: 2,
             name: "Morty",
@@ -43,10 +34,7 @@ extension GetCharactersResponse {
                 url: "urlLocation"
             ),
             image: "image",
-            episode: [
-                "url/1",
-                "url/2"
-            ],
+            episode: ["url/1", "url/2"],
             created: "2017-11-04T18:48:46.250Z"
         )
     ]
