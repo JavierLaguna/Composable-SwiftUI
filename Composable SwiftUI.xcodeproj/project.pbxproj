@@ -63,6 +63,7 @@
 		49529CA42A784058002F7594 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA32A784058002F7594 /* LoadingView.swift */; };
 		49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */; };
 		495EB3832E2A773A00644411 /* CharacterResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB3822E2A773A00644411 /* CharacterResponseMock.swift */; };
+		495EB3A52E2E3A3500644411 /* EpisodeResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB3A42E2E3A3500644411 /* EpisodeResponseMock.swift */; };
 		4976B3692C99CC6000531ADE /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976B3682C99CC6000531ADE /* Tags.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
@@ -76,7 +77,6 @@
 		4987ED462A6BD91E00AA7839 /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED452A6BD91E00AA7839 /* LocationType.swift */; };
 		498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */; };
 		498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */; };
-		498BEF7E2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */; };
 		498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */; };
 		498FFDA02AB9EFCF00C01BE1 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FFD9F2AB9EFCF00C01BE1 /* LoadingViewTests.swift */; };
 		4998C74E2E005BE400F755D9 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */; };
@@ -136,7 +136,6 @@
 		49E4F84C284FC9BB0037FD72 /* CharactersListStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F84B284FC9BB0037FD72 /* CharactersListStateTests.swift */; };
 		49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F84E284FCBEB0037FD72 /* ResponseMapperTests.swift */; };
 		49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */; };
-		49E4F857284FCF1F0037FD72 /* CharactersRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F856284FCF1F0037FD72 /* CharactersRepositoryMock.swift */; };
 		49E88CE2282FC1E800058486 /* RResource+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E88CE1282FC1E800058486 /* RResource+Extension.swift */; };
 		49E88CE6282FC54300058486 /* wubba_lubba_dub_dub.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49E88CE5282FC54300058486 /* wubba_lubba_dub_dub.ttf */; };
 		49E88D232830F21400058486 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E88D222830F21400058486 /* CharacterService.swift */; };
@@ -227,6 +226,7 @@
 		49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducerTests.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		495EB3822E2A773A00644411 /* CharacterResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponseMock.swift; sourceTree = "<group>"; };
+		495EB3A42E2E3A3500644411 /* EpisodeResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeResponseMock.swift; sourceTree = "<group>"; };
 		4976B3682C99CC6000531ADE /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
@@ -240,7 +240,6 @@
 		4987ED452A6BD91E00AA7839 /* LocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
 		498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryCharactersRepositoryDefaultTests.swift; sourceTree = "<group>"; };
 		498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRepositoryDefaultTests.swift; sourceTree = "<group>"; };
-		498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryDefaultTests.swift; sourceTree = "<group>"; };
 		498FFD9F2AB9EFCF00C01BE1 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
 		4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
@@ -297,7 +296,6 @@
 		49E4F84B284FC9BB0037FD72 /* CharactersListStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListStateTests.swift; sourceTree = "<group>"; };
 		49E4F84E284FCBEB0037FD72 /* ResponseMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMapperTests.swift; sourceTree = "<group>"; };
 		49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersInteractorDefaultTests.swift; sourceTree = "<group>"; };
-		49E4F856284FCF1F0037FD72 /* CharactersRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryMock.swift; sourceTree = "<group>"; };
 		49E88CE1282FC1E800058486 /* RResource+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RResource+Extension.swift"; sourceTree = "<group>"; };
 		49E88CE5282FC54300058486 /* wubba_lubba_dub_dub.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wubba_lubba_dub_dub.ttf; sourceTree = "<group>"; };
 		49E88D222830F21400058486 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
@@ -439,6 +437,7 @@
 				49B765642DFB39C6004B545D /* CharacterMock.swift */,
 				495EB3822E2A773A00644411 /* CharacterResponseMock.swift */,
 				49B765D82DFC4747004B545D /* EpisodeMock.swift */,
+				495EB3A42E2E3A3500644411 /* EpisodeResponseMock.swift */,
 				4935A42F2E291BDD005997A3 /* GetCharactersResponseMock.swift */,
 				4935A4002E281605005997A3 /* LocationDetailMock.swift */,
 			);
@@ -513,14 +512,6 @@
 				49EDA8CD283CB74A002C9C80 /* MatchedEpisodes.swift */,
 			);
 			path = Episode;
-			sourceTree = "<group>";
-		};
-		498BEF7628534F46003A3131 /* Datasources */ = {
-			isa = PBXGroup;
-			children = (
-				498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */,
-			);
-			path = Datasources;
 			sourceTree = "<group>";
 		};
 		498FFDA22AB9F10600C01BE1 /* UI */ = {
@@ -814,7 +805,6 @@
 			isa = PBXGroup;
 			children = (
 				49206E5D2CAFD60F00C21802 /* APIClientMock.swift */,
-				498BEF7628534F46003A3131 /* Datasources */,
 				49E4F855284FCEFB0037FD72 /* Repositories */,
 				49E4F841284AA2230037FD72 /* Interactors */,
 			);
@@ -886,7 +876,6 @@
 		49E4F855284FCEFB0037FD72 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				49E4F856284FCF1F0037FD72 /* CharactersRepositoryMock.swift */,
 				491A39922850986B00D17719 /* EpisodesRepositoryMock.swift */,
 				491A3990285097B900D17719 /* LocationRepositoryMock.swift */,
 			);
@@ -1250,6 +1239,7 @@
 				49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */,
 				49A1A2682E0DB53F00B97442 /* EpisodeCellView.swift in Sources */,
 				49D7AEB92E0DABD100C80C06 /* EpisodesListView.swift in Sources */,
+				495EB3A52E2E3A3500644411 /* EpisodeResponseMock.swift in Sources */,
 				49206E4D2CAF0C7D00C21802 /* URLSessionAPIClient.swift in Sources */,
 				49EDA8C6283BEFBB002C9C80 /* LocationService.swift in Sources */,
 				49A4A670282F9AB300D43FB3 /* CharactersListReducer.swift in Sources */,
@@ -1297,7 +1287,6 @@
 				49206E5E2CAFD60F00C21802 /* APIClientMock.swift in Sources */,
 				49A17DCA2AB9BBCB00DAF653 /* EpisodeResponseTests.swift in Sources */,
 				49E4F849284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift in Sources */,
-				49E4F857284FCF1F0037FD72 /* CharactersRepositoryMock.swift in Sources */,
 				49E4F84C284FC9BB0037FD72 /* CharactersListStateTests.swift in Sources */,
 				491A39952850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift in Sources */,
 				49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */,
@@ -1310,7 +1299,6 @@
 				491A39932850986B00D17719 /* EpisodesRepositoryMock.swift in Sources */,
 				494C058A2C241CE7006CFF1B /* TestConfig.swift in Sources */,
 				491A398F2850948900D17719 /* CharacterTests.swift in Sources */,
-				498BEF7E2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift in Sources */,
 				498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
