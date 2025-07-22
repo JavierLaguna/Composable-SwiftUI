@@ -75,6 +75,7 @@
 		4987ED3E2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED3D2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift */; };
 		4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED422A6BD8E700AA7839 /* LocationDetail.swift */; };
 		4987ED462A6BD91E00AA7839 /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED452A6BD91E00AA7839 /* LocationType.swift */; };
+		498AC1062E2FCE9400DFF544 /* BeerBuddyMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498AC1052E2FCE9400DFF544 /* BeerBuddyMock.swift */; };
 		498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */; };
 		498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */; };
 		498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */; };
@@ -132,7 +133,6 @@
 		49E4F835284A9A990037FD72 /* Error+Equality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F834284A9A980037FD72 /* Error+Equality.swift */; };
 		49E4F845284AA46F0037FD72 /* CharactersListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */; };
 		49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */; };
-		49E4F849284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */; };
 		49E4F84C284FC9BB0037FD72 /* CharactersListStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F84B284FC9BB0037FD72 /* CharactersListStateTests.swift */; };
 		49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F84E284FCBEB0037FD72 /* ResponseMapperTests.swift */; };
 		49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */; };
@@ -238,6 +238,7 @@
 		4987ED3D2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducer.swift; sourceTree = "<group>"; };
 		4987ED422A6BD8E700AA7839 /* LocationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetail.swift; sourceTree = "<group>"; };
 		4987ED452A6BD91E00AA7839 /* LocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
+		498AC1052E2FCE9400DFF544 /* BeerBuddyMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerBuddyMock.swift; sourceTree = "<group>"; };
 		498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryCharactersRepositoryDefaultTests.swift; sourceTree = "<group>"; };
 		498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRepositoryDefaultTests.swift; sourceTree = "<group>"; };
 		498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryDefaultTests.swift; sourceTree = "<group>"; };
@@ -292,7 +293,6 @@
 		49E4F834284A9A980037FD72 /* Error+Equality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Equality.swift"; sourceTree = "<group>"; };
 		49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListReducerTests.swift; sourceTree = "<group>"; };
 		49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyReducerTests.swift; sourceTree = "<group>"; };
-		49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBeerBuddyInteractorMock.swift; sourceTree = "<group>"; };
 		49E4F84B284FC9BB0037FD72 /* CharactersListStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListStateTests.swift; sourceTree = "<group>"; };
 		49E4F84E284FCBEB0037FD72 /* ResponseMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMapperTests.swift; sourceTree = "<group>"; };
 		49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersInteractorDefaultTests.swift; sourceTree = "<group>"; };
@@ -432,6 +432,7 @@
 		495EB3762E2A771500644411 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				498AC1052E2FCE9400DFF544 /* BeerBuddyMock.swift */,
 				49B765702DFB3B05004B545D /* CharacterDescriptionMock.swift */,
 				4935A4122E291205005997A3 /* CharacterLocationMock.swift */,
 				49B765642DFB39C6004B545D /* CharacterMock.swift */,
@@ -806,7 +807,6 @@
 			children = (
 				49206E5D2CAFD60F00C21802 /* APIClientMock.swift */,
 				49E4F855284FCEFB0037FD72 /* Repositories */,
-				49E4F841284AA2230037FD72 /* Interactors */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -820,14 +820,6 @@
 				49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */,
 			);
 			path = Reducers;
-			sourceTree = "<group>";
-		};
-		49E4F841284AA2230037FD72 /* Interactors */ = {
-			isa = PBXGroup;
-			children = (
-				49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */,
-			);
-			path = Interactors;
 			sourceTree = "<group>";
 		};
 		49E4F84A284FC9990037FD72 /* States */ = {
@@ -1200,6 +1192,7 @@
 				49206E422CAEDEEB00C21802 /* UploadProgressDelegate.swift in Sources */,
 				494E3458283A2E4700445B79 /* StateLoadable.swift in Sources */,
 				49415E332E25624500F99C24 /* String+Date.swift in Sources */,
+				498AC1062E2FCE9400DFF544 /* BeerBuddyMock.swift in Sources */,
 				49E4F835284A9A990037FD72 /* Error+Equality.swift in Sources */,
 				49E88D35283103F400058486 /* CharactersRepository.swift in Sources */,
 				49E88D302830F8DA00058486 /* GetCharactersResponse.swift in Sources */,
@@ -1286,7 +1279,6 @@
 				498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */,
 				49206E5E2CAFD60F00C21802 /* APIClientMock.swift in Sources */,
 				49A17DCA2AB9BBCB00DAF653 /* EpisodeResponseTests.swift in Sources */,
-				49E4F849284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift in Sources */,
 				49E4F84C284FC9BB0037FD72 /* CharactersListStateTests.swift in Sources */,
 				491A39952850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift in Sources */,
 				49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */,

@@ -1,7 +1,7 @@
 import Foundation
 import Testing
 import ComposableArchitecture
-
+import Mockable
 @testable import Composable_SwiftUI
 
 @Suite(
@@ -12,79 +12,92 @@ struct MatchBuddyReducerTests {
 
     @Test
     func getBeerBuddySuccess() async {
-        let interactor = GetBeerBuddyInteractorMock()
-        let location = CharacterLocation(id: 1, name: "Earth")
-        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [],
-                                  created: Date.now,
-                                  description: nil)
+        let mockInteractor = MockGetBeerBuddyInteractor()
+        let mockResponse = BeerBuddy.mock
 
         let store = await TestStore(
             initialState: .init(),
             reducer: {
                 MatchBuddyReducer(
-                    getBeerBuddyInteractor: interactor
+                    getBeerBuddyInteractor: mockInteractor
                 )
             }
         )
 
-        await store.send(.getBeerBuddy(of: character)) {
+        given(mockInteractor)
+            .execute(character: .any)
+            .willReturn(mockResponse)
+
+        await store.send(.getBeerBuddy(of: Character.mock)) {
             $0.beerBuddy.state = .loading
         }
 
         await store.receive(\.onGetBeerBuddy.success) {
-            $0.beerBuddy.state = .populated(data: interactor.expectedResponse!)
+            $0.beerBuddy.state = .populated(data: mockResponse)
         }
+
+        verify(mockInteractor)
+            .execute(character: .value(Character.mock))
+            .called(.once)
     }
 
     @Test
     func getBeerBuddyNotFoundSuccess() async {
-        let interactor = GetBeerBuddyInteractorMock(success: true, expectedResponse: nil)
-        let location = CharacterLocation(id: 1, name: "Earth")
-        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [],
-                                  created: Date.now,
-                                  description: nil)
+        let mockInteractor = MockGetBeerBuddyInteractor()
 
         let store = await TestStore(
             initialState: .init(),
             reducer: {
                 MatchBuddyReducer(
-                    getBeerBuddyInteractor: interactor
+                    getBeerBuddyInteractor: mockInteractor
                 )
             }
         )
 
-        await store.send(.getBeerBuddy(of: character)) {
+        given(mockInteractor)
+            .execute(character: .any)
+            .willReturn(nil)
+
+        await store.send(.getBeerBuddy(of: Character.mock)) {
             $0.beerBuddy.state = .loading
         }
 
         await store.receive(\.onGetBeerBuddy.success) {
             $0.beerBuddy.state = .empty
         }
+
+        verify(mockInteractor)
+            .execute(character: .value(Character.mock))
+            .called(.once)
     }
 
     @Test
     func getBeerBuddyFail() async {
-        let interactor = GetBeerBuddyInteractorMock(success: false)
-        let location = CharacterLocation(id: 1, name: "Earth")
-        let character = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [],
-                                  created: Date.now,
-                                  description: nil)
-
+        let mockInteractor = MockGetBeerBuddyInteractor()
+        let mockError = InteractorError.generic(message: "mock error")
         let store = await TestStore(
             initialState: .init(),
             reducer: {
                 MatchBuddyReducer(
-                    getBeerBuddyInteractor: interactor
+                    getBeerBuddyInteractor: mockInteractor
                 )
             }
         )
 
-        await store.send(.getBeerBuddy(of: character)) {
+        given(mockInteractor)
+            .execute(character: .any)
+            .willThrow(mockError)
+
+        await store.send(.getBeerBuddy(of: Character.mock)) {
             $0.beerBuddy.state = .loading
         }
 
         await store.receive(\.onGetBeerBuddy.failure) {
-            $0.beerBuddy.state = .error(InteractorError.generic(message: "mock error"))
+            $0.beerBuddy.state = .error(mockError)
         }
+
+        verify(mockInteractor)
+            .execute(character: .value(Character.mock))
+            .called(.once)
     }
 }
