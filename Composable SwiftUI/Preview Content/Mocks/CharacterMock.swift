@@ -2,7 +2,9 @@ import Foundation
 
 extension Character {
 
-    static let mock = Character(
+    static let mock = Character.rick
+
+    static let rick = Character(
         id: 1,
         name: "Rick Sanchez",
         status: .alive,
@@ -15,6 +17,21 @@ extension Character {
         episodes: [1, 2, 5, 7, 12, 23, 67],
         created: "2015-05-20".dateFromYearMothDayString()!,
         description: CharacterDescriptionMock.description
+    )
+
+    static let morty = Character(
+        id: 2,
+        name: "Morty Smith",
+        status: .alive,
+        species: "Human",
+        type: "",
+        gender: .male,
+        origin: CharacterLocation.mock,
+        location: CharacterLocation.mock,
+        image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+        episodes: [1, 2, 15, 44, 35, 200, 301, 304],
+        created: "2015-05-21".dateFromYearMothDayString()!,
+        description: nil
     )
 
     static let mocks: [Character] = (1...10).map { i in

@@ -31,15 +31,8 @@ struct CharacterTests {
 
     @Test
     func matchedEpisodesReturnNil() {
-        let location = CharacterLocation(id: 1, name: "Earth")
-
-        let rick = Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episodes: [200, 301],
-                             created: Date.now,
-                             description: nil)
-
-        let morty = Character(id: 2, name: "Morty Smith", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg", episodes: [1, 2],
-                              created: Date.now,
-                              description: nil)
+        let rick = Character.rick.copy(episodes: [1, 2])
+        let morty = Character.morty.copy(episodes: [200, 301])
 
         let matchedEpisodes = rick.matchedEpisodes(with: morty)
 

@@ -27,21 +27,30 @@ struct GetBeerBuddyInteractorDefaultTests {
                              created: mockDate,
                              description: nil)
 
-        let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
+        let mockLocationRepository = MockLocationRepository()
         let mockCharactersRepository = MockCharactersRepository()
-        let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
+        let mockEpisodeRepository = MockEpisodesRepository()
+        let mockEpisodesResponse = [
             Episode(id: 1, name: "episode1", airDate: mockDate, code: "code-1", characters: [1, 2], created: mockDate, image: nil),
             Episode(id: 2, name: "episode2", airDate: mockDate, code: "code-1", characters: [2, 3, 4], created: mockDate, image: nil)
-        ])
+        ]
         let interactor = GetBeerBuddyInteractorDefault(
-            locationRepository: locationRepository,
+            locationRepository: mockLocationRepository,
             charactersRepository: mockCharactersRepository,
-            episodesRepository: episodesRepository
+            episodesRepository: mockEpisodeRepository
         )
+
+        given(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .any)
+            .willReturn([1, 2, 3, 4])
 
         given(mockCharactersRepository)
             .getCharacters(characterIds: .any)
             .willReturn([morty, beth])
+
+        given(mockEpisodeRepository)
+            .getEpisodesFromList(ids: .any)
+            .willReturn(mockEpisodesResponse)
 
         let result = try #require(await interactor.execute(character: rick))
 
@@ -51,6 +60,14 @@ struct GetBeerBuddyInteractorDefaultTests {
         #expect(result.lastEpisode == Episode(id: 2, name: "episode2", airDate: mockDate, code: "code-1", characters: [2, 3, 4], created: mockDate, image: nil))
         #expect(result.count == 5)
 
+        verify(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .value(1))
+            .called(.once)
+
+        verify(mockLocationRepository)
+            .getLocation(locationId: .any)
+            .called(.never)
+
         verify(mockCharactersRepository)
             .getCharacters(characterIds: .value([2, 3, 4]))
             .called(.once)
@@ -66,23 +83,43 @@ struct GetBeerBuddyInteractorDefaultTests {
         verify(mockCharactersRepository)
             .getTotalCharactersCount()
             .called(.never)
+
+        verify(mockEpisodeRepository)
+            .getEpisodesFromList(ids: .value([1, 301]))
+            .called(.once)
+
+        verify(mockEpisodeRepository)
+            .getEpisodes()
+            .called(.never)
     }
 
     @Test
     func executeBeerBuddyNotFoundMsgError() async throws {
-        let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [])
+        let mockLocationRepository = MockLocationRepository()
         let mockCharactersRepository = MockCharactersRepository()
-        let episodesRepository = EpisodesRepositoryMock(success: true)
+        let mockEpisodeRepository = MockEpisodesRepository()
         let interactor = GetBeerBuddyInteractorDefault(
-            locationRepository: locationRepository,
+            locationRepository: mockLocationRepository,
             charactersRepository: mockCharactersRepository,
-            episodesRepository: episodesRepository
+            episodesRepository: mockEpisodeRepository
         )
+
+        given(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .any)
+            .willReturn([])
 
         let result = try await interactor.execute(character: Character.mock)
 
         #expect(result == nil)
 
+        verify(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .value(1))
+            .called(.once)
+
+        verify(mockLocationRepository)
+            .getLocation(locationId: .any)
+            .called(.never)
+
         verify(mockCharactersRepository)
             .getCharacters(characterIds: .any)
             .called(.never)
@@ -97,27 +134,44 @@ struct GetBeerBuddyInteractorDefaultTests {
 
         verify(mockCharactersRepository)
             .getTotalCharactersCount()
+            .called(.never)
+
+        verify(mockEpisodeRepository)
+            .getEpisodesFromList(ids: .any)
+            .called(.never)
+
+        verify(mockEpisodeRepository)
+            .getEpisodes()
             .called(.never)
     }
 
     @Test
     func executeLocationRepositoryFail() async throws {
-        let mockDate = Date.now
-        let locationRepository = LocationRepositoryMock(success: false)
+        let mockLocationRepository = MockLocationRepository()
+        let mockError = InteractorError.repositoryFail(error: .invalidUrl)
         let mockCharactersRepository = MockCharactersRepository()
-        let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
-            Episode(id: 1, name: "episode1", airDate: mockDate, code: "code-1", characters: [1, 2], created: mockDate, image: nil),
-            Episode(id: 301, name: "episode2", airDate: mockDate, code: "code-1", characters: [2, 3, 4], created: mockDate, image: nil)
-        ])
+        let mockEpisodeRepository = MockEpisodesRepository()
         let interactor = GetBeerBuddyInteractorDefault(
-            locationRepository: locationRepository,
+            locationRepository: mockLocationRepository,
             charactersRepository: mockCharactersRepository,
-            episodesRepository: episodesRepository
+            episodesRepository: mockEpisodeRepository
         )
 
-        try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+        given(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .any)
+            .willThrow(mockError)
+
+        try await #require(throws: mockError) {
             try await interactor.execute(character: Character.mock)
         }
+
+        verify(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .value(1))
+            .called(.once)
+
+        verify(mockLocationRepository)
+            .getLocation(locationId: .any)
+            .called(.never)
 
         verify(mockCharactersRepository)
             .getCharacters(characterIds: .any)
@@ -134,23 +188,31 @@ struct GetBeerBuddyInteractorDefaultTests {
         verify(mockCharactersRepository)
             .getTotalCharactersCount()
             .called(.never)
+
+        verify(mockEpisodeRepository)
+            .getEpisodesFromList(ids: .any)
+            .called(.never)
+
+        verify(mockEpisodeRepository)
+            .getEpisodes()
+            .called(.never)
     }
 
     @Test
     func executeCharacterRepositoryFail() async throws {
-        let mockDate = Date.now
-        let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
+        let mockLocationRepository = MockLocationRepository()
         let mockCharactersRepository = MockCharactersRepository()
         let mockError = InteractorError.repositoryFail(error: .invalidUrl)
-        let episodesRepository = EpisodesRepositoryMock(success: true, expectedResponse: [
-            Episode(id: 1, name: "episode1", airDate: mockDate, code: "code-1", characters: [1, 2], created: mockDate, image: nil),
-            Episode(id: 2, name: "episode2", airDate: mockDate, code: "code-1", characters: [2, 3, 4], created: mockDate, image: nil)
-        ])
+        let mockEpisodeRepository = MockEpisodesRepository()
         let interactor = GetBeerBuddyInteractorDefault(
-            locationRepository: locationRepository,
+            locationRepository: mockLocationRepository,
             charactersRepository: mockCharactersRepository,
-            episodesRepository: episodesRepository
+            episodesRepository: mockEpisodeRepository
         )
+
+        given(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .any)
+            .willReturn([1, 2, 3, 4])
 
         given(mockCharactersRepository)
             .getCharacters(characterIds: .any)
@@ -160,6 +222,14 @@ struct GetBeerBuddyInteractorDefaultTests {
             try await interactor.execute(character: Character.mock)
         }
 
+        verify(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .value(1))
+            .called(.once)
+
+        verify(mockLocationRepository)
+            .getLocation(locationId: .any)
+            .called(.never)
+
         verify(mockCharactersRepository)
             .getCharacters(characterIds: .value([2, 3, 4]))
             .called(.once)
@@ -174,6 +244,14 @@ struct GetBeerBuddyInteractorDefaultTests {
 
         verify(mockCharactersRepository)
             .getTotalCharactersCount()
+            .called(.never)
+
+        verify(mockEpisodeRepository)
+            .getEpisodesFromList(ids: .any)
+            .called(.never)
+
+        verify(mockEpisodeRepository)
+            .getEpisodes()
             .called(.never)
     }
 
@@ -194,22 +272,39 @@ struct GetBeerBuddyInteractorDefaultTests {
                              created: mockDate,
                              description: nil)
 
-        let locationRepository = LocationRepositoryMock(success: true, expectedResponse: [1, 2, 3, 4])
+        let mockLocationRepository = MockLocationRepository()
         let mockCharactersRepository = MockCharactersRepository()
-        let episodesRepository = EpisodesRepositoryMock(success: false)
+        let mockEpisodeRepository = MockEpisodesRepository()
+        let mockError = InteractorError.repositoryFail(error: .invalidUrl)
         let interactor = GetBeerBuddyInteractorDefault(
-            locationRepository: locationRepository,
+            locationRepository: mockLocationRepository,
             charactersRepository: mockCharactersRepository,
-            episodesRepository: episodesRepository
+            episodesRepository: mockEpisodeRepository
         )
+
+        given(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .any)
+            .willReturn([1, 2, 3, 4])
 
         given(mockCharactersRepository)
             .getCharacters(characterIds: .any)
             .willReturn([morty, beth])
 
-        try await #require(throws: InteractorError.repositoryFail(error: .invalidUrl)) {
+        given(mockEpisodeRepository)
+            .getEpisodesFromList(ids: .any)
+            .willThrow(mockError)
+
+        try await #require(throws: mockError) {
             try await interactor.execute(character: rick)
         }
+
+        verify(mockLocationRepository)
+            .getCharacterIdsFromLocation(locationId: .value(1))
+            .called(.once)
+
+        verify(mockLocationRepository)
+            .getLocation(locationId: .any)
+            .called(.never)
 
         verify(mockCharactersRepository)
             .getCharacters(characterIds: .value([2, 3, 4]))
@@ -225,6 +320,14 @@ struct GetBeerBuddyInteractorDefaultTests {
 
         verify(mockCharactersRepository)
             .getTotalCharactersCount()
+            .called(.never)
+
+        verify(mockEpisodeRepository)
+            .getEpisodesFromList(ids: .value([1, 301]))
+            .called(.once)
+
+        verify(mockEpisodeRepository)
+            .getEpisodes()
             .called(.never)
     }
 }
