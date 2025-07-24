@@ -1,6 +1,7 @@
-import Foundation
 import UIKit
+import Mockable
 
+@Mockable
 protocol GetEpisodesInteractor: Sendable {
     func execute() async throws -> [Episode]
     func execute(id: Int) async throws -> Episode

@@ -34,6 +34,21 @@ extension Character {
         description: nil
     )
 
+    static let beth = Character(
+        id: 4,
+        name: "Beth Smith",
+        status: .alive,
+        species: "Human",
+        type: "",
+        gender: .female,
+        origin: CharacterLocation.mock,
+        location: CharacterLocation.mock,
+        image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+        episodes: [1, 2, 15],
+        created: "2015-05-21".dateFromYearMothDayString()!,
+        description: CharacterDescriptionMock.description
+    )
+
     static let mocks: [Character] = (1...10).map { i in
         Character(
             id: i,
