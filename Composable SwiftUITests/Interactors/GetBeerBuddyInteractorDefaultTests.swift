@@ -247,7 +247,6 @@ struct GetBeerBuddyInteractorDefaultTests {
 
     @Test
     func executeEpisodesRepositoryFail() async throws {
-        let mockDate = Date.now
         let rick = Character.rick.copy(episodes: [1, 2, 15, 22, 33, 200, 301])
         let morty = Character.morty.copy(episodes: [1, 2, 15, 44, 35, 200, 301, 304])
         let beth = Character.beth.copy(episodes: [1, 2, 15])
