@@ -19,11 +19,16 @@ struct GetCharacterDescriptionInteractorDefault: GetCharacterDescriptionInteract
     private let session = LanguageModelSession()
 
     func execute(character: Character) async throws -> String {
-        let response = try await session.respond(
-            to: "Create a good description for a Rick, the character of the famous rick and morty Tv program"
-        )
+        do {
+            let response = try await session.respond(
+                to: "Create a good description for a Rick, the character of the famous rick and morty Tv program"
+            )
+            print("Response", response)
+            return response.content
+        } catch {
+            print(error)
+        }
 
-        print("Response", response)
-        return response.content
+        return ""
     }
 }
