@@ -28,7 +28,7 @@ struct CharactersListReducer {
     enum Action: BindableAction {
         case binding(BindingAction<State>)
         case getCharacters
-        case onGetCharacters(TaskResult<[Character]>)
+        case onGetCharacters(Result<[Character], any Error>)
     }
 
     var body: some ReducerOf<Self> {
@@ -45,7 +45,7 @@ struct CharactersListReducer {
                 state.characters.state = .loading
 
                 return .run { send in
-                    await send(.onGetCharacters(TaskResult {
+                    await send(.onGetCharacters(Result {
                         try await getCharactersInteractor.execute()
                     }))
                 }

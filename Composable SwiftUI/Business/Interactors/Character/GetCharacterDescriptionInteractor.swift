@@ -1,3 +1,7 @@
+import Foundation
+import Mockable
+
+@Mockable
 protocol GetCharacterDescriptionInteractor: Sendable {
     func execute(character: Character) async throws -> String
 }

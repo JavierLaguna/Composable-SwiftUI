@@ -1,3 +1,7 @@
+import Foundation
+import Mockable
+
+@Mockable
 protocol EpisodesRepository: Sendable {
     func getEpisodes() async throws -> [Episode]
     func getEpisodesFromList(ids: [Int]) async throws -> [Episode]

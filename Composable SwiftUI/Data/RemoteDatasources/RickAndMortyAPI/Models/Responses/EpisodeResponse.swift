@@ -17,21 +17,19 @@ struct EpisodeResponse: Codable {
         case created
     }
 
-    func toDomain() -> Episode {
-        let formatter = ISO8601DateFormatter() // TODO: JLI - Make reusable with only 1 init, lazy?
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-
-        let formatter2 = DateFormatter()
-        formatter2.locale = Locale(identifier: "en_US_POSIX")
-        formatter2.dateFormat = "MMMM d, yyyy"
+    func toDomain() -> Episode? {
+        guard let created = created.dateFromApiFullDateString(),
+              let airDate = airDate.dateFromApiMonthDayYearDateString() else {
+            return nil
+        }
 
         return Episode(
             id: id,
             name: name,
-            airDate: formatter2.date(from: airDate)!, // TODO: JLI
+            airDate: airDate,
             code: episode,
             characters: characters.compactMap { $0.getIdFromUrl() },
-            created: formatter.date(from: created)!, // TODO: JLI
+            created: created,
             image: nil
         )
     }

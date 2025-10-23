@@ -1,5 +1,5 @@
+import Foundation
 import Testing
-
 @testable import Composable_SwiftUI
 
 @Suite(
@@ -11,14 +11,25 @@ struct CharactersListStateTests {
     @Test
     func filteredCharacters() {
         let location = CharacterLocation(id: 1, name: "Earth")
+        let mockDate = Date.now
         let characters: [Character] = [
-            Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: []),
-            Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: []),
-            Character(id: 4, name: "Morty rick", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar4.jpeg", episodes: [])
+            Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: [],
+                      created: mockDate,
+                      description: nil),
+            Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: [],
+                      created: mockDate,
+                      description: nil),
+            Character(id: 4, name: "Morty rick", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar4.jpeg", episodes: [],
+                      created: mockDate,
+                      description: nil)
         ]
         let shouldFilteredcharacters: [Character] = [
-            Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: []),
-            Character(id: 4, name: "Morty rick", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar4.jpeg", episodes: [])
+            Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: [],
+                      created: mockDate,
+                      description: nil),
+            Character(id: 4, name: "Morty rick", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar4.jpeg", episodes: [],
+                      created: mockDate,
+                      description: nil)
         ]
 
         var state = CharactersListReducer.State()

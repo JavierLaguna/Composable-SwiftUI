@@ -1,3 +1,7 @@
+import Foundation
+import Mockable
+
+@Mockable
 protocol GetBeerBuddyInteractor: Sendable {
     func execute(character: Character) async throws -> BeerBuddy?
 }

@@ -25,7 +25,7 @@ actor CharactersRepositoryDefault: CharactersRepository {
         totalPages = response.info.pages
         totalCharacters = response.info.count
 
-        return response.results.map { $0.toDomain() }
+        return response.results.compactMap { $0.toDomain() }
     }
 
     func getCharacter(characterId: Int) async throws -> Character {
@@ -40,7 +40,7 @@ actor CharactersRepositoryDefault: CharactersRepository {
 
     func getCharacters(characterIds: [Int]) async throws -> [Character] {
         try await service.getCharacters(by: characterIds)
-            .map { $0.toDomain() }
+            .compactMap { $0.toDomain() }
     }
 
     func getTotalCharactersCount() async throws -> Int {

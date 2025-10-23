@@ -12,7 +12,7 @@ struct MatchBuddyReducer {
 
     enum Action {
         case getBeerBuddy(of: Character)
-        case onGetBeerBuddy(TaskResult<BeerBuddy?>)
+        case onGetBeerBuddy(Result<BeerBuddy?, any Error>)
     }
 
     var body: some ReducerOf<Self> {
@@ -22,7 +22,7 @@ struct MatchBuddyReducer {
                 state.beerBuddy.state = .loading
 
                 return .run { send in
-                    await send(.onGetBeerBuddy(TaskResult {
+                    await send(.onGetBeerBuddy(Result {
                         try await getBeerBuddyInteractor.execute(character: character)
                     }))
                 }

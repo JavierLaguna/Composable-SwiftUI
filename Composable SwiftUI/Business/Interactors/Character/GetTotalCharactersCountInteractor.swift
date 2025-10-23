@@ -1,3 +1,7 @@
+import Foundation
+import Mockable
+
+@Mockable
 protocol GetTotalCharactersCountInteractor: Sendable {
     func execute() async throws -> Int
 }

@@ -1,5 +1,7 @@
 import Foundation
+import JLagunaDevMacros
 
+@Copyable
 struct Character: Equatable, Identifiable, Hashable {
     let id: Int
     let name: String
@@ -30,23 +32,6 @@ struct Character: Equatable, Identifiable, Hashable {
             diff: lastEpisode - firstEpisode,
             firstEpisode: firstEpisode,
             lastEpisode: lastEpisode
-        )
-    }
-
-    func withDescription(_ description: String?) -> Character {
-        Character(
-            id: id,
-            name: name,
-            status: status,
-            species: species,
-            type: type,
-            gender: gender,
-            origin: origin,
-            location: location,
-            image: image,
-            episodes: episodes,
-            created: created,
-            description: description
         )
     }
 }

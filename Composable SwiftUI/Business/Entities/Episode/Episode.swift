@@ -1,6 +1,7 @@
-import Foundation
 import UIKit
+import JLagunaDevMacros
 
+@Copyable
 struct Episode: Equatable, Identifiable, Hashable {
     let id: Int
     let name: String
@@ -9,16 +10,4 @@ struct Episode: Equatable, Identifiable, Hashable {
     let characters: [Int]
     let created: Date
     let image: UIImage?
-
-    func withImage(_ image: UIImage?) -> Episode {
-        Episode(
-            id: id,
-            name: name,
-            airDate: airDate,
-            code: code,
-            characters: characters,
-            created: created,
-            image: image
-        )
-    }
 }

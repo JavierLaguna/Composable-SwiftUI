@@ -1,3 +1,7 @@
+import Foundation
+import Mockable
+
+@Mockable
 protocol LocationRemoteDatasource: Sendable {
     func getLocation(locationId: Int) async throws -> LocationResponse
 }

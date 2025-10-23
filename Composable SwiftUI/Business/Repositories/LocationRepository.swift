@@ -1,3 +1,7 @@
+import Foundation
+import Mockable
+
+@Mockable
 protocol LocationRepository: Sendable {
     func getCharacterIdsFromLocation(locationId: Int) async throws -> [Int]
     func getLocation(locationId: Int) async throws -> Location

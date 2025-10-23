@@ -1,6 +1,7 @@
+import Foundation
 import Testing
 import ComposableArchitecture
-
+import Mockable
 @testable import Composable_SwiftUI
 
 @Suite(
@@ -11,12 +12,12 @@ struct CharactersListReducerTests {
 
     @Test
     func bindingSearchText() async {
-        let interactor = GetCharactersInteractorMock()
+        let mockInteractor = MockGetCharactersInteractor()
         let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
                 CharactersListReducer(
-                    getCharactersInteractor: interactor
+                    getCharactersInteractor: mockInteractor
                 )
             }
         )
@@ -28,46 +29,63 @@ struct CharactersListReducerTests {
 
     @Test
     func getCharactersSuccess() async {
-        let interactor = GetCharactersInteractorMock()
-
+        let mockInteractor = MockGetCharactersInteractor()
+        let mockResponse = [Character.mock]
         let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
                 CharactersListReducer(
-                    getCharactersInteractor: interactor
+                    getCharactersInteractor: mockInteractor
                 )
             }
         )
+
+        given(mockInteractor)
+            .execute()
+            .willReturn(mockResponse)
 
         await store.send(.getCharacters) {
             $0.characters.state = .loading
         }
 
         await store.receive(\.onGetCharacters.success) {
-            $0.characters.state = .populated(data: interactor.expectedResponse)
+            $0.characters.state = .populated(data: mockResponse)
         }
+
+        verify(mockInteractor)
+            .execute()
+            .called(.once)
+
+        verify(mockInteractor)
+            .execute(id: .any)
+            .called(.never)
+
+        verify(mockInteractor)
+            .execute(ids: .any)
+            .called(.never)
     }
 
     @Test
     func getCharactersSuccessAndMoreCharacters() async {
-        let interactor = GetCharactersInteractorMock()
-
-        let location = CharacterLocation(id: 1, name: "Earth")
-        let initialCharacters: [Character] = [
-            Character(id: 2, name: "Rick Gomez", status: .alive, species: "Human", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar11.jpeg", episodes: []),
-            Character(id: 3, name: "Morty", status: .dead, species: "Alien", type: "", gender: .male, origin: location, location: location, image: "https://rickandmortyapi.com/api/character/avatar3.jpeg", episodes: [])
-        ]
-
+        let mockInteractor = MockGetCharactersInteractor()
+        let mockResponse = [Character.mock]
+        let initialCharacters = Character.mocks
         let store = await TestStore(
             initialState: CharactersListReducer.State(
-                characters: StateLoadable(state: .populated(data: initialCharacters))
+                characters: StateLoadable(state:
+                        .populated(data: initialCharacters
+                ))
             ),
             reducer: {
                 CharactersListReducer(
-                    getCharactersInteractor: interactor
+                    getCharactersInteractor: mockInteractor
                 )
             }
         )
+
+        given(mockInteractor)
+            .execute()
+            .willReturn(mockResponse)
 
         await store.send(.getCharacters) {
             $0.characters.state = .loading
@@ -75,30 +93,58 @@ struct CharactersListReducerTests {
 
         await store.receive(\.onGetCharacters.success) {
             var newData = initialCharacters
-            newData.append(contentsOf: interactor.expectedResponse)
+            newData.append(contentsOf: mockResponse)
             $0.characters.state = .populated(data: newData)
         }
+
+        verify(mockInteractor)
+            .execute()
+            .called(.once)
+
+        verify(mockInteractor)
+            .execute(id: .any)
+            .called(.never)
+
+        verify(mockInteractor)
+            .execute(ids: .any)
+            .called(.never)
     }
 
     @Test
     func getCharactersFail() async {
-        let interactor = GetCharactersInteractorMock(success: false)
-
+        let mockInteractor = MockGetCharactersInteractor()
+        let mockError = InteractorError.generic(message: "mock error")
         let store = await TestStore(
             initialState: CharactersListReducer.State(),
             reducer: {
                 CharactersListReducer(
-                    getCharactersInteractor: interactor
+                    getCharactersInteractor: mockInteractor
                 )
             }
         )
+
+        given(mockInteractor)
+            .execute()
+            .willThrow(mockError)
 
         await store.send(.getCharacters) {
             $0.characters.state = .loading
         }
 
         await store.receive(\.onGetCharacters.failure) {
-            $0.characters.state = .error(InteractorError.generic(message: "mock error"))
+            $0.characters.state = .error(mockError)
         }
+
+        verify(mockInteractor)
+            .execute()
+            .called(.once)
+
+        verify(mockInteractor)
+            .execute(id: .any)
+            .called(.never)
+
+        verify(mockInteractor)
+            .execute(ids: .any)
+            .called(.never)
     }
 }

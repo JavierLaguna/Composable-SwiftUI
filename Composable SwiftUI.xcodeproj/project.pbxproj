@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		491A398F2850948900D17719 /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A398E2850948900D17719 /* CharacterTests.swift */; };
-		491A3991285097B900D17719 /* LocationRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A3990285097B900D17719 /* LocationRepositoryMock.swift */; };
-		491A39932850986B00D17719 /* EpisodesRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A39922850986B00D17719 /* EpisodesRepositoryMock.swift */; };
 		491A39952850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A39942850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift */; };
 		491A399828533DB200D17719 /* CharacterRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399728533DB200D17719 /* CharacterRemoteDatasource.swift */; };
 		491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A399B28533F6000D17719 /* EpisodesRemoteDatasource.swift */; };
@@ -35,10 +33,18 @@
 		492BFBC12DDCF57D0072C537 /* CharacterStatusCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BFBC02DDCF57D0072C537 /* CharacterStatusCapsule.swift */; };
 		492BFBD92DDE233F0072C537 /* CharacterDetailReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BFBD82DDE233F0072C537 /* CharacterDetailReducer.swift */; };
 		492BFBE92DDE2E640072C537 /* CharacterDetailReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BFBE82DDE2E610072C537 /* CharacterDetailReducerTests.swift */; };
+		4935A3D62E27D50F005997A3 /* Mockable in Frameworks */ = {isa = PBXBuildFile; productRef = 4935A3D52E27D50F005997A3 /* Mockable */; };
+		4935A3DA2E27D517005997A3 /* Mockable in Frameworks */ = {isa = PBXBuildFile; productRef = 4935A3D92E27D517005997A3 /* Mockable */; };
+		4935A4012E281605005997A3 /* LocationDetailMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A4002E281605005997A3 /* LocationDetailMock.swift */; };
+		4935A4132E291205005997A3 /* CharacterLocationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A4122E291205005997A3 /* CharacterLocationMock.swift */; };
+		4935A4302E291BDD005997A3 /* GetCharactersResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935A42F2E291BDD005997A3 /* GetCharactersResponseMock.swift */; };
+		4935A43A2E29599C005997A3 /* JLagunaDevMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 4935A4392E29599C005997A3 /* JLagunaDevMacros */; };
 		493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 493A4B162A698A19006E250D /* RswiftLibrary */; };
 		493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */; };
 		493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF0302834298700ECC3A3 /* CharacterStatus.swift */; };
 		493BF03328342D1900ECC3A3 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF03228342D1900ECC3A3 /* String+URL.swift */; };
+		49415E2F2E2561FD00F99C24 /* DateFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49415E2E2E2561FD00F99C24 /* DateFormatterFactory.swift */; };
+		49415E332E25624500F99C24 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49415E322E25624500F99C24 /* String+Date.swift */; };
 		4946E1F82E029E0600870FBC /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946E1F72E029E0600870FBC /* TagView.swift */; };
 		4946E22C2E02A72900870FBC /* GetEpisodesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946E22B2E02A72900870FBC /* GetEpisodesInteractor.swift */; };
 		4946E27D2E056BA600870FBC /* GetTotalCharactersCountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946E27C2E056BA600870FBC /* GetTotalCharactersCountInteractor.swift */; };
@@ -54,7 +60,8 @@
 		49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529C9F2A783EC4002F7594 /* NeighborsListView.swift */; };
 		49529CA42A784058002F7594 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA32A784058002F7594 /* LoadingView.swift */; };
 		49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */; };
-		4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */; };
+		495EB3832E2A773A00644411 /* CharacterResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB3822E2A773A00644411 /* CharacterResponseMock.swift */; };
+		495EB3A52E2E3A3500644411 /* EpisodeResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB3A42E2E3A3500644411 /* EpisodeResponseMock.swift */; };
 		4976B3692C99CC6000531ADE /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976B3682C99CC6000531ADE /* Tags.swift */; };
 		497781D52836B7520033BC22 /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D42836B7520033BC22 /* CharacterLocation.swift */; };
 		497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497781D72836BBA20033BC22 /* MatchBuddyView.swift */; };
@@ -66,12 +73,11 @@
 		4987ED3E2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED3D2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift */; };
 		4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED422A6BD8E700AA7839 /* LocationDetail.swift */; };
 		4987ED462A6BD91E00AA7839 /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987ED452A6BD91E00AA7839 /* LocationType.swift */; };
+		498AC1062E2FCE9400DFF544 /* BeerBuddyMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498AC1052E2FCE9400DFF544 /* BeerBuddyMock.swift */; };
+		498AC11C2E310D7600DFF544 /* LocationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498AC11B2E310D7600DFF544 /* LocationMock.swift */; };
 		498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */; };
-		498BEF7828534F58003A3131 /* CharacterRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */; };
 		498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */; };
-		498BEF7E2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */; };
 		498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */; };
-		498BEF8328535C41003A3131 /* LocationRemoteDatasourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF8228535C41003A3131 /* LocationRemoteDatasourceMock.swift */; };
 		498FFDA02AB9EFCF00C01BE1 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FFD9F2AB9EFCF00C01BE1 /* LoadingViewTests.swift */; };
 		4998C74E2E005BE400F755D9 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */; };
 		4998C7542E005C1700F755D9 /* CircleIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998C7532E005C1700F755D9 /* CircleIconButton.swift */; };
@@ -124,14 +130,11 @@
 		49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */; };
 		49E4F833284A95DE0037FD72 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F832284A95DE0037FD72 /* KeyboardManager.swift */; };
 		49E4F835284A9A990037FD72 /* Error+Equality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F834284A9A980037FD72 /* Error+Equality.swift */; };
-		49E4F843284AA23A0037FD72 /* GetCharactersInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */; };
 		49E4F845284AA46F0037FD72 /* CharactersListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */; };
 		49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */; };
-		49E4F849284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */; };
 		49E4F84C284FC9BB0037FD72 /* CharactersListStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F84B284FC9BB0037FD72 /* CharactersListStateTests.swift */; };
 		49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F84E284FCBEB0037FD72 /* ResponseMapperTests.swift */; };
 		49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */; };
-		49E4F857284FCF1F0037FD72 /* CharactersRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4F856284FCF1F0037FD72 /* CharactersRepositoryMock.swift */; };
 		49E88CE2282FC1E800058486 /* RResource+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E88CE1282FC1E800058486 /* RResource+Extension.swift */; };
 		49E88CE6282FC54300058486 /* wubba_lubba_dub_dub.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49E88CE5282FC54300058486 /* wubba_lubba_dub_dub.ttf */; };
 		49E88D232830F21400058486 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E88D222830F21400058486 /* CharacterService.swift */; };
@@ -171,8 +174,6 @@
 
 /* Begin PBXFileReference section */
 		491A398E2850948900D17719 /* CharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
-		491A3990285097B900D17719 /* LocationRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryMock.swift; sourceTree = "<group>"; };
-		491A39922850986B00D17719 /* EpisodesRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRepositoryMock.swift; sourceTree = "<group>"; };
 		491A39942850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBeerBuddyInteractorDefaultTests.swift; sourceTree = "<group>"; };
 		491A399728533DB200D17719 /* CharacterRemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRemoteDatasource.swift; sourceTree = "<group>"; };
 		491A399B28533F6000D17719 /* EpisodesRemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDatasource.swift; sourceTree = "<group>"; };
@@ -198,9 +199,14 @@
 		492BFBC02DDCF57D0072C537 /* CharacterStatusCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatusCapsule.swift; sourceTree = "<group>"; };
 		492BFBD82DDE233F0072C537 /* CharacterDetailReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailReducer.swift; sourceTree = "<group>"; };
 		492BFBE82DDE2E610072C537 /* CharacterDetailReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailReducerTests.swift; sourceTree = "<group>"; };
+		4935A4002E281605005997A3 /* LocationDetailMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailMock.swift; sourceTree = "<group>"; };
+		4935A4122E291205005997A3 /* CharacterLocationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocationMock.swift; sourceTree = "<group>"; };
+		4935A42F2E291BDD005997A3 /* GetCharactersResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersResponseMock.swift; sourceTree = "<group>"; };
 		493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewMode.swift; sourceTree = "<group>"; };
 		493BF0302834298700ECC3A3 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
 		493BF03228342D1900ECC3A3 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
+		49415E2E2E2561FD00F99C24 /* DateFormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFactory.swift; sourceTree = "<group>"; };
+		49415E322E25624500F99C24 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		4946E1F72E029E0600870FBC /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		4946E22B2E02A72900870FBC /* GetEpisodesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesInteractor.swift; sourceTree = "<group>"; };
 		4946E27C2E056BA600870FBC /* GetTotalCharactersCountInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTotalCharactersCountInteractor.swift; sourceTree = "<group>"; };
@@ -216,7 +222,8 @@
 		49529CA32A784058002F7594 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducerTests.swift; sourceTree = "<group>"; };
 		495C915D282FBAAE00B841ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInfoInteractorMock.swift; sourceTree = "<group>"; };
+		495EB3822E2A773A00644411 /* CharacterResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponseMock.swift; sourceTree = "<group>"; };
+		495EB3A42E2E3A3500644411 /* EpisodeResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeResponseMock.swift; sourceTree = "<group>"; };
 		4976B3682C99CC6000531ADE /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		497781D42836B7520033BC22 /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
 		497781D72836BBA20033BC22 /* MatchBuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyView.swift; sourceTree = "<group>"; };
@@ -228,12 +235,11 @@
 		4987ED3D2A6AAE6300AA7839 /* CharacterNeighborsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNeighborsReducer.swift; sourceTree = "<group>"; };
 		4987ED422A6BD8E700AA7839 /* LocationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetail.swift; sourceTree = "<group>"; };
 		4987ED452A6BD91E00AA7839 /* LocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
+		498AC1052E2FCE9400DFF544 /* BeerBuddyMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerBuddyMock.swift; sourceTree = "<group>"; };
+		498AC11B2E310D7600DFF544 /* LocationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMock.swift; sourceTree = "<group>"; };
 		498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryCharactersRepositoryDefaultTests.swift; sourceTree = "<group>"; };
-		498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRepositoryDefaultTests.swift; sourceTree = "<group>"; };
-		498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryDefaultTests.swift; sourceTree = "<group>"; };
-		498BEF8228535C41003A3131 /* LocationRemoteDatasourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDatasourceMock.swift; sourceTree = "<group>"; };
 		498FFD9F2AB9EFCF00C01BE1 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
 		4998C74D2E005BE400F755D9 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		4998C7532E005C1700F755D9 /* CircleIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconButton.swift; sourceTree = "<group>"; };
@@ -283,14 +289,11 @@
 		49E4F82A284A11D70037FD72 /* UIScreen+Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Sizes.swift"; sourceTree = "<group>"; };
 		49E4F832284A95DE0037FD72 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		49E4F834284A9A980037FD72 /* Error+Equality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Equality.swift"; sourceTree = "<group>"; };
-		49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersInteractorMock.swift; sourceTree = "<group>"; };
 		49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListReducerTests.swift; sourceTree = "<group>"; };
 		49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBuddyReducerTests.swift; sourceTree = "<group>"; };
-		49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBeerBuddyInteractorMock.swift; sourceTree = "<group>"; };
 		49E4F84B284FC9BB0037FD72 /* CharactersListStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListStateTests.swift; sourceTree = "<group>"; };
 		49E4F84E284FCBEB0037FD72 /* ResponseMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMapperTests.swift; sourceTree = "<group>"; };
 		49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersInteractorDefaultTests.swift; sourceTree = "<group>"; };
-		49E4F856284FCF1F0037FD72 /* CharactersRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryMock.swift; sourceTree = "<group>"; };
 		49E88CE1282FC1E800058486 /* RResource+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RResource+Extension.swift"; sourceTree = "<group>"; };
 		49E88CE5282FC54300058486 /* wubba_lubba_dub_dub.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wubba_lubba_dub_dub.ttf; sourceTree = "<group>"; };
 		49E88D222830F21400058486 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
@@ -325,6 +328,8 @@
 			files = (
 				494E345B283A40FE00445B79 /* SkeletonUI in Frameworks */,
 				493A4B172A698A19006E250D /* RswiftLibrary in Frameworks */,
+				4935A3D62E27D50F005997A3 /* Mockable in Frameworks */,
+				4935A43A2E29599C005997A3 /* JLagunaDevMacros in Frameworks */,
 				49E4F82F284A88D10037FD72 /* IQKeyboardManagerSwift in Frameworks */,
 				49A4A67C282FA32E00D43FB3 /* Kingfisher in Frameworks */,
 				49A4A64C282F952700D43FB3 /* ComposableArchitecture in Frameworks */,
@@ -337,6 +342,7 @@
 			files = (
 				49A17DCE2AB9BEBA00DAF653 /* InlineSnapshotTesting in Frameworks */,
 				49A17DD02AB9BEBA00DAF653 /* SnapshotTesting in Frameworks */,
+				4935A3DA2E27D517005997A3 /* Mockable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +409,14 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		49415E2D2E2561E800F99C24 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				49415E2E2E2561FD00F99C24 /* DateFormatterFactory.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		4946E2282E02A65B00870FBC /* Episodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +425,23 @@
 				49A07D452E17D9F8002858EF /* GetEpisodeDescriptionInteractor.swift */,
 			);
 			path = Episodes;
+			sourceTree = "<group>";
+		};
+		495EB3762E2A771500644411 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				498AC1052E2FCE9400DFF544 /* BeerBuddyMock.swift */,
+				49B765702DFB3B05004B545D /* CharacterDescriptionMock.swift */,
+				4935A4122E291205005997A3 /* CharacterLocationMock.swift */,
+				49B765642DFB39C6004B545D /* CharacterMock.swift */,
+				495EB3822E2A773A00644411 /* CharacterResponseMock.swift */,
+				49B765D82DFC4747004B545D /* EpisodeMock.swift */,
+				495EB3A42E2E3A3500644411 /* EpisodeResponseMock.swift */,
+				4935A42F2E291BDD005997A3 /* GetCharactersResponseMock.swift */,
+				4935A4002E281605005997A3 /* LocationDetailMock.swift */,
+				498AC11B2E310D7600DFF544 /* LocationMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		497781D62836BB6F0033BC22 /* MatchBuddy */ = {
@@ -481,16 +512,6 @@
 				49EDA8CD283CB74A002C9C80 /* MatchedEpisodes.swift */,
 			);
 			path = Episode;
-			sourceTree = "<group>";
-		};
-		498BEF7628534F46003A3131 /* Datasources */ = {
-			isa = PBXGroup;
-			children = (
-				498BEF7728534F58003A3131 /* CharacterRemoteDatasourceMock.swift */,
-				498BEF7D2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift */,
-				498BEF8228535C41003A3131 /* LocationRemoteDatasourceMock.swift */,
-			);
-			path = Datasources;
 			sourceTree = "<group>";
 		};
 		498FFDA22AB9F10600C01BE1 /* UI */ = {
@@ -576,9 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */,
-				49B765702DFB3B05004B545D /* CharacterDescriptionMock.swift */,
-				49B765642DFB39C6004B545D /* CharacterMock.swift */,
-				49B765D82DFC4747004B545D /* EpisodeMock.swift */,
+				495EB3762E2A771500644411 /* Mocks */,
 				49A4A627282F949100D43FB3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -633,6 +652,7 @@
 				49A4A685282FB3BE00D43FB3 /* Protocols */,
 				49A4A682282FB36400D43FB3 /* Extensions */,
 				49A4A67F282FB2EF00D43FB3 /* Styles */,
+				49415E2D2E2561E800F99C24 /* Utils */,
 				49E4F832284A95DE0037FD72 /* KeyboardManager.swift */,
 			);
 			path = Common;
@@ -722,14 +742,15 @@
 		49A4A682282FB36400D43FB3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4998C7822E01675D00F755D9 /* Color+Extension.swift */,
+				49E4F834284A9A980037FD72 /* Error+Equality.swift */,
 				49E88CE1282FC1E800058486 /* RResource+Extension.swift */,
+				49415E322E25624500F99C24 /* String+Date.swift */,
 				493BF03228342D1900ECC3A3 /* String+URL.swift */,
 				49A4A683282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift */,
 				49E4F82A284A11D70037FD72 /* UIScreen+Sizes.swift */,
 				49E4F817283E99380037FD72 /* UIViewRepresentable+VisualEffectView.swift */,
 				49E4F815283E97ED0037FD72 /* View+CornerRadius.swift */,
-				49E4F834284A9A980037FD72 /* Error+Equality.swift */,
-				4998C7822E01675D00F755D9 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -784,9 +805,6 @@
 			isa = PBXGroup;
 			children = (
 				49206E5D2CAFD60F00C21802 /* APIClientMock.swift */,
-				498BEF7628534F46003A3131 /* Datasources */,
-				49E4F855284FCEFB0037FD72 /* Repositories */,
-				49E4F841284AA2230037FD72 /* Interactors */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -795,21 +813,11 @@
 			isa = PBXGroup;
 			children = (
 				492BFBE82DDE2E610072C537 /* CharacterDetailReducerTests.swift */,
+				49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */,
 				49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */,
 				49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */,
-				49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */,
 			);
 			path = Reducers;
-			sourceTree = "<group>";
-		};
-		49E4F841284AA2230037FD72 /* Interactors */ = {
-			isa = PBXGroup;
-			children = (
-				49E4F848284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift */,
-				49E4F842284AA23A0037FD72 /* GetCharactersInteractorMock.swift */,
-				4969D4332A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift */,
-			);
-			path = Interactors;
 			sourceTree = "<group>";
 		};
 		49E4F84A284FC9990037FD72 /* States */ = {
@@ -851,16 +859,6 @@
 				498BEF7428534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift */,
 				498BEF7B28535649003A3131 /* EpisodesRepositoryDefaultTests.swift */,
 				498BEF8028535BF1003A3131 /* LocationRepositoryDefaultTests.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		49E4F855284FCEFB0037FD72 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				49E4F856284FCF1F0037FD72 /* CharactersRepositoryMock.swift */,
-				491A39922850986B00D17719 /* EpisodesRepositoryMock.swift */,
-				491A3990285097B900D17719 /* LocationRepositoryMock.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1021,7 +1019,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				49B243252AD92D3B00FA9245 /* PBXTargetDependency */,
 				493A4B132A698996006E250D /* PBXTargetDependency */,
 			);
 			name = "Composable SwiftUI";
@@ -1031,6 +1028,8 @@
 				494E345A283A40FE00445B79 /* SkeletonUI */,
 				49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */,
 				493A4B162A698A19006E250D /* RswiftLibrary */,
+				4935A3D52E27D50F005997A3 /* Mockable */,
+				4935A4392E29599C005997A3 /* JLagunaDevMacros */,
 			);
 			productName = "Composable SwiftUI";
 			productReference = 49A4A61D282F948C00D43FB3 /* Composable SwiftUI.app */;
@@ -1053,6 +1052,7 @@
 			packageProductDependencies = (
 				49A17DCD2AB9BEBA00DAF653 /* InlineSnapshotTesting */,
 				49A17DCF2AB9BEBA00DAF653 /* SnapshotTesting */,
+				4935A3D92E27D517005997A3 /* Mockable */,
 			);
 			productName = "Composable SwiftUITests";
 			productReference = 49A4A62D282F949200D43FB3 /* Composable SwiftUITests.xctest */;
@@ -1066,7 +1066,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					49A4A61C282F948C00D43FB3 = {
 						CreatedOnToolsVersion = 13.3.1;
@@ -1093,8 +1093,10 @@
 				494E3459283A40FE00445B79 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
 				49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */,
-				49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				49A17DCC2AB9BEBA00DAF653 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				4935A3D32E27D487005997A3 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */,
+				4935A4382E29599C005997A3 /* XCRemoteSwiftPackageReference "JLagunaDevMacros" */,
 			);
 			productRefGroup = 49A4A61E282F948C00D43FB3 /* Products */;
 			projectDirPath = "";
@@ -1136,8 +1138,10 @@
 				49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */,
 				4998C75E2E005C3B00F755D9 /* TextModifiers.swift in Sources */,
 				49222F302C203C600026B5E8 /* MainView.swift in Sources */,
+				4935A4012E281605005997A3 /* LocationDetailMock.swift in Sources */,
 				49E4F829284931640037FD72 /* MatchBuddyInfoView.swift in Sources */,
 				49A1A25D2E0DB37200B97442 /* EpisodesListReducer.swift in Sources */,
+				49415E2F2E2561FD00F99C24 /* DateFormatterFactory.swift in Sources */,
 				49B765652DFB39C6004B545D /* CharacterMock.swift in Sources */,
 				4987ED462A6BD91E00AA7839 /* LocationType.swift in Sources */,
 				491A399C28533F6000D17719 /* EpisodesRemoteDatasource.swift in Sources */,
@@ -1157,6 +1161,7 @@
 				4987ED372A6A976400AA7839 /* GetLocationInfoInteractor.swift in Sources */,
 				49E4F82B284A11D80037FD72 /* UIScreen+Sizes.swift in Sources */,
 				49EDA8BF283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift in Sources */,
+				4935A4132E291205005997A3 /* CharacterLocationMock.swift in Sources */,
 				49E88D3D28310EA200058486 /* InteractorError.swift in Sources */,
 				49206E512CAFCA4800C21802 /* APIConstants.swift in Sources */,
 				49B765D92DFC4747004B545D /* EpisodeMock.swift in Sources */,
@@ -1170,10 +1175,13 @@
 				4998C7832E01675D00F755D9 /* Color+Extension.swift in Sources */,
 				4946E27D2E056BA600870FBC /* GetTotalCharactersCountInteractor.swift in Sources */,
 				492BFBD92DDE233F0072C537 /* CharacterDetailReducer.swift in Sources */,
+				4935A4302E291BDD005997A3 /* GetCharactersResponseMock.swift in Sources */,
 				493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */,
 				49A4A664282F993B00D43FB3 /* MainReducer.swift in Sources */,
 				49206E422CAEDEEB00C21802 /* UploadProgressDelegate.swift in Sources */,
 				494E3458283A2E4700445B79 /* StateLoadable.swift in Sources */,
+				49415E332E25624500F99C24 /* String+Date.swift in Sources */,
+				498AC1062E2FCE9400DFF544 /* BeerBuddyMock.swift in Sources */,
 				49E4F835284A9A990037FD72 /* Error+Equality.swift in Sources */,
 				49E88D35283103F400058486 /* CharactersRepository.swift in Sources */,
 				49E88D302830F8DA00058486 /* GetCharactersResponse.swift in Sources */,
@@ -1213,6 +1221,7 @@
 				49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */,
 				49A1A2682E0DB53F00B97442 /* EpisodeCellView.swift in Sources */,
 				49D7AEB92E0DABD100C80C06 /* EpisodesListView.swift in Sources */,
+				495EB3A52E2E3A3500644411 /* EpisodeResponseMock.swift in Sources */,
 				49206E4D2CAF0C7D00C21802 /* URLSessionAPIClient.swift in Sources */,
 				49EDA8C6283BEFBB002C9C80 /* LocationService.swift in Sources */,
 				49A4A670282F9AB300D43FB3 /* CharactersListReducer.swift in Sources */,
@@ -1232,11 +1241,13 @@
 				49A07D462E17D9F8002858EF /* GetEpisodeDescriptionInteractor.swift in Sources */,
 				497781D82836BBA20033BC22 /* MatchBuddyView.swift in Sources */,
 				494E346E283AAF3F00445B79 /* MatchBuddyReducer.swift in Sources */,
+				495EB3832E2A773A00644411 /* CharacterResponseMock.swift in Sources */,
 				49206E402CAEDD8A00C21802 /* APIClientError.swift in Sources */,
 				49E88CE2282FC1E800058486 /* RResource+Extension.swift in Sources */,
 				49F82D8D2E16C95400FDD69A /* StretchyVisualEffect.swift in Sources */,
 				49EDA8CE283CB74A002C9C80 /* MatchedEpisodes.swift in Sources */,
 				49529CA02A783EC4002F7594 /* NeighborsListView.swift in Sources */,
+				498AC11C2E310D7600DFF544 /* LocationMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1249,8 +1260,6 @@
 				49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */,
 				492BFBE92DDE2E640072C537 /* CharacterDetailReducerTests.swift in Sources */,
 				49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */,
-				491A3991285097B900D17719 /* LocationRepositoryMock.swift in Sources */,
-				498BEF8328535C41003A3131 /* LocationRemoteDatasourceMock.swift in Sources */,
 				49206E622CAFF3B500C21802 /* LocationServiceTests.swift in Sources */,
 				498FFDA02AB9EFCF00C01BE1 /* LoadingViewTests.swift in Sources */,
 				49206E652CAFF5E900C21802 /* CharacterServiceTests.swift in Sources */,
@@ -1259,8 +1268,6 @@
 				498BEF7528534EF8003A3131 /* CharactersRepositoryCharactersRepositoryDefaultTests.swift in Sources */,
 				49206E5E2CAFD60F00C21802 /* APIClientMock.swift in Sources */,
 				49A17DCA2AB9BBCB00DAF653 /* EpisodeResponseTests.swift in Sources */,
-				49E4F849284FBDE70037FD72 /* GetBeerBuddyInteractorMock.swift in Sources */,
-				49E4F857284FCF1F0037FD72 /* CharactersRepositoryMock.swift in Sources */,
 				49E4F84C284FC9BB0037FD72 /* CharactersListStateTests.swift in Sources */,
 				491A39952850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift in Sources */,
 				49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */,
@@ -1268,15 +1275,10 @@
 				49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */,
 				4976B3692C99CC6000531ADE /* Tags.swift in Sources */,
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
-				49E4F843284AA23A0037FD72 /* GetCharactersInteractorMock.swift in Sources */,
 				49DBDF5D2CADB3E4007CDE74 /* MatchBuddyViewTests.swift in Sources */,
 				492B43462ABB45A6005B631E /* CharactersListViewTests.swift in Sources */,
-				491A39932850986B00D17719 /* EpisodesRepositoryMock.swift in Sources */,
 				494C058A2C241CE7006CFF1B /* TestConfig.swift in Sources */,
 				491A398F2850948900D17719 /* CharacterTests.swift in Sources */,
-				498BEF7E2853567B003A3131 /* EpisodesRemoteDatasourceMock.swift in Sources */,
-				4969D4342A7A7D51003C28BA /* GetLocationInfoInteractorMock.swift in Sources */,
-				498BEF7828534F58003A3131 /* CharacterRemoteDatasourceMock.swift in Sources */,
 				498BEF8128535BF1003A3131 /* LocationRepositoryDefaultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1292,10 +1294,6 @@
 			isa = PBXTargetDependency;
 			target = 49A4A61C282F948C00D43FB3 /* Composable SwiftUI */;
 			targetProxy = 49A4A62E282F949200D43FB3 /* PBXContainerItemProxy */;
-		};
-		49B243252AD92D3B00FA9245 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 49B243242AD92D3B00FA9245 /* SwiftLintPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1346,6 +1344,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = F8FX9592B7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1408,6 +1407,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = F8FX9592B7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1437,7 +1437,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"Composable SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = F8FX9592B7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Composable SwiftUI/Info.plist";
@@ -1455,6 +1454,7 @@
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jlagunadev.Composable-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MOCKING";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_CONCISE_MAGIC_FILE = YES;
 				SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = YES;
@@ -1480,7 +1480,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"Composable SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = F8FX9592B7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Composable SwiftUI/Info.plist";
@@ -1522,7 +1521,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F8FX9592B7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1533,6 +1531,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jlagunadev.Composable-SwiftUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MOCKING";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = minimal;
@@ -1560,7 +1559,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F8FX9592B7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1623,6 +1621,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4935A3D32E27D487005997A3 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
+			};
+		};
+		4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kolos65/Mockable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+		4935A4382E29599C005997A3 /* XCRemoteSwiftPackageReference "JLagunaDevMacros" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JavierLaguna/JLagunaDevMacros";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		493A4B152A698A19006E250D /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
@@ -1663,14 +1685,6 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/SwiftLint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.57.0;
-			};
-		};
 		49E4F82D284A88D10037FD72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -1682,6 +1696,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4935A3D52E27D50F005997A3 /* Mockable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */;
+			productName = Mockable;
+		};
+		4935A3D92E27D517005997A3 /* Mockable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4935A3D42E27D50F005997A3 /* XCRemoteSwiftPackageReference "Mockable" */;
+			productName = Mockable;
+		};
+		4935A4392E29599C005997A3 /* JLagunaDevMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4935A4382E29599C005997A3 /* XCRemoteSwiftPackageReference "JLagunaDevMacros" */;
+			productName = JLagunaDevMacros;
+		};
 		493A4B122A698996006E250D /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "plugin:RswiftGenerateInternalResources";
@@ -1715,11 +1744,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49A4A67A282FA32E00D43FB3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		49B243242AD92D3B00FA9245 /* SwiftLintPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49B243232AD92CEF00FA9245 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = "plugin:SwiftLintPlugin";
 		};
 		49E4F82E284A88D10037FD72 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

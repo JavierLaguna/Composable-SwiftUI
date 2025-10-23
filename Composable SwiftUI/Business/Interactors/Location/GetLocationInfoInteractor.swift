@@ -1,3 +1,7 @@
+import Foundation
+import Mockable
+
+@Mockable
 protocol GetLocationInfoInteractor: Sendable {
     func execute(locationId: Int) async throws -> LocationDetail
 }

@@ -1,6 +1,7 @@
-import Foundation
 import UIKit
+import Mockable
 
+@Mockable
 protocol GetEpisodesInteractor: Sendable {
     func execute() async throws -> [Episode]
     func execute(id: Int) async throws -> Episode
@@ -61,7 +62,7 @@ private extension GetEpisodesInteractorDefault {
             for episode in episodes {
                 group.addTask {
                     let image = try await getEpisodeImageInteractor.execute(episode: episode)
-                    return episode.withImage(image)
+                    return episode.copy(image: image)
                 }
             }
 
