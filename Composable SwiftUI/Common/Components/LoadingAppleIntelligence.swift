@@ -1,15 +1,18 @@
-//
-//  LoadingAppleIntelligence.swift
-//  Composable SwiftUI
-//
-//  Created by Javier Laguna on 25/10/25.
-//
-
 import SwiftUI
 
 struct LoadingAppleIntelligence: View {
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: Theme.Space.m) {
+            KeyframeAnimator(initialValue: 0.0, repeating: true) { rotation in
+                Image(systemName: "apple.intelligence")
+                    .font(.largeTitle)
+                    .rotationEffect(.init(degrees: rotation))
+            } keyframes: { _ in
+                LinearKeyframe(0, duration: 0)
+                LinearKeyframe(360, duration: 5)
+            }
+        }
     }
 }
 

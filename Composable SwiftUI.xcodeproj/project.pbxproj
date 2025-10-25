@@ -160,6 +160,7 @@
 		49F82D602E15221000FDD69A /* EpisodeDetailReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F82D5F2E15221000FDD69A /* EpisodeDetailReducer.swift */; };
 		49F82D8D2E16C95400FDD69A /* StretchyVisualEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F82D8C2E16C95400FDD69A /* StretchyVisualEffect.swift */; };
 		49F9FBE42C21FDB200BC6F92 /* AllEnvironmentsInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */; };
+		49FBBBE22EACEE3600F8316D /* LoadingAppleIntelligence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,6 +320,7 @@
 		49F82D5F2E15221000FDD69A /* EpisodeDetailReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailReducer.swift; sourceTree = "<group>"; };
 		49F82D8C2E16C95400FDD69A /* StretchyVisualEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyVisualEffect.swift; sourceTree = "<group>"; };
 		49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEnvironmentsInjected.swift; sourceTree = "<group>"; };
+		49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAppleIntelligence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -727,6 +729,7 @@
 				49529C992A783B7B002F7594 /* NeighborsCellView.swift */,
 				49B765042DFB17AE004B545D /* StatusBadgeView.swift */,
 				4946E1F72E029E0600870FBC /* TagView.swift */,
+				49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1135,6 +1138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FBBBE22EACEE3600F8316D /* LoadingAppleIntelligence.swift in Sources */,
 				49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */,
 				4998C75E2E005C3B00F755D9 /* TextModifiers.swift in Sources */,
 				49222F302C203C600026B5E8 /* MainView.swift in Sources */,
