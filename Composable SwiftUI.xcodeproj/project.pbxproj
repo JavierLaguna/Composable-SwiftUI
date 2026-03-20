@@ -166,6 +166,8 @@
 		5A1B00032E40000100ABC001 /* LocationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B00082E40000100ABC001 /* LocationsCoordinator.swift */; };
 		5A1B00042E40000100ABC001 /* GetLocationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B00092E40000100ABC001 /* GetLocationsInteractor.swift */; };
 		5A1B00052E40000100ABC001 /* GetLocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */; };
+		5A1C00012E40000100ABC001 /* LocationsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */; };
+		5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -331,6 +333,8 @@
 		5A1B00082E40000100ABC001 /* LocationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCoordinator.swift; sourceTree = "<group>"; };
 		5A1B00092E40000100ABC001 /* GetLocationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsInteractor.swift; sourceTree = "<group>"; };
 		5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsResponse.swift; sourceTree = "<group>"; };
+		5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListReducerTests.swift; sourceTree = "<group>"; };
+		5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsInteractorDefaultTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -831,6 +835,7 @@
 				492BFBE82DDE2E610072C537 /* CharacterDetailReducerTests.swift */,
 				49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */,
 				49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */,
+				5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */,
 				49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */,
 			);
 			path = Reducers;
@@ -857,6 +862,7 @@
 			children = (
 				491A39942850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift */,
 				49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */,
+				5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1292,6 +1298,7 @@
 				49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */,
 				492BFBE92DDE2E640072C537 /* CharacterDetailReducerTests.swift in Sources */,
 				49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */,
+				5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */,
 				49206E622CAFF3B500C21802 /* LocationServiceTests.swift in Sources */,
 				498FFDA02AB9EFCF00C01BE1 /* LoadingViewTests.swift in Sources */,
 				49206E652CAFF5E900C21802 /* CharacterServiceTests.swift in Sources */,
@@ -1304,6 +1311,7 @@
 				491A39952850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift in Sources */,
 				49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */,
 				49E4F845284AA46F0037FD72 /* CharactersListReducerTests.swift in Sources */,
+				5A1C00012E40000100ABC001 /* LocationsListReducerTests.swift in Sources */,
 				49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */,
 				4976B3692C99CC6000531ADE /* Tags.swift in Sources */,
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
