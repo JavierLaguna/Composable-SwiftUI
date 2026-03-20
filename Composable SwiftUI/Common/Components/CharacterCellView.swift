@@ -14,8 +14,7 @@ struct CharacterCellView: View {
             HStack(spacing: -Theme.Space.xl) {
                 KFImage(URL(string: character?.image ?? ""))
                     .resizable()
-                    .skeleton(with: showLoading)
-                    .shape(type: .rectangle)
+                    .skeleton(with: showLoading, shape: .rectangle)
                     .scaledToFit()
                     .frame(width: 120, height: 120)
                     .cornerRadius(30)
