@@ -54,5 +54,10 @@
 // EpisodesList
 "episodesList.title" = "Episodes";
 
+// LocationsList
+"locationsList.title" = "Locations";
+"locationsList.dimension" = "Dimension: %@";
+"locationsList.residents" = "%d residents";
+
 // EpisodeDetail
 "episodeDetail.characters" = "Characters";

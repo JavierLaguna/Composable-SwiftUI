@@ -3,6 +3,7 @@ import Mockable
 
 @Mockable
 protocol LocationRemoteDatasource: Sendable {
+    func getLocations(page: Int?) async throws -> GetLocationsResponse
     func getLocation(locationId: Int) async throws -> LocationResponse
 }
 

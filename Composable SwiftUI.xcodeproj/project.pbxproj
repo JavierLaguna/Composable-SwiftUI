@@ -161,6 +161,11 @@
 		49F82D8D2E16C95400FDD69A /* StretchyVisualEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F82D8C2E16C95400FDD69A /* StretchyVisualEffect.swift */; };
 		49F9FBE42C21FDB200BC6F92 /* AllEnvironmentsInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */; };
 		49FBBBE22EACEE3600F8316D /* LoadingAppleIntelligence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */; };
+		5A1B00012E40000100ABC001 /* LocationsListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B00062E40000100ABC001 /* LocationsListReducer.swift */; };
+		5A1B00022E40000100ABC001 /* LocationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B00072E40000100ABC001 /* LocationsListView.swift */; };
+		5A1B00032E40000100ABC001 /* LocationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B00082E40000100ABC001 /* LocationsCoordinator.swift */; };
+		5A1B00042E40000100ABC001 /* GetLocationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B00092E40000100ABC001 /* GetLocationsInteractor.swift */; };
+		5A1B00052E40000100ABC001 /* GetLocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,6 +326,11 @@
 		49F82D8C2E16C95400FDD69A /* StretchyVisualEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyVisualEffect.swift; sourceTree = "<group>"; };
 		49F9FBE32C21FDB200BC6F92 /* AllEnvironmentsInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEnvironmentsInjected.swift; sourceTree = "<group>"; };
 		49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAppleIntelligence.swift; sourceTree = "<group>"; };
+		5A1B00062E40000100ABC001 /* LocationsListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListReducer.swift; sourceTree = "<group>"; };
+		5A1B00072E40000100ABC001 /* LocationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListView.swift; sourceTree = "<group>"; };
+		5A1B00082E40000100ABC001 /* LocationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCoordinator.swift; sourceTree = "<group>"; };
+		5A1B00092E40000100ABC001 /* GetLocationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsInteractor.swift; sourceTree = "<group>"; };
+		5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				4987ED362A6A976400AA7839 /* GetLocationInfoInteractor.swift */,
+				5A1B00092E40000100ABC001 /* GetLocationsInteractor.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -677,6 +688,7 @@
 				4987ED392A6AAB1C00AA7839 /* CharacterNeighbors */,
 				49A4A668282F9A5B00D43FB3 /* CharactersList */,
 				49D7AEB72E0DABBD00C80C06 /* EpisodesList */,
+				5A1B000B2E40000100ABC001 /* LocationsList */,
 				49A4A65C282F990900D43FB3 /* Main */,
 				497781D62836BB6F0033BC22 /* MatchBuddy */,
 				49E4F8272849314A0037FD72 /* MatchBuddyInfo */,
@@ -791,6 +803,7 @@
 				49E4F81F284920180037FD72 /* CharactersCoordinator.swift */,
 				49F82CE52E143F1800FDD69A /* Coordinator.swift */,
 				49A1A26F2E0DB5BB00B97442 /* EpisodesCoordinator.swift */,
+				5A1B00082E40000100ABC001 /* LocationsCoordinator.swift */,
 				49222F322C203F070026B5E8 /* MainCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -925,6 +938,7 @@
 				49E4F806283D393B0037FD72 /* EpisodeResponse.swift */,
 				49E88D2F2830F8DA00058486 /* GetCharactersResponse.swift */,
 				49A1A2C02E0EB39F00B97442 /* GetEpisodesResponse.swift */,
+				5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */,
 				49EDA8C7283BF04B002C9C80 /* LocationResponse.swift */,
 			);
 			path = Responses;
@@ -1006,6 +1020,15 @@
 				49EDA8D2283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift */,
 			);
 			path = EpisodesRepository;
+			sourceTree = "<group>";
+		};
+		5A1B000B2E40000100ABC001 /* LocationsList */ = {
+			isa = PBXGroup;
+			children = (
+				5A1B00062E40000100ABC001 /* LocationsListReducer.swift */,
+				5A1B00072E40000100ABC001 /* LocationsListView.swift */,
+			);
+			path = LocationsList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1138,6 +1161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A1B00052E40000100ABC001 /* GetLocationsResponse.swift in Sources */,
 				49FBBBE22EACEE3600F8316D /* LoadingAppleIntelligence.swift in Sources */,
 				49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */,
 				4998C75E2E005C3B00F755D9 /* TextModifiers.swift in Sources */,
@@ -1157,12 +1181,14 @@
 				49E4F814283E89FB0037FD72 /* CharacterGender.swift in Sources */,
 				49C65CA72AB449A90047F02B /* ManagedErrorInteractor.swift in Sources */,
 				49E4F820284920180037FD72 /* CharactersCoordinator.swift in Sources */,
+				5A1B00032E40000100ABC001 /* LocationsCoordinator.swift in Sources */,
 				49B764FB2DFB175D004B545D /* BackgroundPatternSecondaryView.swift in Sources */,
 				49A1A2C12E0EB39F00B97442 /* GetEpisodesResponse.swift in Sources */,
 				49A4A623282F948C00D43FB3 /* CharactersListView.swift in Sources */,
 				491A399828533DB200D17719 /* CharacterRemoteDatasource.swift in Sources */,
 				49206E562CAFD14900C21802 /* APIClientFactory.swift in Sources */,
 				4987ED372A6A976400AA7839 /* GetLocationInfoInteractor.swift in Sources */,
+				5A1B00042E40000100ABC001 /* GetLocationsInteractor.swift in Sources */,
 				49E4F82B284A11D80037FD72 /* UIScreen+Sizes.swift in Sources */,
 				49EDA8BF283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift in Sources */,
 				4935A4132E291205005997A3 /* CharacterLocationMock.swift in Sources */,
@@ -1225,10 +1251,12 @@
 				49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */,
 				49A1A2682E0DB53F00B97442 /* EpisodeCellView.swift in Sources */,
 				49D7AEB92E0DABD100C80C06 /* EpisodesListView.swift in Sources */,
+				5A1B00022E40000100ABC001 /* LocationsListView.swift in Sources */,
 				495EB3A52E2E3A3500644411 /* EpisodeResponseMock.swift in Sources */,
 				49206E4D2CAF0C7D00C21802 /* URLSessionAPIClient.swift in Sources */,
 				49EDA8C6283BEFBB002C9C80 /* LocationService.swift in Sources */,
 				49A4A670282F9AB300D43FB3 /* CharactersListReducer.swift in Sources */,
+				5A1B00012E40000100ABC001 /* LocationsListReducer.swift in Sources */,
 				49E4F807283D393B0037FD72 /* EpisodeResponse.swift in Sources */,
 				4987ED2B2A6A855E00AA7839 /* CharacterLocationResponse.swift in Sources */,
 				49E88D3A2831056C00058486 /* CharactersRepositoryDefault.swift in Sources */,

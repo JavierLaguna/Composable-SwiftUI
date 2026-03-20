@@ -8,11 +8,13 @@ struct MainView: View {
     @State private var mainCoordinator = MainCoordinator()
     @State private var charactersCoordinator: CharactersCoordinator
     @State private var episodesCoordinator: EpisodesCoordinator
+    @State private var locationsCoordinator: LocationsCoordinator
 
     init(mainStore: StoreOf<MainReducer>) {
         self.mainStore = mainStore
         charactersCoordinator = CharactersCoordinator(mainStore: mainStore)
         episodesCoordinator = EpisodesCoordinator()
+        locationsCoordinator = LocationsCoordinator()
     }
 
     var body: some View {
@@ -54,8 +56,15 @@ struct MainView: View {
             }
             .tag(MainCoordinator.Tab.episodes.rawValue)
 
-            NavigationStack {
-                Text("TODO: LOCATIONS")
+            NavigationStack(path: locationsCoordinator.pathBinding) {
+                locationsCoordinator
+                    .view(for: .root)
+                    .navigationDestination(for: LocationsCoordinator.Routes.self) {
+                        locationsCoordinator.view(for: $0)
+                    }
+                    .sheet(isPresented: locationsCoordinator.sheetIsPresented) {
+                        locationsCoordinator.sheet
+                    }
             }
             .tabItem {
                 Label(
@@ -68,6 +77,7 @@ struct MainView: View {
         .environment(mainCoordinator)
         .environment(charactersCoordinator)
         .environment(episodesCoordinator)
+        .environment(locationsCoordinator)
     }
 }
 
