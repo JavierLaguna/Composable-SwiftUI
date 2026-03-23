@@ -1,5 +1,5 @@
 struct BusinessConstants {
 
-    static let skeletonRowEmptyData = 4
-    static let skeletonRowWithData = 2
+    static let skeletonRowEmptyData = 5
+    static let skeletonRowWithData = 3
 }
