@@ -69,6 +69,33 @@ extension SceneSnapshotUITest {
             return variants
         }
 
+        static var allDevicesVariants: [Variant] {
+            let orientations: [ViewImageConfig.Orientation] = [.portrait, .landscape]
+            var variants: [Variant] = []
+
+            Device.allCases.forEach { device in
+                UIStyle.allCases.forEach { style in
+                    orientations.forEach { orientation in
+                        variants.append(.device(device, uiStyle: style, orientation: orientation))
+                    }
+                }
+            }
+
+            return variants
+        }
+
+        static var allPortraitDevicesVariants: [Variant] {
+            var variants: [Variant] = []
+
+            Device.allCases.forEach { device in
+                UIStyle.allCases.forEach { style in
+                    variants.append(.device(device, uiStyle: style, orientation: .portrait))
+                }
+            }
+
+            return variants
+        }
+
         var layoutName: String {
             switch self {
             case .image:
