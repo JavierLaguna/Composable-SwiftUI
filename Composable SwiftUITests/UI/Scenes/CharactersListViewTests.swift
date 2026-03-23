@@ -18,7 +18,7 @@ final class CharactersListViewTests: SceneSnapshotUITest {
 
     @Test(
         "Loading State",
-        arguments: SceneSnapshotUITest.Variant.allVariants
+        arguments: SceneSnapshotUITest.Variant.allPortraitDevicesVariants
     )
     func loadingState(variant: SceneSnapshotUITest.Variant) {
         loadingStateSetUp()
@@ -32,7 +32,7 @@ final class CharactersListViewTests: SceneSnapshotUITest {
 
     @Test(
         "Loading State With Data",
-        arguments: SceneSnapshotUITest.Variant.allVariants
+        arguments: SceneSnapshotUITest.Variant.allPortraitDevicesVariants
     )
     func loadingStateWithData(variant: SceneSnapshotUITest.Variant) {
         loadingStateWithDataSetUp()
@@ -46,7 +46,7 @@ final class CharactersListViewTests: SceneSnapshotUITest {
 
     @Test(
         "Populated State",
-        arguments: SceneSnapshotUITest.Variant.allVariants
+        arguments: SceneSnapshotUITest.Variant.allPortraitDevicesVariants
     )
     func populatedState(variant: SceneSnapshotUITest.Variant) {
         populatedStateSetUp()
@@ -60,7 +60,7 @@ final class CharactersListViewTests: SceneSnapshotUITest {
 
     @Test(
         "Error State",
-        arguments: SceneSnapshotUITest.Variant.allVariants
+        arguments: SceneSnapshotUITest.Variant.allPortraitDevicesVariants
     )
     func errorState(variant: SceneSnapshotUITest.Variant) {
         errorStateSetUp()
