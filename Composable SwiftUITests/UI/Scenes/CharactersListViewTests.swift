@@ -81,8 +81,10 @@ private extension CharactersListViewTests {
     }
 
     var view: some View {
-        CharactersListView(store: store)
-            .allEnvironmentsInjected
+        NavigationStack {
+            CharactersListView(store: store)
+        }
+        .allEnvironmentsInjected
     }
 
     var characters: [Character] {
