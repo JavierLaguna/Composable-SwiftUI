@@ -1,5 +1,6 @@
 import Foundation
 import Mockable
+import FoundationModels
 
 @Mockable
 protocol GetCharacterDescriptionInteractor: Sendable {
@@ -9,11 +10,35 @@ protocol GetCharacterDescriptionInteractor: Sendable {
 struct GetCharacterDescriptionInteractorFactory {
 
     static func build() -> any GetCharacterDescriptionInteractor {
-        GetCharacterDescriptionInteractorDefault()
+        if #available(iOS 26.0, *) {
+            GetCharacterDescriptionInteractorByAppleIntelligence()
+        } else {
+            GetCharacterDescriptionInteractorLoremIpsum()
+        }
     }
 }
 
-struct GetCharacterDescriptionInteractorDefault: GetCharacterDescriptionInteractor, ManagedErrorInteractor {
+@available(iOS 26.0, *)
+struct GetCharacterDescriptionInteractorByAppleIntelligence: GetCharacterDescriptionInteractor, ManagedErrorInteractor {
+
+    private let session = LanguageModelSession()
+
+    func execute(character: Character) async throws -> String {
+        do {
+            let response = try await session.respond(
+                to: "Create a good description for a Rick, the character of the famous rick and morty Tv program"
+            )
+            print("Response", response)
+            return response.content
+        } catch {
+            print(error)
+        }
+
+        return ""
+    }
+}
+
+struct GetCharacterDescriptionInteractorLoremIpsum: GetCharacterDescriptionInteractor, ManagedErrorInteractor {
 
     func execute(character: Character) async throws -> String {
         if Bool.random() {

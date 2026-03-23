@@ -20,6 +20,7 @@
 "characterGender.unknown" = "unknown";
 
 // CharactersList
+"charactersList.title" = "Characters";
 "charactersList.search" = "Search...";
 "charactersList.noResults" = "No results found";
 
@@ -53,6 +54,11 @@
 
 // EpisodesList
 "episodesList.title" = "Episodes";
+
+// LocationsList
+"locationsList.title" = "Locations";
+"locationsList.dimension" = "Dimension: %@";
+"locationsList.residents" = "%d residents";
 
 // EpisodeDetail
 "episodeDetail.characters" = "Characters";

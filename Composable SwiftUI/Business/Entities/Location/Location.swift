@@ -1,4 +1,4 @@
-struct Location: Equatable {
+struct Location: Equatable, Identifiable, Hashable {
     let id: Int
     let name: String
     let type: LocationType

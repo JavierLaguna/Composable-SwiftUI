@@ -3,7 +3,6 @@ disabled_rules:
   - xctfail_message
   - nesting
   - multiple_closures_with_trailing_closure
-  - identifier_name
   - function_body_length
 opt_in_rules:
   #lint
@@ -15,10 +14,10 @@ opt_in_rules:
   - closure_end_indentation
   - closure_parameter_position
   - closure_spacing
-  - operator_usage_whitespace
+  - function_name_whitespace
   - unneeded_parentheses_in_closure_argument
   #idiomatic
-  - redundant_nil_coalescing
+  - implicit_optional_initialization
   - explicit_init
   #performance
   - empty_count
@@ -49,17 +48,25 @@ file_length:
 type_name:
   min_length: 3
   max_length: 40
-  severity: error
 identifier_name:
   min_length: 3
   max_length: 40
-  severity: error
   excluded:
     - id
     - i
     - r
+    - of
+    - UI
+    - TV
+    - v1
+    - xs
+    - s
+    - m
+    - l
+    - xl
 attributes:
   always_on_same_line:
+      - "@MainActor"
       - "@State"
       - "@EnvironmentObject"
       - "@testable"

@@ -37,7 +37,7 @@ struct ButtonView: View {
                     .stroke(Color.black.opacity(0.2), lineWidth: 2)
             )
         }
-        .buttonStyle(PressableButtonStyle())
+//        .buttonStyle(PressableButtonStyle())
     }
 }
 

@@ -13,6 +13,7 @@ struct Theme {
         static let buttonText = R.color.white_custom.color
         static let buttonBackground = R.color.green_500.color
 
+        static let navTitle = R.color.white_custom.color
         static let navIcon = R.color.white_custom.color
 
         static let background = Color(light: R.color.white_custom.color, dark: R.color.black_custom.color).opacity(0.95)
@@ -81,8 +82,8 @@ struct Theme {
         /** 32 */
         static let xxxl = spacer * 4
 
-        /** 80 */
-        static let tabBarHeight: CGFloat = 80
+        /** 96 */
+        static let tabBarHeight: CGFloat = 96
     }
 
     // MARK: Radius

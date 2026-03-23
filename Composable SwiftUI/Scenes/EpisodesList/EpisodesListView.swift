@@ -23,6 +23,7 @@ struct EpisodesListView: View {
                         isLoading: store.episodes.isLoading,
                         coordinator: coordinator
                     )
+                    .contentMargins(.bottom, Theme.Space.tabBarHeight)
 
                 } else {
                     FullScreenLoadingView()
@@ -41,8 +42,7 @@ struct EpisodesListView: View {
                 EmptyView()
             }
         }
-        .background(BackgroundPatternPrimaryView())
-        .ignoresSafeArea(.container, edges: .bottom)
+        .backgroundImage(R.image.ic_background.image)
         .navigationTitle(R.string.localizable.episodesListTitle())
         .environment(store)
         .task {

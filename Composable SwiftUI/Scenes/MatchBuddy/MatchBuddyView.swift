@@ -88,8 +88,7 @@ struct MatchBuddyView: View {
                     VStack(spacing: Theme.Space.l) {
                         KFImage(URL(string: store.beerBuddy.data?.buddy.image ?? ""))
                             .resizable()
-                            .skeleton(with: store.beerBuddy.isLoading)
-                            .shape(type: .rectangle)
+                            .skeleton(with: store.beerBuddy.isLoading, shape: .rectangle)
                             .scaledToFit()
                             .frame(width: 120, height: 120)
                             .cornerRadius(30)

@@ -1,5 +1,5 @@
 {
-  "originHash" : "3a0e01b30f60789a2576854dea4c8f9ea1af7fe8809472d9d69d7250aa68384b",
+  "originHash" : "7261d6c50fef2b43cc05f05d473a4b71330d48f2b8f1f245e040dd042421cbdf",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -11,12 +11,39 @@
       }
     },
     {
+      "identity" : "iqkeyboardcore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardCore.git",
+      "state" : {
+        "revision" : "6501e93b03161ce1c9355d2d689bad91c534104e",
+        "version" : "1.0.8"
+      }
+    },
+    {
       "identity" : "iqkeyboardmanager",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
       "state" : {
-        "revision" : "c00b1ae9fa1ad8af4465bb6ca901f6943fc98eba",
-        "version" : "6.5.16"
+        "revision" : "3989683f60dfc33df6063f9a8d0fabb50a910e9d",
+        "version" : "7.2.0"
+      }
+    },
+    {
+      "identity" : "iqkeyboardnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardNotification.git",
+      "state" : {
+        "revision" : "08bdc90e7db64ac88f51da5dc9e82f4c247e7057",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "iqtextinputviewnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQTextInputViewNotification.git",
+      "state" : {
+        "revision" : "723784a2197121bb76a940cc6d79fd2fa6c23f43",
+        "version" : "1.0.9"
       }
     },
     {
@@ -33,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher.git",
       "state" : {
-        "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
-        "version" : "7.12.0"
+        "revision" : "c92b84898e34ab46ff0dad86c02a0acbe2d87008",
+        "version" : "8.8.0"
       }
     },
     {
@@ -60,8 +87,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CSolanaM/SkeletonUI.git",
       "state" : {
-        "revision" : "e3cf87cb96a10562bc660c9d48418a395d8385ed",
-        "version" : "1.0.11"
+        "revision" : "f025e9ba5d051374d7344efa8859df5b9399a181",
+        "version" : "2.0.2"
       }
     },
     {
@@ -105,8 +132,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "revision" : "6574de2396319a58e86e2178577268cb4aeccc30",
-        "version" : "1.20.2"
+        "revision" : "adf6e52161f293fe4ab957dd732e214aca7031d2",
+        "version" : "1.25.2"
       }
     },
     {
@@ -150,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-navigation",
       "state" : {
-        "revision" : "ae208d1a5cf33aee1d43734ea780a09ada6e2a21",
-        "version" : "2.3.1"
+        "revision" : "e7441dc4dfec6a4ae929e614e3c1e67c6639d164",
+        "version" : "2.7.0"
       }
     },
     {
@@ -177,8 +204,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
       "state" : {
-        "revision" : "37230a37e83f1b7023be08e1b1a2603fcb1567fb",
-        "version" : "1.18.4"
+        "revision" : "05b6f05b55ff9e2dcdcc21ac78c6ba81ea624791",
+        "version" : "1.19.1"
       }
     },
     {
@@ -195,8 +222,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SimplyDanny/SwiftLintPlugins",
       "state" : {
-        "revision" : "8545ddf4de043e6f2051c5cf204f39ef778ebf6b",
-        "version" : "0.59.1"
+        "revision" : "8a4640d14777685ba8f14e832373160498fbab92",
+        "version" : "0.63.2"
       }
     },
     {

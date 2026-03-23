@@ -11,63 +11,7 @@ struct CharactersListView: View {
 
     var body: some View {
         VStack {
-            if store.characters.error == nil {
-                VStack {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-
-                        TextField(
-                            R.string.localizable.charactersListSearch(),
-                            text: $store.searchText
-                        )
-                    }
-                    .foregroundColor(Theme.Colors.primary)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Theme.Colors.primary, lineWidth: 2)
-                    )
-                    .padding()
-                }
-                .background(Theme.Colors.backgroundSecondary)
-            }
-
-            if let characters = store.filteredCharacters {
-
-                if characters.isEmpty {
-                    VStack {
-                        Text(R.string.localizable.charactersListNoResults())
-                            .foregroundColor(Theme.Colors.secondaryText)
-                            .font(Theme.Fonts.title2)
-                    }
-                    .frame(
-                        maxWidth: .infinity,
-                        maxHeight: .infinity,
-                        alignment: .top
-                    )
-                    .padding(.top, Theme.Space.xl)
-
-                } else {
-                    CharactersList(
-                        characters: characters,
-                        showLoadingMoreCharacters: store.characters.isLoading,
-                        onEndReached: {
-                            store.send(.getCharacters)
-                        }
-                    )
-                }
-            }
-
-            switch store.characters.state {
-            case .loading:
-                if store.characters.data == nil {
-                    List {
-                        SkeletonRows(numberOfRows: BusinessConstants.skeletonRowEmptyData)
-                    }
-                    .listStyle(.plain)
-                }
-
-            case .error(let error):
+            if let error = store.characters.error {
                 VStack {
                     ErrorView(
                         error: error,
@@ -75,19 +19,54 @@ struct CharactersListView: View {
                             store.send(.getCharacters)
                         })
                 }
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .top
+                )
+                .padding(.vertical, Theme.Space.xl)
                 .padding(.horizontal, Theme.Space.xxl)
 
-            default:
-                EmptyView()
+            } else if let characters = store.filteredCharacters {
+                Group {
+                    if characters.isEmpty {
+                        VStack {
+                            Text(R.string.localizable.charactersListNoResults())
+                                .foregroundColor(Theme.Colors.secondaryText)
+                                .font(Theme.Fonts.title2)
+                        }
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .top
+                        )
+                        .padding(.top, Theme.Space.xl)
+
+                    } else {
+                        CharactersList(
+                            characters: characters,
+                            showLoadingMoreCharacters: store.characters.isLoading,
+                            onEndReached: {
+                                store.send(.getCharacters)
+                            }
+                        )
+                        .contentMargins(.bottom, Theme.Space.tabBarHeight)
+                    }
+                }
+                .searchable(
+                    text: $store.searchText,
+                    prompt: R.string.localizable.charactersListSearch()
+                )
+
+            } else if store.characters.isLoading {
+                List {
+                    SkeletonRows(numberOfRows: BusinessConstants.skeletonRowEmptyData)
+                }
+                .listStyle(.plain)
             }
         }
-        .navigationBarHidden(true)
-        .background {
-            R.image.ic_background.image
-                .resizable()
-                .scaledToFill()
-        }
-        .ignoresSafeArea(.all, edges: .bottom)
+        .navigationTitle(R.string.localizable.charactersListTitle())
+        .backgroundImage(R.image.ic_background.image)
         .task {
             store.send(.getCharacters)
         }
@@ -110,7 +89,6 @@ private struct CharactersList: View {
                     charactersCoordinator.navigateToCharacterDetail(character: character)
                 } label: {
                     CharacterCellView(character: character)
-                        .padding(.bottom, character == characters.last ? Theme.Space.tabBarHeight : 0)
                         .onAppear {
                             if characters.last == character {
                                 onEndReached()
