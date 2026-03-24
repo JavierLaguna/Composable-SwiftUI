@@ -108,6 +108,7 @@
 		49A4A67E282FB18800D43FB3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A4A67D282FB18800D43FB3 /* Colors.xcassets */; };
 		49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4A680282FB30A00D43FB3 /* Theme.swift */; };
 		49A4A684282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4A683282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift */; };
+		49AC60412F72EF1C0064B40A /* CharacterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC60402F72EF1C0064B40A /* CharacterDescription.swift */; };
 		49B764FB2DFB175D004B545D /* BackgroundPatternSecondaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B764FA2DFB175D004B545D /* BackgroundPatternSecondaryView.swift */; };
 		49B765052DFB17AE004B545D /* StatusBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765042DFB17AE004B545D /* StatusBadgeView.swift */; };
 		49B765652DFB39C6004B545D /* CharacterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765642DFB39C6004B545D /* CharacterMock.swift */; };
@@ -278,6 +279,7 @@
 		49A4A67D282FB18800D43FB3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		49A4A680282FB30A00D43FB3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49A4A683282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+VerticalHorizontal.swift"; sourceTree = "<group>"; };
+		49AC60402F72EF1C0064B40A /* CharacterDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescription.swift; sourceTree = "<group>"; };
 		49B764FA2DFB175D004B545D /* BackgroundPatternSecondaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPatternSecondaryView.swift; sourceTree = "<group>"; };
 		49B765042DFB17AE004B545D /* StatusBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadgeView.swift; sourceTree = "<group>"; };
 		49B765642DFB39C6004B545D /* CharacterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMock.swift; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 			children = (
 				49EDA8C9283BFC3D002C9C80 /* BeerBuddy.swift */,
 				49A4A666282F99F300D43FB3 /* Character.swift */,
+				49AC60402F72EF1C0064B40A /* CharacterDescription.swift */,
 				49E4F813283E89FB0037FD72 /* CharacterGender.swift */,
 				497781D42836B7520033BC22 /* CharacterLocation.swift */,
 				493BF0302834298700ECC3A3 /* CharacterStatus.swift */,
@@ -1217,6 +1220,7 @@
 				4998C7832E01675D00F755D9 /* Color+Extension.swift in Sources */,
 				4940F1612F71B0130015879B /* BackgroundImageModifier.swift in Sources */,
 				4946E27D2E056BA600870FBC /* GetTotalCharactersCountInteractor.swift in Sources */,
+				49AC60412F72EF1C0064B40A /* CharacterDescription.swift in Sources */,
 				492BFBD92DDE233F0072C537 /* CharacterDetailReducer.swift in Sources */,
 				4935A4302E291BDD005997A3 /* GetCharactersResponseMock.swift in Sources */,
 				493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */,
