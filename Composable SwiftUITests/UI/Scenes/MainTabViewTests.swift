@@ -5,26 +5,22 @@ import ComposableArchitecture
 @testable import Composable_SwiftUI
 
 @Suite(
-    "MainView",
+    "MainTabView",
     .tags(.UI, .UIScene)
 )
-final class MainViewTests: SceneSnapshotUITest {
+final class MainTabViewTests: SceneSnapshotUITest {
 
     override var file: StaticString {
         #filePath
     }
-
-    private var store: StoreOf<MainReducer>!
 
     @Test(
         "Characters Tab Selected",
         arguments: SceneSnapshotUITest.Variant.allPortraitDevicesVariants
     )
     func charactersTabSelected(variant: SceneSnapshotUITest.Variant) {
-        configureStore()
-
         execute(
-            name: "mainView_charactersTabSelected",
+            name: "mainTabView_charactersTabSelected",
             view: view(selectedTab: .characters),
             variant: variant
         )
@@ -35,10 +31,8 @@ final class MainViewTests: SceneSnapshotUITest {
         arguments: SceneSnapshotUITest.Variant.allPortraitDevicesVariants
     )
     func episodesTabSelected(variant: SceneSnapshotUITest.Variant) {
-        configureStore()
-
         execute(
-            name: "mainView_episodesTabSelected",
+            name: "mainTabView_episodesTabSelected",
             view: view(selectedTab: .episodes),
             variant: variant
         )
@@ -49,10 +43,8 @@ final class MainViewTests: SceneSnapshotUITest {
         arguments: SceneSnapshotUITest.Variant.allPortraitDevicesVariants
     )
     func locationsTabSelected(variant: SceneSnapshotUITest.Variant) {
-        configureStore()
-
         execute(
-            name: "mainView_locationsTabSelected",
+            name: "mainTabView_locationsTabSelected",
             view: view(selectedTab: .locations),
             variant: variant
         )
@@ -60,33 +52,38 @@ final class MainViewTests: SceneSnapshotUITest {
 }
 
 // MARK: Private methods
-private extension MainViewTests {
+private extension MainTabViewTests {
 
-    var mainView: some View {
-        MainView(mainStore: store)
-    }
-
-    func view(selectedTab: TabSelection) -> some View {
-        mainView
-            .overlay {
-                TabSelectionConfigurator(selectedTab: selectedTab)
-                    .allowsHitTesting(false)
-            }
-            .allEnvironmentsInjected
-    }
-
-    func configureStore() {
-        store = StoreOf<MainReducer>(
-            initialState: .init(),
+    func view(selectedTab: MainCoordinator.Tab) -> some View {
+        let store = StoreOf<MainReducer>(
+            initialState: .init(
+                charactersListState: .init(
+                    characters: .init(
+                        state: .populated(data: Character.mocks)
+//                        state: .loading
+                    )
+                )
+            ),
             reducer: {
-                // Intentionally empty
+                MainReducer()
             }
         )
+        let charactersCoordinator = CharactersCoordinator(mainStore: store)
+        let episodesCoordinator = EpisodesCoordinator()
+        let locationsCoordinator = LocationsCoordinator()
+
+        return MainTabView(
+            selectedTab: .constant(selectedTab.rawValue)
+        )
+        .allEnvironmentsInjected
+//        .environment(charactersCoordinator)
+//        .environment(episodesCoordinator)
+//        .environment(locationsCoordinator)
     }
 }
 
 // MARK: Private types
-private extension MainViewTests {
+private extension MainTabViewTests {
 
     enum TabSelection {
         case characters

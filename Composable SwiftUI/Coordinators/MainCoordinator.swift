@@ -35,7 +35,6 @@ extension MainCoordinator {
         case characters = 0
         case episodes = 1
         case locations = 2
-        case search = 3
     }
 }
 

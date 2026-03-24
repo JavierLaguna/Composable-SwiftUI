@@ -108,6 +108,7 @@
 		49A4A67E282FB18800D43FB3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A4A67D282FB18800D43FB3 /* Colors.xcassets */; };
 		49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4A680282FB30A00D43FB3 /* Theme.swift */; };
 		49A4A684282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4A683282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift */; };
+		49B4FE662F72BDC9002C2ECC /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4FE652F72BDC9002C2ECC /* MainTabView.swift */; };
 		49B764FB2DFB175D004B545D /* BackgroundPatternSecondaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B764FA2DFB175D004B545D /* BackgroundPatternSecondaryView.swift */; };
 		49B765052DFB17AE004B545D /* StatusBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765042DFB17AE004B545D /* StatusBadgeView.swift */; };
 		49B765652DFB39C6004B545D /* CharacterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765642DFB39C6004B545D /* CharacterMock.swift */; };
@@ -170,7 +171,7 @@
 		5A1C00012E40000100ABC001 /* LocationsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */; };
 		5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */; };
 		5A1D00012E40000100ABC001 /* LocationsListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */; };
-		5A1D00032E40000100ABC001 /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00042E40000100ABC001 /* MainViewTests.swift */; };
+		5A1D00032E40000100ABC001 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00042E40000100ABC001 /* MainTabViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -279,6 +280,7 @@
 		49A4A67D282FB18800D43FB3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		49A4A680282FB30A00D43FB3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49A4A683282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+VerticalHorizontal.swift"; sourceTree = "<group>"; };
+		49B4FE652F72BDC9002C2ECC /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		49B764FA2DFB175D004B545D /* BackgroundPatternSecondaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPatternSecondaryView.swift; sourceTree = "<group>"; };
 		49B765042DFB17AE004B545D /* StatusBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadgeView.swift; sourceTree = "<group>"; };
 		49B765642DFB39C6004B545D /* CharacterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMock.swift; sourceTree = "<group>"; };
@@ -340,7 +342,7 @@
 		5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListReducerTests.swift; sourceTree = "<group>"; };
 		5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsInteractorDefaultTests.swift; sourceTree = "<group>"; };
 		5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListViewTests.swift; sourceTree = "<group>"; };
-		5A1D00042E40000100ABC001 /* MainViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTests.swift; sourceTree = "<group>"; };
+		5A1D00042E40000100ABC001 /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,7 +429,7 @@
 			children = (
 				492B43452ABB45A6005B631E /* CharactersListViewTests.swift */,
 				5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */,
-				5A1D00042E40000100ABC001 /* MainViewTests.swift */,
+				5A1D00042E40000100ABC001 /* MainTabViewTests.swift */,
 				49DBDF5C2CADB3E4007CDE74 /* MatchBuddyViewTests.swift */,
 			);
 			path = Scenes;
@@ -714,6 +716,7 @@
 			children = (
 				49A4A663282F993B00D43FB3 /* MainReducer.swift */,
 				49222F2F2C203C600026B5E8 /* MainView.swift */,
+				49B4FE652F72BDC9002C2ECC /* MainTabView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1181,6 +1184,7 @@
 				49EDA8D3283CEBB5002C9C80 /* EpisodesRepositoryDefault.swift in Sources */,
 				4998C75E2E005C3B00F755D9 /* TextModifiers.swift in Sources */,
 				49222F302C203C600026B5E8 /* MainView.swift in Sources */,
+				49B4FE662F72BDC9002C2ECC /* MainTabView.swift in Sources */,
 				4935A4012E281605005997A3 /* LocationDetailMock.swift in Sources */,
 				49E4F829284931640037FD72 /* MatchBuddyInfoView.swift in Sources */,
 				49A1A25D2E0DB37200B97442 /* EpisodesListReducer.swift in Sources */,
@@ -1327,7 +1331,7 @@
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
 				49DBDF5D2CADB3E4007CDE74 /* MatchBuddyViewTests.swift in Sources */,
 				492B43462ABB45A6005B631E /* CharactersListViewTests.swift in Sources */,
-				5A1D00032E40000100ABC001 /* MainViewTests.swift in Sources */,
+				5A1D00032E40000100ABC001 /* MainTabViewTests.swift in Sources */,
 				5A1D00012E40000100ABC001 /* LocationsListViewTests.swift in Sources */,
 				494C058A2C241CE7006CFF1B /* TestConfig.swift in Sources */,
 				491A398F2850948900D17719 /* CharacterTests.swift in Sources */,
