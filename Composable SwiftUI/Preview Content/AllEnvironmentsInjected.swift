@@ -17,6 +17,7 @@ private struct AllEnvironmentsInjectedModifier: ViewModifier {
     @State private var mainCoordinator = MainCoordinator()
     @State private var charactersCoordinator: CharactersCoordinator
     @State private var episodesCoordinator = EpisodesCoordinator()
+    @State private var locationsCoordinator = LocationsCoordinator()
 
     init() {
         mainStore = StoreOf<MainReducer>(
@@ -36,5 +37,6 @@ private struct AllEnvironmentsInjectedModifier: ViewModifier {
             .environment(mainCoordinator)
             .environment(charactersCoordinator)
             .environment(episodesCoordinator)
+            .environment(locationsCoordinator)
     }
 }
