@@ -170,6 +170,7 @@
 		5A1C00012E40000100ABC001 /* LocationsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */; };
 		5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */; };
 		5A1D00012E40000100ABC001 /* LocationsListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */; };
+		5A1D00032E40000100ABC001 /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00042E40000100ABC001 /* MainViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -339,6 +340,7 @@
 		5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListReducerTests.swift; sourceTree = "<group>"; };
 		5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsInteractorDefaultTests.swift; sourceTree = "<group>"; };
 		5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListViewTests.swift; sourceTree = "<group>"; };
+		5A1D00042E40000100ABC001 /* MainViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,6 +427,7 @@
 			children = (
 				492B43452ABB45A6005B631E /* CharactersListViewTests.swift */,
 				5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */,
+				5A1D00042E40000100ABC001 /* MainViewTests.swift */,
 				49DBDF5C2CADB3E4007CDE74 /* MatchBuddyViewTests.swift */,
 			);
 			path = Scenes;
@@ -1324,6 +1327,7 @@
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
 				49DBDF5D2CADB3E4007CDE74 /* MatchBuddyViewTests.swift in Sources */,
 				492B43462ABB45A6005B631E /* CharactersListViewTests.swift in Sources */,
+				5A1D00032E40000100ABC001 /* MainViewTests.swift in Sources */,
 				5A1D00012E40000100ABC001 /* LocationsListViewTests.swift in Sources */,
 				494C058A2C241CE7006CFF1B /* TestConfig.swift in Sources */,
 				491A398F2850948900D17719 /* CharacterTests.swift in Sources */,
