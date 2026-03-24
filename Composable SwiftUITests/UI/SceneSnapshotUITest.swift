@@ -123,7 +123,7 @@ extension SceneSnapshotUITest {
 
         var layoutName: String {
             switch self {
-            case .iPhoneSmallest: "iPhoneSE"
+            case .iPhoneSmallest: "iPhone8"
             case .iPhoneSmall: "iPhone13Mini"
             case .iPhoneMedium: "iPhone12"
             case .iPhoneBig: "iPhone13Pro"
@@ -137,7 +137,7 @@ extension SceneSnapshotUITest {
 
         private func viewImageConfig(orientation: ViewImageConfig.Orientation) -> ViewImageConfig {
             switch self {
-            case .iPhoneSmallest: .iPhoneSe(orientation)
+            case .iPhoneSmallest: .iPhone8(orientation)
             case .iPhoneSmall: .iPhone13Mini(orientation)
             case .iPhoneMedium: .iPhone12(orientation)
             case .iPhoneBig: .iPhone13Pro(orientation)
