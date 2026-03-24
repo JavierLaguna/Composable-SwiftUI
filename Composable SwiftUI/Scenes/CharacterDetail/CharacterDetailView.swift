@@ -283,9 +283,21 @@ private struct DetailContentView: View {
                         }
                     }
 
-                    Text(character.description)
-                        .bodyStyle()
-                        .multilineTextAlignment(.leading)
+                    if let description = store.characterDescription.data {
+                        Text(description)
+                            .bodyStyle()
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(7)
+
+                    } else if store.characterDescription.isLoading {
+                        LoadingAppleIntelligence(
+                            text: R.string.localizable.characterDetailGeneratingDescription()
+                        )
+                        .frame(maxWidth: .infinity, minHeight: 140)
+                    } else {
+                        Text("ELSE \(store.characterDescription.state)")
+                            .bodyStyle()
+                    }
 
                     HStack(alignment: .top, spacing: Theme.Space.xl) {
                         InfoCard(

@@ -13,6 +13,7 @@ struct CharacterDetailReducer {
         let viewMode: CharacterDetailViewMode
 
         var currentCharacter: StateLoadable<Character>
+        var characterDescription: StateLoadable<String> = .init()
         var totalCharactersCount: Int = 0
         var episodes: StateLoadable<[Episode]> = .init()
 
@@ -72,6 +73,8 @@ struct CharacterDetailReducer {
                     return .none
                 }
 
+                state.characterDescription.state = .loading
+
                 return .run { send in
                     await send(.onReceiveCharacterDescription(Result {
                         try await getCharacterDescriptionInteractor.execute(character: currentCharacter)
@@ -82,11 +85,13 @@ struct CharacterDetailReducer {
                 guard let currentCharacter = state.currentCharacter.data else {
                     return .none
                 }
+                state.characterDescription.state = .populated(data: characterDescription)
                 let newCharacter = currentCharacter.copy(description: characterDescription)
                 state.currentCharacter.state = .populated(data: newCharacter)
                 return .none
 
-            case .onReceiveCharacterDescription(.failure):
+            case .onReceiveCharacterDescription(.failure(let error)):
+                state.characterDescription.state = .error(error)
                 return .none
 
             case .getTotalCharactersCount:
