@@ -12,20 +12,17 @@ struct CharactersListView: View {
     var body: some View {
         VStack {
             if let error = store.characters.error {
-                VStack {
+                ScrollView {
                     ErrorView(
                         error: error,
                         onRetry: {
                             store.send(.getCharacters)
-                        })
+                        }
+                    )
+                    .padding(.vertical, Theme.Space.xl)
+                    .padding(.horizontal, Theme.Space.xxl)
                 }
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity,
-                    alignment: .top
-                )
-                .padding(.vertical, Theme.Space.xl)
-                .padding(.horizontal, Theme.Space.xxl)
+                .contentMargins(.bottom, Theme.Space.tabBarHeight)
 
             } else if let characters = store.filteredCharacters {
                 Group {
@@ -123,7 +120,11 @@ private struct SkeletonRows: View {
 
 #Preview {
     let store: StoreOf<CharactersListReducer> = Store(
-        initialState: .init(),
+        initialState: CharactersListReducer.State(
+            characters: .init(
+                state: .error(InteractorError.generic(message: ""))
+            )
+        ),
         reducer: {
             CharactersListReducer.build()
         }
