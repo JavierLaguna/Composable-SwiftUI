@@ -3,6 +3,21 @@ import SwiftUI
 
 struct Theme {
 
+    // MARK: Appareance
+    @MainActor
+    static func configureNavigationBarAppareance() {
+        let white = UIColor(R.color.white_custom.color)
+        let black = UIColor(R.color.black_custom.color)
+
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: white]
+
+        if #available(iOS 26, *) {
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: white]
+        } else {
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: black]
+        }
+    }
+
     // MARK: Colors
     struct Colors {
         static let primary = R.color.green_200.color
@@ -13,7 +28,6 @@ struct Theme {
         static let buttonText = R.color.white_custom.color
         static let buttonBackground = R.color.green_500.color
 
-        static let navTitle = R.color.white_custom.color
         static let navIcon = R.color.white_custom.color
 
         static let background = Color(light: R.color.white_custom.color, dark: R.color.black_custom.color).opacity(0.95)
