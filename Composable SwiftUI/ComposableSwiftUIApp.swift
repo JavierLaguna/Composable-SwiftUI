@@ -4,6 +4,7 @@ import SwiftUI
 struct ComposableSwiftUIApp: App {
 
     init() {
+        Theme.configureNavigationBarAppareance()
         KeyboardManager.configureKeyboardBehaviour()
     }
 

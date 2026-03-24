@@ -28,13 +28,7 @@ private struct AllEnvironmentsInjectedModifier: ViewModifier {
 
         charactersCoordinator = CharactersCoordinator(mainStore: mainStore)
 
-        configureNavigationBarAppareance()
-    }
-
-    private func configureNavigationBarAppareance() {
-        let navTitleColor = UIColor(Theme.Colors.navTitle)
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: navTitleColor]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: navTitleColor]
+        Theme.configureNavigationBarAppareance()
     }
 
     func body(content: Content) -> some View {

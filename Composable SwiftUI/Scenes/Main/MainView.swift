@@ -10,21 +10,11 @@ struct MainView: View {
     @State private var episodesCoordinator: EpisodesCoordinator
     @State private var locationsCoordinator: LocationsCoordinator
 
-    @State private var searchText = ""
-
     init(mainStore: StoreOf<MainReducer>) {
         self.mainStore = mainStore
         charactersCoordinator = CharactersCoordinator(mainStore: mainStore)
         episodesCoordinator = EpisodesCoordinator()
         locationsCoordinator = LocationsCoordinator()
-
-        configureNavigationBarAppareance()
-    }
-
-    private func configureNavigationBarAppareance() {
-        let navTitleColor = UIColor(Theme.Colors.navTitle)
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: navTitleColor]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: navTitleColor]
     }
 
     var body: some View {
@@ -79,21 +69,8 @@ struct MainView: View {
                         }
                 }
             }
-
-//            Tab(
-//                value: MainCoordinator.Tab.search.rawValue,
-//                role: .search
-//            ) {
-//                NavigationStack {
-//                    VStack {
-//                        Text("Search screen")
-////                        Text("\(mainCoordinator.tabSelecton)")
-//                        Text(searchText)
-//                    }
-//                }
-//            }
         }
-//        .searchable(text: $searchText, prompt: "Search...")
+        .tint(Theme.Colors.primary)
         .environment(mainCoordinator)
         .environment(charactersCoordinator)
         .environment(episodesCoordinator)
