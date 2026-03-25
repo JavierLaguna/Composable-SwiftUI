@@ -41,9 +41,9 @@ struct EpisodeCarouselView: View {
                                     .aspectRatio(1, contentMode: .fill)
                                     .frame(width: 150, height: 150)
                                     .clipped()
-                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                    .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous))
                             }
-                            .buttonStyle(PressableButtonStyle())
+                            .buttonStyle(PressableButtonStyle(rectRadius: Theme.Radius.m))
 
                             Text(episode.name)
                                 .bodyStyle()
@@ -56,7 +56,7 @@ struct EpisodeCarouselView: View {
                         Button(action: onSeeAll) {
                             VStack {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous)
                                         .fill(Color.gray.opacity(0.2))
                                         .frame(width: 150, height: 150)
 
@@ -66,9 +66,9 @@ struct EpisodeCarouselView: View {
                                 }
                             }
                             .frame(width: 150)
-                            .padding(.trailing, 28)
                         }
-                        .buttonStyle(PressableButtonStyle())
+                        .buttonStyle(PressableButtonStyle(rectRadius: Theme.Radius.m))
+                        .padding(.trailing, 28)
                     }
                 }
                 .padding(.horizontal)

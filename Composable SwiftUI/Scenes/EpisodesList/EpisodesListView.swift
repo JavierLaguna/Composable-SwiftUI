@@ -75,7 +75,7 @@ private struct EpisodesList: View {
                                 }
                             }
                     }
-                    .buttonStyle(PressableButtonStyle())
+                    .buttonStyle(PressableButtonStyle(rectRadius: Theme.Radius.m))
                 }
 
                 if isLoading {

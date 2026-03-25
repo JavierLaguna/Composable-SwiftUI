@@ -94,6 +94,7 @@ struct MainView: View {
 //            }
         }
 //        .searchable(text: $searchText, prompt: "Search...")
+        .tint(Theme.Colors.primary)
         .environment(mainCoordinator)
         .environment(charactersCoordinator)
         .environment(episodesCoordinator)
