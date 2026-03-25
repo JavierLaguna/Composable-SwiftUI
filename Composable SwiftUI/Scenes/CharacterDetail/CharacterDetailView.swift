@@ -289,14 +289,15 @@ private struct DetailContentView: View {
                             .multilineTextAlignment(.leading)
                             .lineLimit(7)
 
-                    } else if store.characterDescription.isLoading {
+                    } else if let error = store.characterDescription.error {
+                        ErrorAppleIntelligenceView(error: error)
+                            .frame(maxWidth: .infinity, minHeight: 140)
+
+                    } else {
                         LoadingAppleIntelligence(
                             text: R.string.localizable.characterDetailGeneratingDescription()
                         )
                         .frame(maxWidth: .infinity, minHeight: 140)
-                    } else {
-                        Text("ELSE \(store.characterDescription.state)")
-                            .bodyStyle()
                     }
 
                     HStack(alignment: .top, spacing: Theme.Space.xl) {

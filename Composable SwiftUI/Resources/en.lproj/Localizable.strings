@@ -19,6 +19,12 @@
 "characterGender.genderless" = "Genderless";
 "characterGender.unknown" = "unknown";
 
+// AppleIntelligenceNotAvailableError
+"appleIntelligenceNotAvailableError.deviceNotEligible" = "Your device is not elegible to use this feature.";
+"appleIntelligenceNotAvailableError.appleIntelligenceNotEnabled" = "Please enable Apple Intelligence to access this feature.";
+"appleIntelligenceNotAvailableError.modelNotReady" = "Model isn´t ready yet. It may be downloading or initializing. Please try again later.";
+"appleIntelligenceNotAvailableError.other" = "Model unavailable. Reason: %@";
+
 // CharactersList
 "charactersList.title" = "Characters";
 "charactersList.search" = "Search...";
