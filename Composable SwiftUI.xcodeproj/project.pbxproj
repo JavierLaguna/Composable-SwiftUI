@@ -43,6 +43,8 @@
 		493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */; };
 		493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF0302834298700ECC3A3 /* CharacterStatus.swift */; };
 		493BF03328342D1900ECC3A3 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF03228342D1900ECC3A3 /* String+URL.swift */; };
+		4940B6762F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940B6752F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift */; };
+		4940B68F2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940B68E2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift */; };
 		4940F1612F71B0130015879B /* BackgroundImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940F1602F71B0130015879B /* BackgroundImageModifier.swift */; };
 		49415E2F2E2561FD00F99C24 /* DateFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49415E2E2E2561FD00F99C24 /* DateFormatterFactory.swift */; };
 		49415E332E25624500F99C24 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49415E322E25624500F99C24 /* String+Date.swift */; };
@@ -216,6 +218,8 @@
 		493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewMode.swift; sourceTree = "<group>"; };
 		493BF0302834298700ECC3A3 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
 		493BF03228342D1900ECC3A3 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
+		4940B6752F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAppleIntelligenceView.swift; sourceTree = "<group>"; };
+		4940B68E2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIntelligenceNotAvailableError.swift; sourceTree = "<group>"; };
 		4940F1602F71B0130015879B /* BackgroundImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageModifier.swift; sourceTree = "<group>"; };
 		49415E2E2E2561FD00F99C24 /* DateFormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFactory.swift; sourceTree = "<group>"; };
 		49415E322E25624500F99C24 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
@@ -721,6 +725,7 @@
 		49A4A665282F99DF00D43FB3 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				4940B68E2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift */,
 				4987ED482A6BD92E00AA7839 /* Character */,
 				4987ED4A2A6BD94D00AA7839 /* Episode */,
 				4987ED492A6BD93900AA7839 /* Location */,
@@ -748,13 +753,14 @@
 				4998C7532E005C1700F755D9 /* CircleIconButton.swift */,
 				49B765CC2DFC3052004B545D /* EpisodeCarouselView.swift */,
 				49A1A2672E0DB53F00B97442 /* EpisodeCellView.swift */,
+				4940B6752F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift */,
 				494E3465283AAA8500445B79 /* ErrorView.swift */,
 				49A1A2E62E0EC91600B97442 /* FullScreenLoadingView.swift */,
+				49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */,
 				49529CA32A784058002F7594 /* LoadingView.swift */,
 				49529C992A783B7B002F7594 /* NeighborsCellView.swift */,
 				49B765042DFB17AE004B545D /* StatusBadgeView.swift */,
 				4946E1F72E029E0600870FBC /* TagView.swift */,
-				49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1208,7 +1214,9 @@
 				49EDA8BF283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift in Sources */,
 				4935A4132E291205005997A3 /* CharacterLocationMock.swift in Sources */,
 				49E88D3D28310EA200058486 /* InteractorError.swift in Sources */,
+				4940B6762F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift in Sources */,
 				49206E512CAFCA4800C21802 /* APIConstants.swift in Sources */,
+				4940B68F2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift in Sources */,
 				49B765D92DFC4747004B545D /* EpisodeMock.swift in Sources */,
 				4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */,
 				4998C74E2E005BE400F755D9 /* PressableButtonStyle.swift in Sources */,
