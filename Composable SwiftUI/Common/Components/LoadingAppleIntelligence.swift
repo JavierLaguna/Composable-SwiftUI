@@ -24,6 +24,7 @@ struct LoadingAppleIntelligence: View {
                 Text(text)
                     .font(.caption)
                     .foregroundStyle(.gray)
+                    .multilineTextAlignment(.center)
             }
         }
     }
