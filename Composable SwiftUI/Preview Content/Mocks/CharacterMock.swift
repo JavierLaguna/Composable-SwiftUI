@@ -16,7 +16,7 @@ extension Character {
         image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
         episodes: [1, 2, 5, 7, 12, 23, 67],
         created: "2015-05-20".dateFromYearMothDayString()!,
-        description: nil// CharacterDescriptionMock.description
+        description: CharacterDescriptionMock.description
     )
 
     static let morty = Character(
