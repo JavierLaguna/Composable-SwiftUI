@@ -37,11 +37,36 @@ struct CharacterDetailReducerTests {
             }
         )
 
-        await store.send(.getCharacterDescription)
-        await store.receive(\.onReceiveCharacterDescription.failure)
+        await store.send(.getCharacterDescription) {
+            $0.characterDescription.state = .loading
+        }
+
+        await store.receive(\.onReceiveCharacterDescription.failure) {
+            $0.characterDescription.state = .error(mockError)
+        }
 
         verify(mockGetCharacterDescriptionInteractor)
             .execute(character: .value(Character.mock))
             .called(.once)
+
+        verify(mockGetCharactersInteractor)
+            .execute()
+            .called(.never)
+
+        verify(mockGetCharactersInteractor)
+            .execute(id: .any)
+            .called(.never)
+
+        verify(mockGetCharactersInteractor)
+            .execute(ids: .any)
+            .called(.never)
+
+        verify(mockGetTotalCharactersCountInteractor)
+            .execute()
+            .called(.never)
+
+        verify(mockGetEpisodesInteractor)
+            .execute(ids: .any)
+            .called(.never)
     }
 }
