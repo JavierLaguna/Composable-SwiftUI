@@ -8,9 +8,8 @@ struct LocationsListView: View {
     var body: some View {
         Group {
             switch store.locations.state {
-            case .initial,
-                    .loading,
-                    .populated:
+            case .loading,
+                .populated:
 
                 if let locations = store.locations.data {
                     LocationsList(

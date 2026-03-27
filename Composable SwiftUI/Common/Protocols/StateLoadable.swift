@@ -1,10 +1,9 @@
 struct StateLoadable<T: Equatable> {
 
     enum State {
-        case initial
+        case empty
         case loading
         case populated(data: T)
-        case empty
         case error(any Error)
 
         indirect case previous (State)
@@ -13,7 +12,7 @@ struct StateLoadable<T: Equatable> {
     private(set)var data: T?
     private(set)var error: (any Error)?
 
-    var state: State = .initial {
+    var state: State = .empty {
         didSet {
             stateDidUpdated()
         }
@@ -40,11 +39,16 @@ struct StateLoadable<T: Equatable> {
     private mutating func stateDidUpdated() {
         if case let .error(newError) = state {
             error = newError
+            data = nil
+
         } else {
             error = nil
 
             if case let .populated(newData) = state {
                 data = newData
+
+            } else if state == .empty {
+                data = nil
             }
         }
     }
@@ -76,8 +80,7 @@ extension StateLoadable.State: Equatable {
 
     static func == (lhs: StateLoadable<T>.State, rhs: StateLoadable<T>.State) -> Bool {
         switch (lhs, rhs) {
-        case (.initial, .initial),
-            (.empty, .empty),
+        case (.empty, .empty),
             (.loading, .loading):
             return true
 
