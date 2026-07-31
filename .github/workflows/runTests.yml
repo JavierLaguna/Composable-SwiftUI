@@ -72,12 +72,13 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=JavierLaguna_Composable-SwiftUI
             -Dsonar.organization=javierlaguna
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.swift.coverage.reportPaths=fastlane/test_output/coverage/sonarqube-generic-coverage.xml
             -Dsonar.sources=.
 
