@@ -12,7 +12,7 @@ This guide is for coding agents working in this repository.
 - CI lanes: `fastlane/Fastfile` (`test`, `generate_coverage_report`).
 
 ## Setup
-1. Use Xcode 16.x or newer (CI metadata references 16.2).
+1. Use Xcode 26.x or newer (CI metadata references 26.6).
 2. Install Ruby gems:
 ```bash
 bundle install
@@ -45,7 +45,7 @@ bundle exec fastlane test
 
 Set device for Fastlane scan when required:
 ```bash
-DEVICE='iPhone 16 Pro (18.5)' bundle exec fastlane test
+DEVICE='iPhone 17 Pro (26.5)' bundle exec fastlane test
 ```
 
 ### Run a Single Test (important)
