@@ -45,7 +45,7 @@ bundle exec fastlane test
 
 Set device for Fastlane scan when required:
 ```bash
-DEVICE='iPhone 16 Pro (18.2)' bundle exec fastlane test
+DEVICE='iPhone 16 Pro (18.5)' bundle exec fastlane test
 ```
 
 ### Run a Single Test (important)
