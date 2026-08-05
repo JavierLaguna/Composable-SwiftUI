@@ -106,3 +106,12 @@ fastlane/README.md
 
 ## macOS
 .DS_Store
+
+# Local environment (secrets)
+env.local
+
+# Skill registry (local index, regenerable)
+.atl/
+
+# SonarScanner analysis working directory
+.scannerwork/

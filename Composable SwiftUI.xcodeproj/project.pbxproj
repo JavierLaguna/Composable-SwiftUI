@@ -1728,6 +1728,8 @@
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.25.2;
 			};
+			traits = (
+			);
 		};
 		49A4A67A282FA32E00D43FB3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
