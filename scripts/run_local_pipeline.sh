@@ -24,7 +24,7 @@ sonar-scanner \
     -Dsonar.projectKey=JavierLaguna_Composable-SwiftUI \
     -Dsonar.organization=javierlaguna \
     -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.swift.coverage.reportPaths=fastlane/test_output/coverage/sonarqube-generic-coverage.xml \
+    -Dsonar.coverageReportPaths=fastlane/test_output/coverage/sonarqube-generic-coverage.xml \
     -Dsonar.sources=.
 
 echo "✅ Pipeline local completada"
