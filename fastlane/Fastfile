@@ -25,8 +25,7 @@ platform :ios do
       clean: true,
       code_coverage: true,
       result_bundle: true,
-      derived_data_path: "fastlane/test_output",  # Asegúrate de que scan y xcov usen el mismo derived_data_path
-      skip_testing: ['Composable SwiftUIUITests'],
+      derived_data_path: "fastlane/test_output",
       xcargs: "-skipPackagePluginValidation"
     )
   end
