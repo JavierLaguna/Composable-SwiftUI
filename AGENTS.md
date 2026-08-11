@@ -24,18 +24,18 @@ Run from repository root.
 
 Build app:
 ```bash
-xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUI" -destination 'platform=iOS Simulator,name=iPhone 16 Pro' build
+xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUI" -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build
 ```
 
 Build tests target/scheme:
 ```bash
-xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUITests" -destination 'platform=iOS Simulator,name=iPhone 16 Pro' build
+xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUITests" -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build
 ```
 
 ## Test Commands
 Run all tests with xcodebuild:
 ```bash
-xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUITests" -destination 'platform=iOS Simulator,name=iPhone 16 Pro' test
+xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUITests" -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
 Run all tests with Fastlane:
@@ -51,12 +51,12 @@ DEVICE='iPhone 17 Pro (26.5)' bundle exec fastlane test
 ### Run a Single Test (important)
 Run one test method:
 ```bash
-xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUITests" -destination 'platform=iOS Simulator,name=iPhone 16 Pro' -only-testing:"Composable SwiftUITests/CharactersListReducerTests/getCharactersSuccess" test
+xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUITests" -destination 'platform=iOS Simulator,name=iPhone 17 Pro' -only-testing:"Composable SwiftUITests/CharactersListReducerTests/getCharactersSuccess" test
 ```
 
 Run one test type/file:
 ```bash
-xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUITests" -destination 'platform=iOS Simulator,name=iPhone 16 Pro' -only-testing:"Composable SwiftUITests/CharactersListReducerTests" test
+xcodebuild -project "Composable SwiftUI.xcodeproj" -scheme "Composable SwiftUITests" -destination 'platform=iOS Simulator,name=iPhone 17 Pro' -only-testing:"Composable SwiftUITests/CharactersListReducerTests" test
 ```
 
 Guidance:

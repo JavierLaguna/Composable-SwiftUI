@@ -169,6 +169,7 @@
 		5A1B00052E40000100ABC001 /* GetLocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */; };
 		5A1C00012E40000100ABC001 /* LocationsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */; };
 		5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */; };
+		5A1C00052E40000100ABC001 /* EpisodesListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00062E40000100ABC001 /* EpisodesListReducerTests.swift */; };
 		5A1D00012E40000100ABC001 /* LocationsListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -338,6 +339,7 @@
 		5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsResponse.swift; sourceTree = "<group>"; };
 		5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListReducerTests.swift; sourceTree = "<group>"; };
 		5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsInteractorDefaultTests.swift; sourceTree = "<group>"; };
+		5A1C00062E40000100ABC001 /* EpisodesListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesListReducerTests.swift; sourceTree = "<group>"; };
 		5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -842,6 +844,7 @@
 				49529CA72A784C49002F7594 /* CharacterNeighborsReducerTests.swift */,
 				49E4F844284AA46F0037FD72 /* CharactersListReducerTests.swift */,
 				5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */,
+				5A1C00062E40000100ABC001 /* EpisodesListReducerTests.swift */,
 				49E4F846284FBD900037FD72 /* MatchBuddyReducerTests.swift */,
 			);
 			path = Reducers;
@@ -1319,6 +1322,7 @@
 				49E4F847284FBD910037FD72 /* MatchBuddyReducerTests.swift in Sources */,
 				49E4F845284AA46F0037FD72 /* CharactersListReducerTests.swift in Sources */,
 				5A1C00012E40000100ABC001 /* LocationsListReducerTests.swift in Sources */,
+				5A1C00052E40000100ABC001 /* EpisodesListReducerTests.swift in Sources */,
 				49529CA82A784C49002F7594 /* CharacterNeighborsReducerTests.swift in Sources */,
 				4976B3692C99CC6000531ADE /* Tags.swift in Sources */,
 				498BEF7C28535649003A3131 /* EpisodesRepositoryDefaultTests.swift in Sources */,
