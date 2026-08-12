@@ -17,6 +17,7 @@ private struct AllEnvironmentsInjectedModifier: ViewModifier {
     @State private var mainCoordinator = MainCoordinator()
     @State private var charactersCoordinator: CharactersCoordinator
     @State private var episodesCoordinator = EpisodesCoordinator()
+    @State private var locationsCoordinator = LocationsCoordinator()
 
     init() {
         mainStore = StoreOf<MainReducer>(
@@ -28,13 +29,7 @@ private struct AllEnvironmentsInjectedModifier: ViewModifier {
 
         charactersCoordinator = CharactersCoordinator(mainStore: mainStore)
 
-        configureNavigationBarAppareance()
-    }
-
-    private func configureNavigationBarAppareance() {
-        let navTitleColor = UIColor(Theme.Colors.navTitle)
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: navTitleColor]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: navTitleColor]
+        Theme.configureNavigationBarAppareance()
     }
 
     func body(content: Content) -> some View {
@@ -42,5 +37,6 @@ private struct AllEnvironmentsInjectedModifier: ViewModifier {
             .environment(mainCoordinator)
             .environment(charactersCoordinator)
             .environment(episodesCoordinator)
+            .environment(locationsCoordinator)
     }
 }

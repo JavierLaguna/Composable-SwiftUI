@@ -2,7 +2,7 @@ import Testing
 import SwiftUI
 import SnapshotTesting
 
-// IMPORTANT: Run tests using iPhone 16 Pro (18.0)
+// IMPORTANT: Run tests using iPhone 17 Pro (26.5)
 
 @MainActor
 class SceneSnapshotUITest {
@@ -69,6 +69,33 @@ extension SceneSnapshotUITest {
             return variants
         }
 
+        static var allDevicesVariants: [Variant] {
+            let orientations: [ViewImageConfig.Orientation] = [.portrait, .landscape]
+            var variants: [Variant] = []
+
+            Device.allCases.forEach { device in
+                UIStyle.allCases.forEach { style in
+                    orientations.forEach { orientation in
+                        variants.append(.device(device, uiStyle: style, orientation: orientation))
+                    }
+                }
+            }
+
+            return variants
+        }
+
+        static var allPortraitDevicesVariants: [Variant] {
+            var variants: [Variant] = []
+
+            Device.allCases.forEach { device in
+                UIStyle.allCases.forEach { style in
+                    variants.append(.device(device, uiStyle: style, orientation: .portrait))
+                }
+            }
+
+            return variants
+        }
+
         var layoutName: String {
             switch self {
             case .image:
@@ -96,7 +123,7 @@ extension SceneSnapshotUITest {
 
         var layoutName: String {
             switch self {
-            case .iPhoneSmallest: "iPhoneSE"
+            case .iPhoneSmallest: "iPhone8"
             case .iPhoneSmall: "iPhone13Mini"
             case .iPhoneMedium: "iPhone12"
             case .iPhoneBig: "iPhone13Pro"
@@ -110,7 +137,7 @@ extension SceneSnapshotUITest {
 
         private func viewImageConfig(orientation: ViewImageConfig.Orientation) -> ViewImageConfig {
             switch self {
-            case .iPhoneSmallest: .iPhoneSe(orientation)
+            case .iPhoneSmallest: .iPhone8(orientation)
             case .iPhoneSmall: .iPhone13Mini(orientation)
             case .iPhoneMedium: .iPhone12(orientation)
             case .iPhoneBig: .iPhone13Pro(orientation)
