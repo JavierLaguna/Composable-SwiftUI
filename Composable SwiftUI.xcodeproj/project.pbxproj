@@ -173,6 +173,7 @@
 		5A1B00052E40000100ABC001 /* GetLocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */; };
 		5A1C00012E40000100ABC001 /* LocationsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */; };
 		5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */; };
+		5A1C00072E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00082E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift */; };
 		5A1C00052E40000100ABC001 /* EpisodesListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00062E40000100ABC001 /* EpisodesListReducerTests.swift */; };
 		5A1D00012E40000100ABC001 /* LocationsListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */; };
 		5A1D00032E40000100ABC001 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00042E40000100ABC001 /* MainTabViewTests.swift */; };
@@ -349,6 +350,7 @@
 		5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListReducerTests.swift; sourceTree = "<group>"; };
 		5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsInteractorDefaultTests.swift; sourceTree = "<group>"; };
 		5A1C00062E40000100ABC001 /* EpisodesListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesListReducerTests.swift; sourceTree = "<group>"; };
+		5A1C00082E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterDescriptionInteractorAppleIntelligenceTests.swift; sourceTree = "<group>"; };
 		5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListViewTests.swift; sourceTree = "<group>"; };
 		5A1D00042E40000100ABC001 /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -887,6 +889,7 @@
 				491A39942850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift */,
 				49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */,
 				5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */,
+				5A1C00082E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1326,6 +1329,7 @@
 				492B29862DCDFB080019CB3B /* CharacterLocationResponseTests.swift in Sources */,
 				49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */,
 				492BFBE92DDE2E640072C537 /* CharacterDetailReducerTests.swift in Sources */,
+				5A1C00072E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift in Sources */,
 				49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */,
 				5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */,
 				49206E622CAFF3B500C21802 /* LocationServiceTests.swift in Sources */,

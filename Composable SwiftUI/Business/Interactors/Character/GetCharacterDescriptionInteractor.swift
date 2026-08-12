@@ -19,6 +19,35 @@ struct GetCharacterDescriptionInteractorFactory {
 }
 
 @available(iOS 26.0, *)
+struct CharacterDescriptionSessionClient: Sendable {
+
+    var isResponding: @Sendable () -> Bool
+    var respond: @Sendable (String) async throws -> CharacterDescription
+
+    init(
+        isResponding: @escaping @Sendable () -> Bool,
+        respond: @escaping @Sendable (String) async throws -> CharacterDescription
+    ) {
+        self.isResponding = isResponding
+        self.respond = respond
+    }
+
+    static func live(session: LanguageModelSession) -> Self {
+        Self(
+            isResponding: { session.isResponding },
+            respond: { prompt in
+                let response = try await session.respond(
+                    to: prompt,
+                    generating: CharacterDescription.self,
+                    options: GenerationOptions(sampling: .greedy)
+                )
+                return response.content
+            }
+        )
+    }
+}
+
+@available(iOS 26.0, *)
 struct GetCharacterDescriptionInteractorByAppleIntelligence: GetCharacterDescriptionInteractor {
 
     static private let model = SystemLanguageModel.default
@@ -34,30 +63,45 @@ struct GetCharacterDescriptionInteractorByAppleIntelligence: GetCharacterDescrip
         Self.model.availability
     }
 
-    private let session: LanguageModelSession
+    private let sessionClient: CharacterDescriptionSessionClient
+    private let waitDuration: Duration
+    private let isAvailableOverride: Bool?
 
     init() {
-        self.session = LanguageModelSession(
-            model: Self.model,
-//            instructions: Self.instructions
+        self.init(
+            sessionClient: .live(session: LanguageModelSession(model: Self.model)),
+            waitDuration: .seconds(2),
+            isAvailableOverride: nil
         )
     }
 
+    init(
+        sessionClient: CharacterDescriptionSessionClient,
+        waitDuration: Duration = .seconds(2),
+        isAvailableOverride: Bool? = nil
+    ) {
+        self.sessionClient = sessionClient
+        self.waitDuration = waitDuration
+        self.isAvailableOverride = isAvailableOverride
+    }
+
     func execute(character: Character) async throws -> String {
-        guard Self.isAvailable else {
+        guard isAvailableOverride ?? Self.isAvailable else {
             throw AppleIntelligenceNotAvailableError(from: Self.availabilityReason)
         }
 
-        let response = try await session.respond(
-            generating: CharacterDescription.self,
-            options: GenerationOptions(
-                sampling: .greedy
-            )
-        ) {
-            "Give me a short, canon-accurate description of \(character.name) from Rick and Morty. Only include facts clearly established in the show. Do not invent or assume anything."
+        if sessionClient.isResponding() {
+            try await Task.sleep(for: waitDuration)
         }
 
-        return response.content.text
+        try Task.checkCancellation()
+
+        let prompt = "Give me a short, canon-accurate description of \(character.name) from Rick and Morty. "
+            + "Only include facts clearly established in the show. Do not invent or assume anything."
+        let response = try await sessionClient.respond(prompt)
+
+        try Task.checkCancellation()
+        return response.text
     }
 }
 
