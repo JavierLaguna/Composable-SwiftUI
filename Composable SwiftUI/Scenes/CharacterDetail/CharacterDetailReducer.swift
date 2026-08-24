@@ -13,6 +13,7 @@ struct CharacterDetailReducer {
         let viewMode: CharacterDetailViewMode
 
         var currentCharacter: StateLoadable<Character>
+        var characterDescription: StateLoadable<String> = .init()
         var totalCharactersCount: Int = 0
         var episodes: StateLoadable<[Episode]> = .init()
 
@@ -52,6 +53,11 @@ struct CharacterDetailReducer {
         case onReceiveNewCharacter(Result<Character, any Error>)
     }
 
+    private enum CancelId {
+        case getCharacterDescription
+        case getEpisodes
+    }
+
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
@@ -72,21 +78,27 @@ struct CharacterDetailReducer {
                     return .none
                 }
 
+                state.characterDescription.state = .loading
+
                 return .run { send in
                     await send(.onReceiveCharacterDescription(Result {
                         try await getCharacterDescriptionInteractor.execute(character: currentCharacter)
                     }))
                 }
+                .cancellable(id: CancelId.getCharacterDescription)
 
             case .onReceiveCharacterDescription(.success(let characterDescription)):
                 guard let currentCharacter = state.currentCharacter.data else {
                     return .none
                 }
+
+                state.characterDescription.state = .populated(data: characterDescription)
                 let newCharacter = currentCharacter.copy(description: characterDescription)
                 state.currentCharacter.state = .populated(data: newCharacter)
                 return .none
 
-            case .onReceiveCharacterDescription(.failure):
+            case .onReceiveCharacterDescription(.failure(let error)):
+                state.characterDescription.state = .error(error)
                 return .none
 
             case .getTotalCharactersCount:
@@ -116,6 +128,7 @@ struct CharacterDetailReducer {
                         try await getEpisodesByIdsInteractor.execute(ids: currentCharacter.episodes)
                     }))
                 }
+                .cancellable(id: CancelId.getEpisodes)
 
             case .onReceiveEpisodes(.success(let episodes)):
                 state.episodes.state = .populated(data: episodes)
@@ -132,14 +145,19 @@ struct CharacterDetailReducer {
                 }
 
                 state.currentCharacter.state = .loading
+                state.characterDescription.state = .empty
 
-                let nextCharacterId = currentCharacter.id - 1
+                let previousCharacterId = currentCharacter.id - 1
 
-                return .run { send in
-                    await send(.onReceiveNewCharacter(Result {
-                        try await getCharactersInteractor.execute(id: nextCharacterId)
-                    }))
-                }
+                return .merge(
+                    .cancel(id: CancelId.getCharacterDescription),
+                    .cancel(id: CancelId.getEpisodes),
+                    .run { send in
+                        await send(.onReceiveNewCharacter(Result {
+                            try await getCharactersInteractor.execute(id: previousCharacterId)
+                        }))
+                    }
+                )
 
             case .seeNextCharacter:
                 guard state.canSeeNextCharacter,
@@ -148,14 +166,19 @@ struct CharacterDetailReducer {
                 }
 
                 state.currentCharacter.state = .loading
+                state.characterDescription.state = .empty
 
                 let nextCharacterId = currentCharacter.id + 1
 
-                return .run { send in
-                    await send(.onReceiveNewCharacter(Result {
-                        try await getCharactersInteractor.execute(id: nextCharacterId)
-                    }))
-                }
+                return .merge(
+                    .cancel(id: CancelId.getCharacterDescription),
+                    .cancel(id: CancelId.getEpisodes),
+                    .run { send in
+                        await send(.onReceiveNewCharacter(Result {
+                            try await getCharactersInteractor.execute(id: nextCharacterId)
+                        }))
+                    }
+                )
 
             case .onReceiveNewCharacter(.success(let newCharacter)):
                 state.currentCharacter.state = .populated(data: newCharacter)

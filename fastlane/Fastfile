@@ -26,6 +26,8 @@ platform :ios do
       code_coverage: true,
       result_bundle: true,
       derived_data_path: "fastlane/test_output",
+      # Disable parallel testing: 26+ suites with coverage crash testmanagerd (Mach error -308)
+      parallel_testing: false,
       xcargs: "-skipPackagePluginValidation"
     )
   end

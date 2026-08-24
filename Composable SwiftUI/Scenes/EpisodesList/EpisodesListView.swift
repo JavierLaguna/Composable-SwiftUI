@@ -13,8 +13,7 @@ struct EpisodesListView: View {
     var body: some View {
         Group {
             switch store.episodes.state {
-            case .initial,
-                    .loading,
+            case .loading,
                     .populated:
 
                 if let episodes = store.episodes.data {

@@ -43,6 +43,8 @@
 		493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */; };
 		493BF0312834298700ECC3A3 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF0302834298700ECC3A3 /* CharacterStatus.swift */; };
 		493BF03328342D1900ECC3A3 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493BF03228342D1900ECC3A3 /* String+URL.swift */; };
+		4940B6762F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940B6752F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift */; };
+		4940B68F2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940B68E2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift */; };
 		4940F1612F71B0130015879B /* BackgroundImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940F1602F71B0130015879B /* BackgroundImageModifier.swift */; };
 		49415E2F2E2561FD00F99C24 /* DateFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49415E2E2E2561FD00F99C24 /* DateFormatterFactory.swift */; };
 		49415E332E25624500F99C24 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49415E322E25624500F99C24 /* String+Date.swift */; };
@@ -108,6 +110,7 @@
 		49A4A67E282FB18800D43FB3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A4A67D282FB18800D43FB3 /* Colors.xcassets */; };
 		49A4A681282FB30A00D43FB3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4A680282FB30A00D43FB3 /* Theme.swift */; };
 		49A4A684282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4A683282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift */; };
+		49AC60412F72EF1C0064B40A /* CharacterDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC60402F72EF1C0064B40A /* CharacterDescription.swift */; };
 		49B4FE662F72BDC9002C2ECC /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4FE652F72BDC9002C2ECC /* MainTabView.swift */; };
 		49B764FB2DFB175D004B545D /* BackgroundPatternSecondaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B764FA2DFB175D004B545D /* BackgroundPatternSecondaryView.swift */; };
 		49B765052DFB17AE004B545D /* StatusBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B765042DFB17AE004B545D /* StatusBadgeView.swift */; };
@@ -170,6 +173,7 @@
 		5A1B00052E40000100ABC001 /* GetLocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B000A2E40000100ABC001 /* GetLocationsResponse.swift */; };
 		5A1C00012E40000100ABC001 /* LocationsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */; };
 		5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */; };
+		5A1C00072E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00082E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift */; };
 		5A1C00052E40000100ABC001 /* EpisodesListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C00062E40000100ABC001 /* EpisodesListReducerTests.swift */; };
 		5A1D00012E40000100ABC001 /* LocationsListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */; };
 		5A1D00032E40000100ABC001 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D00042E40000100ABC001 /* MainTabViewTests.swift */; };
@@ -218,6 +222,8 @@
 		493A921F2E0BEEE4005AECAB /* CharacterDetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewMode.swift; sourceTree = "<group>"; };
 		493BF0302834298700ECC3A3 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
 		493BF03228342D1900ECC3A3 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
+		4940B6752F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAppleIntelligenceView.swift; sourceTree = "<group>"; };
+		4940B68E2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIntelligenceNotAvailableError.swift; sourceTree = "<group>"; };
 		4940F1602F71B0130015879B /* BackgroundImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageModifier.swift; sourceTree = "<group>"; };
 		49415E2E2E2561FD00F99C24 /* DateFormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFactory.swift; sourceTree = "<group>"; };
 		49415E322E25624500F99C24 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
@@ -281,6 +287,7 @@
 		49A4A67D282FB18800D43FB3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		49A4A680282FB30A00D43FB3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49A4A683282FB37900D43FB3 /* UIEdgeInsets+VerticalHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+VerticalHorizontal.swift"; sourceTree = "<group>"; };
+		49AC60402F72EF1C0064B40A /* CharacterDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescription.swift; sourceTree = "<group>"; };
 		49B4FE652F72BDC9002C2ECC /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		49B764FA2DFB175D004B545D /* BackgroundPatternSecondaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPatternSecondaryView.swift; sourceTree = "<group>"; };
 		49B765042DFB17AE004B545D /* StatusBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadgeView.swift; sourceTree = "<group>"; };
@@ -343,6 +350,7 @@
 		5A1C00022E40000100ABC001 /* LocationsListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListReducerTests.swift; sourceTree = "<group>"; };
 		5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationsInteractorDefaultTests.swift; sourceTree = "<group>"; };
 		5A1C00062E40000100ABC001 /* EpisodesListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesListReducerTests.swift; sourceTree = "<group>"; };
+		5A1C00082E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterDescriptionInteractorAppleIntelligenceTests.swift; sourceTree = "<group>"; };
 		5A1D00022E40000100ABC001 /* LocationsListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListViewTests.swift; sourceTree = "<group>"; };
 		5A1D00042E40000100ABC001 /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -518,6 +526,7 @@
 			children = (
 				49EDA8C9283BFC3D002C9C80 /* BeerBuddy.swift */,
 				49A4A666282F99F300D43FB3 /* Character.swift */,
+				49AC60402F72EF1C0064B40A /* CharacterDescription.swift */,
 				49E4F813283E89FB0037FD72 /* CharacterGender.swift */,
 				497781D42836B7520033BC22 /* CharacterLocation.swift */,
 				493BF0302834298700ECC3A3 /* CharacterStatus.swift */,
@@ -726,6 +735,7 @@
 		49A4A665282F99DF00D43FB3 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				4940B68E2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift */,
 				4987ED482A6BD92E00AA7839 /* Character */,
 				4987ED4A2A6BD94D00AA7839 /* Episode */,
 				4987ED492A6BD93900AA7839 /* Location */,
@@ -753,13 +763,14 @@
 				4998C7532E005C1700F755D9 /* CircleIconButton.swift */,
 				49B765CC2DFC3052004B545D /* EpisodeCarouselView.swift */,
 				49A1A2672E0DB53F00B97442 /* EpisodeCellView.swift */,
+				4940B6752F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift */,
 				494E3465283AAA8500445B79 /* ErrorView.swift */,
 				49A1A2E62E0EC91600B97442 /* FullScreenLoadingView.swift */,
+				49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */,
 				49529CA32A784058002F7594 /* LoadingView.swift */,
 				49529C992A783B7B002F7594 /* NeighborsCellView.swift */,
 				49B765042DFB17AE004B545D /* StatusBadgeView.swift */,
 				4946E1F72E029E0600870FBC /* TagView.swift */,
-				49FBBBE12EACEE3600F8316D /* LoadingAppleIntelligence.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -878,6 +889,7 @@
 				491A39942850996200D17719 /* GetBeerBuddyInteractorDefaultTests.swift */,
 				49E4F853284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift */,
 				5A1C00042E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift */,
+				5A1C00082E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1215,7 +1227,9 @@
 				49EDA8BF283BEE6B002C9C80 /* GetBeerBuddyInteractor.swift in Sources */,
 				4935A4132E291205005997A3 /* CharacterLocationMock.swift in Sources */,
 				49E88D3D28310EA200058486 /* InteractorError.swift in Sources */,
+				4940B6762F73D1C8000E6983 /* ErrorAppleIntelligenceView.swift in Sources */,
 				49206E512CAFCA4800C21802 /* APIConstants.swift in Sources */,
+				4940B68F2F73D75F000E6983 /* AppleIntelligenceNotAvailableError.swift in Sources */,
 				49B765D92DFC4747004B545D /* EpisodeMock.swift in Sources */,
 				4987ED432A6BD8E700AA7839 /* LocationDetail.swift in Sources */,
 				4998C74E2E005BE400F755D9 /* PressableButtonStyle.swift in Sources */,
@@ -1227,6 +1241,7 @@
 				4998C7832E01675D00F755D9 /* Color+Extension.swift in Sources */,
 				4940F1612F71B0130015879B /* BackgroundImageModifier.swift in Sources */,
 				4946E27D2E056BA600870FBC /* GetTotalCharactersCountInteractor.swift in Sources */,
+				49AC60412F72EF1C0064B40A /* CharacterDescription.swift in Sources */,
 				492BFBD92DDE233F0072C537 /* CharacterDetailReducer.swift in Sources */,
 				4935A4302E291BDD005997A3 /* GetCharactersResponseMock.swift in Sources */,
 				493A92202E0BEEE4005AECAB /* CharacterDetailViewMode.swift in Sources */,
@@ -1314,6 +1329,7 @@
 				492B29862DCDFB080019CB3B /* CharacterLocationResponseTests.swift in Sources */,
 				49E4F84F284FCBEB0037FD72 /* ResponseMapperTests.swift in Sources */,
 				492BFBE92DDE2E640072C537 /* CharacterDetailReducerTests.swift in Sources */,
+				5A1C00072E40000100ABC001 /* GetCharacterDescriptionInteractorAppleIntelligenceTests.swift in Sources */,
 				49E4F854284FCEC50037FD72 /* GetCharactersInteractorDefaultTests.swift in Sources */,
 				5A1C00032E40000100ABC001 /* GetLocationsInteractorDefaultTests.swift in Sources */,
 				49206E622CAFF3B500C21802 /* LocationServiceTests.swift in Sources */,
@@ -1756,7 +1772,7 @@
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
+				minimumVersion = 8.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
