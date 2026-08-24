@@ -20,13 +20,14 @@ class SceneSnapshotUITest {
         record: Bool = false
     ) {
         let testName = "\(name)_\(variant.layoutName)_snapshot"
+        let recordMode: SnapshotTestingConfiguration.Record? = record ? .all : .never
 
         switch variant {
         case .image:
             assertSnapshot(
                 of: view,
                 as: .image(precision: precision),
-                record: record,
+                record: recordMode,
                 file: file,
                 testName: testName
             )
@@ -39,7 +40,7 @@ class SceneSnapshotUITest {
                     layout: device.layout(orientation: orientation),
                     traits: .init(userInterfaceStyle: uiStyle.userInterfaceStyle)
                 ),
-                record: record,
+                record: recordMode,
                 file: file,
                 testName: testName
             )
